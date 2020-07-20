@@ -22,6 +22,7 @@
 *.toc
 *.tps
 lecture_slides/*.pdf
+!lecture_slides/built/*.pdf
 **/fig/**/*-eps-converted-to.pdf
 *.dvi
 
