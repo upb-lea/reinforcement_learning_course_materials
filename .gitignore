@@ -1,0 +1,29 @@
+# PyCharm and Notebooks
+*.pyc
+.idea/
+.ipynb_checkpoints/
+**/__pycache__/
+
+# tex stuff
+*.asv
+*.synctex
+*.lnk
+*.tmp
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.DS_Store
+*.nav
+*.snm
+*.tcp
+*.toc
+*.tps
+lecture_slides/*.pdf
+**/fig/**/*-eps-converted-to.pdf
+
+# misc.
+*.db
+!.gitkeep
