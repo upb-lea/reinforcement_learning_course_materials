@@ -23,6 +23,7 @@
 *.tps
 lecture_slides/*.pdf
 **/fig/**/*-eps-converted-to.pdf
+*.dvi
 
 # misc.
 *.db

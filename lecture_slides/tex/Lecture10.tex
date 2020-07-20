@@ -1,0 +1,1019 @@
+\part{Lecture 10: Value-Based Control with Function Approximation}
+\title[RL Lecture 10]{Lecture 10: Value-Based Control \\with Function Approximation}  
+\date{}  
+\frame{\titlepage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preface %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Preface}
+Problem space: it is further assumed that
+\begin{itemize}
+	\item the states $\bm{x}$ are (quasi-)continuous and
+	\item the actions $u$ are discrete.
+\end{itemize}\pause
+\vspace{0.5cm}
+Today's focus:
+\begin{itemize}
+	\item \hl{valued-based control} tasks i.e. transferring the established tabular methods to work with function approximation.
+	\item Hence, we need to extend the previous prediction methods to action values
+\end{itemize}
+\begin{equation}
+			\hat{q}(\bm{x}, u, \bm{w}) \approx q_\pi(\bm{x}, u) .
+\end{equation}\pause
+\begin{itemize}
+	\item And apply the well-known generalized policy iteration scheme (GPI) to find optimal actions:
+\end{itemize}
+\begin{equation}
+			\hat{q}(\bm{x}, u, \bm{w}) \approx q^*(\bm{x}, u) .
+\end{equation}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Types of Action-Value Function Approximation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Types of Action-Value Function Approximation}
+\begin{figure}
+\includegraphics[width=9.5cm]{fig/lec10/Model_types_action_value.pdf}
+\label{fig:Model_types_action_value}
+\caption{Possible function approximation settings for discrete actions}
+\end{figure}
+\begin{itemize}
+	\item Left: one function with both states and actions as input
+	\item Middle: one function with $i=1,2,\ldots$ outputs covering the action space (e.g. ANN with appropriate output layer)
+	\item Right: multiple (sub-)functions one for each possible action $u_i$ (e.g. multitude of linear approximators in small action spaces)
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Feature Engineering %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Feature Engineering}
+\begin{itemize}
+	\item Also for action-value estimation a proper feature engineering (FE) is of vital importance.
+	\item Compared to the state-value prediction, the action becomes part of the FE processing: 
+\begin{equation}
+	\hat{q}(\bm{x}, u, \bm{w}) = \hat{q}\left(\bm{f}\left(\bm{x}, u\right), \bm{w}\right) .
+\end{equation}
+	\item Above, $\bm{f}(\bm{x},u)\in\mathbb{R}^\kappa$ is the FE function.\pause
+	\item \hl{For sake of notation simplicity we write $\hat{q}(\bm{x}, u, \bm{w})$ and understand that FE has already been considered (i.e. is a part of $\hat{q}$).}
+\end{itemize}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{On-Policy Control With (Semi-)Gradients} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Gradient-Based Action-Value Learning %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Gradient-Based Action-Value Learning}
+
+\begin{itemize}
+	\item Transferring the objective \eqref{eq:VE_J} from on-policy prediction to control yields:
+\begin{equation}
+	J(\bm{w})= \sum_k \left[q_{\pi}(\bm{x}_k, u_k) - \hat{q}(\bm{x}_k, u_k, \bm{w})\right]^2 .
+\label{eq:VE_J_action}
+\end{equation}\pause
+\item Analogous, the (semi-)gradient-based parameter update from \eqref{eq:gradient_param_value} is also applied to action values:
+ \begin{equation}
+	 \bm{w}_{k+1} = \bm{w}_{k} + \alpha\left[q_\pi(\bm{x}_k, u_k) - \hat{q}(\bm{x}_k, u_k, \bm{w}_k)\right]\nabla_{\bm{w}} \hat{q}(\bm{x}_k, u_k, \bm{w}_k) .
+	\label{eq:gradient_param_value_action}
+ \end{equation}\pause
+\item Depending on the control approach, the true target $q_\pi(\bm{x}_k, u_k)$ is approximated by:
+\begin{itemize}
+	\item Monte Carlo: full episodic return $q_\pi(\bm{x}_k, u_k) \approx g$,\pause
+	\item Sarsa: one-step bootstrapped estimate $q_\pi(\bm{x}_k, u_k) \approx r_{k+1}+\gamma\hat{q}(\bm{x}_{k+1}, u_{k+1}, \bm{w}_k)$,\pause
+	\item $n$-step Sarsa: $q_\pi(\bm{x}_k, u_k) \approx r_{k+1}+\gamma r_{k+2}+\cdots+\gamma^{n-1} r_{k+n}+\gamma^n\hat{q}(\bm{x}_{k+n}, u_{k+n}, \bm{w}_{k+n-1})$.
+\end{itemize}
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Houston: We have a Problem (1)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Houston: We have a Problem (1)}
+\begin{itemize}
+	\item Recall tabular \hl{policy improvement theorem} (\theoref{theo:Policy_improvement}): guarantee to find a globally better or equally good policy in each update step.\pause
+	\item With parameter updates \eqref{eq:gradient_param_value_action} generalization applies. 
+	\item Hence, when reacting to one specific state-action transition other parts of the state-action space within $\hat{q}$ are affected too. \pause
+\end{itemize}
+\vspace{0.5cm}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.4\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+\includegraphics[height=2.5cm]{fig/lec03/GPI_02.pdf}
+\caption{GPI}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.57\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{block}{Loss of policy improvement theorem}
+	\begin{itemize}
+		\item Is not applicable with function approximation!
+		\item We may improve and impair the policy at the same time!
+	\end{itemize}
+\end{block}
+\end{minipage}
+\end{column}
+\end{columns}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Houston: We have a Problem (2)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Houston: We have a Problem (2)}
+\begin{figure}
+	\subfloat{
+		\includegraphics[height=4.4cm]{fig/lec10/Sarsa_Brakeout.pdf}
+	}
+	\subfloat{
+		\includegraphics[height=4.4cm]{fig/lec10/Sarsa_Seaquest.pdf}
+	}
+\caption{Learning curves with drastic performance dips when applying Sarsa with function approximation.  Left: Atari Breakout, right: Atari Seaquest (source: D. Zhao et al., \textit{Deep reinforcement learning with experience replay based on SARSA}, IEEE Symposium Series on Computational Intelligence, 2016)}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Gradient Monte Carlo On-Policy Control %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Implementation: Gradient MC Control}
+\begin{itemize}
+	\item Direct transfer from tabular case to function approximation
+	\item Update target becomes the sampled return $q_\pi(\bm{x}_k, u_k)\approx g_k$ 
+	\item If operating $\varepsilon$-greedy on $\hat{q}$: baseline policy (given by $\bm{w}_0$) must (successfully) terminate the episode! 
+\end{itemize}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$}
+\Input{a policy $\pi$ (only if estimating $q_\pi$)}
+\Param{step size $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
+\Init{parameter vector $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
+ \For{$j=1,2,\ldots,$ episodes}{
+		generate episode following $\pi$ or $\varepsilon$-greedy on $\hat{q}$: $x_{0}, u_{0}, r_{1},\ldots,x_{T}$ \;
+		calculate every-visit return $g_k$\;  
+		\For{$k=0,1,\ldots, T-1$ time steps}{
+			$\bm{w} \leftarrow \bm{w} + \alpha\left[g_k - \hat{q}(\bm{x}_k, u_k,\bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}_k, u_k, \bm{w})$\; 
+		}
+	}
+\caption{Every-visit gradient MC-based action-value estimation (output: parameter vector $\bm{w}$ for $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:MC_gradient_control}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Implementation: Semi-Gradient Sarsa}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$}
+\Input{a policy $\pi$ (only if estimating $q_\pi$)}
+\Param{step size $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
+\Init{parameter vector $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
+ \For{$j=1,2,\ldots$ episodes}{
+		initialize $\bm{x}_{0}$\;
+		\For{$k=0, 1, 2 \ldots $ time steps}{
+			$u_k \leftarrow$ apply action from $\pi(\bm{x}_k)$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_k, \cdot, \bm{w})$\;
+			observe $\bm{x}_{k+1}$ and $r_{k+1}$\;
+			\If{$\bm{x}_{k+1}$ is terminal}{
+					$\bm{w} \leftarrow \bm{w} + \alpha\left[r_{k+1} - \hat{q}(\bm{x}_k, u_k, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}_k, u_k, \bm{w})$\; 
+					go to next episode\;
+			}
+			choose $u'$ from $\pi(\bm{x}_{k+1})$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_{k+1},\cdot, \bm{w})$\;
+			$\bm{w} \leftarrow \quad\bm{w} + \alpha\left[r_{k+1} + \gamma\hat{q}(\bm{x}_{k+1}, u', \bm{w})  - \hat{q}(\bm{x}_k, u_k, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}_k, u_k, \bm{w})$\; 
+		}
+	}
+\caption{Semi-gradient Sarsa action-value estimation (output: parameter vector $\bm{w}$ for $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:Semi_gradient_Sarsa}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sarsa Application Example: Mountain Car (1)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Sarsa Application Example: Mountain Car (1)}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.475\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[width=4.8cm]{fig/lec10/mountain_car.png}
+	\caption{Classic RL control example: mountain car (derivative work based on \href{https://github.com/openai/gym}{https://github.com/openai/gym}, MIT license)}
+	\label{fig:Mountain_car_gym}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item Two cont. states: position, velocity
+	\item One discrete action: acceleration given by $\left\{\mbox{left},\mbox{none},\mbox{right}\right\}$ 
+	\item $r_k=-1$ i.e. goal is to terminate episode as quick as possible
+	\item Episode terminates when car reaches the flag (or max steps)
+	\item Simplified longitudinal car physics with state constraints
+	\item Position initialized randomly within valley, zero initial velocity
+	\item Car is underpowered and requires swing-up
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sarsa Application Example: Mountain Car (2)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Sarsa Application Example: Mountain Car (2)}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS.pdf}
+\caption{Cost-to-go function $-\max_u \hat{q}(\bm{x},u,\bm{w})$ for mountain car task using linear approximation with Sarsa and tile coding (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tile Coding %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Tile Coding}
+\begin{itemize}
+	\item Problem space is grouped into (overlapping) partitions / tiles.
+	\item Performs a discretization of the problem space.
+	\item Function approximation serves as interpolation between tiles.
+	\item Find an example here: \href{https://github.com/MeepMoop/tilecoding}{https://github.com/MeepMoop/tilecoding} .
+\end{itemize}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec10/Tile_Coding.pdf}
+\caption{Tile coding example in 2D (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sarsa Application Example: Mountain Car (3)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Sarsa Application Example: Mountain Car (3)}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_Learning_Rate.pdf}
+\caption{Mountain car learning curves with semi-gradient Sarsa for different learning rates $\alpha$ (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% n-step Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\footnotesize
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$}
+\Input{a policy $\pi$ (only if estimating $q_\pi$)}
+\Param{$\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, $n\in\mathbb{Z}^+$}
+\Init{parameter vector $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
+ \For{$j=1,2\ldots$ episodes}{
+		initialize and store $\bm{x}_{0}$\;
+		select and store $u_0\sim\pi(\bm{x}_0)$ or $\varepsilon$-greedy w.r.t. $\hat{q}(\bm{x}_0, \cdot, \bm{w})$\;
+		$T\leftarrow\infty$\;
+		\Repeat( $k=0, 1, 2, \ldots$){$\tau=T-1$}{
+			\If{$k<T$}{
+				take action $u_k$ observe and store $\bm{x}_{k+1}$ and $r_{k+1}$\;
+				\lIf{$\bm{x}_{k+1}$ is terminal}{$T\leftarrow k+1$} \lElse{select \& store $u_{k+1}\sim\pi(\bm{x}_{k+1})$ or $\varepsilon$-greedy w.r.t. $\hat{q}(\bm{x}_{k+1}, \cdot, \bm{w})$}
+				}
+			$\tau\leftarrow k-n+1$ ($\tau$ time index for estimate update)\;
+			\If{$\tau \geq 0$}{
+				$g\leftarrow \sum_{i=\tau+1}^{\min(\tau + n, T)}\gamma^{i-\tau-1} r_i$\;
+				if $\tau+n < T$: $g\leftarrow g + \gamma^n \hat{q}(\bm{x}_{\tau+n}, u_{\tau+n},\bm{w})$\;
+				$\bm{w} \leftarrow \bm{w} + \alpha\left[g - \hat{q}(\bm{x}_\tau, u_\tau, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}_\tau, u_\tau, , \bm{w})$\; 
+			}
+		}
+	}
+\caption{$n$-step semi-gradient Sarsa (output: parameter vector $\bm{w}$ for $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:Semi_gradient_Sarsa_nstep}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mountain Car: one vs eight-step semi-gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Mountain Car: One vs Eight-Step Semi-Gradient Sarsa}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_n_step_comp.pdf}
+\caption{Mountain car learning curves comparing one-step Sarsa ($\alpha=0.5/8$) and eight-step Sarsa ($\alpha=0.3/8$) based on same problem definition as in \figref{fig:Mountain_car_gym} (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Mountain Car: one vs eight-step semi-gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Mountain Car: Early Performance Evaluation}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_early_performance.pdf}
+\caption{Effect of learning rate $\alpha$ and step variable $n$ on early performance of $n$-step semi-gradient Sarsa and tile coding function approximation on the mountain car task. Abscissa is scaled with the number of used tiles, here equal to eight (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Average Reward: An Alternative for Continuing Tasks} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Average Reward %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{The Average Reward Definition}
+\begin{itemize}
+	\item Is an alternative performance metric in continuing tasks.
+	\begin{itemize}
+		\item Recall: discounting helped us to limit $v<\infty$. \pause
+	\end{itemize}
+	\item Alternative viewpoint: why value rewards further in the future less?\pause
+\end{itemize}
+\setcounter{mydefi}{0}
+\begin{defi}{Average reward}{avg_return}
+In continuing tasks the average reward is defined as
+\begin{equation}
+	\begin{split}
+		\overline{r}_\pi &= \lim_{h\rightarrow\infty}\frac{1}{h}\sum_{k=1}^{h}\E{R_k|\bm{X}_0, U_{0:k-1}\sim\pi},\\
+		&=\lim_{k\rightarrow\infty}\E{R_k|\bm{X}_0, U_{0:k-1}\sim\pi},\\
+		&=\int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u)r.
+	\end{split}	
+	\label{eq:avg_return}
+\end{equation}
+for policy $\pi$ with $\mu_\pi$ being the steady-state distribution $\mu_\pi(\bm{x})=\lim_{k\rightarrow\infty}\Pb{\bm{X}_k=\bm{x}|U_{0:k-1}\sim\pi}$ (long-term state distribution).
+\end{defi}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Equivalence in terms of optimality (1)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Equivalence in Terms of Optimality (1)}
+To compare the average reward against the usual discounted reward setting in continuing tasks when utilizing function approximation, we introduce the performance metric
+\begin{equation}
+	J_\pi = \int_\mathcal{X}\mu_\pi(\bm{x})v_\pi^\gamma(\bm{x}) .
+	\label{eq:metric_avg_return}
+\end{equation}
+Here, $v_\pi^\gamma$ is the usual discounted value and, therefore, \eqref{eq:metric_avg_return} evaluates the long-term value following $\pi$. \pause Applying the Bellman equation we receive:
+\begin{equation}
+	J_\pi = \int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u)\left[r + \gamma v_\pi^\gamma(\bm{x}')\right] .
+\end{equation}\pause
+Inserting the average reward $\overline{r}_\pi$ definition \eqref{eq:avg_return} produces:
+\begin{equation}
+	J_\pi = \overline{r}_\pi + \int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u) \gamma v_\pi^\gamma(\bm{x}').
+	\label{eq:prev_avg_return_comp}
+\end{equation}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Equivalence in terms of optimality (2)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Equivalence in Terms of Optimality (2)}
+In the last equation \eqref{eq:prev_avg_return_comp} the term
+\begin{equation*}
+	\int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u)
+\end{equation*}
+combines the steady-state distribution $\mu_\pi(\bm{x})$ with the likelihood of transitioning to $\bm{x}'$ and receiving $r$ when taking an action $u\sim\pi(\bm{x})$.\pause If one assumes that the long-term distribution $\mu_\pi(\bm{x})$ is independent from the starting state $\bm{x}_0$, i.e. \hl{the underlying MDP is an ergodic process}, then  
+\begin{equation}
+\int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u) \gamma v_\pi^\gamma(\bm{x}') = \gamma\int_{\mathcal{X}}v_\pi^\gamma(\bm{x}')\mu_\pi(\bm{x}')
+\label{eq:prev_avg_return_ergodic}
+\end{equation}
+holds since it does not make any difference if we start from $\bm{x}$ or $\bm{x}'$.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Equivalence in terms of optimality (3)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Equivalence in Terms of Optimality (3)}
+Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp} yields:
+\begin{equation}
+\begin{split}
+	J_\pi &= \overline{r}_\pi +\gamma\int_{\mathcal{X}}v_\pi^\gamma(\bm{x}')\mu_\pi(\bm{x}'),\\
+				&= \overline{r}_\pi +\gamma J_\pi,\\
+				&=\overline{r}_\pi +\gamma \overline{r}_\pi+ \gamma^2 J_\pi,\\
+				&=\cdots\\
+				&=\frac{1}{1-\gamma}\overline{r}_\pi.
+\end{split}
+\end{equation}
+\hl{Take away observations:}
+\begin{itemize}
+	\item The on-policy discounted value equals the scaled discounted average reward (for on-policy continuing task methods). \pause
+	\item Hence, ordering of all policies based on $\overline{r}_\pi$ would be exactly the same as using the discounted value $v_\pi^\gamma$. \pause
+	\item Discount factor $\gamma$ changes from a problem to a solution parameter. 
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Introducing the Differential Return %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Introducing the Differential Return}
+\begin{itemize}
+	\item Since discounting is not used in the average reward definition we have to reformulate the return and value definitions. \pause
+	\item Intuitive approach: introduce \hl{differential quantities} describing the deviations towards $\overline{r}_\pi$. \pause
+	\item Differential return:
+	\begin{equation}
+		G_k = R_{k+1}-\overline{r}_\pi + R_{k+2}-\overline{r}_\pi+R_{k+3}-\overline{r}_\pi+\ldots
+		\label{eq:differential_return}
+	\end{equation}\pause
+	\item Differential value functions:
+	\begin{equation}
+		\begin{split}
+				v_\pi(\bm{x})&=\El{G_k|\bm{X}_k=\bm{x}}{\pi},\\
+				q_\pi(\bm{x}, u) &= \El{G_k|\bm{X}_k=\bm{x},U_k=u}{\pi}.
+		\end{split}
+	\end{equation}\pause
+	\item Accordingly, the Bellman equations require adaption (cf. chapter 10.3 in lecture book of Barto/Sutton, 2018).
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Integrating the average reward into RL Solutions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Integrating the Average Reward into RL Solutions}
+\begin{itemize}
+	\item Based on the differential return \eqref{eq:differential_return} we can reintroduce the TD error in combination with function approximation:
+		\begin{equation}
+		\begin{split}
+				\delta_k &= r_{k+1}-\hat{\overline{r}}_k + \hat{v}(\bm{x}_{k+1},\bm{w}_k) - \hat{v}(\bm{x}_{k},\bm{w}_k),\\
+				\delta_k &= r_{k+1}-\hat{\overline{r}}_k + \hat{q}(\bm{x}_{k+1},u_{k+1}, \bm{w}_k) - \hat{q}(\bm{x}_{k},u_{k}, \bm{w}_k).\\
+		\end{split}
+	\end{equation}
+		\item Here, $\hat{\overline{r}}_k$ is an estimate of $\overline{r}_\pi$ at time step $k$ (e.g. by a moving average filter).\pause
+		\item And finally the semi-gradient-based parameter update is:
+		\begin{equation}
+		\begin{split}
+				\bm{w}_{k+1} &= \bm{w}_k + \alpha \delta_k\nabla_{\bm{w}} \hat{v}(\bm{x}_{k},\bm{w}_k),\\
+				\bm{w}_{k+1} &= \bm{w}_k + \alpha \delta_k\nabla_{\bm{w}} \hat{q}(\bm{x}_{k},u_k,\bm{w}_k).
+		\end{split}
+	\end{equation}\pause
+	\item In the following we provide details on the differential Sarsa implementation, but nevertheless, the TD modifications for state-value prediction are straightforward.
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Differential Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Impl.: Differential Semi-Gradient Sarsa}
+\begin{itemize}
+	\item For incremental average estimation of $\overline{r}_\pi$ we introduce $\beta$.
+	\item Similar to the discussion around $\gamma$, the averaging step size $\beta$ is also a solution parameter of the RL algorithm.
+\end{itemize}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$}
+\Input{a policy $\pi$ (only if estimating $q_\pi$)}
+\Param{step sizes $\left\{\alpha,\beta\right\}\in\left\{\mathbb{R}|0<\alpha,\beta<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
+\Init{parameter vector $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, average return estimate $\hat{\overline{r}}\in\mathbb{R}$}
+\Init{$\bm{x}_{0}$ and $u_0$ from $\pi(\bm{x}_0)$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_0, \cdot, \bm{w})$}
+		\For{$k=0, 1, 2 \ldots $ time steps}{
+			apply $u_k$ and observe $\bm{x}_{k+1}$ and $r_{k+1}$\;
+			choose $u_{k+1}$ from $\pi(\bm{x}_{k+1})$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_{k+1},\cdot, \bm{w})$\;
+			$\delta \leftarrow  r_{k+1} -\hat{\overline{r}}+\hat{q}(\bm{x}_{k+1}, u_{k+1}, \bm{w})-\hat{q}(\bm{x}_{k}, u_k, \bm{w})$\;
+			$\hat{\overline{r}}\leftarrow\hat{\overline{r}}+\beta\delta$\;
+			$\bm{w} \leftarrow \bm{w}+\alpha\delta\nabla_{\bm{w}}\hat{q}(\bm{x}_{k}, u_k, \bm{w})$\;
+		}
+\caption{Differential semi-gradient Sarsa action-value estimation (output: parameter vector $\bm{w}$ for $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:Semi_gradient_Sarsa_diff}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Remarks on Differential Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Remarks on Differential Semi-Gradient Sarsa}
+What is the \hl{key motivation to use the differential returns} and not the discounted returns in continuing tasks?\pause
+\begin{itemize}
+	\item If one is interested in the long-term control behavior setting the discount close to one ($\gamma \rightarrow 1$) is required.\pause
+	\item Depending on the application (reward feedback), the estimated values might become unfeasibly large numbers.\pause
+	\item Even if the numeric stability can be maintained, learning might become slow. 
+	\begin{itemize}
+		\item Recall again: discounting in continuing tasks is numerically limiting $v$.
+		\item Hence we have to face a trade off: numeric stability vs. long-term estimation capabilities.\pause
+	\end{itemize}
+	\item Average rewards can be considered numerically more robust.\pause
+\end{itemize}
+Moreover, $n$-step bootstrapping  can be implemented as well:
+\begin{equation*}
+	\begin{split}
+				G_{k:k+n} &= r_{k+1}-\hat{\overline{r}}_{k+n-1} + \ldots + r_{n+1}-\hat{\overline{r}}_{k+n-1} + \hat{q}(\bm{x}_{k+n}, u_{k+n}, \bm{w}_{k+n-1}),\\
+				\delta_k &= G_{k:k+n} - \hat{q}(\bm{x}_{k},u_{k}, \bm{w}_k).
+		\end{split}
+	\end{equation*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Differential Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Impl.: Differential $n$-Step Semi-Gradient Sarsa}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$}
+\Input{a policy $\pi$ (only if estimating $q_\pi$)}
+\Param{$\left\{\alpha,\beta\right\}\in\left\{\mathbb{R}|0<\alpha,\beta<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, $n\in\mathbb{Z}^+$}
+\Init{parameter vector $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, average return estimate $\hat{\overline{r}}\in\mathbb{R}$}
+\Init{$\bm{x}_{0}$ and $u_0$ from $\pi(\bm{x}_0)$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_0, \cdot, \bm{w})$}
+		\For{$k=0, 1, 2 \ldots $ time steps}{
+			apply $u_k$ and observe $\bm{x}_{k+1}$ and $r_{k+1}$\;
+			choose $u_{k+1}$ from $\pi(\bm{x}_{k+1})$ or $\varepsilon$-greedy on $\hat{q}(\bm{x}_{k+1},\cdot, \bm{w})$\;
+			$\tau\leftarrow k-n+1$\;
+			\If{$\tau\geq 0$}{
+				$\delta \leftarrow  \sum_{i=\tau+1}^{\tau+n}( r_{i} -\hat{\overline{r}})+\hat{q}(\bm{x}_{\tau+n}, u_{\tau+n}, \bm{w})-\hat{q}(\bm{x}_{\tau}, u_\tau, \bm{w})$\;
+				$\hat{\overline{r}}\leftarrow\hat{\overline{r}}+\beta\delta$\;
+				$\bm{w} \leftarrow \bm{w}+\alpha\delta\nabla_{\bm{w}}\hat{q}(\bm{x}_{\tau}, u_\tau, \bm{w})$\;
+			}
+		}
+\caption{Differential $n$-step semi-gradient Sarsa action-value estimation (output: parameter vector $\bm{w}$ for $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:Semi_gradient_Sarsa_diff_n_step}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Least Squares Policy Iteration (LSPI)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Transfering LSTD-Style Batch Learning to Action Values %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Transferring LSTD-Style Batch Learning to Action Values}
+\begin{itemize}
+	\item In the previous lecture we developed a closed-form batch learning tool, LSTD, which estimated the state values of a given policy if
+	\begin{itemize}
+		\item we use linear function approximation and
+		\item a fixed, representative data set $\bm{\mathcal{D}}$ is given.
+	\end{itemize}\pause
+\item Same idea can be transferred to action values when bootstrapping with one-step Sarsa -- called \hl{LS-Sarsa} (or sometimes LSTD$Q$):
+\begin{equation}
+\begin{split}
+	q_\pi(\bm{x}_k, u_k) &\approx r_{k+1}+\gamma\hat{q}(\bm{x}_{k+1}, u_{k+1}, \bm{w}_k),\\
+	\hat{q}(\bm{x}_k, u_k, \bm{w}_k)&=\hat{q}(\tilde{\bm{x}}_k, \bm{w}_k)= \tilde{\bm{x}}\T_k\bm{w}_k .
+\end{split}
+\label{eq:bootstrapping_LSTDQ}
+\end{equation}
+\pause\vspace{-0.2cm} 
+\item The cost function for action-value prediction is then:
+\begin{equation}
+	J(\bm{w}) = \sum_k \left[r_{k+1} - \left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)\bm{w}\right]^2.
+\end{equation}\pause\vspace{-0.2cm} 
+\item Hence, the closed-form least squares solution for the action values is the same as for the state value case but the feature vector depends also on the actions:
+\begin{equation*}
+	\tilde{\bm{x}}_k = \bm{f}(\bm{x}_k, u_k).
+\end{equation*}
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% On and Off-Policy LSTDQ %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{On and Off-Policy LS-Sarsa}
+With $b$ samples we can form a target vector $\bm{y}$ and regressor matrix $\bm{\Xi}$:
+\begin{equation}
+	\bm{y} = \begin{bmatrix} r_1 \\ r_2 \\ \vdots \\ r_b \end{bmatrix}, \quad \bm{\Xi}=\begin{bmatrix} \left(\tilde{\bm{x}}\T_{0} - \gamma \tilde{\bm{x}}\T_{1}\right) \\ \left(\tilde{\bm{x}}\T_{1} - \gamma \tilde{\bm{x}}\T_{2}\right)\\ \vdots \\\left(\tilde{\bm{x}}\T_{b-1} - \gamma \tilde{\bm{x}}\T_{b}\right) \end{bmatrix}\, .
+	\label{eq:LSTDQ_data}
+\end{equation}\pause
+Regarding the data input to $\bm{\Xi}$ we can distinguish two cases: The actions $u_k$ and $u_{k+1}$ in the feature pair $\left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)$ per row in $\bm{\Xi}$ either descends from the
+\begin{itemize}
+	\item \hl{same policy $\pi$ (on-policy learning)} or \pause
+	\item the action $u_{k+1}$ in $\tilde{\bm{x}}_{k+1} = \bm{f}(\bm{x}_{k+1}, u_{k+1})$ is chosen based on an \hl{arbitrary policy $\pi'$ (off-policy learning)}. 
+\end{itemize}\pause
+If we apply off-policy LS-Sarsa then
+\begin{itemize}
+	\item we retrieve the flexibility to collect training samples arbitrarily
+	\item at the cost of an estimation bias based on the sampling distribution.
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% On and Off-Policy LSTDQ %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{LS-Sarsa}
+\begin{block}{LS-Sarsa solution}
+Having arranged $i=1,\ldots,b$ samples $\left\langle \bm{x}_i, u_i, r_{i+1}, \bm{x}_{i+1}, u_{i+1}\right\rangle\sim\bm{\mathcal{D}}$ using one-step bootstrapping \eqref{eq:bootstrapping_LSTDQ} and linear function approximation as in \eqref{eq:LSTDQ_data}, the LS-Sarsa solution is
+\begin{equation}
+		\bm{w}^* = (\bm{\Xi}\T\bm{\Xi})^{-1}\bm{\Xi}\T\bm{y} .
+\end{equation}
+\end{block}\pause
+Again, basic usage distinction:
+\begin{itemize}
+	\item If $\left\{u_i, u_{i+1}\right\}\sim\pi$: on-policy prediction (as in LSTD)
+	\item If $u_i\sim\pi$ and $u_{i+1}\sim\pi'$: off-policy prediction (useful for control) 
+\end{itemize}\pause
+Possible modifications:
+\begin{itemize}
+	\item To prevent numeric instability regularization is possible cf. \eqref{eq:Ridge_LSTD}
+	\item Recursive implementation for online usage straightforward cf. \eqref{eq:RLS}
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Least Squares Policy Iteration (LSPI) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Least Squares Policy Iteration (LSPI)}
+General idea:
+\begin{itemize}
+	\item apply general policy improvement (GPI) based on data set $\bm{\mathcal{D}}$ 
+	\item policy evaluation by off-policy LS-Sarsa
+	\item policy improvement by greedy choices on predicted action values
+\end{itemize}
+\begin{figure}
+\includegraphics[height=3.0cm]{fig/lec03/GPI_02.pdf}
+\end{figure}\pause
+Some remarks:
+\begin{itemize}
+	\item LSPI is an offline and off-policy control approach
+	\item Exploration is required by feeding suitable sampling distributions in $\bm{\mathcal{D}}$
+	\begin{itemize}
+		\item Such as $\varepsilon$-greedy choices based on $\hat{q}$ 
+		\item But also complete random samples are conceivable
+	\end{itemize}
+\end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Semi-Gradient Sarsa %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Implementation: LSPI}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{q}(\tilde{\bm{x}}_T,\cdot)=0$)}
+\Input{a data set $\left\langle \bm{x}_i, u_i, r_{i+1}, \bm{x}_{i+1}\right\rangle\sim\bm{\mathcal{D}}$ with $i=1,\ldots, b$ samples}
+\Param{an accuracy threshold $\Delta\in\left\{\mathbb{R}|0<\Delta\right\}$}
+\Init{linear approximation function weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
+
+$\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\hat{q}(\bm{w})$)\;
+\Repeat{$||\bm{w}'-\bm{w}||<\Delta$}{
+		$\bm{w}' \leftarrow \bm{w}$\;
+		$\bm{w}\leftarrow\mbox{LS-Sarsa}(\bm{\mathcal{D}}, u_{i+1}\sim\pi)$\;
+		$\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$\;
+}
+\caption{Least squares policy iteration (output: $\bm{w}$ for $\hat{q}^*$)}
+\label{algo:LSPI}
+\end{algorithm}\pause
+\begin{itemize}
+	\item In a (small) discrete action space the $\argmax_{u}$ operation is straightforward: just compare $\hat{q}$ for all possible actions given the state. \pause
+	\item After one full LSPI evaluation the data set $\bm{\mathcal{D}}$ might be altered to include new data obtained based on the updated $\bm{w}$ vector. \pause
+	\item Source: M. Lagoudakis and R. Parr, \textit{Least-Squares Policy Iteration}, Journal of Machine Learning Research 4, pp. 1107-1149, 2003
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LSPI Application Example: Inverted Pendulum %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{LSPI Application Example: Inverted Pendulum (1)}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.475\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[width=4.8cm]{fig/lec10/Inv_pendulum.pdf}
+	\caption{Classic RL control example: inverted pendulum (source: \href{https://commons.wikimedia.org/wiki/File:Cart-pendulum.svg}{www.wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
+	\label{fig:Inv_pendulum}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item Two continuous states: angular position $\theta$ and velocity $\dot{\theta}$
+	\item One discrete action: acceleration force (i.e. torque at shaft)
+	\item Action noise as disturbance 
+	\item Non-linear system dynamics
+	\item State initialization randomly close to upper equilibrium
+	\item $r_k=0$ if pendulum is above horizontal line
+	\item $r_k=-1$ if below horizontal line and episode terminates
+	\item $\gamma=0.95$
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LSPI Application Example: Inverted Pendulum (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{LSPI Application Example: Inverted Pendulum (2)}
+\begin{itemize}
+	\item Initial training samples for $\bm{\mathcal{D}}$ following a policy selecting actions at uniform probability
+	\item Additional samples have been manually added during the training
+	\item Radial basis function as feature engineering
+\end{itemize}
+\begin{figure}
+\includegraphics[height=4.2cm]{fig/lec10/LSPI_Inv_Pendulum.pdf}
+\caption{Balancing steps before episode termination with a clipping of maximum 3000 steps (source: M. Lagoudakis and R. Parr, \textit{Least-Squares Policy Iteration}, Journal of Machine Learning Research 4, pp. 1107-1149, 2003)}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RLS-TD Algorithmic Implementation  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Implementation: Online LSPI}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{q}(\tilde{\bm{x}}_T,\cdot, \cdot)=0$)}
+\Param{forgetting factor $\lambda\in\left\{\mathbb{R}|0 < \lambda \leq 1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, update factor $k_w\in\left\{\mathbb{N}|1\leq k_w\right\}$}
+\Init{weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, policy $\pi$ being $\varepsilon$-greedy w.r.t. $\hat{q}(\bm{w})$, covariance $\bm{P}>0$ (e.g. $\bm{P}=\beta\bm{I}$)}
+ \For{$j=1,2,\ldots$ episodes}{
+		initialize $\bm{x}_{0}$ and set $u_0\sim\pi(\bm{x}_{0})$\;
+		\For{$k=0, 1, 2 \ldots $ time steps}{
+			apply action $u_k$, observe $\bm{x}_{k+1}$ and $r_{k+1}$, set $u_{k+1}\sim\pi(\bm{x}_{k+1})$\;
+			$y \leftarrow r_{k+1}$\;
+			$\bm{\xi}\T \leftarrow \tilde{\bm{x}}\T_{k}(\bm{x}_k, u_k) - \gamma \tilde{\bm{x}}\T_{k+1}(\bm{x}_{k+1}, u_{k+1})$\;
+			$\bm{c} \leftarrow \left(\bm{P}\bm{\xi}\right)/\left(\lambda+\bm{\xi}\T\bm{P}\bm{\xi}\right)$\;
+			$\bm{w} \leftarrow \bm{w} + \bm{c}\left(y-\bm{\xi}\T \bm{w}\right)$\;
+			$\bm{P} \leftarrow \left(\bm{I} - \bm{c}\bm{\xi}\T\right)\bm{P}/\lambda$\;
+			\If{$k \mod k_w=0$}{
+					$\pi\leftarrow \varepsilon$-greedy w.r.t. $\hat{q}=\tilde{\bm{x}}\T(\bm{x},u)\bm{w}$\;
+			}
+			exit loop if $\bm{x}_{k+1}$ is terminal\;
+		}
+	}
+\caption{Online LSPI with RLS-Sarsa (output: $\bm{w}$ for $\hat{q}^*$)}
+\label{algo:LSPI_Online}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Remarks on Online LSPI %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Remarks on Online LSPI}
+\begin{itemize}
+	\item $k_w$ depicts the number of steps between policy improvement cycles.\pause
+	\item Forgetting factor $\lambda$ and $k_w$ require mutual tuning:
+	\begin{itemize}
+		\item After each policy improvement the policy evaluation requires sample updates to accurately predict the altered policy.
+		\item Numerically instability may occur for $\lambda < 1$ and requires regularization.
+	\end{itemize}\pause
+	\item Hence, the algorithm is online-capable but its policy is normally not updated in a step-by-step fashion.\pause
+	\item Alternative online LSPI with OLS-Sarsa can be found in L.~Bu{\c{s}}oniu~et~al., \textit{Online least-squares policy iteration for reinforcement learning control}, American Control Conference, 2010.
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Online LSPI Application Example: Inverted Pendulum %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Online LSPI Application Example: Inverted Pendulum }
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.6\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[width=4.8cm]{fig/lec10/Online_LSPI_Pendulum.pdf}
+	\caption{Inverted pendulum with online LSPI using OLS-Sarsa ($k_w=k_\theta$, source: L. Bu{\c{s}}oniu et al., \textit{Online least-squares policy iteration for reinforcement learning control}, American Control Conference, 2010.)}
+	\label{fig:Online_LSPI_Pendulum}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.4\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item In principle same problem framework as before
+	\item Altered reward: $r=-\bm{x}^T\bm{N}\bm{x}-m u^2$
+	\item $\bm{N}=\mbox{diag}(\begin{bmatrix}5 & 0.1\end{bmatrix})$
+	\item $m=1$
+	\item $\bm{x}=\begin{bmatrix}\theta & \dot{\theta}\end{bmatrix}\T$
+	\item $\bm{x}=\begin{bmatrix}0 & 0\end{bmatrix}\T$ equals pendulum pointing up without movement
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Deep \texorpdfstring{$Q$}{Q}-Networks (DQN)} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% General Background on DQN  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{General Background on DQN}
+\begin{itemize}
+	\item Recall incremental learning step from tabular $Q$-learning:
+	\begin{equation*}
+		\hat{q}(x, u) \leftarrow \hat{q}(x, u) + \alpha\left[r+\gamma \max_u \hat{q}(x', u) - \hat{q}(x, u)\right] .
+		\end{equation*}\pause
+	\item \hl{Deep $Q$-networks (DQN)}	transfer this to an approximate solution:
+	\end{itemize}
+	 \begin{equation}
+	 \bm{w} = \bm{w} + \alpha\left[r+\gamma \max_u \hat{q}(\bm{x}', u, \bm{w}) - \hat{q}(\bm{x}, u, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}, u, \bm{w})
+ \end{equation}\pause
+However, instead of using above semi-gradient step-by-step updates, DQN is characterized by
+	\begin{itemize}
+		\item an \hl{experience replay buffer} for batch learning (cf. prev. lectures),\pause
+		\item a separate set of \hl{weights $\bm{w}^-$ for the bootstrapped $Q$-target}. 
+	\end{itemize}\pause
+Motivation behind:
+\begin{itemize}
+	\item Efficiently use available data (experience replay).
+	\item Stabilize learning by trying to make targets and feature inputs more like i.i.d. data from a stationary process (prevent windup of values). 
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary of DQN Working Principle  (1)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Summary of DQN Working Principle (1)}
+\begin{itemize}
+	\item Take actions $u$ based on $\hat{q}(\bm{x},u,\bm{w})$ (e.g. $\varepsilon$-greedy). \pause
+	\item Store observed tuples $\left\langle \bm{x}, u, r, \bm{x}'\right\rangle$ in memory buffer $\bm{\mathcal{D}}$.\pause
+	\item Sample mini-batches $\bm{\mathcal{D}}_b$ from $\bm{\mathcal{D}}$. 
+	\item Calculate bootstrapped $Q$-target with a delayed parameter vector $\bm{w}^-$ (so-called target network):
+	\begin{equation*}
+		 q_\pi(\bm{x},u)\approx r+\gamma \max_u \hat{q}(\bm{x}',u,\bm{w}^-).
+	\end{equation*}\pause
+	\item Optimize MSE loss between above targets and the regular approximation $\hat{q}(\bm{x},u,\bm{w})$ using $\bm{\mathcal{D}}_b$
+	\begin{equation}
+				\mathcal{L}(\bm{w}) = \left[\left(r+ \gamma \max_u \hat{q}(\bm{x}',u,\bm{w}^-)\right) - \hat{q}(\bm{x},u,\bm{w}) \right]^2_{\bm{\mathcal{D}}_b} \, .
+	\end{equation}\pause
+	\item Update $\bm{w}^-$ based on $\bm{w}$ from time to time.
+ \end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary of DQN Working Principle  (2)%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Summary of DQN Working Principle (2)}
+\begin{figure}
+\includegraphics[height=5.5cm]{fig/lec10/DQN.pdf}
+\caption{DQN structure from a bird's-eye perspective (derivative work of \figref{fig:RL_Wiki} and \href{https://commons.wikimedia.org/wiki/File:Multi-Layer_Neural_Network-Vector.svg?uselang=de}{wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
+\label{fig:DQN}
+\end{figure}
+}		
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Algo DQN %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic Implementation: DQN}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\small
+\SetKwInput{Input}{input} 
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+\Input{a differentiable function $\hat{q}:\mathbb{R}^\kappa\times\mathbb{R}^\zeta\rightarrow\mathbb{R}$ (including feature eng.)}
+\Param{$\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, update factor $k_w\in\left\{\mathbb{N}|1\leq k_w\right\}$}
+\Init{weights $\bm{w}=\bm{w}^-\in\mathbb{R}^\zeta$ arbitrarily, memory $\bm{\mathcal{D}}$ with certain capacity}
+ \For{$j=1,2,\ldots$ episodes}{
+		initialize $\bm{x}_{0}$\;
+		\For{$k=0, 1, 2 \ldots $ time steps}{
+			$u_k \leftarrow$ apply action $\varepsilon$-greedy w.r.t $\hat{q}(\bm{x}_k, \cdot, \bm{w})$\;
+			observe $\bm{x}_{k+1}$ and $r_{k+1}$\;
+			store tuple $\left\langle \bm{x}_k, u_k, r_{k+1}, \bm{x}_{k+1}\right\rangle$ in $\bm{\mathcal{D}}$\;
+			sample mini-batch $\bm{\mathcal{D}}_b$ from $\bm{\mathcal{D}}$ (after initial memory warmup)\;
+			\For(calculate $Q$-targets){$i=1,\ldots,b$ samples}{
+				\lIf{$\bm{x}_{i+1}$ is terminal}{$y_i=r_{i+1}$}
+				\lElse{$y_i= r_{i+1}+ \gamma \max_u \hat{q}(x_{i+1},u,\bm{w}^-)$}
+			}
+			fit $\bm{w}$ on loss $\mathcal{L}(\bm{w})=[y_i - \hat{q}(\bm{x}_i, u_i, \bm{w})]^2_{\bm{\mathcal{D}}_b}$\;
+			\lIf{$k \mod k_w=0$}{$\bm{w}^-\leftarrow \bm{w}$ (update target weights)}
+			}
+}
+\caption{DQN (output: parameter vector $\bm{w}$ for $\hat{q}^*$)}
+\label{algo:DQN}
+\end{algorithm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Remarks on DQN Implementation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Remarks on DQN Implementation}
+\begin{itemize}
+	\item General framework is based on V. Mnih et al., \textit{Human-level control through deep reinforcement learning}, Nature, pp. 529-533, 2015.\pause
+	\item Often 'deep' artificial neural networks are used as function approximation for DQN.
+	\begin{itemize}
+		\item Nevertheless, other model topologies are fully conceivable.\pause
+	\end{itemize}
+	\item The fit of $\bm{w}$ on loss $\mathcal{L}$ is an intermediate supervised learning step.
+	\begin{itemize}
+		\item Comes with degrees of freedom regarding solver choice.
+		\item Has own optimization parameters which are not depicted here in details (many tuning options).
+	\end{itemize}\pause
+	\item Mini-batch sampling from $\bm{\mathcal{D}}$ is often randomly distributed.
+		\begin{itemize}
+		\item Nevertheless, guided sampling with useful distributions for a specific control task can be beneficial (cf. Dyna discussion in 7th lecture).
+	\end{itemize}\pause
+	\item Likewise the simple $\varepsilon$-greedy approach can be extended.
+	\begin{itemize}
+		\item Often a scheduled/annealed trajectory $\varepsilon_k$ is used.
+		\item Again referring to the Dyna framework, many more exploration strategies are possible. 
+	\end{itemize}
+ \end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DQN Application Example: Atari Games (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{DQN Application Example: Atari Games (1)}
+\begin{itemize}
+	\item End-to-end learning of $\hat{q}(\bm{x},u)$ from monitor pixels $\bm{x}$
+	\item Feature engineering obtains stacking of raw pixes from last 4 frames
+	\item Actions $u$ are 18 possible joystick/button combinations
+	\item Reward is the change of highscore per step
+	\item Interesting lecture from V. Minh with more details: \href{https://www.youtube.com/watch?v=fevMOp5TDQs&t=1499s}{YouTube}
+\end{itemize}
+\begin{figure}
+\includegraphics[height=4.2cm]{fig/lec10/DQN_Network_Silver.pdf}
+\caption{Network architecture overview used for DQN in Atari games \SilverLectureSource}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DQN Application Example: Atari Games (2%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{DQN Application Example: Atari Games (2)}
+\begin{figure}
+\includegraphics[height=6.5cm]{fig/lec10/DQN_Atari_Results.pdf}
+\caption{DQN performance results in Atari games against human performance \SilverLectureSource}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Summary: What You've Learned Today}
+\begin{itemize}
+	\item From a simplified perspective, the procedures from the approximate prediction can simply be transferred to value-based control.\pause
+	\item On the contrary, the policy improvement theorem no longer applies in the approximate RL case (generalization impact).\pause
+	\begin{itemize}
+		\item Control algorithms may diverge completely.\pause
+		\item Or a performance trade-off between different parts of the problem space could emerge.\pause
+	\end{itemize}
+	\item Differential-returns allow an interesting alternative MDP formulation for continuing tasks.
+		\begin{itemize}
+		\item The usual discounted MDP framework may exhibit numerical problems for $\gamma\approx 1$ (slow learning, unfeasible large returns).\pause
+		\item Discounting is not relevant for the optimal policy order.\pause
+	\end{itemize}
+	\item Off-policy batch learning approaches allow for efficient data usage.
+	\begin{itemize}
+		\item LSPI uses LS-Sarsa on linear function approximation.\pause
+		\item DQN extends $Q$-learning on non-linear approximation with additional tweaks (experience replay, target networks,...).\pause
+		\item However, a prediction bias results (off-policy sampling distribution).  
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Final Slide %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{The End for Today}
+\vspace{-0.25cm}
+\begin{figure}
+\hspace*{-0.5cm}
+\includegraphics[width=10cm]{fig/lec10/dilbert.jpg}
+\end{figure}
+\vspace{1cm}
+\centering
+Thanks for your attention and have a nice week!
+}

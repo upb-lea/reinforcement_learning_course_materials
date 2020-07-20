@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 767.5 768.75"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="car_rental.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata30">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs28" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     id="namedview26"
+     showgrid="false"
+     inkscape:zoom="0.21707603"
+     inkscape:cx="1665.4531"
+     inkscape:cy="1294.9978"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg24" />
+  <g
+     transform="matrix(1.25,0,0,-1.25,0,768.75)"
+     id="g22">
+    <g
+       transform="scale(.24)"
+       id="g20">
+      <path
+         d="m348.25 2484.2c-172.64 0.43-269.46-88.62-269-271v-1875c-0.4609-170.25 86.582-259.35 259-259h1883c172.2-0.3516 259.38 84.316 259 259v1875c0.38 177.94-86.8 271.43-264 271 0 0-1869 1.02-1868 0"
+         id="path2" />
+      <path
+         d="m348.25 2484.2c-172.64 0.43-269.46-88.62-269-271v-1875c-0.4609-170.25 86.582-259.35 259-259h1883c172.2-0.3516 259.38 84.316 259 259v1875c0.38 177.94-86.8 271.43-264 271 0 0-1869 1.02-1868 0z"
+         fill="none"
+         stroke="#000"
+         stroke-miterlimit="10"
+         stroke-width="14.2"
+         id="path4" />
+      <path
+         d="m1429.2 1567.2h173c93.6-0.07 143.45-51.39 166-111l123-316c48.1-5.92 133.93-62.82 134-170v-401h-119v-129c0.06-157.5-223.27-155.64-223 0v129h-804v-129c0.281-155.64-223.05-157.5-223 0v129h-119v401c0.086 107.18 85.824 164.08 134 170l122 316c23.477 59.61 73.328 110.93 167 111h469"
+         fill="#fff"
+         id="path6" />
+      <path
+         d="m962.25 1687.2c168.73-0.41 305.48 137.74 305 308 0.48 170.55-136.27 308.69-305 309-168.64-0.31-305.4-138.45-305-309-0.398-170.26 136.36-308.41 305-308"
+         fill="#fff"
+         id="path8" />
+      <path
+         d="m1190.2 2148.2h652l105-105c19.27-19.88 18.78-33.36 0-52l-127-129-76 76-75-76-74 75-72-73-75 76-98-99h-160v307"
+         fill="#fff"
+         id="path10" />
+      <path
+         d="m1281.2 1144.2h-483l92 248c11.316 34.52 28.582 59.7 69 60h644c40.35-0.3 57.61-25.48 69-60l92-248h-483"
+         id="path12" />
+      <path
+         d="m771.25,810.25c-56.797.168-102.988,47.773-103,106 .012,59.211 46.203,106.82 103,107 57.141-.18 103.324-47.789 103-107 .324-58.227-45.859-105.832-103-106"
+         id="path14" />
+      <path
+         d="m1791.25,810.25c56.73.168 102.91,47.773 103,106-.09,59.211-46.27,106.82-103,107-57.21-.18-103.4-47.789-103-107-.4-58.227 45.79-105.832 103-106"
+         id="path16" />
+      <path
+         d="m828.25,1915.25c44.645-.23 80.945,36.44 81,82-.055,44.89-36.355,81.57-81,82-44.898-.43-81.199-37.11-81-82-.199-45.56 36.102-82.23 81-82"
+         id="path18" />
+    </g>
+  </g>
+</svg>

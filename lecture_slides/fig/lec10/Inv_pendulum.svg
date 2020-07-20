@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="100%" height="100%" viewBox="-150 70 300 330">
+<title>Cart pendulum</title>
+<defs>
+	<marker id="EndArrow" viewBox="0 0 10 10" refX="10" refY="5"
+		markerUnits="strokeWidth" orient="auto"
+		markerWidth="10" markerHeight="10">
+		<polyline points="10,5 0,10 4,5 0,0 10,5" fill="black" />
+	</marker>
+	<marker id="StartArrow" viewBox="0 0 10 10" refX="0" refY="5"
+		markerUnits="strokeWidth" orient="auto"
+		markerWidth="10" markerHeight="10">
+		<polyline points="0,5 10,0 6,5 10,10 0,5" fill="black" />
+	</marker>
+</defs>
+<circle cx="0" cy="80" r="20" fill="black" transform="rotate(-30,0,300)" />
+<g style="stroke:black;stroke-width:1;fill:none">
+	<line x1="-150" x2="150" y1="390" y2="390" />
+	<line x1="0" x2="0" y1="300" y2="70" stroke-width=".3" />
+	<g marker-end="url(#EndArrow)" >
+		<line x1="-140" x2="-140" y1="280" y2="230" />
+		<line x1="-140" x2="-90" y1="280" y2="280" />
+		<line x1="80" x2="150" y1="327.5" y2="327.5" />
+		<path d="M0,150 A150,150 0 0,0 -75,170" marker-start="url(#StartArrow)" />
+	</g>
+</g>
+<g id="set2">
+<g id="set1" style="stroke:black;stroke-width:1;">
+	<line id="hash" x1="-145" x2="-150" y1="390" y2="400" />
+	<use xlink:href="#hash" transform="translate(10)" />
+	<use xlink:href="#hash" transform="translate(20)" />
+	<use xlink:href="#hash" transform="translate(30)" />
+	<use xlink:href="#hash" transform="translate(40)" />
+	<use xlink:href="#hash" transform="translate(50)" />
+</g>
+<use xlink:href="#set1" transform="translate(60)" />
+</g>
+<use xlink:href="#set2" transform="translate(120)" />
+<use xlink:href="#set1" transform="translate(240)" />
+<g style="stroke:black;stroke-width:1;fill:rgb(170,170,170)">
+	<circle id="wheel" cx="-50" cy="370" r="20" />
+	<use xlink:href="#wheel" x="100" />
+	<rect x="-80" y="305" width="160" height="45" />
+	<path d="M-10,304 A11,19 0 0,1 10,304" />
+	<rect x="-2.5" y="100" width="5" height="200" transform="rotate(-30,0,300)" />
+</g>
+<text font-size="15" font-style="italic" fill="black">
+	<tspan x="-130" y="235">y</tspan>
+	<tspan x="-95" y="295">x</tspan>
+	<tspan x="-100" y="330">M</tspan>
+	<tspan x="110" y="325">F</tspan><tspan x="110" dy="-10">&#x0279d;</tspan>
+	<tspan x="-45" y="150">&#x03b8;</tspan>
+	<tspan x="-70" y="225">l</tspan>
+	<tspan x="-85" y="100">m</tspan>
+</text>
+</svg>

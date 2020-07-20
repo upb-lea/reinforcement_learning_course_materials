@@ -1,0 +1,841 @@
+\part{Lecture 08: Supervised Learning}
+\author{Wilhelm Kirchg\"assner}
+\title[RL Lecture 08]{Lecture 08: Function Approximation \\with Supervised Learning}  
+\date{}  
+\frame{\titlepage} 
+\frame{\frametitle{Table of Contents}\tableofcontents} 
+
+
+\section{Motivation and Background} 
+
+\frame{\frametitle{The Machine Learning Triad}
+\begin{figure}
+	\includegraphics[width=11cm]{fig/lec01/Machine_Learning_Disciplines.pdf}
+	\caption{Disciplines of machine learning 
+	%(cf. \ref{fig:Machine_Learning_Disciplines})
+	}
+	\label{fig:Machine_Learning_Disciplines_2}
+\end{figure}
+}
+
+\frame{\frametitle{Introductory Material}
+Machine learning (ML) and especially the field of supervised learning (SL) is extensively researched and taught.
+\begin{itemize}
+	\item Courses at UPB
+	\begin{itemize}
+		\item \href{https://ei.uni-paderborn.de/en/nt/teaching/veranstaltungen/statistical-and-machine-learning/}{\textit{Statistical and Machine Learning} by the Comm. Eng. Dept. (NT)}
+		\item \href{https://cs.uni-paderborn.de/is/teaching/}{\textit{Machine Learning I \& II} by CS Dept. Intelligent Systems and ML}
+	\end{itemize}\pause
+	\item Renowned online courses
+	\begin{itemize}
+		\item \href{https://de.coursera.org/learn/machine-learning}{\textit{Coursera ML} by Stanford's Andrew Ng}
+		\item \href{https://www.fast.ai/}{\textit{Practical deep learning for coders} by fast.ai}
+		\item \href{https://www.kaggle.com/learn/overview}{\textit{Intro to ML} by Kaggle Courses}
+	\end{itemize}\pause
+	\item Books classics
+	\begin{itemize}
+		\item \href{http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop\%20-\%20Pattern\%20Recognition\%20And\%20Machine\%20Learning\%20-\%20Springer\%20\%202006.pdf}{\textit{Pattern Recognition and Machine Learning} by M. Bishop}
+		\item \href{http://www-stat.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf}{\textit{The Elements of Statistical Learning} by Hastie et al.}
+		\item \href{https://www.deeplearningbook.org/}{\textit{Deep Learning} by I. Goodfellow et al.}				\end{itemize}
+\end{itemize}
+}
+
+
+%  ML hype in industry
+\frame{\frametitle{Machine Learning in Industry}
+	Machine learning applications are a \href{https://magazine.startus.cc/how-machine-learning-is-changing-the-major-industries/}{fast growing industry itself}, and enhance more and more automation in classical industry as well.
+	
+	Among others, popular industries are:
+	\begin{itemize}
+		\item Embedded systems,
+		\item Mobility, and
+		\item Digital assistants
+	\end{itemize}
+	
+	Most applications are of the supervised type.
+	
+	The demand for highly skilled ML engineers is growing correspondingly.
+}
+
+\frame{\frametitle{Instances of ML Applications}
+	\begin{itemize}
+		\item Recommendation systems
+		\begin{itemize}
+			\item Which ads to display on a website?
+			\item Which items are \href{https://tech.instacart.com/deep-learning-with-emojis-not-math-660ba1ad6cdc}{most likely put into cart next} by the user?
+		\end{itemize}\pause
+		\item Forecasting
+		\begin{itemize}
+			\item Weather, sales, \href{https://eng.uber.com/forecasting-introduction/}{geospatial Uber calls}, \href{https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting}{restaurant}/\href{https://towardsdatascience.com/web-traffic-forecasting-f6152ca240cb}{website} traffic
+			\item Material attrition in engineering processes (predictive maintenance)
+		\end{itemize}\pause
+		\item Classification/Regression
+		\begin{itemize}
+			\item Speech assistants (Alexa/Siri), pedestrial detection (autonomous driving), \href{https://www.kaggle.com/c/severstal-steel-defect-detection}{fault detection in engineering processes}
+			\item Chatbots, translators, credit scoring (fintech) 
+		\end{itemize}\pause
+		\item \href{https://developers.google.com/machine-learning/gan}{Generative models}
+
+	\end{itemize}
+}
+
+%  Kaggle comps
+\frame{\frametitle{ML Competitions with Price Pool}
+	\begin{figure}
+		\includegraphics[width=9cm]{fig/lec08/comp_logos.pdf}
+		\caption{Kaggle and DrivenData}
+		\label{fig:comp_logos}
+	\end{figure}
+	
+	Open ML competition platforms like \href{https://www.kaggle.com/}{kaggle} or \href{https://www.drivendata.org/competitions/}{DrivenData} offer a multitude of diverse competitions to participate in at no cost.
+	
+	\begin{itemize}
+		\item Most competitions come with a decent price pool of 15 tsd. dollars up to 1 mil. dollars hosted by stakeholders from the industry and government.
+		\item These competitions are almost exclusively of the supervised type.
+	\end{itemize}
+}
+
+%  Typical ML pipeline
+\frame{\frametitle{Typical Supervised Learning Pipeline}
+	\begin{figure}
+		\includegraphics[width=9cm]{fig/lec08/ML_pipeline.png}
+		\caption{A typical supervised learning pipeline. Sometimes more art than science.}
+		\label{fig:ml_pipeline}
+	\end{figure}
+}
+
+
+%  How does this contribute to RL? See AlphaGo, which is built on SL
+%	Future RL will benefit from methods borrowed from SL, 
+\frame{\frametitle{Supervised Learning in Reinforcement Learning}
+	\hl{SL approximates functions, RL approximates policies.}
+	\pause
+	
+	However, there are two situations where SL is auxiliary in RL:
+	
+	\begin{itemize}
+		\item Function approximation of (action-)state values, if the number of possible states exceeds any reasonable memory capabability, which is often the case.
+		\begin{itemize}
+			\item	$v_\pi(x) \approx \hat v(x, \bm w)$ with $\bm w$ being a trainable weight vector.
+		\end{itemize} \pause
+		\item Imitation learning. A simple-to-implement, deterministic baseline policy is often available, but an RL agent might fail to achieve that performance when learning from scratch. With SL, this baseline policy can be approximated to be the initial behavior of the agent.\pause
+		\begin{itemize}
+			\item Expert moves in board games.
+			\item Basic linear controllers in engineering applications with feedback-loops.
+		\end{itemize}
+	\end{itemize}
+}
+
+\section{Supervised Learning Problem Statement}
+
+\frame{\frametitle{Supervised Learning Problem Statement}
+	\begin{block}{Supervised learning}
+		Given a \hl{labeled} data set $\left\langle\bm x_k, \bm y_k\right\rangle \in \bm{\mathcal{D}}$ with $k \in [0, K]$ and $K$ being the data set size, approximate the mapping function $f^\ast: \bm x_k \mapsto \bm y_k$ with a parameterizable ML \hl{model} $f_{\bm w}: \bm x_k \mapsto \hat{\bm y}_k \approx \bm y_k \quad\forall k$.
+				
+	\end{block}\pause
+	\begin{itemize}
+		\item Goodness of fit can be measured by a manifold of \hl{metrics} \\(e.g. mean squared error, classification accuracy, etc.).\pause
+		\item Reducing the look-up-table-like mapping $f^\ast$ to a parameterized function $f_{\bm w}$ degrades any metric on the data set but enables interpolation to unseen data.\pause
+		\item The dimension $\xi$ of model parameters $\bm w \in \mathbb R^\xi$ is adjustable in many model families, which trades off \hl{bias} with \hl{variance} (among other factors, leading to so-called under- and overfitting).\pause
+		\item On top of $\bm w$, a ML model might also have hyperparameters that can be optimized (e.g. number of layers in a neural network).
+	\end{itemize}
+}
+
+\frame{\frametitle{Bias and Variance}
+	\begin{figure}
+		\includegraphics[width=12cm]{fig/lec08/bias_variance.pdf}
+		\caption{Left: Decision boundaries in binary classification, $k$-nearest neighbors with one (bright) and nine (dark) neighbors. Right: Regression example, least squares (dark) and $2$-nearest neighbors (bright).}
+		\label{fig:bias_variance}
+	\end{figure}
+}
+
+\frame{\frametitle{Generalization Error}
+	
+	\begin{block}{Supervised learning performance}
+		SL performance is measured by a model's \hl{generalization error}, i.e. goodness of fit on unseen data.
+	\end{block}\pause
+	
+	A data set is often finite as opposed to RL environments generating arbitrarily many observations.
+	
+	\begin{itemize}
+	\item How to generate unseen data?\pause
+	\begin{itemize}
+		\item Hold out portions of the data set for \hl{cross-validation}.
+	\end{itemize}
+	\end{itemize}
+	
+}
+
+\frame{\frametitle{$k$-fold Cross-Validation}
+	\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.55\textwidth}
+	\begin{minipage}[c]{\linewidth}
+	
+		\begin{figure}
+			\includegraphics[width=\textwidth]{fig/lec08/kfold-cv.pdf}
+			\caption{$k$-fold CV with five folds.}
+			\label{fig:kfold-cv}
+		\end{figure}
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+		\begin{itemize}
+		\item Cross-validation (CV) can be conducted with $k$-fold CV.\pause
+		\item Training is repeated $k$ times with $k$ different splits of the training set.\pause
+		\item Each observation serves as unseen instance at least once.\pause
+		\item The validation error is an indicator for tuning hyperparameters.
+		\end{itemize}
+	\end{minipage}
+	\end{column}
+	\end{columns}
+}
+
+
+\frame{\frametitle{Means to Improve an SL Model}
+	SL performance can be improved by:
+	\begin{itemize}
+		\item Collecting more data, i.e. increasing $K$ (more data is always better).\pause
+		\item Choosing a more appropriate model.\pause
+		\item Optimizing hyperparameters of the model.\pause
+		\item Averaging over several different models (ensembling).\pause
+		\item Most effectively: Revealing the most predictive patterns in the data to the model (feature engineering).
+	\end{itemize}
+}
+
+\section{Feature Engineering}
+\frame{\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+}
+
+\frame{\frametitle{Feature Engineering}
+	Additional features might be:
+	\begin{itemize}
+		\item Coming from the real world via additional sensors or additional tracking mechanisms (think of a user's click behavior on a website)\pause
+		\item Hand-designed (\textit{engineered}) by experts in the corresponding domain from the original feature set\pause
+		\item Automatically built according to properties of each feature in the original set (Auto-ML)\pause
+	\end{itemize}
+	\begin{alertblock}{Caution}
+		Adding more features is not equivalent to having more data (which is always better).
+		Having a fixed data set size, adding arbitrarily many features, regardless of their origin, increases chances to align statistical fluctuations with the target $\bm y_k$ - overfitting is the result.
+
+	\end{alertblock}
+}
+
+\frame{\frametitle{Feature Engineering Example (Classification)}
+
+	\begin{figure}
+		\includegraphics[width=11cm]{fig/lec08/fe_example.pdf}
+		\caption{Features $r=\sqrt{\text{width}^2 + \text{height}^2}$ and $\theta = \arctan{(\frac{\text{height}}{\text{width}})}$ reveal linearly separable class distribution.}
+		\label{fig:fe_example}
+	\end{figure}
+	
+}
+
+
+\frame{\frametitle{Feature Engineering Example (Regression)}
+	\begin{figure}
+		\includegraphics[width=11cm]{fig/lec08/fe_example2.pdf}
+		\caption{Log-transform of the target signal exhibits linear relationship to the regressor.}
+		\label{fig:fe_example2}
+	\end{figure}
+}
+
+
+\frame{\frametitle{Normalization}
+Most models require data to be \hl{normalized} before training (apart from tree-based models).
+
+Typical normalizaton schemes:
+\begin{itemize}
+	\item Standard scaling: $\tilde{ \bm x} = (\bm x- \text{Avg}(\bm x)) / \text{Std}(\bm x)$
+	\item Min-Max scaling: $\tilde{\bm x} = (\bm x - \text{min}(\bm x))/ (\text{max}(\bm x) - \text{min}(\bm x))$
+\end{itemize}
+
+In an unnormalized data set, features with high variance will eclipse patterns in other features.
+}
+
+\frame{\frametitle{Data Types}
+Several different data types can be utilized for ML:
+\begin{itemize}
+	\item Binary: 1 or 0 (True or False).\pause
+	\item Integer: $\mathbb{N}$ (e.g. number of rooms in a building).\pause
+	\item Real-valued: $\mathbb{R}$ (e.g. temperature).\pause
+	\item Categorical: e.g. \{blue, green, red\}\pause
+	\item Ordinal: Categoricals that can be ordered, e.g. educational experience (From elementary school to Ph.D.)
+\end{itemize}
+
+}
+
+\frame{\frametitle{Data Type Specific Normalization}
+
+How to normalize categorical data?\pause
+
+\begin{itemize}
+	\item \textit{One-hot} encoding
+		\begin{itemize}
+			\item Replace a categorical of $n$ values with $n$ binary features.
+			\item Feature space gets sparse and might get too big for memory. 
+		\end{itemize}\pause
+	\item Mean target encoding
+	\begin{itemize}
+		\item Replace each value of a categorical with the average (regression) or mode (classification) of the dependent variable being observed with the corresponding value.
+		\item This might lead to information \textit{leaking} from the dependent variables into the independent variables, and might exhibit high performance that cannot be reproduced on unseen data.
+	\end{itemize}\pause
+	\item Entity embeddings
+	\begin{itemize}
+		\item Let a neural network find a cardinality-constrained set of real-valued features for each categorical.
+		\item Works well in practice but is more intricate than alternatives.
+	\end{itemize}
+	
+\end{itemize}
+}
+
+\frame{\frametitle{Typical Feature Engineering Schemes}
+	Feature design is often of the following form (tricks of the trade):
+	
+	Given $K$ feature vectors $\bm x_k \in \mathbb R^P$ with e.g. $P=3$ (two real-valued regressors and a categorical independent variable $\bm x_k = (x_{k,r_1}, x_{k,r_2}, x_{k,c})$):\pause
+	\begin{itemize}
+		\item $\tilde x_{k} = x_{k,r_1} + x_{k,r_2}$ (or any other combination, e.g. product, division, subtraction, also cf. \figref{fig:fe_example}),\pause
+		\item $\tilde x_k = x_{k,r} - \frac{1}{|\mathcal B|}\sum_{i \in \mathcal B} x_{i,r}\quad\forall r = \{r_1, r_2\}$ with $\mathcal B = \{i: x_{i,c} = x_{k, c}\}$,\pause
+		\item Clip/drop/aggregate outliers away,\pause
+		\item Coordinate transformations for spatial features (e.g. rotation),\pause
+		\item In time domain:
+		\begin{itemize}
+			\item $\tilde{\bm{x}}_k = (x_{k,r_1}, x_{k-1,r_1}, x_{k-2,r_1}, x_{k,r_2}, x_{k,c})$ (lag features),
+			\item $\tilde x_k = (1-\alpha)\tilde x_{k-1} + \alpha x_{k,r}$ (moving averages).
+		\end{itemize}\pause
+		\item In frequency domain:
+		\begin{itemize}
+			\item Amplitude and index of frequencies from a fast fourier transform (FFT)
+		\end{itemize}
+		
+	\end{itemize}
+}
+
+\section{Typical Machine Learning Models}
+
+\frame{\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+}
+
+%  Model zoo (and their Hyperparameters)
+\frame{\frametitle{Model Landscape}
+	When trying to find an appropriate mapping between input and output data, one can choose from a variety of models:\pause
+	
+	\begin{itemize}
+		\item Linear/logistic regression (with regularization)
+		\begin{itemize}
+			\item The simplest data-fitting algorithm
+		\end{itemize}\pause
+		\item Support vector machines (SVM)
+		\begin{itemize}
+			\item Most popular algorithm before 2012
+		\end{itemize}\pause
+		\item (Deep) neural networks (DNN)
+		\begin{itemize}
+			\item Also coined as \textit{deep learning}, soared in popularity since 2012
+			\item Most prevalent in the domains of natural language processing (NLP) and image processing
+		\end{itemize}\pause
+		\item Gradient Boosting Machines (GBM)
+		\begin{itemize}
+			\item Chaining of \textit{weak} models (most of the time decision trees)
+			\item The best performing stand-alone model in tabular ML competitions
+		\end{itemize}
+	\end{itemize}
+}
+
+\frame{\frametitle{Model Choice}
+	\begin{figure}
+		\includegraphics[width=9cm]{fig/lec08/bigdrill.png}
+		\caption{Choose models appropriate for the problem!\\(Source: Adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
+		\label{fig:bigdrill}
+	\end{figure}
+}
+
+
+
+
+\subsection{Linear Regression}
+\frame{\frametitle{Linear Regression (1)}
+%\textit{In the following, ML models for regression are presented. 
+%Each model is equivalently suitable for classification though after minor adaptions.}
+
+Linear models assume a linear relationship between $\bm x_k = (1, x_{k,1}, x_{k,2},\dots,x_{k,P})$ and $y_k$ via trainable coefficients $\bm w \in \mathbb{R}^{P+1}$:
+\begin{align}
+	f(\bm x_k) &= \hat y_k = w_0 + \sum_{p=1}^P x_{k,p}w_p, \\
+	\hat{\bm y}&= \bm{\Xi}\bm w,
+\end{align}
+where $\bm{\Xi} = (\bm x_1, \dots, \bm x_K)$. \pause
+Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the residual sum of squares (RSS), which is coined the \hl{least squares} method:
+\begin{equation}
+	RSS(\bm w) = \sum_{k=1}^K (y_k - f(\bm x_k))^2 = (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}).
+	\label{eq:rss}
+\end{equation}
+}
+
+\frame{\frametitle{Linear Regression (2)}
+	Deriving (\ref{eq:rss}) with respect to $\bm w$ and setting it to zero while assuming $\bm{\Xi}\T\bm{\Xi}$ is positive definite, yields an analytically closed solution form:
+	\begin{equation}
+		\hat{\bm{y}} = \bm{\Xi\hat{w}} = \bm{\Xi} (\bm{\Xi}\T\bm{\Xi})^{-1}\bm{\Xi}\T\bm{y}.
+		\label{eq:OLS_estimate}
+	\end{equation}\pause
+	
+	\begin{alertblock}{Multicollinearity}
+		If two regressors exhibit strong linear correlation, their coefficients can grow indeterministically.
+		This corresponds to high variance in $\hat{\bm w}$.
+		Regularization of $\hat{\bm w}$ alleviates this effect - it induces bias for less variance.
+		Most prevalent linear regularized techniques are LASSO and Ridge:
+		\begin{align}
+			RSS_{LASSO}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_1, \\
+			RSS_{Ridge}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_2,
+			\label{eq:ridge}
+		\end{align}
+		where $\lambda$ controls the growth penalty.
+	\end{alertblock}
+}
+
+\subsection{Artificial Neural Networks}
+\frame{\frametitle{Artificial Neural Networks}
+	Artificial neural networks (ANNs) describe non-linear approximators $\hat{\bm y} = f(\bm{\Xi; \bm w})$ that are end-to-end differentiable.\pause
+	\newline
+	\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+	
+		\begin{figure}
+			\includegraphics[width=\textwidth]{fig/lec08/neuron.pdf}
+			\caption{A typical neuron as the key building block of ANNs.}
+			\label{fig:neuron}
+		\end{figure}
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.55\textwidth}
+	\begin{minipage}[c]{\linewidth}
+		\begin{itemize}
+		\item An ANN consists of \hl{nodes} in one or more \hl{layers}.\pause
+		\item Each node transforms the weighted sum of all previous nodes through an activation function.\pause
+		\item The weighted connections are called \hl{edges}, and the weights are the parameters of the ANN.
+		\end{itemize}
+	\end{minipage}
+	\end{column}
+	\end{columns}
+	
+}
+
+\frame{\frametitle{Multi-Layer Perceptron}
+	A vanilla ANN is the so-called \hl{feed-forward ANN} or \hl{multi-layer perceptron}.
+	\newline
+	\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+	
+		\begin{figure}
+			\includegraphics[width=\textwidth]{fig/lec08/MLP.pdf}
+			\caption{Multi-layer perceptron.}
+			\label{fig:mlp}
+		\end{figure}
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.5\textwidth}
+	\begin{minipage}[r]{\linewidth}
+		\begin{itemize}
+		\item Only forward-flowing edges.\pause
+		\item The \hl{depth} $L$ and width $H^{(l)}$ are hyperparameters.\pause
+		\end{itemize}
+		With $\varphi^{(l)}$ and $\bm{\mathcal Z}^{(l)}$ denoting the activation function and activation of layer $l$ respectively, we get for the output matrix $\bm{\mathcal H}^{(l)}$
+		\begin{equation*}
+			\bm{\mathcal H}^{(l)} = \varphi^{(l)}\big( \underbrace{\bm{\mathcal H}^{(l-1)}\bm{\mathcal{W}}^{(l)}  + \bm{b}^{(l)}}_{\bm{\mathcal Z}^{(l)}} \big).
+		\end{equation*}
+		
+	\end{minipage}
+	\end{column}
+	\end{columns}\pause
+	Weight matrix $\bm{\mathcal{W}}^{(l)} \in \mathbb{R}^{H^{(l-1)}\times H^{(l)}}$ and (broadcasted) bias matrix $\bm{b}^{(l)} \in \mathbb{R}^{K\times H^{(l)}}$ are iteratively optimized, and constitute $\bm w$.
+}
+
+\frame{\frametitle{Activation Functions}
+	
+	
+	\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+		Within hidden layers most \\prevalent activation functions $\varphi(\cdot)$ are
+		\begin{itemize}
+			\item $h = \text{tanh}(z)$
+			\item $h = \frac{1}{1+e^{-z}}$ (sigmoid)
+			\item $h = \text{max}(0,z)$ \\(rectified linear unit (ReLU))
+		\end{itemize}
+		
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.52\textwidth}
+	\begin{minipage}[r]{\linewidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{fig/lec08/act_funcs.pdf}
+			\caption{Common activation functions.}
+			\label{fig:act_funcs}
+		\end{figure}
+		
+	\end{minipage}
+	\end{column}
+	\end{columns}\pause
+	Whereas $\varphi^{(L)}(\cdot)$ is task-dependent:
+		\begin{itemize}
+			\item Regression: $\hat{{y}} = {h}^{(L)} = {z}^{(L)}$
+			\item Binary classification: sigmoid
+			\item Multi-class classification: 
+			\begin{equation*}
+			h_c^{(L)} = \frac{e^{z_c}}{\sum_{i=1}^C e^{z_i}}\quad\text{(softmax)}
+			\end{equation*}
+		\end{itemize}
+}
+
+\frame{\frametitle{Training Neural Networks (1)}
+	ANN parameters are usually iteratively optimized via a variant of \hl{gradient descent}, e.g. stochastic gradient descent (SGD).
+	\begin{align}
+	\label{eq:weight_update}
+		\bm{\mathcal{W}}^{(l)} &\leftarrow \bm{\mathcal{W}}^{(l)} - \alpha \nabla_{\bm{\mathcal{W}}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y}),\\
+		\label{eq:bias_update}
+		\bm{b}^{(l)} &\leftarrow \bm{b}^{(l)} - \alpha \nabla_{\bm{b}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y}),
+	\end{align}
+	with $\alpha$ being the step size and $\mathcal{L}(\cdot)$ denoting the \hl{loss} between the ground truth vector and the estimation vector.\pause
+	
+	
+Typical loss functions:
+
+\begin{itemize}
+	\item Regression: (root) mean squared error (RMSE), mean absolute error
+	\item Classification: Cross-entropy (CE)
+\end{itemize}
+Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
+}
+
+\frame{\frametitle{Training Neural Networks (2)}
+
+% typ. gradientenabstiegsbild und da dann nochmal eine gesondere erklärung worin sich SGD und GD unterscheidet.
+
+%Darauf aufbauend könnte man dann erwähnen, dass die typische built-in optimierer in den ANN toolboxen aufgebohrte SGD variaten sind und hier auf die weitere literatur verweisen
+\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+		\begin{figure}
+		\includegraphics[width=\textwidth]{fig/lec08/sgd.pdf}
+		\caption{BGD vs. SGD}
+		\label{fig:sgd}
+	\end{figure}
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.52\textwidth}
+	\begin{minipage}[r]{\linewidth}
+		Gradient descent alternatives:
+		\begin{itemize}
+			\item Batch gradient descent (BGD): Average gradients over all samples, then update weights.
+			\item Stochastic gradient descent (SGD): Update weights after each sample.
+		\end{itemize}
+			
+	\end{minipage}
+	\end{column}
+	\end{columns}
+	SGD is more computationally  efficient, but steps are more random.
+	
+	Nowadays mini-batch gradient descent is used (mix of SGD and BGD), and further improvements, e.g. momentum and second derivatives, to ensure faster convergence to better optima.
+}
+
+
+
+\frame{\frametitle{Training Neural Networks (3)}
+	\textbf{How to retrieve the gradients:}
+	
+	Recall chain rule for vector derivatives, e.g. with $\bm y = g(\bm x)$ and $z = f(\bm y)$ where $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ and $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
+	\begin{equation}
+		\nabla_{\bm x}z = \frac{\partial z}{\partial \bm x} = {\underbrace{\bigg( \frac{\partial \bm y}{\partial \bm x}\bigg)}_{\text{Jacobian of g }}}\T\cdot \underbrace{\frac{\partial z}{\partial\bm y}}_\text{gradient} = \sum_{j} \frac{\partial y_j}{\partial \bm x}\cdot\frac{\partial z}{\partial y_j}.
+	\end{equation}\pause
+	This can be used equivalently for matrices/tensors of any shape $\nabla_{\bm{\Xi}}y = \frac{\partial y}{\partial \bm{\Xi}}$ when we assume to enumerate each element of the tensor consecutively and loop through them.\pause
+	
+	\begin{block}{Error Backpropagation}
+		After a \hl{forward step} through the network, make a \hl{backward step} in which the gradient $\theta$ of the loss $\mathcal{L}(\bm y, \hat{\bm y})$ is computed w.r.t the ANN's parameters from the output layer back to the input layer.
+	\end{block}
+}
+
+\frame{\frametitle{Training Neural Networks (4)}
+	\setlength{\algomargin}{0.5em}
+	\begin{algorithm}[H]
+	\SetKwInput{Input}{input} 
+	\SetKwInput{Output}{output}
+	\SetKwInput{Init}{init}
+	\SetKwInput{Param}{parameter}
+	%\Input{$\bm{\mathcal{W}}, \bm b, \bm x, \bm y$ }
+	%\Output{$\hat{\bm y}$ and list of loss gradients w.r.t. all network parameters.}
+	\Init{$\bm{\mathcal H}^{(0)} \leftarrow \bm{\Xi}$}
+	// forward propagation\\
+	\For{$l=1,\ldots,L$ layers}{ 
+		$\bm{\mathcal Z}^{(l)} \leftarrow \bm{\mathcal H}^{(l-1)}\bm{\mathcal{W}}^{(l)} + \bm{b}^{(l)}$\\
+		$\bm{\mathcal H}^{(l)} \leftarrow \varphi^{(l)}(\bm{\mathcal Z}^{(l)})$\\
+	}
+	// backward propagation\\
+	$\theta \leftarrow \nabla_{\bm{h}^{(L)}}\mathcal{L}(\bm y, \hat{\bm y})$ // note that $\bm{h}^{(L)} = \hat{\bm y}$\\
+	\For{$l= L, \ldots, 1$ layers}{
+		$\theta \leftarrow \theta \odot \partial (\varphi^{(l)})(\bm{\mathcal Z}^{(l)}) = \nabla_{\bm{\mathcal Z}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ // $\odot$: elementwise mult.\\
+		Append $\theta = \nabla_{\bm{b}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of bias gradients\\
+		Append $(\bm{\mathcal H}^{(l-1)})\T\cdot\theta  = \nabla_{\bm{\mathcal W}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of weight gradients\\
+		$\theta \leftarrow \theta\cdot(\bm{\mathcal W}^{(l)})\T = \nabla_{\bm{\mathcal H}^{(l-1)}}\mathcal{L}(\bm y, \hat{\bm y})$\\
+	}
+		
+	\caption{Error backpropagation}
+	\label{algo:errorbp}
+	\end{algorithm}
+}
+
+\frame{\frametitle{Error Backpropagation Example (1)}
+% minimalproblem wo man mal den Loss ausrechnet und einen gradienten abstiegsschritt darstellt
+Assume $\bm x_0 = [2, 5, 7], y_0 = 2.5$, and a two-layered ANN with the MSE cost, and sigmoid activation functions $\sigma(z) = \frac{1}{1+e^{-z}}$.
+The hidden layer contains two neurons with output $\bm h^{(1)} \in \mathbb{R}^2$, while the weight vectors are initialized with $\bm{\mathcal W}^{(1)} = \big[\begin{smallmatrix} 0.1& -0.3 & 0.2\\
+												0.0& 0.4 & -0.9 \\\end{smallmatrix} \big]\T, \bm b^{(1)} = [0.05, -0.03]$,  and $\bm{\mathcal W}^{(2)} = [ 0.2, -0.8]\T, \bm b^{(2)} = [0.1]$.\pause
+			
+Applying SGD, we start with forward propagation:
+\begin{align*}
+	\bm h^{(1)} &= \varphi^{(1)}(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
+	\quad &= \sigma([0.1, -4.3] + [0.05, -0.03]) = [0.53, 0.01]\\
+	\hat{y}_0 &= \bm{h}^{(1)}\bm{\mathcal{W}}^{(2)} + \bm{b}^{(2)} = 0.198
+\end{align*}
+				
+}
+
+\frame{\frametitle{Error Backpropagation Example (2)}
+	Backpropagation (with $\sigma^\prime(z) = \partial_z \sigma(z) = \sigma(z)(1-\sigma(z))$):
+	
+	\begin{align*}
+		\theta^{(2)} = \nabla_{\hat{y}_0}\mathcal{L}(y_0, \hat{y_0}) &= \nabla_{\hat{\bm{y}}} (y_0 - \hat y_0)^2 = -2 (y_0 - \hat y_0) = -4.604\\
+		\nabla_{\bm{b}^{(2)}} \mathcal{L}(y_0, \hat{y_0}) &= \theta^{(2)} \odot \partial (\varphi^{(2)})(\bm z^{(2)}) = \theta^{(2)} \\
+		\nabla_{\bm{\mathcal W}^{(2)}} \mathcal{L}(y_0, \hat{y}_0) &= (\bm{h}^{(1)})\T\cdot\theta^{(2)} = [-2.44, -0.046]\T\\
+		\theta^{(1)} = \nabla_{\bm{h}^{(1)}}\mathcal{L}(y_0, \hat{y}_0)&= \theta^{(2)}\cdot(\bm{\mathcal W}^{(2)})\T = [-0.921, 3.683]\\
+		\nabla_{\bm{b}^{(1)}} \mathcal{L}(y_0, \hat{y_0}) &= \theta^{(1)} \odot \partial (\varphi^{(1)})(\bm z^{(1)}) = \theta^{(1)}\odot \sigma^\prime(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
+		\quad &= \theta^{(1)}\odot (\bm h^{(1)}(1-\bm h^{(1)})) = [-0.229, 0.036]\\
+		\nabla_{\bm{\mathcal W}^{(1)}} \mathcal{L}(y_0, \hat{y}_0) &= \bm{x}_0\T\cdot\theta^{(1)} = \big[\begin{smallmatrix} -1.84 & -4.605 & -6.447\\ 7.366& 18.415 & 25.781 \\\end{smallmatrix} \big]\T
+	\end{align*}
+	
+	Now update weights and biases according to (\ref{eq:weight_update}) and (\ref{eq:bias_update}).
+}
+
+
+
+
+\frame{\frametitle{Weight Initialization}
+
+Early in deep learning research, it was found that random uniform or random normal weight initialization leads to poor training.
+
+According to Glorot and Bengio\footnote{X. Glorot and Y. Bengio, "Understanding the difficulty of training deep feedforward neural networks", \textit{Proceedings of Machine Learning Research}, 2010}, use the following layer-specific initialization schemes (with $H_\text{in}$ and $H_\text{out}$ denoting amount of hidden units of previous and current layer, respectively):
+\begin{itemize}
+	\item uniform: $\bm{w} \sim \mathcal{U}\Big(-\frac{\sqrt{6}}{\sqrt{H_\text{in}+H_\text{out}}}, \frac{\sqrt{6}}{\sqrt{H_\text{in}+H_\text{out}}} \Big)$
+	\item normal: $\bm{w} \sim \mathcal{N}\Big(0, \frac{\sqrt{2}}{\sqrt{H_\text{in}+H_\text{out}}}  \Big)$
+\end{itemize}\pause
+
+Please note that generally due to the random weight initialization the result of repeated error backpropagation training is always different regardless of having the same hyperparameters and the same data.
+
+This equals to \hl{local optimization in highly non-linear parameter spaces at random starting points}.
+}
+
+\frame{\frametitle{Regularizing Neural Networks}
+	In order to mitigate overfitting, ANNs must be regularized by
+	\begin{itemize}
+		\item weight decay, i.e. adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
+		\item layer normalization during training,
+		\begin{itemize}
+			\item i.e all layers' activations are normalized by standard scaling separately,
+		\end{itemize}\pause
+		\item dropout, i.e. randomly disable nodes' contribution.
+		\begin{itemize}
+			\item This helps especially in deep networks,
+			\item and effectively builds an ensemble of ANNs with shared edges.
+		\end{itemize}
+	\end{itemize}
+}
+
+\frame{\frametitle{Advanced Topologies}
+	\begin{figure}[tbp]
+    \centering
+    \begin{minipage}[t]{0.38\textwidth}
+        %\centering
+        \includegraphics[width=\textwidth]{fig/lec08/RNN_over_sequence.pdf}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fig/lec08/CNN_over_sequence.pdf}
+        \end{minipage}
+        \caption{Recurrent (left) and 1-D convolutional (right) ANNs are more appropriate in time domains, e.g. where the given data set has a dynamic system background.}
+\end{figure}
+	%2-D Convolutional NNs are the state of the art in image processing
+}
+
+\subsection{Gradient Boosting Machines}
+\frame{\frametitle{Gradient Boosting Machines}
+Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learners} $\psi(\bm{\Xi})$, where each learner tries to minimize the whole ensemble's overall loss $\mathcal{L}(\bm y, \hat{\bm y}_m)$ given the preceding ensemble $\hat{\bm y}_{m-1}$ (assume scalar regression):
+\begin{equation}
+	\hat{\bm y}_m = \hat{\bm y}_{m-1} + \psi_m(\bm{\Xi}) = \sum_{m=1}^M \psi_m(\bm{\Xi}).
+\end{equation}\pause
+
+\begin{columns}[t,onlytextwidth]
+	\begin{column}{0.45\textwidth}
+	\begin{minipage}[c]{\linewidth}
+		Weak learners are often small decision trees with a depth of less than 10.
+		\newline\newline
+		Instead of optimizing real-valued parameters, here we are searching for functions $\psi(\cdot)$.
+		Hence, optimization has to be additive.
+	\end{minipage}
+	\end{column}
+	\hfill
+	\begin{column}{0.52\textwidth}
+	\begin{minipage}[r]{\linewidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{fig/lec08/decision_tree.pdf}
+			\caption{Exemplary decision tree for binary classification and two regressors.}
+			\label{fig:decision_tree}
+		\end{figure}
+		
+	\end{minipage}
+	\end{column}
+	\end{columns}
+
+%	Boosting Algorithm
+}
+
+\frame{\frametitle{Boosting Tree Ensembles (1)}
+	The minimization objective $J_m$ for growing trees at the $m$-th boosting round can be taylor-expanded to the second-order approximation:
+	\begin{align}
+	\begin{split}
+		J_m &= \mathcal{L}(\bm{y}, \hat{\bm{y}}_{m-1} + \psi(\bm{\Xi}))\\
+			&\approx \mathcal{L}(\bm y, \hat{\bm y}_{m-1}) + (\bm{\tau}')\T \psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T \psi_m^2(\bm{\Xi}),
+	\end{split}
+	\end{align}
+	with $\bm{\tau}' = \partial_{\hat{\bm y}_{m-1}}\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$ and $\bm{\tau}'' = \partial_{\hat{\bm y}_{m-1}}^2\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$.\pause
+	
+	Removing the constant part leaves us with a simplified objective:
+	\begin{align}
+	\begin{split}
+		\tilde{J}_m &= (\bm{\tau}')\T\psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T{\psi_m}^2(\bm{\Xi}) \\
+		&= \sum_{k=1}^K [\tau'_k \psi_m(\bm x_k) + \frac{1}{2}\tau''_k\psi_m^2(\bm x_k)].
+	\end{split}
+	\end{align}
+}
+
+\frame{\frametitle{Boosting Tree Ensembles (2)}
+Now consider a single tree with $N$ leaves to be defined as a vector of leaf-scores $\psi_m(\bm{x}) = \bm{w}_{s(\bm x)}, \bm w \in \mathbb{R}^N, s: \mathbb{R}^P \rightarrow [1, N]$ where $s$ maps data observations to the index of the tree's corresponding outcome (leaf).
+
+Consider the set of observations in leaf $n$ to be $I_n = \{ k | s(\bm x_k) = n \}$.\pause
+
+Then, we can regroup the objective by each leaf:
+\begin{align}
+\begin{split}
+	\tilde{J}_m &= \sum_{k=1}^K \bigg[\tau'_k w_{s(\bm x_k)} + \frac{1}{2}\tau''w_{s(\bm x_k)}^2\bigg]\\
+	&= \sum_{n=1}^N \bigg[\underbrace{\bigg(\sum_{k\in I_n}\tau'_k\bigg)}_{T'}w_n + \frac{1}{2}\underbrace{\bigg(\sum_{k\in I_n} \tau''_k\bigg)}_{T''}w_n^2\bigg].
+\end{split}
+\end{align}
+This is a sum of single-variabled quadratic functions.
+}
+	
+\frame{\frametitle{Boosting Tree Ensembles (3)}
+	Assuming a fixed tree structure $s(\bm x)$, the optimal weights and corresponding loss directly follow:
+	\begin{align}
+		w_n^\ast = \frac{-T'_k}{T''_k}\qquad \tilde{J} = -\frac{1}{2}\sum_{n=1}^N\frac{(T')_k^2}{T''_k}.
+	\end{align}
+	
+	Infinitely many possible tree structures $s$ makes a greedy search inevitable.\pause
+	
+	\begin{block}{Greedy best split search}
+	Start a tree with depth $0$. Then, for each tree node, try to add a split. The corresponding change in the objective is the \hl{gain}:
+	\begin{equation}
+		\frac{1}{2}\big(\underbrace{\frac{(T')_\text{left}^2}{T''_\text{left}}}_{\text{cost of left child}} + \underbrace{\frac{(T')_\text{right}^2}{T''_\text{right}}}_{\text{cost of right child}} - \underbrace{\frac{(T')_\text{left}^2 + (T')_\text{right}^2}{T''_\text{left} + T''_\text{right}}}_\text{cost of no split}\big).
+	\end{equation}
+	Find the best split over each features' range by a linear scan of the gain.
+	\end{block}	
+}
+
+\frame{\frametitle{Implementation Considerations}
+	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g. XGBoost, LightGBM, CatBoost).
+	As always, regularization is also part of the optimization but was not outlined here for conciseness.
+	The spectrum of regularization factors comprises:
+	\begin{itemize}
+		\item Tree constraints (depth, number of leaves, etc.),
+		\item Weight decay,
+		\item Random sampling (column- and row-wise),
+		\item Learning rates for each additional tree.
+	\end{itemize}
+}
+
+\frame{\frametitle{Hyperparameter Optimization (1)}
+	\begin{figure}
+		\includegraphics[width=10cm]{fig/lec08/levels_of_opt.pdf}
+		\caption{The three levels of optimization.}
+		\label{fig:levels_of_opt}
+	\end{figure}
+	
+}
+
+\frame{\frametitle{Hyperparameter Optimization (2)}
+	\begin{itemize}
+		\item Hyperparameter optimization is, again, a non-linear optimization problem.
+		\item Evaluation of any point in this space can be very costly, though.
+		\item Information gathered during a search must be fully utilized.
+		\item Toolboxes (incomprehensive)
+		\begin{itemize}
+			\item \href{https://github.com/hyperopt/hyperopt}{Hyperopt}
+			\item \href{https://scikit-optimize.github.io/stable/}{Scikit-optimize}
+			\item \href{https://pyswarms.readthedocs.io/en/latest/}{Pyswarm}
+		\end{itemize}
+	\end{itemize}
+}
+
+\frame{\frametitle{SL Toolboxes}
+	\begin{itemize}
+		\item Deep learning
+		\begin{itemize}
+			\item \href{https://www.tensorflow.org/tutorials/quickstart/beginner}{Tensorflow 2 (Keras)}
+			\item \href{https://pytorch.org/}{PyTorch}
+			\item \href{https://chainer.org/}{Chainer}
+			\item \href{https://docs.microsoft.com/en-us/cognitive-toolkit/}{CNTK}
+		\end{itemize}\pause
+		\item Gradient boosting machines
+		\begin{itemize}
+			\item \href{https://xgboost.readthedocs.io/en/latest/}{XGBoost}
+			\item \href{https://lightgbm.readthedocs.io/en/latest/}{LightGBM}
+			\item \href{https://catboost.ai/}{CatBoost}
+		\end{itemize}\pause
+		\item Linear, tree-based, memory-based models, SVMs, among others
+		\begin{itemize}
+			\item \href{https://scikit-learn.org/stable/}{Scikit-learn}
+		\end{itemize}
+	\end{itemize}		
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Summary: What You've Learned Today}
+\begin{itemize}
+	\item Industry has high demand for ML applications.\pause
+	\item Higher bias trades off variance for a better overall score.\pause
+	\item How to cross-validate and improve SL models.\pause
+	\item How features are engineered and normalized.\pause
+	\item Fundamentals of linear regression, neural networks and gradient boosted trees.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Final Slide %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{The End for Today}
+\begin{figure}
+\includegraphics[width=10cm]{fig/lec08/dilbert.jpg}
+\end{figure}
+\vspace{1cm}
+\centering
+Thanks for your attention and have a nice week!
+}
