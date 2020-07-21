@@ -51,14 +51,38 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 
 ## Exercise Content
 01. Basics of Python for Scientific Computing
-02. Manually Solving Basic Markov Chain, Reward and Decision Problems 
+    * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex01) 
+02. Manually Solving Basic Markov Chain, Reward and Decision Problems
+    * [Tutorial video](https://www.youtube.com/watch?v=3PPIHd3lO4k)
+    * [Tutorial material](../master/exercises/ex02) 
 03. The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem)
+    * [Tutorial video](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
+    * [Tutorial video](https://www.youtube.com/watch?v=GlL1d4Ivo_g&t=880s)
+    * [Tutorial material](../master/exercises/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
+    * [Tutorial video](https://www.youtube.com/watch?v=eTFugChiOaE&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex05) 
 06. Stabilizing the Inverted Pendulum by Tabular n-Step Methods
+    * [Tutorial video](https://www.youtube.com/watch?v=4ACrTBFRw50)
+    * [Tutorial material](../master/exercises/ex06) 
 07. Boosting the Inverted Pendulum by Integrating Learning & Planning (Dyna Framework)
+    * [Tutorial video](https://www.youtube.com/watch?v=KXNu7xDZ9Bg&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex07) 
 08. Predicting the Operating Behavior of a Real Electric Drive Systems with Supervised Learning
+    * [Tutorial video](https://www.youtube.com/watch?v=zxC87jRnT08)
+    * [Tutorial material](../master/exercises/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
+    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk&t=2162s)
+    * [Tutorial material](../master/exercises/ex09) 
 10. Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration
+    * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex10) 
 11. Improve the Value-Based Mount Car Solution using Sarsa(Lambda)
+    * [Tutorial video](https://www.youtube.com/watch?v=bhZGpuh5-6M)
+    * [Tutorial material](../master/exercises/ex11) 
 12. Landing on the Moon with REINFORCE and Actor-Critic Methods
+    * [Tutorial video](https://www.youtube.com/watch?v=pk3zIYW2-G8&feature=youtu.be)
+    * [Tutorial material](../master/exercises/ex12) 
