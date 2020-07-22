@@ -93,7 +93,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
     * [Tutorial material](../master/exercises/ex12) 
 
 # Citation
-Please use the following BibTeX entry for citing us::
+Please use the following BibTeX entry for citing us:
 
     @Misc{KSWW2020,
       author = {Wilhelm Kirchgässner and Maximilian Schenke and Oliver Wallscheid and Daniel Weber},
@@ -102,3 +102,12 @@ Please use the following BibTeX entry for citing us::
       year   = {2020},
       url    = {https://github.com/upb-lea/reinforcement_learning_course_materials},
     }
+
+# Credits
+The lecture notes are inspired by
+* [Richard S. Sutton, Andrew G. Barto, 'Reinforcement Learning: An Introduction' Second Edition MIT Press, Cambridge, MA, 2018](http://www.incompleteideas.net/book/the-book-2nd.html)
+* [David Silver, UCL Course on Reinforcement Learning, 2015](https://www.davidsilver.uk/teaching/)
+
+The tutorials are partly using pre-packed environments from
+* [OpenAI Gym](https://gym.openai.com/)
+* [Gym Electric Motor (GEM)](https://github.com/upb-lea/gym-electric-motor)
