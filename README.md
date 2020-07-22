@@ -91,3 +91,14 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 12. Landing on the Moon with REINFORCE and Actor-Critic Methods
     * [Tutorial video](https://www.youtube.com/watch?v=pk3zIYW2-G8&feature=youtu.be)
     * [Tutorial material](../master/exercises/ex12) 
+
+# Citation
+Please use the following BibTeX entry for citing us::
+
+    @Misc{KSWW2020,
+      author = {Wilhelm Kirchgässner and Maximilian Schenke and Oliver Wallscheid and Daniel Weber},
+      note   = {Paderborn University},
+      title  = {Reinforcement Learning Course Material},
+      year   = {2020},
+      url    = {https://github.com/upb-lea/reinforcement_learning_course_materials},
+    }
