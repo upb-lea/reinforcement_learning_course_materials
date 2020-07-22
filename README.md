@@ -1,8 +1,11 @@
-# Reinforcement Learning Course Materials
+Reinforcement Learning Course Materials
+=======================================
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/LICENSE)
+
 Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University
 ![Example](./img/wordcloud.svg)
 
-## Lecture Content
+# Lecture Content
 01. Introduction to Reinforcement Learning
     * [Lecture video](https://www.youtube.com/watch?v=9LLzaIJuu-E&feature=youtu.be)
     * [Lecture slides](https://ei.uni-paderborn.de/en/lea)   
@@ -49,7 +52,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 
 
 
-## Exercise Content
+# Exercise Content
 01. Basics of Python for Scientific Computing
     * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)
     * [Tutorial material](../master/exercises/ex01) 
