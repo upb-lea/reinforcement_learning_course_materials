@@ -1,6 +1,6 @@
-# Exercise 2
-This exercise deals with the formal handling of Markov chains and Markov decision processes
-# Tasks:
+# Exercise 02
+This exercise deals with the formal handling of Markov chains and Markov decision processes.
+## Tasks:
   1. reading Markov chain graphs and determining state transitions probability
   2. determining stationary state of Markov chains
   3. determining state values of Markov reward processes
