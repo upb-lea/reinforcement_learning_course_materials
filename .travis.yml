@@ -1,0 +1,21 @@
+language: python
+
+addons:
+  apt:
+    packages:
+    - sshpass
+
+install:
+  - source texlive/texlive_install.sh
+  - pip install tqdm
+
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+script:
+  - cd lecture_slides
+  - mkdir built
+  - travis_wait 15 python build.py  # timeout after 15 mins
+  - sshpass -p $UPB_SSH_PW scp -r built/ $UPB_USER@$UPB_HOST:/upb/groups/lea/public/https/share/lehre/reinforcementlearning/lecture_slides/ > /dev/null
+
