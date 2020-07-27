@@ -4,9 +4,10 @@ addons:
   apt:
     packages:
     - sshpass
+    - texlive
 
 install:
-  - source texlive/texlive_install.sh
+  #- source texlive/texlive_install.sh
   - pip install tqdm
 
 cache:
