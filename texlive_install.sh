@@ -56,7 +56,8 @@ tlmgr install   \
   xmpincl       \
   pgf           \
   verbatim      \
-  environ       
+  environ       \
+  ifoddpage
   
 
 # Keep no backups (not required, simply makes cache bigger)
