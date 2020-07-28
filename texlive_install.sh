@@ -28,10 +28,9 @@ tlmgr install luatex
 
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
-tlmgr install   \
+tlmgr install \
   beamer        \
   etoolbox  \
-  keyval  \
   geometry  \
   graphics  \
   xcolor  \
@@ -57,7 +56,10 @@ tlmgr install   \
   kvoptions  \
   url  \
   rerunfilecheck  \
-  amsfonts  \  
+  amsfonts
+
+# Checkpointing
+tlmgr install  \  
   translator  \
   enumerate  \
   amsmath  \
