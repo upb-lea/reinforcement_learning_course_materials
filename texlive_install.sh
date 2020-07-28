@@ -30,11 +30,8 @@ tlmgr install luatex
 # texlive-latex-base is needed to run pdflatex
 tlmgr install   \
   beamer        \
-  beamerbasemodes  \
   etoolbox  \
-  beamerbasedecode  \  
   ifpdf  \
-  beamerbaseoptions  \ 
   keyval  \
   geometry  \
   ifvtex  \
