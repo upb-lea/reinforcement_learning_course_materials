@@ -28,64 +28,8 @@ tlmgr install luatex
 # Required to build plain and LaTeX formats including (u)pLaTeX
 tlmgr install latex-bin luahbtex platex uplatex tex xetex
 
-# Then get the rest of required LaTeX
-tlmgr install amsmath graphics tools 
+tlmgr install amsmath graphics tools media9
 
-# Other contrib packages: done as a block to avoid multiple calls to tlmgr
-# texlive-latex-base is needed to run pdflatex
-tlmgr install \
-  beamer        \
-  media9  \
-  etoolbox  \
-  geometry  \
-  graphics  \
-  xcolor  \
-  atbegshi  \
-  infwarerr  \
-  ltxcmds  \
-  hyperref  \
-  hobsub  \
-  intcalc  \
-  etexcmds  \
-  kvsetkeys  \
-  kvdefinekeys  \
-  pdftexcmds  \
-  pdfescape  \
-  bigintcalc  \
-  bitset  \
-  uniquecounter  \
-  letltxmacro  \
-  atveryend  \
-  refcount  \
-  hycolor  \
-  auxhook  \
-  kvoptions  \
-  url  \
-  rerunfilecheck  \
-  amsfonts  \
-  translator  \
-  amsmath  \
-  algorithm2e  \
-  ifoddpage  \
-  relsize  \
-  subfig  \
-  caption  \
-  ragged2e  \
-  units  \
-  animate  \
-  xkeyval  \
-  pdfbase  \
-  multirow  \
-  xmpincl  \
-  tcolorbox  \
-  pgf  \
-  environ  \
-  trimspaces  \
-  listings  \
-  grfext  \
-  gettitlestring  \
-  zref
-  
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
