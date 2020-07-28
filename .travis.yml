@@ -22,7 +22,7 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: sshpass -e scp -r built/ $UPB_USER@$UPB_HOST:$UPB_DEPLOY_DIR > /dev/null
+    script: sshpass -e scp -r -o LogLevel=ERROR built/ $UPB_USER@$UPB_HOST:$UPB_DEPLOY_DIR > /dev/null
     on:
       branch: master
 
