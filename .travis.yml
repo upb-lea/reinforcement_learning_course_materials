@@ -1,7 +1,7 @@
 language: python
 
 addons:
-  ssh_known_hosts: $UPB_HOST
+  ssh_known_hosts: \$UPB_HOST
   apt:
     packages:
     - sshpass
