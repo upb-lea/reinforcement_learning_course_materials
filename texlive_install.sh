@@ -32,7 +32,14 @@ tlmgr install   \
   exam          \
   amsfonts      \
   stmaryrd      \
-  amsmath
+  amsmath       \
+  beamer        \
+  etoolbox      \
+  pgfcore       \
+  graphicx      \
+  graphics      \
+  trig          \
+  hyperref      
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
