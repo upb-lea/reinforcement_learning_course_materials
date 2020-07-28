@@ -7,7 +7,7 @@ addons:
     - sshpass
 
 install:
-  - source texlive/texlive_install.sh
+  - source ./texlive_install.sh
   - pip install tqdm
 
 cache:
