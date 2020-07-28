@@ -30,6 +30,7 @@ tlmgr install luatex
 # texlive-latex-base is needed to run pdflatex
 tlmgr install \
   beamer        \
+  tools \
   etoolbox  \
   geometry  \
   graphics  \
@@ -107,7 +108,8 @@ tlmgr install \
   epstopdf-base  \
   grfext  \
   nameref  \
-  gettitlestring  
+  gettitlestring  \
+  zref
   
 
 # Keep no backups (not required, simply makes cache bigger)
