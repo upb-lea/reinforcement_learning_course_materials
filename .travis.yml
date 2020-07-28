@@ -1,12 +1,12 @@
 language: python
 
 addons:
-  ssh_known_hosts: \$UPB_HOST
   apt:
     packages:
     - sshpass
 
 install:
+  - ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $UPB_HOST | tee -a ${TRAVIS_HOME}/.ssh/known_hosts
   - source ./texlive_install.sh
   - pip install tqdm
 
