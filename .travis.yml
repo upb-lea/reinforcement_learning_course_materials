@@ -6,6 +6,8 @@ addons:
     packages:
     - sshpass
     - texlive
+    - texlive-latex3
+    - texlive-latex-extra
     - latex-beamer
 
 install:
