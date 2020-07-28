@@ -31,29 +31,15 @@ tlmgr install luatex
 tlmgr install   \
   beamer        \
   etoolbox  \
-  ifpdf  \
   keyval  \
   geometry  \
-  ifvtex  \
-  ifxetex  \
-  size11  \
-  pgfcore  \
-  graphicx  \
   graphics  \
-  trig  \
-  pgfsys  \
-  pgfrcs  \
-  everyshi  \
   xcolor  \
-  xxcolor  \
   atbegshi  \
   infwarerr  \
   ltxcmds  \
   hyperref  \
-  hobsub-hyperref  \
-  hobsub-generic  \
   hobsub  \
-  ifluatex  \
   intcalc  \
   etexcmds  \
   kvsetkeys  \
@@ -64,8 +50,6 @@ tlmgr install   \
   bitset  \
   uniquecounter  \
   letltxmacro  \
-  hopatch  \
-  xcolor-patch  \
   atveryend  \
   refcount  \
   hycolor  \
@@ -73,7 +57,6 @@ tlmgr install   \
   kvoptions  \
   url  \
   rerunfilecheck  \
-  amssymb  \
   amsfonts  \  
   translator  \
   enumerate  \
