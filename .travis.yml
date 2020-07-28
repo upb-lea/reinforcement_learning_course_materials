@@ -5,12 +5,9 @@ addons:
   apt:
     packages:
     - sshpass
-    - texlive
-    - texlive-latex3
-    - texlive-latex-extra
-    - latex-beamer
 
 install:
+  - source texlive/texlive_install.sh
   - pip install tqdm
 
 cache:
