@@ -6,7 +6,7 @@ addons:
     - sshpass
 
 install:
-  - ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $UPB_HOST | tee -a ${TRAVIS_HOME}/.ssh/known_hosts
+  - ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H \\$UPB_HOST 2>&1 | tee -a ${TRAVIS_HOME}/.ssh/known_hosts
   - source ./texlive_install.sh
   - pip install tqdm
 
