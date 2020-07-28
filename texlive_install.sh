@@ -56,10 +56,7 @@ tlmgr install \
   kvoptions  \
   url  \
   rerunfilecheck  \
-  amsfonts
-
-# Checkpointing
-tlmgr install  \  
+  amsfonts  \
   translator  \
   enumerate  \
   amsmath  \
