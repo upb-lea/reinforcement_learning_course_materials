@@ -25,12 +25,17 @@ fi
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
+# Required to build plain and LaTeX formats including (u)pLaTeX
+tlmgr install latex-bin luahbtex platex uplatex tex xetex
+
+# Then get the rest of required LaTeX
+tlmgr install amsmath graphics tools 
 
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install \
   beamer        \
-  tools \
+  media9  \
   etoolbox  \
   geometry  \
   graphics  \
@@ -59,55 +64,25 @@ tlmgr install \
   rerunfilecheck  \
   amsfonts  \
   translator  \
-  enumerate  \
   amsmath  \
-  amstext  \
-  amsgen  \
-  amsbsy  \
-  amsopn  \
-  amsthm  \
   algorithm2e  \
-  ifthen  \
   ifoddpage  \
-  xspace  \
   relsize  \
-  inputenc  \
   subfig  \
   caption  \
-  caption3  \
   ragged2e  \
-  everysel  \
-  array  \
-  hhline  \
   units  \
-  nicefrac  \
-  bm  \
   animate  \
   xkeyval  \
-  ifdraft  \
-  calc  \
   pdfbase  \
-  expl3  \
-  l3keys2e  \
-  ocgbase  \
   multirow  \
   xmpincl  \
-  pifont  \
   tcolorbox  \
   pgf  \
-  verbatim  \
   environ  \
   trimspaces  \
   listings  \
-  lstmisc  \
-  shellesc  \
-  tikz  \
-  pgffor  \
-  pgfkeys  \
-  pgfmath  \
-  epstopdf-base  \
   grfext  \
-  nameref  \
   gettitlestring  \
   zref
   
