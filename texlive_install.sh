@@ -39,7 +39,25 @@ tlmgr install   \
   graphicx      \
   graphics      \
   trig          \
-  hyperref      
+  hyperref      \
+  algorithm2e   \
+  subfig        \
+  array         \
+  units         \
+  caption       \
+  caption3      \
+  bm            \
+  nicefrac      \
+  animate       \
+  calc          \
+  pdfbase       \
+  ocgbase       \
+  multirow      \
+  xmpincl       \
+  pgf           \
+  verbatim      \
+  environ       
+  
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
