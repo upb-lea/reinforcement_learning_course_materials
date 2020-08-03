@@ -126,4 +126,3 @@ The lecture notes are inspired by
 
 The tutorials are partly using pre-packed environments from
 * [OpenAI Gym](https://gym.openai.com/)
-* [Gym Electric Motor (GEM)](https://github.com/upb-lea/gym-electric-motor)
