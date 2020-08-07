@@ -5,7 +5,7 @@ Reinforcement Learning Course Materials
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 
-Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University
+Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University. Source code for the entire course material is open and everyone is cordially invited to use it for self-learning (students) or to set up your own course (lecturers).
 ![Example](./img/wordcloud.svg)
 
 # Lecture Content
@@ -118,6 +118,13 @@ Please use the following BibTeX entry for citing us:
       year   = {2020},
       url    = {https://github.com/upb-lea/reinforcement_learning_course_materials},
     }
+
+# Contributions
+We highly appreciate any feedback and input to the course material e.g.
+* typos or content-related discussions (please raise an issue)
+* adding new contents (please provide a pull request)
+
+If you like to contribute to the repo to a larger extent, please do not hesitate to contact us directly. 
 
 # Credits
 The lecture notes are inspired by
