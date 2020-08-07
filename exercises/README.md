@@ -1,7 +1,7 @@
 # Exercise Content
 01. Basics of Python for Scientific Computing
     * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)
-    * [Tutorial template](../master/exercises/templates/ex01)
+    * [Tutorial template](../../master/exercises/templates/ex01)
     * [Tutorial solution](../master/exercises/solutions/ex01) 
 02. Manually Solving Basic Markov Chain, Reward and Decision Problems
     * [Tutorial video](https://www.youtube.com/watch?v=3PPIHd3lO4k)
