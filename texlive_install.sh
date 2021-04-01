@@ -26,7 +26,7 @@ fi
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
 # Required to build plain and LaTeX formats including (u)pLaTeX
-tlmgr install latex-bin luahbtex platex uplatex tex xetex ocgx2
+tlmgr install latex-bin luahbtex platex uplatex tex xetex ocgx2 beamer
 
 
 
