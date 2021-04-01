@@ -44,6 +44,6 @@
     * [Tutorial template](../../master/exercises/templates/ex11)
     * [Tutorial solution](../../master/exercises/solutions/ex11) 
 12. Landing on the Moon with REINFORCE and Actor-Critic Methods
-    * [Tutorial video](https://www.youtube.com/watch?v=pk3zIYW2-G8&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
     * [Tutorial template](../../master/exercises/templates/ex12)
     * [Tutorial solution](../../master/exercises/solutions/ex12) 
