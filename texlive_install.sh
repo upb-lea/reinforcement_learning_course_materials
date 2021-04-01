@@ -50,6 +50,7 @@ tlmgr install latex-bin luahbtex platex uplatex tex xetex ocgx2 \
   letltxmacro  \
   atveryend  \
   refcount  \
+  everysel \
   hycolor  \
   auxhook  \
   kvoptions  \
