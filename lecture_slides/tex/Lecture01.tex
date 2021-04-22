@@ -754,7 +754,7 @@ Evaluating the state and action space framework (e.g. discrete vs. continuous) o
 \begin{itemize}
 	\item The \hl{state-value function} is the expected return being in state $\bm{x}_k$ following a policy $\bm{\pi}$: $v_\pi(\bm{x}_k)$.
 	\pause
-	\item Assuming a MDP problem structure the state-value function is
+	\item Assuming an MDP problem structure the state-value function is
 	\begin{equation}
 	\label{eq:state_value_lec01}
 		v_\pi(\bm{x}_k) = \El{G_k|\bm{X}_k=\bm{x}_k}{\pi}=\El{\left. \sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k}{\pi}
@@ -762,7 +762,7 @@ Evaluating the state and action space framework (e.g. discrete vs. continuous) o
 	\pause
 \item The \hl{action-value function} is the expected return being in state $\bm{x}_k$ taken an action $\bm{u}_k$ and, thereafter, following a policy $\bm{\pi}$: $q_\pi(\bm{x}_k, \bm{u}_k)$.
 \pause
-	\item Assuming a MDP problem structure the action-value function is
+	\item Assuming an MDP problem structure the action-value function is
 	\begin{equation}
 		q_\pi(\bm{x}_k,\bm{u}_k) = \El{G_k|\bm{X}_k=\bm{x}_k, \bm{U}_k=\bm{u}_k}{\pi}=\El{\left.\sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k, \bm{u}_k}{\pi}
 	\end{equation}
