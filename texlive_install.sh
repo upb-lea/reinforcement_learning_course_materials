@@ -86,5 +86,8 @@ tlmgr install latex-bin luahbtex platex uplatex tex xetex ocgx2 \
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
 
+# add binaries to PATH
+export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
