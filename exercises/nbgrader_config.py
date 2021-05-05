@@ -9,7 +9,7 @@ c = get_config()
 c.CourseDirectory.course_id = "rl_exercises"
 
 # Update this list with other assignments you want
-c.CourseDirectory.db_assignments = [dict(name="race_track_env"), dict(name='brewery')]
+c.CourseDirectory.db_assignments = [dict(name=f"ex{i:02d}") for i in range(1, 13)]
 
 # Change the students in this list with that actual students in
 # your course
