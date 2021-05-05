@@ -304,7 +304,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 		\For{$\forall \, x_k\in\mathcal{X}$}{
 			$\tilde{v}\leftarrow \hat{v}(x_k)$\;
 			$\hat{v}(x_k)\leftarrow  \sum_{u_k\in\mathcal{U}}\pi(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u \hat{v}(x_{k+1})\right)$\;
-			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)\right)$\;
+			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)|\right)$\;
 		}
 	}
 \caption{
@@ -618,7 +618,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 		\For{$\forall \, x_k\in\mathcal{X}$}{
 			$\tilde{v}\leftarrow \hat{v}(x_k)$\;
 			$\hat{v}(x_k)\leftarrow  \max_{u_k\in\mathcal{U}}\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u \hat{v}(x_{k+1})\right)$\;
-			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)\right)$\;
+			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)|\right)$\;
 		}
 	}
 \Output{Deterministic policy $\pi\approx\pi^*$, such that}
