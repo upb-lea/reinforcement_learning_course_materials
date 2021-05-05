@@ -304,7 +304,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 		\For{$\forall \, x_k\in\mathcal{X}$}{
 			$\tilde{v}\leftarrow \hat{v}(x_k)$\;
 			$\hat{v}(x_k)\leftarrow  \sum_{u_k\in\mathcal{U}}\pi(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u \hat{v}(x_{k+1})\right)$\;
-			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)\right)$\;
+			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)|\right)$\;
 		}
 	}
 \caption{
@@ -353,6 +353,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 %% General Idea on Policy Improvement%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{General Idea on Policy Improvement}
+\vspace{-0.1cm}
 \begin{itemize}
 	\item If we know $v_{\pi}$ of a given MDP, how to improve the policy?\pause
 	\item The simple idea of policy improvement is:
@@ -367,6 +368,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 			q_\pi(x_k,u_k)	= \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\,.
 	\end{equation}\pause\vspace{-0.3cm}
 	\setcounter{mytheo}{0}
+\vspace{-0.1cm}
 \begin{theo}{Policy improvement}{Policy_improvement}
 If for any deterministic policy pair $\pi$ and $\pi'$
 \begin{equation}
@@ -618,7 +620,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 		\For{$\forall \, x_k\in\mathcal{X}$}{
 			$\tilde{v}\leftarrow \hat{v}(x_k)$\;
 			$\hat{v}(x_k)\leftarrow  \max_{u_k\in\mathcal{U}}\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u \hat{v}(x_{k+1})\right)$\;
-			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)\right)$\;
+			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)|\right)$\;
 		}
 	}
 \Output{Deterministic policy $\pi\approx\pi^*$, such that}
