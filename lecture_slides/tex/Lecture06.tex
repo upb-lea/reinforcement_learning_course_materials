@@ -86,7 +86,7 @@ Now, the target is generalized to an arbitrary $n$-step target:
 \end{block}\pause
 \begin{itemize}
 	\item Approximation of full return series truncated after $n$-steps.
-	\item If $k+n \geq T$ (i.e. $n$-step prediction exceeds termination lookahead), then all missing terms are considered zero.
+	\item If $k+n \geq T$ (i.e., $n$-step prediction exceeds termination lookahead), then all missing terms are considered zero.
 \end{itemize}\pause
 \begin{block}{$n$-step TD}
 The state-value estimate using the $n$-step return approximation is
@@ -116,7 +116,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 	\item In a more practical framework with limited number of steps/episodes:
 	\begin{itemize}
 		\item Choosing the best $n$-step lookahead horizon is an engineering degree of freedom.
-		\item This is highly application-dependent (i.e. no predefined optimum).
+		\item This is highly application-dependent (i.e., no predefined optimum).
 		\item Prediction/estimation errors can remain due to limited data.
 	\end{itemize}
 \end{itemize}
@@ -600,7 +600,7 @@ For $k < T-n$ and $n \geq 2$ the $n$-step tree-backup return is:
 \begin{figure}		
 	\includegraphics[width=6cm]{fig/lec06/Back_Up_Q_sigma.pdf}
 	\caption{The backup diagrams of the previous of $n$-step state-action value updates plus the so-called \hl{$n$-step $Q(\sigma)$} method that unifies
-them all (exemplary 4-step case is depicted). \hl{The latter allows for choosing to sample a transition (i.e. $\sigma=1$) or not (i.e. $\sigma=0$) on a state-to-state basis}. A $\rho$ indicates  transitions on which importance sampling is required in the off-policy case.}
+them all (exemplary 4-step case is depicted). \hl{The latter allows for choosing to sample a transition (i.e., $\sigma=1$) or not (i.e., $\sigma=0$) on a state-to-state basis}. A $\rho$ indicates  transitions on which importance sampling is required in the off-policy case.}
 	\label{fig:Back_Up_Q_sigma}
 \end{figure}
 }
@@ -756,7 +756,7 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 		\item $n=3, \alpha=0.4$
 		\item Left plot shows RMS error in the value function.
 		\item The results are an average of 100 runs. \pause
-		\item Dynamic $Q(\sigma)$ starts like Sarsa (i.e. $\sigma = 1$) and shifts towards tree-backup (i.e. $\sigma\approx 0$) by $\sigma_{k+1}=0.95\sigma_k$. \pause
+		\item Dynamic $Q(\sigma)$ starts like Sarsa (i.e., $\sigma = 1$) and shifts towards tree-backup (i.e., $\sigma\approx 0$) by $\sigma_{k+1}=0.95\sigma_k$. \pause
 		\item Again: only exemplary application-dependent result.
 	\end{itemize}
 \end{minipage}

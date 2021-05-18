@@ -78,8 +78,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Model Learning / Identification}
 \begin{itemize}
-	\item Ideally, the model $\mathcal{M}$ is exactly known a priori (e.g. gridworld case). \pause
-	\item On the contrary, a model might be too complex to derive or not exactly available (e.g. real physical systems). \pause
+	\item Ideally, the model $\mathcal{M}$ is exactly known a priori (e.g., gridworld case). \pause
+	\item On the contrary, a model might be too complex to derive or not exactly available (e.g., real physical systems). \pause
 	\begin{itemize}
 		\item \hl{Objective: estimate model $\hat{\mathcal{M}}$ from experience $\left\{X_0, U_0,R_1,\ldots,X_T\right\}$.} \pause
 	\end{itemize}
@@ -148,9 +148,9 @@
 \frame{\frametitle{Advantages \& Drawbacks: Model-free vs. Model-based RL }
 \onslide<1->{Pro model-based / indirect RL:
 \begin{itemize}
-	\item Efficiently uses limited amount of experience (e.g. by replay).  
+	\item Efficiently uses limited amount of experience (e.g., by replay).  
 	\item Allows integration of available a priori knowledge. 
-	\item Learned models might be re-used for other tasks (e.g. monitoring).
+	\item Learned models might be re-used for other tasks (e.g., monitoring).
 \end{itemize}}
 \vspace{0.25cm}
 \onslide<2->{Pro model-free / direct RL:
@@ -434,7 +434,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 \begin{itemize}
 	\item Dyna-$Q$ randomly samples from the memory buffer.
 	\begin{itemize}
-		\item Many planning updates maybe pointless e.g. zero-valued state updates during early training.
+		\item Many planning updates maybe pointless, e.g., zero-valued state updates during early training.
 		\item In large state-action spaces: inefficient search since transitions are chosen far away from optimal policies. 
 	\end{itemize}\pause
 	\vspace{0.5cm}
@@ -578,13 +578,13 @@ Pro expected updates:
 \vspace{0.25cm}
 Pro sample updates:
 \begin{itemize}
-	\item Is computational cheaper (e.g. distributional model not required). \pause
+	\item Is computational cheaper (e.g., distributional model not required). \pause
 \end{itemize}
 \vspace{0.25cm}
 Leads to trade-off:
 \begin{itemize}
 	\item Estimation accuracy vs. computational burden.\pause
-	\item Evaluate decision on given problem i.e. how many state-action pairs have to be evaluated for a new expected update?\pause
+	\item Evaluate decision on given problem, i.e., how many state-action pairs have to be evaluated for a new expected update?\pause
 	\item Utilize \hl{branching factor $b$} metric: corresponds to number of possible next states $x'$ with $p(x'|x,u)>0$. 
 	\begin{itemize}
 		\item If expected update is available, this will be roughly as accurate as $b$ samplings.
@@ -675,7 +675,7 @@ Example:
 \begin{itemize}
 	\item Gradually improves policy or value function if time is available.
 	\item Backward view: re-apply gathered experience. \pause
-	\item Feasible for fast execution: policy or value estimate are available with low latency (important e.g. for real-time control). \pause
+	\item Feasible for fast execution: policy or value estimate are available with low latency (important, e.g., for real-time control). \pause
 \end{itemize}
 \vspace{0.5cm}
 \hl{Planning at decision time}\footnote[1]{\onslide<3->{Can be interpreted as \textit{model predictive control} in an engineering context.}} (not yet discussed alternative):
@@ -684,7 +684,7 @@ Example:
 	\item Forward view: predict future trajectories starting from current state. \pause
 	\item Typically discards previous planning outcomes (start from scratch after state transition).\pause
 	\item If multiple trajectories are independent: easy parallel implementation.\pause
-	\item Most useful if fast responses are not required (e.g. turn-based games).
+	\item Most useful if fast responses are not required (e.g., turn-based games).
 \end{itemize}
 }
 
@@ -730,7 +730,7 @@ Example:
 	\item Rollout algorithm, but: 
 	\begin{itemize}
 		\item \hl{accumulates values estimates} from former MC simulations,
-		\item makes use of an \hl{informed tree policy} (e.g. $\varepsilon$-greedy).
+		\item makes use of an \hl{informed tree policy} (e.g., $\varepsilon$-greedy).
 	\end{itemize}
 \end{itemize}
 \begin{figure}
@@ -746,7 +746,7 @@ Example:
 \frame{\frametitle{Basic MCTS Procedure}
 Repeat the following steps while prediction time is available:
 \begin{enumerate}
-	\item \hl{Selection}: Starting at root node, use a tree policy (e.g. $\varepsilon$-greedy) to travel through the tree until arriving at a leaf node.\pause
+	\item \hl{Selection}: Starting at root node, use a tree policy (e.g., $\varepsilon$-greedy) to travel through the tree until arriving at a leaf node.\pause
 	\begin{itemize}
 		\item The tree policy exploits auspicious tree regions while maintaining some exploration.
 		\item It is improved and (possibly) extended in every simulation run. \pause
@@ -766,7 +766,7 @@ Repeat the following steps while prediction time is available:
 \frame{\frametitle{Further MCTS Remarks}
 What is happening after reaching the feasible simulation runs?
 \begin{itemize}
-	\item After time is up, MCTS picks an appropriate action regarding the root node e.g.:
+	\item After time is up, MCTS picks an appropriate action regarding the root node, e.g.:
 	\begin{itemize}
 		\item The action visited the most times during all simulation runs or
 		\item The action having the largest action value. \pause
@@ -802,7 +802,7 @@ Further reading on MCTS:
 	\item Model-free RL is easy to implement and cannot suffer any model learning error while model-based approaches use a limited amount of experience much more efficient. \pause
 	\item Integrating these two RL branches can be achieved using the Dyna framework (background planning) incorporating the steps:
 	\begin{itemize}
-		\item Direct RL updates (any model-free approach e.g. $Q$-learning),
+		\item Direct RL updates (any model-free approach, e.g., $Q$-learning),
 		\item Model learning: use real experience to improve model predictions,
 		\item Search control: strategies on how to generate simulated experience. \pause
 	\end{itemize}

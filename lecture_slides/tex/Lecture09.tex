@@ -49,8 +49,8 @@ Focus of this and the next lecture:
 	\item Standard assumption of supervised ML: static and i.i.d. data processes \pause
 	\item Deviating impacts in the RL framework:
 	\begin{itemize}
-		\item Changing environments (e.g. by tear and wear)
-		\item Dynamic learning in control tasks i.e. changing policy (next lecture)
+		\item Changing environments (e.g., by tear and wear)
+		\item Dynamic learning in control tasks, i.e., changing policy (next lecture)
 	\end{itemize}
 \end{itemize}
 \begin{figure}
@@ -75,7 +75,7 @@ Focus of this and the next lecture:
 		\begin{equation}
 			\hat{v}(\tilde{\bm{x}}, \bm{w}) \approx v_\pi(\bm{x}) .
 		\end{equation}
-	\item The state $\bm{x}$ might be enhanced by \hl{feature engineering} (i.e. additional signal inputs are derived in the \hl{feature vector $\tilde{\bm{x}}=\bm{f}(\bm{x})\in\mathbb{R}^\kappa$}).
+	\item The state $\bm{x}$ might be enhanced by \hl{feature engineering} (i.e., additional signal inputs are derived in the \hl{feature vector $\tilde{\bm{x}}=\bm{f}(\bm{x})\in\mathbb{R}^\kappa$}).
 	\item Above, \hl{$\bm{w} \in \mathbb R^\zeta$ is the parameter vector}. \pause
 	\item Typically, $\zeta << |\mathcal{X}|$ applies (otherwise approximation is pointless).\pause
 \end{itemize}
@@ -498,7 +498,7 @@ We focus on the \hl{combination of OLS and TD(0) (so-called LSTD)}, but the foll
 \end{itemize}
 	\begin{align}
 			v_{\pi}(\bm{x}_k)&\approx r_{k+1} + \gamma \hat{v}(\bm{x}_{k+1})=r_{k+1} + \gamma \tilde{\bm{x}}\T_{k+1}\bm{w}\\
-			J(\bm{w}) &= \sum_k \left[v_{\pi}(\bm{x}_k) - \hat{v}(\tilde{\bm{x}}_k, \bm{w})\right]^2 = \sum_k \left[r_{k+1} - \left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)\bm{w}\right]^2\notag
+			J(\bm{w}) &= \sum_k \left[v_{\pi}(\bm{x}_k) - \hat{v}(\tilde{\bm{x}}_k, \bm{w})\right]^2 = \sum_k \left[r_{k+1} - \left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)\bm{w}\right]^2.\notag
 	\end{align}
 
 }
@@ -609,7 +609,7 @@ with
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
 \Input{a policy $\pi$ to be evaluated}
-\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{v}(\tilde{\bm{x}}_T,\cdot)=0$)}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e., $\hat{v}(\tilde{\bm{x}}_T,\cdot)=0$)}
 \Param{forgetting factor $\lambda\in\left\{\mathbb{R}|0 < \lambda \leq 1\right\}$}
 \Init{weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, covariance $\bm{P}>0$ (e.g. $\bm{P}=\beta\bm{I}$)}
  \For{$j=1,2,\ldots$ episodes}{
@@ -641,7 +641,7 @@ with
 	\end{itemize}
 	\item For $\lambda=1$ the RLS converges to a static solution.
 	\begin{itemize}
-		\item Never forgets something (i.e. problematic if nonstationary problem).
+		\item Never forgets something (i.e., problematic if nonstationary problem).
 		\item Given the same data set $\bm{\mathcal{D}}$ the RLS converges to OLS solution.
 	\end{itemize}\pause
 	\item However, if RLS-TD should be used online $\lambda\in[0.95, 0.99]$ is typical.
@@ -685,7 +685,7 @@ The gradient-based update in \eqref{eq:gradient_learning} is an RL standard but 
 %% Possible solutions for the continued use of SGD %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Possible Solutions for the Continued Use of SGD}
-Reinitialize SGD-based learning (multistart approach) e.g.
+Reinitialize SGD-based learning (multistart approach), e.g.,
 \begin{itemize}
 	\item grid search or
 	\item random search (according to some random distribution).

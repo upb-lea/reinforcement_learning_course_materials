@@ -392,7 +392,7 @@ In this section, some of the most important RL terms are shortly explained and s
 \begin{itemize}
 	\item A \hl{reward} is a scalar \hl{random variable} $R_k$ with \hl{realizations} $r_k$.
 	\item Often it is considered a real-number $r_k\in\mathbb{R}$ or an integer $r_k\in\mathbb{Z}$.\pause
-	\item The reward function (interpreter) may be naturally given or is a design degree of freedom (i.e. can be manipulated).\pause 
+	\item The reward function (interpreter) may be naturally given or is a design degree of freedom (i.e., can be manipulated).\pause 
 	\item It fully indicates how well an RL agent is doing at step $k$.
 	\item Hence, the agent's task is to maximize its reward over time.\pause
 \end{itemize}
@@ -543,7 +543,7 @@ The RL agent's learning process is heavily linked with the reward distribution o
 \pause
 	\item If $r_k=r$ is a constant and $\gamma<1$ one receives:
 	\begin{equation}
-		g_k = \sum_{i=0}^\infty \gamma^i r = r \sum_{i=0}^\infty \gamma^i = r\frac{1}{1-\gamma}\, 
+		g_k = \sum_{i=0}^\infty \gamma^i r = r \sum_{i=0}^\infty \gamma^i = r\frac{1}{1-\gamma}\, .
 	\end{equation}
 \end{itemize}
 }
@@ -611,7 +611,7 @@ A state $\bm{X}_k$ is called an information state if and only if
 \end{defi}
 \pause
 \begin{itemize}
-	\item History is fully condensed in $\bm{x}_k$, i.e. $\bm{x}_{k+1}$ is only depending on $\bm{x}_k$.
+	\item History is fully condensed in $\bm{x}_k$, i.e., $\bm{x}_{k+1}$ is only depending on $\bm{x}_k$.
 	\item A given system can be fully described by $\bm{x}_k$.
 \end{itemize}
 }
@@ -670,7 +670,7 @@ Nonlinear time-invariant state space model:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Action}
 \begin{itemize}
-	\item An \hl{action} is the agent's degree of freedom in order to maximize its reward (i.e. the agent's output at each sample $k$).
+	\item An \hl{action} is the agent's degree of freedom in order to maximize its reward (i.e., the agent's output at each sample $k$).
 	\pause
 	\item Major distinction:
 	\begin{itemize}
@@ -687,7 +687,7 @@ Nonlinear time-invariant state space model:
 	\end{itemize}
 \end{itemize}
 \begin{block}{Remark on state and action spaces}
-Evaluating the state and action space framework (e.g. discrete vs. continuous) of a new RL problem should be always one of the first steps in order to choose appropriate solution algorithms.  
+Evaluating the state and action space framework (e.g., discrete vs. continuous) of a new RL problem should be always one of the first steps in order to choose appropriate solution algorithms.  
 \end{block}
 }
 
@@ -757,16 +757,17 @@ Evaluating the state and action space framework (e.g. discrete vs. continuous) o
 	\item Assuming an MDP problem structure the state-value function is
 	\begin{equation}
 	\label{eq:state_value_lec01}
-		v_\pi(\bm{x}_k) = \El{G_k|\bm{X}_k=\bm{x}_k}{\pi}=\El{\left. \sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k}{\pi}
+		v_\pi(\bm{x}_k) = \El{G_k|\bm{X}_k=\bm{x}_k}{\pi}=\El{\left. \sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k}{\pi}.
 	\end{equation}
 	\pause
 \item The \hl{action-value function} is the expected return being in state $\bm{x}_k$ taken an action $\bm{u}_k$ and, thereafter, following a policy $\bm{\pi}$: $q_\pi(\bm{x}_k, \bm{u}_k)$.
 \pause
 	\item Assuming an MDP problem structure the action-value function is
+\end{itemize}
 	\begin{equation}
-		q_\pi(\bm{x}_k,\bm{u}_k) = \El{G_k|\bm{X}_k=\bm{x}_k, \bm{U}_k=\bm{u}_k}{\pi}=\El{\left.\sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k, \bm{u}_k}{\pi}
-	\end{equation}
-	\pause
+		q_\pi(\bm{x}_k,\bm{u}_k) = \El{G_k|\bm{X}_k=\bm{x}_k, \bm{U}_k=\bm{u}_k}{\pi}=\El{\left.\sum_{i=0}^\infty \gamma^i R_{k+i+1}\right|\bm{x}_k, \bm{u}_k}{\pi}.
+	\end{equation}\pause
+\begin{itemize}
 	\item A key task in RL is to estimate $v_\pi(\bm{x}_k)$ and $q_\pi(\bm{x}_k,\bm{u}_k)$ based on sampled data.
 \end{itemize}
 }
@@ -902,7 +903,7 @@ Key characteristics:
 	\begin{itemize}
 		\item Agent uses internal model of the environment. 
 		\item The model is only an estimate (inaccurate, incomplete).
-		\item The agent interacts with the model before taking the next action (e.g. by numerical optimizers).
+		\item The agent interacts with the model before taking the next action (e.g., by numerical optimizers).
 	\end{itemize}
 \end{minipage}
 }
@@ -968,7 +969,7 @@ The reward hypothesis in \theoref{theo:reward_hypo} is basically an \hl{infinite
 	v_k^* = \min_{\bm{u}_k} \sum_{i=1}^\infty r_{k+i} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}
 \pause
-For certain cases closed-form solutions can be found, e.g. a LTI system with quadratic costs and no further constraints can be optimally controlled by a linear-quadratic regulator (LQR). However, for arbitrary cases that is not possible and one relaxes the problem to a \hl{finite-horizon optimal control} problem:   
+For certain cases closed-form solutions can be found, e.g., a LTI system with quadratic costs and no further constraints can be optimally controlled by a linear-quadratic regulator (LQR). However, for arbitrary cases that is not possible and one relaxes the problem to a \hl{finite-horizon optimal control} problem:   
 \begin{equation}
 	v_k^* = \min_{\bm{u}_k} \sum_{i=1}^{N_p} r_{k+i} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}

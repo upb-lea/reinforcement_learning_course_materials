@@ -353,7 +353,7 @@ Together with \eqref{eq:Elig_trace} the semi-gradient TD($\lambda$) update is:
 		g_{k:h}^\lambda = (1-\lambda)\sum_{n=1}^{h-k-1}\lambda^{(n-1)}g_{k:k+n} + \lambda^{h-k-1}g_{k:h}\,.
 	\end{equation*}\pause
 	\item If $h<T$ then we can perform online updates since $\bm{w}$ is changed within an episode.\pause
-	\item Implementation is very similar to $n$-step bootstrapping, also forward view (e.g. still delayed with increased memory demand):  
+	\item Implementation is very similar to $n$-step bootstrapping, also forward view (e.g., still delayed with increased memory demand):  
 \end{itemize}
 \begin{equation*}
 \begin{split}
@@ -479,7 +479,7 @@ The true online TD($\lambda$) update equations are\footnote[1]{\onslide<3->{Find
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
 \Input{a policy $\pi$ to be evaluated}
-\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{v}(\tilde{\bm{x}}_T,\cdot)=0$)}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e., $\hat{v}(\tilde{\bm{x}}_T,\cdot)=0$)}
 \Param{step size $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$, decay rate $\lambda\in\left\{\mathbb{R}|0 \leq \lambda \leq 1\right\}$}
 \Init{value-function weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
  \For{$j=1,2,\ldots$ episodes}{
@@ -611,7 +611,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 	\item Likewise TD($\lambda$) for state values, Sarsa($\lambda$) is not an exact backward view implementation of the offline $\lambda$-return algorithm \eqref{eq:offline_lambda_return_action}.\pause
  \item To improve the Sarsa($\lambda$) performance we again have two options:
 \begin{itemize}
-	\item Redoing updates: Online Sarsa($\lambda$) (e.g. with non-linear function approximation, direct transfer from \eqref{eq:online_lambda_return_update}),
+	\item Redoing updates: Online Sarsa($\lambda$) (e.g., with non-linear function approximation, direct transfer from \eqref{eq:online_lambda_return_update}),
 	\item or re-use the true online implementation with linear approximators for action values.
 \end{itemize}
 \end{itemize}\pause
@@ -640,7 +640,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
 \Input{a policy $\pi$ to be evaluated}
-\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{q}(\tilde{\bm{x}}_T,\cdot,\cdot)=0$)}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e., $\hat{q}(\tilde{\bm{x}}_T,\cdot,\cdot)=0$)}
 \Param{$\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, $\lambda\in\left\{\mathbb{R}|0 \leq \lambda \leq 1\right\}$}
 \Init{value-function weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
  \For{$j=1,2,\ldots$ episodes}{

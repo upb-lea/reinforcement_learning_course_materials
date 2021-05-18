@@ -18,7 +18,7 @@ Temporal-difference (TD) learning combines the previous ideas introduced in DP a
 Hence, TD characteristics are:
 \begin{itemize}
 	\item Allows model-free prediction and control in unknown MDPs.
-	\item Updates policy evaluation and improvement in an online fashion (i.e. not per episode) by bootstrapping. 
+	\item Updates policy evaluation and improvement in an online fashion (i.e., not per episode) by bootstrapping. 
 	\item Still assumes  finite MDP problems (or problems close to that).
 \end{itemize}
 }
@@ -70,7 +70,7 @@ Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for no
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
 \Input{a policy $\pi$ to be evaluated}
-\Output{estimate of $\bm{v}_{\mathcal{X}}^{\pi}$ (i.e. value estimates for all states				 $x\in\mathcal{X}$)}
+\Output{estimate of $\bm{v}_{\mathcal{X}}^{\pi}$ (i.e., value estimates for all states				 $x\in\mathcal{X}$)}
 \Init{$\hat{v}(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal}
  \For{$j=1,\ldots,J$ episodes}{
 		Initialize $x_{0}$\;
@@ -164,9 +164,11 @@ The \hl{TD error} is:
 \begin{table}
 	\centering
 		\begin{tabular}{l|M{2cm}|M{2cm}|M{2cm}}
-			\onslide<1->{state & elapsed time  & predicted time to go & predicted total time\\
+			\onslide<1->{
+			state & elapsed time  & predicted time to go & predicted total time\\
 			\hline
-			leaving office & 0 & 30 & 30\\}
+			leaving office & 0 & 30 & 30\\
+			}
 			\onslide<2->reaching car, raining & 5 & 35 &40\\
 			\onslide<3->exiting highway & 20 & 15 & 35\\
 			\onslide<4->behind truck & 30 & 10 & 40\\
@@ -197,7 +199,7 @@ The \hl{TD error} is:
 	\item TD could learn without a final outcome.
 	\begin{itemize}
 		\item MC is only applicable to episodic tasks.
-		\item TD can learn from incomplete sequences i.e. in continuing tasks.
+		\item TD can learn from incomplete sequences, i.e., in continuing tasks.
 	\end{itemize}
 \end{itemize}
 }
@@ -259,6 +261,7 @@ plus disaster probability $\alpha=0.2$:
 %% Convergence of TD(0)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Convergence of TD(0)}
+\vspace{-0.3cm}
 \begin{theo}{Convergence of TD(0)}{converge_TD_zero}
 Given a finite MDP and a fixed policy $\pi$ the state-value estimate of TD(0) converges to the true $v_\pi$
 \begin{itemize}
@@ -269,7 +272,7 @@ Given a finite MDP and a fixed policy $\pi$ the state-value estimate of TD(0) co
 		\label{eq:stoch_approx_condition}
 	\end{equation}
 \end{itemize}
-Above $k$ is the sample index (i.e. how often the TD update was applied). 
+Above $k$ is the sample index (i.e., how often the TD update was applied). 
 \end{theo}\pause
 \begin{itemize}
 	\item In particular, $\alpha_k=\frac{1}{k}$ meets the condition \eqref{eq:stoch_approx_condition}.\pause
@@ -284,7 +287,7 @@ Above $k$ is the sample index (i.e. how often the TD update was applied).
 \frame{\frametitle{Batch Training}
 \begin{itemize}
 	\item If experience $\rightarrow\infty$ both MC and TD converge $\hat{v}(x)\rightarrow v(x)$.
-	\item But how to handle limited experience i.e. a finite set of episodes
+	\item But how to handle limited experience, i.e., a finite set of episodes
 	\begin{align*}
 		&x_{1,1}, u_{1,1} , r_{2,1}, \ldots, x_{T_1,1},\\
 		&x_{1,2}, u_{1,2} , r_{2,2}, \ldots, x_{T_2,2},\\
@@ -370,14 +373,14 @@ Considering a batch learning sweep over $j=1,\ldots,J$ episodes:
 %% Batch Training: AB-Example (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Batch Training: AB-Example (3)}
-Apply the previous equations first to state B. Since B is a terminal state, $\hat{v}(x_{k+1})=0$ and $g_{k,j}= r_{k+1,j}$ apply, i.e. the MC and TD updates are identical for B:
+Apply the previous equations first to state B. Since B is a terminal state, $\hat{v}(x_{k+1})=0$ and $g_{k,j}= r_{k+1,j}$ apply, i.e., the MC and TD updates are identical for B:
 \begin{alignat*}{3}
 	\mbox{MC}|_{x=\mbox{B}}: \quad &0=\sum_{j=1}^J g_{k,j} - \hat{v}(x_{k,j})\quad &&\Leftrightarrow \quad &&\hat{v}(\mbox{B})=\frac{1}{J}\sum_{j=1}^J g_{k,j},\\
 	\mbox{TD}|_{x=\mbox{B}}:	\quad&0=\sum_{j=1}^J r_{k+1,j}- \hat{v}(x_{k,j})\quad &&\Leftrightarrow \quad &&\hat{v}(\mbox{B})=\frac{1}{J}\sum_{j=1}^J g_{k,j}.
 \end{alignat*}\pause
-This is the average return of the available episodes from \tabref{tab:state_reward_AB_example} , i.e. $6\times 1$ and $2\times 0$:
+This is the average return of the available episodes from \tabref{tab:state_reward_AB_example} , i.e., $6\times 1$ and $2\times 0$:
 \begin{equation}
-	\hat{v}(\mbox{B})|_{\mbox{MC}}=\hat{v}(\mbox{B})|_{\mbox{TD}}=\frac{6}{8}=0.75
+	\hat{v}(\mbox{B})|_{\mbox{MC}}=\hat{v}(\mbox{B})|_{\mbox{TD}}=\frac{6}{8}=0.75\, .
 \end{equation}
 }
 
@@ -408,7 +411,7 @@ Where does this mismatch between the MC and TD estimates come from?
 \begin{itemize}
 	\item MC batch learning converges to the \hl{least squares fit} of the sampled returns:
 	\begin{equation}
-		\sum_{j=1}^{J}\sum_{k=1}^{T_j} \left(g_{k,j}- \hat{v}(x_{k,j})\right)^2
+		\sum_{j=1}^{J}\sum_{k=1}^{T_j} \left(g_{k,j}- \hat{v}(x_{k,j})\right)^2 .
 	\end{equation}\pause\vspace{-0.25cm}
 	\item TD batch learning converges to the \hl{maximum likelihood estimate} such that $\left\langle\mathcal{X}, \mathcal{U}, \hat{\mathcal{P}}, \hat{\mathcal{R}}, \gamma \right\rangle$ explains the data with highest probability:
 	\begin{equation}
@@ -447,9 +450,9 @@ GPI concept is directly applied to the TD framework using action values:
 	\end{block}\pause
 \begin{itemize}
 	\item In contrast to MC: continuous online updates of policy evaluation and improvement.\pause
-	\item On-policy approach requires exploration e.g. by an $\varepsilon$-greedy policy:
+	\item On-policy approach requires exploration, e.g., by an $\varepsilon$-greedy policy:
 	\begin{equation}
-		\pi_i(u|x)\leftarrow\begin{cases}1-\varepsilon+\varepsilon/|\mathcal{U}|, \quad u=\tilde{u}\\ \varepsilon/|\mathcal{U}|, \quad u\neq\tilde{u}\end{cases}
+		\pi_i(u|x)\leftarrow\begin{cases}1-\varepsilon+\varepsilon/|\mathcal{U}|, \quad u=\tilde{u},\\ \varepsilon/|\mathcal{U}|, \quad u\neq\tilde{u}.\end{cases}
 	\end{equation}
 \end{itemize}
 }
@@ -470,7 +473,7 @@ GPI concept is directly applied to the TD framework using action values:
 \Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
 \For{$j=1,2,\ldots$ episodes}{
 	Initialize $x_0$\;
-	Choose $u_0$ from $x_0$ using a soft policy (e.g. $\varepsilon$-greedy) derived from $\hat{q}(x,u)$\;
+	Choose $u_0$ from $x_0$ using a soft policy (e.g., $\varepsilon$-greedy) derived from $\hat{q}(x,u)$\;
 	$k \leftarrow 0$\;
 	\Repeat{$x_k$ is terminal}{
 				Take action $u_k$, observe $r_{k+1}$ and $x_{k+1}$\;
@@ -598,7 +601,7 @@ Similar to Sarsa updates, but $Q$-learning directly estimates $q^*$:
 Requirement for $Q$-learning control:
 \begin{itemize}
 	\item Coverage: behavior policy $b$  has nonzero probability of selecting actions that might be taken by the target policy $\pi$.
-	\item Consequence: behavior policy $b$ is soft (e.g. $\varepsilon$-soft).  
+	\item Consequence: behavior policy $b$ is soft (e.g., $\varepsilon$-soft).  
 	\item Step-size requirements \eqref{eq:stoch_approx_condition} regarding $\alpha$ apply. 
 \end{itemize}
 }
@@ -632,7 +635,7 @@ Requirement for $Q$-learning control:
 \end{algorithm}
 \vspace{0.5cm}
 \begin{itemize}
-	\item Even simpler compared to Sarsa implementation in \algoref{algo:Sarsa}
+	\item Even simpler compared to Sarsa implementation in \algoref{algo:Sarsa}.
 	\item As discussed with MC-based off-policy control: avoidance of the exploration-optimality trade-off for on-policy methods.  
 	\item No importance sampling required as for off-policy MC-based control.
 \end{itemize}
@@ -782,7 +785,7 @@ Small example:
 \begin{itemize}
 	\item Consider a single state $x$ with multiple possible actions $u$.
 	\item The true action values are all $q(x,u)=0$ .
-	\item The sampled estimates $\hat{q}(x,u)$ are uncertain, i.e. randomly distributed. Some samples are above and below zero.
+	\item The sampled estimates $\hat{q}(x,u)$ are uncertain, i.e., randomly distributed. Some samples are above and below zero.
 	\item Consequence: The maximum of the estimate is positive.
 \end{itemize}
 }
@@ -865,7 +868,7 @@ Assign specific tasks to each estimate:
 \begin{itemize}
 	\item TD unites two key characteristics from DP and MC:
 	\begin{itemize}
-		\item From MC: Sample-based updates (i.e. operating in unknown MDPs).
+		\item From MC: Sample-based updates (i.e., operating in unknown MDPs).
 		\item From DP: Update estimates based on other estimates (bootstrapping).
 	\end{itemize}\pause
 	\item TD allows certain simplifications and improvements compared to MC:
@@ -875,7 +878,7 @@ Assign specific tasks to each estimate:
 		\item Exploits MDP formalism by maximum likelihood estimates. \pause
 		\item Hence, TD prediction and control exhibit a high applicability for many problems.\pause
 	\end{itemize}
-	\item Batch training can be used when only limited experience is available i.e. the available samples are re-processed again and again.\pause
+	\item Batch training can be used when only limited experience is available, i.e., the available samples are re-processed again and again.\pause
 	\item Greedy policy improvements can lead to maximization biases and, therefore, slow down the learning process. \pause
 	\item TD requires careful tuning of learning parameters:
 	\begin{itemize}

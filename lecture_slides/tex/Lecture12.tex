@@ -72,7 +72,7 @@ to (direct) policy-based solutions:
 \frame{\frametitle{Motivating Example (2): Strategic Gaming}
 \onslide<1->Task: Two-player game of extended rock-paper-scissors 
 \begin{itemize}
-	\onslide<2->\item A deterministic policy (i.e. value-based with given feature representation) can be easily exploited by the opponent.
+	\onslide<2->\item A deterministic policy (i.e., value-based with given feature representation) can be easily exploited by the opponent.
 	\onslide<3->\item	Conversely, a uniform random policy would be unpredictable.
 \end{itemize}
 
@@ -101,7 +101,7 @@ A typical policy function is:
 	with $h(\bm{x},u,\bm{\theta}):\mathcal{X}\times\mathcal{U}\times\mathbb{R}^d \rightarrow \mathbb{R}$ being the numerical preference per state-action pair.\pause
 	\item Denominator of \eqref{eq:soft_max_preference} sums up action probabilities to one per state. \pause
 	\item Is designed as a stochastic policy but can approach deterministic behavior in the limit. \pause
-	\item The preference is parametrized via a function approximator e.g. linear in features
+	\item The preference is parametrized via a function approximator, e.g., linear in features
 	\begin{equation}
 		h(\bm{x},u,\bm{\theta}) = \bm{\theta}\T\tilde{\bm{x}}(\bm{x}, u).
 	\end{equation}
@@ -126,8 +126,8 @@ A typical policy function is:
 	with mean $\mu(\bm{x},\bm{\theta}):\mathcal{X}\times\mathbb{R}^d \rightarrow \mathbb{R}$ and standard deviation $\sigma(\bm{x},\bm{\theta}):\mathcal{X}\times\mathbb{R}^d \rightarrow \mathbb{R}$ given by parametric function approximation.\pause
 		\item Variants regarding function $\mu$ and $\sigma$:
 	\begin{enumerate}
-		\item Both  share a mutual parameter set $\bm{\theta}$ (e.g. artifical neural network with multiple outputs).\pause
-		\item Both are parametrized independently $\bm{\theta}=\begin{bmatrix}\bm{\theta}_\mu & \bm{\theta}_\sigma\end{bmatrix}\T$ (e.g. by two linear regression functions).\pause
+		\item Both  share a mutual parameter set $\bm{\theta}$ (e.g., artificial neural network with multiple outputs).\pause
+		\item Both are parametrized independently $\bm{\theta}=\begin{bmatrix}\bm{\theta}_\mu & \bm{\theta}_\sigma\end{bmatrix}\T$ (e.g., by two linear regression functions).\pause
 		\item Only $\mu(\bm{x},\bm{\theta})$ is parametrized while $\sigma$ is scheduled externally. 
 	\end{enumerate}
 \end{itemize}
@@ -262,7 +262,7 @@ Possible optimality metrics:
 	\begin{equation*}
 		\bm{\theta} \leftarrow\bm{\theta} + \alpha \nabla_{\bm{\theta}} J(\bm{\theta}).
 	\end{equation*}\pause\vspace{-0.4cm}
-	\item True gradient $\nabla_{\bm{\theta}} J(\bm{\theta})$ is usually approximated e.g. by stochastic gradient descent (SGD) or derived variants.
+	\item True gradient $\nabla_{\bm{\theta}} J(\bm{\theta})$ is usually approximated, e.g., by stochastic gradient descent (SGD) or derived variants.
 \end{itemize}
 \end{minipage}
 \end{column}
@@ -339,12 +339,12 @@ Also note:
 %% Pro and Cons %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Pro and Cons: Policy vs. Value-Based Approaches}
-\hl{Pro value-based solutions} (e.g. $Q$-learning):\pause
+\hl{Pro value-based solutions} (e.g., $Q$-learning):\pause
 \begin{itemize}
 	\item Estimated value is an intuitive performance metric.\pause
 	\item Considered sample-efficient (cf. replay buffer or bootstrapping).\pause
 \end{itemize}
-\hl{Pro policy-based solutions} (e.g. using policy gradient):\pause
+\hl{Pro policy-based solutions} (e.g., using policy gradient):\pause
 \begin{itemize}
 	\item Policy gradient theorem provides strong convergence properties.\pause
 	\item Seamless integration of stochastic and dynamic policies.\pause
@@ -374,7 +374,7 @@ Mutual hassle:
 \frame{\frametitle{Basic Concept}
 Initial situation:
 \begin{itemize}
-	\item Score function $\nabla_{\bm{\theta}}\ln \pi(\bm{u}|\bm{x},\bm{\theta})$ can be calculated analytically using suitable policy and chain rule (e.g. by algorithmic differentiation).
+	\item Score function $\nabla_{\bm{\theta}}\ln \pi(\bm{u}|\bm{x},\bm{\theta})$ can be calculated analytically using suitable policy and chain rule (e.g., by algorithmic differentiation).
 	\item Open question: how to retrieve $q_{\pi}(\bm{x},\bm{u})$ in 
 	\begin{equation*}
 	\nabla_{\bm{\theta}} J(\bm{\theta}) = \El{q_{\pi}(\bm{x},\bm{u})\nabla_{\bm{\theta}}\ln \pi(\bm{u}|\bm{x},\bm{\theta})}{\pi} \,\,\mbox{?}
@@ -480,7 +480,7 @@ Monte Carlo policy gradient:
 	\begin{equation}
 	a_\pi(\bm{x},\bm{u})= q_{\pi}(\bm{x},\bm{u})-v_{\pi}(\bm{x}) .
 \end{equation}\pause
-\item Interpretation: value difference taking (arbitrary) action $\bm{u}$ and thereafter following policy $\pi$ compared to the state value following same policy (i.e. choosing $\bm{u}\sim\pi$) given the state.\pause
+\item Interpretation: value difference taking (arbitrary) action $\bm{u}$ and thereafter following policy $\pi$ compared to the state value following same policy (i.e., choosing $\bm{u}\sim\pi$) given the state.\pause
 \item Hence, we might rewrite to:
 	\begin{equation}
 	\nabla_{\bm{\theta}} J(\bm{\theta}) = \El{a_\pi(\bm{x},\bm{u})\nabla_{\bm{\theta}}\ln \pi(\bm{u}|\bm{x},\bm{\theta})}{\pi}.
@@ -551,7 +551,7 @@ Conclusion of Monte Carlo policy gradient with baseline:
 	\item Updates only available after full episodes.
 \end{itemize}\pause
 \vspace{0.5cm}
-Alternative: use an additional function approximator, the so-called \hl{critic}, to estimate $q_{\pi}$ (i.e. approximate policy gradient):
+Alternative: use an additional function approximator, the so-called \hl{critic}, to estimate $q_{\pi}$ (i.e., approximate policy gradient):
 \begin{equation*}
 \begin{split}
 	 v(\bm{x})&\approx \hat{v}(\bm{x}, \bm{w}_v),\\
@@ -728,11 +728,11 @@ Interpretation:
 \begin{itemize}
 	\item The policy gradient $\nabla_{\bm{\theta}} \ln \pi_{\bm{\theta}}(\bm{x}, \bm{u})$ delivers input features for a linear mapping of the value function approximation:
 	\begin{equation*}
-	\hat{q}(\bm{x}, \bm{u}, \bm{w})= \left(\nabla_{\bm{\theta}} \ln \pi_{\bm{\theta}}(\bm{x}, \bm{u})\right)\T\bm{w}
+	\hat{q}(\bm{x}, \bm{u}, \bm{w})= \left(\nabla_{\bm{\theta}} \ln \pi_{\bm{\theta}}(\bm{x}, \bm{u})\right)\T\bm{w}.
 \end{equation*}\pause
  \item The unknown parameters $\bm{w}$ are the solution to a linear regression problem estimating $q_{\pi}(\bm{x}, \bm{u})$:
 \begin{equation*}
-	\bm{w}^* = \argmax_{\bm{w}}\,\, \E{q_{\pi}(\bm{x}, \bm{u}) - \hat{q}(\bm{x}, \bm{u}, \bm{w})}^2
+	\bm{w}^* = \argmax_{\bm{w}}\,\, \E{q_{\pi}(\bm{x}, \bm{u}) - \hat{q}(\bm{x}, \bm{u}, \bm{w})}^2.
 \end{equation*}\pause
 	\item The latter condition may be solved using a batch LSTD approach or relaxed in favor of policy evaluation algorithms using TD learning.
 \end{itemize}
@@ -873,7 +873,7 @@ Recap on policy gradient so far:
 	\item The resulting on-policy algorithms may not provide top-class learning performance: \pause
 	\begin{itemize}
 		\item Non-guided exploration with step-by-step updates and
-		\item Greedy actions only in the limit (i.e. infeasible long learning).  
+		\item Greedy actions only in the limit (i.e., infeasible long learning).  
 	\end{itemize}\pause
 \end{itemize}
 \vspace{0.5cm}
@@ -900,9 +900,9 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 \end{equation}
 \end{theo}\pause
 \begin{itemize}
-\item Again, $q$ needs to be approximated using samples e.g. implementing a critic via TD learning.\pause
+\item Again, $q$ needs to be approximated using samples, e.g., implementing a critic via TD learning.\pause
 \item Bias problem applies as in the stochastic case and can be compensated using compatible function approximation w.r.t to $\hat{q}$.\pause
-\item It turns out that \eqref{eq:policy_gradient_theo_det} is also (approximately) valid in the off-policy case i.e. if the sample distribution is obtained from a behavior policy.\pause  
+\item It turns out that \eqref{eq:policy_gradient_theo_det} is also (approximately) valid in the off-policy case, i.e., if the sample distribution is obtained from a behavior policy.\pause  
 \item Proof can be found in \href{http://proceedings.mlr.press/v32/silver14.pdf}{D. Silver et al., \textit{Deterministic Policy Gradient Algorithms}, International Conference on Machine Learning, 2014}
 
 \end{itemize}
@@ -916,8 +916,8 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 	\item If the DPG approach is applied on-policy there is no inherent exploration.
 	\item How to learn something?\pause
 	\begin{itemize}
-		\item The environment itself is sufficiently noisey (random impacts, measurement noise).\pause
-		\item Or we have to add noise to the actions i.e. making the approach off-policy.\pause
+		\item The environment itself is sufficiently noisy (random impacts, measurement noise).\pause
+		\item Or we have to add noise to the actions, i.e., making the approach off-policy.\pause
 		\item Hence, utilizing a behavior policy is also possible.\pause
 	\end{itemize}
 	\item That additional action noise could be:
@@ -997,7 +997,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Exemplary Comparison to Stochastic Policy Gradient}
 \begin{itemize}
-	\item DPG-based approach uses compatible function approximation i.e. suitable linear $\hat{q}$ estimation. A fixed Gaussian behavior policy is applied for exploration. 
+	\item DPG-based approach uses compatible function approximation, i.e., suitable linear $\hat{q}$ estimation. A fixed Gaussian behavior policy is applied for exploration. 
 	\item SAC uses a Gaussian policy with linear function approximation.
 \end{itemize}
 \begin{figure}
@@ -1067,7 +1067,7 @@ Algorithm collections with decent application-oriented documentation:
 		\item Monte Carlo prediction is straightforward, but comes with high variance and slow learning.\pause
 		\item Adding a state-dependent baseline comparison does not change the policy gradient in expectation but enables decreasing the variance.\pause
 	\end{itemize}
-	\item Extending this idea naturally leads to integrating a critic network i.e. an additional function approximation to estimate the value.\pause
+	\item Extending this idea naturally leads to integrating a critic network, i.e., an additional function approximation to estimate the value.\pause
 	\item The critic can be fed by the usual targets (TD(0), TD($\lambda$),...).
 \end{itemize}
 \end{frame}

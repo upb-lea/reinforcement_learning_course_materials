@@ -19,7 +19,7 @@ Dynamic Programming:
 \end{itemize}
 \vspace{1cm}
 \pause
-Monte Carlo Methods:
+Monte Carlo methods:
 \begin{itemize}
 	\item \hl{Model-free} prediction and control
 	\item Estimating value functions and optimize policies in \hl{unknown MDPs}
@@ -33,7 +33,7 @@ Monte Carlo Methods:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{General Monte Carlo (MC) Methods' Characteristics}
 \begin{itemize}
-	\onslide<1->\item \hl{Learning  from experience} i.e. sequences of samples $\left\langle x_k, u_k, r_{k+1}\right\rangle$
+	\onslide<1->\item \hl{Learning  from experience}, i.e., sequences of samples $\left\langle x_k, u_k, r_{k+1}\right\rangle$
 	\onslide<2->\item Main concept: Estimation by \hl{averaging sample returns}
 	\onslide<3->\item To guarantee well-defined returns: \hl{limited to episodic tasks}
 	\onslide<4->\item Consequence: Estimation and policy updates only possible in an episode-by-episode way compared to step-by-step (online)
@@ -89,7 +89,7 @@ MC solution approach:
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
 \Input{a policy $\pi$ to be evaluated}
-\Output{estimate of $\bm{v}_{\mathcal{X}}^{\pi}$ (i.e. value estimate for all states				 $x\in\mathcal{X}$)}
+\Output{estimate of $\bm{v}_{\mathcal{X}}^{\pi}$ (i.e., value estimate for all states				 $x\in\mathcal{X}$)}
 \Init{$\hat{v}(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal\newline 
 $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
  \For{$j=1,\ldots,J$ episodes}{
@@ -254,7 +254,7 @@ plus disaster probability $\alpha=0.2$:
 %% MC Estimation of Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{MC Estimation of Action Values}
-Is a \hl{model available} (i.e. tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$)? 
+Is a \hl{model available} (i.e., tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$)? 
 \begin{itemize}
 	\item \hl{Yes}: state values plus one-step prediction deliver optimal policy.
 	\item \hl{No}: action values are very useful to directly obtain optimal choices.  
@@ -270,7 +270,7 @@ Possible problem when following a deterministic policy $\pi$:
 \begin{itemize}
 	\item Certain state-action pairs $(x, u)$ are never visited.
 	\item Missing degree of exploration.\pause
-	\item Workaround: \hl{exploring starts} i.e. starting episodes in random state-action pairs $(x, u)$ and thereafter following  $\pi$. 
+	\item Workaround: \hl{exploring starts}, i.e., starting episodes in random state-action pairs $(x, u)$ and thereafter following  $\pi$. 
 \end{itemize}
 }
 
@@ -425,7 +425,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 	\vspace{0.5cm}
 	\item \hl{$\varepsilon$-greedy on-policy learning} 
 		\begin{itemize}
-		\item With probability $\varepsilon$ the agent's choice (i.e. the policy output) is overwritten with a random action.
+		\item With probability $\varepsilon$ the agent's choice (i.e., the policy output) is overwritten with a random action.
 		\item Probability of all non-greedy actions: \begin{equation}\varepsilon/|\mathcal{U}|\,.\end{equation}
 		\item Probability of the greedy action: \begin{equation}1-\varepsilon+\varepsilon/|\mathcal{U}|\,.\end{equation}
 		\item Above, $|\mathcal{U}|$ is the cardinality of the action space.
@@ -474,7 +474,7 @@ $n(x,u)\leftarrow$ an empty list counting state-action visits $\forall \, \left\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{$\varepsilon$-Greedy Policy Improvement (1)}
 \begin{theo}{Policy improvement for $\varepsilon$-greedy policy}{policy_improv_eps_greedy}
-Given an MDP, for any $\varepsilon$-greedy policy $\pi$ the $\varepsilon$-greedy policy $\pi'$ with respect to $q_\pi$ is an improvement, i.e. $v_{\pi'} > v_{\pi} \quad \forall x\in\mathcal{X}$.
+Given an MDP, for any $\varepsilon$-greedy policy $\pi$ the $\varepsilon$-greedy policy $\pi'$ with respect to $q_\pi$ is an improvement, i.e., $v_{\pi'} > v_{\pi} \quad \forall x\in\mathcal{X}$.
 \end{theo}\pause
 Small proof:
 \small
@@ -643,7 +643,7 @@ Requirement:
 	\item Consequences from that:
 	\begin{itemize}
 		\item In any state $b$ is not identical to $\pi$, $b$ must be stochastic.
-		\item Nevertheless: $\pi$ might be deterministic (e.g. control applications) or stochastic.
+		\item Nevertheless: $\pi$ might be deterministic (e.g., control applications) or stochastic.
 	\end{itemize}
 \end{itemize}
 }
@@ -689,7 +689,7 @@ Notation remark:
 General remark:
 \begin{itemize}
 	\item From \eqref{eq:import_sampl_ratio} it can be seen that $\hat{v}$ is bias-free (first-visit assumption).
-	\item However, if $\rho$ is large (distinctly different policies) the estimate's variance is large (i.e. uncertain for small numbers of samples).
+	\item However, if $\rho$ is large (distinctly different policies) the estimate's variance is large (i.e., uncertain for small numbers of samples).
 \end{itemize}
 }
 
@@ -822,7 +822,7 @@ Just put everything together:
 Requirement for off-policy MC-based control:
 \begin{itemize}
 	\item \hl{Coverage}: behavior policy $b$  has nonzero probability of selecting actions that might be taken by the target policy $\pi$.
-	\item Consequence: behavior policy $b$ is \hl{soft} (e.g. $\varepsilon$-soft).  
+	\item Consequence: behavior policy $b$ is \hl{soft} (e.g., $\varepsilon$-soft).  
 \end{itemize}
 }
 
@@ -914,7 +914,7 @@ Possible improvements/extensions:
 \begin{itemize}
 	\item MC methods allow model-free learning of value functions and optimal policies from experience in the form of sampled episodes.
 	\item Using deep back-ups over full episodes, MC is largely based on averaging returns. \pause
-	\item MC-based control reuses generalized policy iteration (GPI) i.e. mixing policy evaluation and improvement. \pause
+	\item MC-based control reuses generalized policy iteration (GPI), i.e., mixing policy evaluation and improvement. \pause
 	\item Maintaining sufficient exploration is important:
 	\begin{itemize}
 		\item Exploring starts: not feasible in all applications but simple.

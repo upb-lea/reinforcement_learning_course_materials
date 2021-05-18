@@ -15,7 +15,7 @@ Problem space: it is further assumed that
 \vspace{0.5cm}
 Today's focus:
 \begin{itemize}
-	\item \hl{valued-based control} tasks i.e. transferring the established tabular methods to work with function approximation.
+	\item \hl{valued-based control} tasks, i.e., transferring the established tabular methods to work with function approximation.
 	\item Hence, we need to extend the previous prediction methods to action values
 \end{itemize}
 \begin{equation}
@@ -40,8 +40,8 @@ Today's focus:
 \end{figure}
 \begin{itemize}
 	\item Left: one function with both states and actions as input
-	\item Middle: one function with $i=1,2,\ldots$ outputs covering the action space (e.g. ANN with appropriate output layer)
-	\item Right: multiple (sub-)functions one for each possible action $u_i$ (e.g. multitude of linear approximators in small action spaces)
+	\item Middle: one function with $i=1,2,\ldots$ outputs covering the action space (e.g., ANN with appropriate output layer)
+	\item Right: multiple (sub-)functions one for each possible action $u_i$ (e.g., multitude of linear approximators in small action spaces)
 \end{itemize}
 }
 
@@ -56,7 +56,7 @@ Today's focus:
 	\hat{q}(\bm{x}, u, \bm{w}) = \hat{q}\left(\bm{f}\left(\bm{x}, u\right), \bm{w}\right) .
 \end{equation}
 	\item Above, $\bm{f}(\bm{x},u)\in\mathbb{R}^\kappa$ is the FE function.\pause
-	\item \hl{For sake of notation simplicity we write $\hat{q}(\bm{x}, u, \bm{w})$ and understand that FE has already been considered (i.e. is a part of $\hat{q}$).}
+	\item \hl{For sake of notation simplicity we write $\hat{q}(\bm{x}, u, \bm{w})$ and understand that FE has already been considered (i.e., is a part of $\hat{q}$).}
 \end{itemize}
 }
 
@@ -228,7 +228,7 @@ Today's focus:
 \begin{itemize}
 	\item Two cont. states: position, velocity
 	\item One discrete action: acceleration given by $\left\{\mbox{left},\mbox{none},\mbox{right}\right\}$ 
-	\item $r_k=-1$ i.e. goal is to terminate episode as quick as possible
+	\item $r_k=-1$, i.e., goal is to terminate episode as quick as possible
 	\item Episode terminates when car reaches the flag (or max steps)
 	\item Simplified longitudinal car physics with state constraints
 	\item Position initialized randomly within valley, zero initial velocity
@@ -395,7 +395,7 @@ In the last equation \eqref{eq:prev_avg_return_comp} the term
 \begin{equation*}
 	\int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u)
 \end{equation*}
-combines the steady-state distribution $\mu_\pi(\bm{x})$ with the likelihood of transitioning to $\bm{x}'$ and receiving $r$ when taking an action $u\sim\pi(\bm{x})$.\pause If one assumes that the long-term distribution $\mu_\pi(\bm{x})$ is independent from the starting state $\bm{x}_0$, i.e. \hl{the underlying MDP is an ergodic process}, then  
+combines the steady-state distribution $\mu_\pi(\bm{x})$ with the likelihood of transitioning to $\bm{x}'$ and receiving $r$ when taking an action $u\sim\pi(\bm{x})$.\pause If one assumes that the long-term distribution $\mu_\pi(\bm{x})$ is independent from the starting state $\bm{x}_0$, i.e., \hl{the underlying MDP is an ergodic process}, then  
 \begin{equation}
 \int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u) \gamma v_\pi^\gamma(\bm{x}') = \gamma\int_{\mathcal{X}}v_\pi^\gamma(\bm{x}')\mu_\pi(\bm{x}')
 \label{eq:prev_avg_return_ergodic}
@@ -459,7 +459,7 @@ Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp
 				\delta_k &= r_{k+1}-\hat{\overline{r}}_k + \hat{q}(\bm{x}_{k+1},u_{k+1}, \bm{w}_k) - \hat{q}(\bm{x}_{k},u_{k}, \bm{w}_k).\\
 		\end{split}
 	\end{equation}
-		\item Here, $\hat{\overline{r}}_k$ is an estimate of $\overline{r}_\pi$ at time step $k$ (e.g. by a moving average filter).\pause
+		\item Here, $\hat{\overline{r}}_k$ is an estimate of $\overline{r}_\pi$ at time step $k$ (e.g., by a moving average filter).\pause
 		\item And finally the semi-gradient-based parameter update is:
 		\begin{equation}
 		\begin{split}
@@ -677,7 +677,7 @@ Some remarks:
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{q}(\tilde{\bm{x}}_T,\cdot)=0$)}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e., $\hat{q}(\tilde{\bm{x}}_T,\cdot)=0$)}
 \Input{a data set $\left\langle \bm{x}_i, u_i, r_{i+1}, \bm{x}_{i+1}\right\rangle\sim\bm{\mathcal{D}}$ with $i=1,\ldots, b$ samples}
 \Param{an accuracy threshold $\Delta\in\left\{\mathbb{R}|0<\Delta\right\}$}
 \Init{linear approximation function weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily}
@@ -717,7 +717,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
 	\item Two continuous states: angular position $\theta$ and velocity $\dot{\theta}$
-	\item One discrete action: acceleration force (i.e. torque at shaft)
+	\item One discrete action: acceleration force (i.e., torque at shaft)
 	\item Action noise as disturbance 
 	\item Non-linear system dynamics
 	\item State initialization randomly close to upper equilibrium
@@ -756,9 +756,9 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e. $\hat{q}(\tilde{\bm{x}}_T,\cdot, \cdot)=0$)}
+\Input{a feature representation $\tilde{\bm{x}}$ with $\tilde{\bm{x}}_T=0$ (i.e., $\hat{q}(\tilde{\bm{x}}_T,\cdot, \cdot)=0$)}
 \Param{forgetting factor $\lambda\in\left\{\mathbb{R}|0 < \lambda \leq 1\right\}$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, update factor $k_w\in\left\{\mathbb{N}|1\leq k_w\right\}$}
-\Init{weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, policy $\pi$ being $\varepsilon$-greedy w.r.t. $\hat{q}(\bm{w})$, covariance $\bm{P}>0$ (e.g. $\bm{P}=\beta\bm{I}$)}
+\Init{weights $\bm{w}\in\mathbb{R}^\zeta$ arbitrarily, policy $\pi$ being $\varepsilon$-greedy w.r.t. $\hat{q}(\bm{w})$, covariance $\bm{P}>0$ (e.g., $\bm{P}=\beta\bm{I}$)}
  \For{$j=1,2,\ldots$ episodes}{
 		initialize $\bm{x}_{0}$ and set $u_0\sim\pi(\bm{x}_{0})$\;
 		\For{$k=0, 1, 2 \ldots $ time steps}{
@@ -864,7 +864,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Summary of DQN Working Principle (1)}
 \begin{itemize}
-	\item Take actions $u$ based on $\hat{q}(\bm{x},u,\bm{w})$ (e.g. $\varepsilon$-greedy). \pause
+	\item Take actions $u$ based on $\hat{q}(\bm{x},u,\bm{w})$ (e.g., $\varepsilon$-greedy). \pause
 	\item Store observed tuples $\left\langle \bm{x}, u, r, \bm{x}'\right\rangle$ in memory buffer $\bm{\mathcal{D}}$.\pause
 	\item Sample mini-batches $\bm{\mathcal{D}}_b$ from $\bm{\mathcal{D}}$. 
 	\item Calculate bootstrapped $Q$-target with a delayed parameter vector $\bm{w}^-$ (so-called target network):

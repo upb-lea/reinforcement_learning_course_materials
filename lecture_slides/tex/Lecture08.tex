@@ -99,7 +99,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Typical Supervised Learning Pipeline}
 	\begin{figure}
 		\includegraphics[width=9cm]{fig/lec08/ML_pipeline.png}
-		\caption{A typical supervised learning pipeline. Sometimes more art than science.}
+		\caption{A typical supervised learning pipeline -- sometimes more art than science}
 		\label{fig:ml_pipeline}
 	\end{figure}
 }
@@ -134,10 +134,10 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 				
 	\end{block}\pause
 	\begin{itemize}
-		\item Goodness of fit can be measured by a manifold of \hl{metrics} \\(e.g. mean squared error, classification accuracy, etc.).\pause
+		\item Goodness of fit can be measured by a manifold of \hl{metrics} \\(e.g., mean squared error, classification accuracy, etc.).\pause
 		\item Reducing the look-up-table-like mapping $f^\ast$ to a parameterized function $f_{\bm w}$ degrades any metric on the data set but enables interpolation to unseen data.\pause
 		\item The dimension $\xi$ of model parameters $\bm w \in \mathbb R^\xi$ is adjustable in many model families, which trades off \hl{bias} with \hl{variance} (among other factors, leading to so-called under- and overfitting).\pause
-		\item On top of $\bm w$, a ML model might also have hyperparameters that can be optimized (e.g. number of layers in a neural network).
+		\item On top of $\bm w$, a ML model might also have hyperparameters that can be optimized (e.g., number of layers in a neural network).
 	\end{itemize}
 }
 
@@ -152,7 +152,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Generalization Error}
 	
 	\begin{block}{Supervised learning performance}
-		SL performance is measured by a model's \hl{generalization error}, i.e. goodness of fit on unseen data.
+		SL performance is measured by a model's \hl{generalization error}, i.e., goodness of fit on unseen data.
 	\end{block}\pause
 	
 	A data set is often finite as opposed to RL environments generating arbitrarily many observations.
@@ -173,7 +173,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	
 		\begin{figure}
 			\includegraphics[width=\textwidth]{fig/lec08/kfold-cv.pdf}
-			\caption{$k$-fold CV with five folds.}
+			\caption{$k$-fold CV with five folds}
 			\label{fig:kfold-cv}
 		\end{figure}
 	\end{minipage}
@@ -196,7 +196,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Means to Improve an SL Model}
 	SL performance can be improved by:
 	\begin{itemize}
-		\item Collecting more data, i.e. increasing $K$ (more data is always better).\pause
+		\item Collecting more data, i.e., increasing $K$ (more data is always better).\pause
 		\item Choosing a more appropriate model.\pause
 		\item Optimizing hyperparameters of the model.\pause
 		\item Averaging over several different models (ensembling).\pause
@@ -227,7 +227,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example.pdf}
-		\caption{Features $r=\sqrt{\text{width}^2 + \text{height}^2}$ and $\theta = \arctan{(\frac{\text{height}}{\text{width}})}$ reveal linearly separable class distribution.}
+		\caption{Features $r=\sqrt{\text{width}^2 + \text{height}^2}$ and $\theta = \arctan{(\frac{\text{height}}{\text{width}})}$ reveal linearly separable class distribution}
 		\label{fig:fe_example}
 	\end{figure}
 	
@@ -237,7 +237,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Feature Engineering Example (Regression)}
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example2.pdf}
-		\caption{Log-transform of the target signal exhibits linear relationship to the regressor.}
+		\caption{Log-transform of the target signal exhibits linear relationship to the regressor}
 		\label{fig:fe_example2}
 	\end{figure}
 }
@@ -259,10 +259,10 @@ In an unnormalized data set, features with high variance will eclipse patterns i
 Several different data types can be utilized for ML:
 \begin{itemize}
 	\item Binary: 1 or 0 (True or False).\pause
-	\item Integer: $\mathbb{N}$ (e.g. number of rooms in a building).\pause
-	\item Real-valued: $\mathbb{R}$ (e.g. temperature).\pause
-	\item Categorical: e.g. \{blue, green, red\}\pause
-	\item Ordinal: Categoricals that can be ordered, e.g. educational experience (From elementary school to Ph.D.)
+	\item Integer: $\mathbb{N}$ (e.g., number of rooms in a building).\pause
+	\item Real-valued: $\mathbb{R}$ (e.g., temperature).\pause
+	\item Categorical: like \{blue, green, red\}\pause
+	\item Ordinal: Categoricals that can be ordered, e.g., educational experience (From elementary school to Ph.D.)
 \end{itemize}
 
 }
@@ -294,12 +294,12 @@ How to normalize categorical data?\pause
 \frame{\frametitle{Typical Feature Engineering Schemes}
 	Feature design is often of the following form (tricks of the trade):
 	
-	Given $K$ feature vectors $\bm x_k \in \mathbb R^P$ with e.g. $P=3$ (two real-valued regressors and a categorical independent variable $\bm x_k = (x_{k,r_1}, x_{k,r_2}, x_{k,c})$):\pause
+	Given $K$ feature vectors $\bm x_k \in \mathbb R^P$ with, e.g., $P=3$ (two real-valued regressors and a categorical independent variable $\bm x_k = (x_{k,r_1}, x_{k,r_2}, x_{k,c})$):\pause
 	\begin{itemize}
-		\item $\tilde x_{k} = x_{k,r_1} + x_{k,r_2}$ (or any other combination, e.g. product, division, subtraction, also cf. \figref{fig:fe_example}),\pause
+		\item $\tilde x_{k} = x_{k,r_1} + x_{k,r_2}$ (or any other combination, e.g., product, division, subtraction, also cf. \figref{fig:fe_example}),\pause
 		\item $\tilde x_k = x_{k,r} - \frac{1}{|\mathcal B|}\sum_{i \in \mathcal B} x_{i,r}\quad\forall r = \{r_1, r_2\}$ with $\mathcal B = \{i: x_{i,c} = x_{k, c}\}$,\pause
 		\item Clip/drop/aggregate outliers away,\pause
-		\item Coordinate transformations for spatial features (e.g. rotation),\pause
+		\item Coordinate transformations for spatial features (e.g., rotation),\pause
 		\item In time domain:
 		\begin{itemize}
 			\item $\tilde{\bm{x}}_k = (x_{k,r_1}, x_{k-1,r_1}, x_{k-2,r_1}, x_{k,r_2}, x_{k,c})$ (lag features),
@@ -476,7 +476,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\begin{minipage}[r]{\linewidth}
 		\begin{figure}
 			\includegraphics[width=\textwidth]{fig/lec08/act_funcs.pdf}
-			\caption{Common activation functions.}
+			\caption{Common activation functions}
 			\label{fig:act_funcs}
 		\end{figure}
 		
@@ -495,7 +495,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 }
 
 \frame{\frametitle{Training Neural Networks (1)}
-	ANN parameters are usually iteratively optimized via a variant of \hl{gradient descent}, e.g. stochastic gradient descent (SGD).
+	ANN parameters are usually iteratively optimized via a variant of \hl{gradient descent}, e.g., stochastic gradient descent (SGD).
 	\begin{align}
 	\label{eq:weight_update}
 		\bm{\mathcal{W}}^{(l)} &\leftarrow \bm{\mathcal{W}}^{(l)} - \alpha \nabla_{\bm{\mathcal{W}}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y}),\\
@@ -543,7 +543,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{columns}
 	SGD is more computationally  efficient, but steps are more random.
 	
-	Nowadays mini-batch gradient descent is used (mix of SGD and BGD), and further improvements, e.g. momentum and second derivatives, to ensure faster convergence to better optima.
+	Nowadays mini-batch gradient descent is used (mix of SGD and BGD), and further improvements, e.g., momentum and second derivatives, to ensure faster convergence to better optima.
 }
 
 
@@ -551,7 +551,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 \frame{\frametitle{Training Neural Networks (3)}
 	\textbf{How to retrieve the gradients:}
 	
-	Recall chain rule for vector derivatives, e.g. with $\bm y = g(\bm x)$ and $z = f(\bm y)$ where $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ and $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
+	Recall chain rule for vector derivatives, e.g., with $\bm y = g(\bm x)$ and $z = f(\bm y)$ where $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ and $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
 	\begin{equation}
 		\nabla_{\bm x}z = \frac{\partial z}{\partial \bm x} = {\underbrace{\bigg( \frac{\partial \bm y}{\partial \bm x}\bigg)}_{\text{Jacobian of g }}}\T\cdot \underbrace{\frac{\partial z}{\partial\bm y}}_\text{gradient} = \sum_{j} \frac{\partial y_j}{\partial \bm x}\cdot\frac{\partial z}{\partial y_j}.
 	\end{equation}\pause
@@ -643,12 +643,12 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 \frame{\frametitle{Regularizing Neural Networks}
 	In order to mitigate overfitting, ANNs must be regularized by
 	\begin{itemize}
-		\item weight decay, i.e. adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
+		\item weight decay, i.e., adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
 		\item layer normalization during training,
 		\begin{itemize}
 			\item i.e all layers' activations are normalized by standard scaling separately,
 		\end{itemize}\pause
-		\item dropout, i.e. randomly disable nodes' contribution.
+		\item dropout, i.e., randomly disable nodes' contribution.
 		\begin{itemize}
 			\item This helps especially in deep networks,
 			\item and effectively builds an ensemble of ANNs with shared edges.
@@ -667,7 +667,7 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
         \centering
         \includegraphics[width=\textwidth]{fig/lec08/CNN_over_sequence.pdf}
         \end{minipage}
-        \caption{Recurrent (left) and 1-D convolutional (right) ANNs are more appropriate in time domains, e.g. where the given data set has a dynamic system background.}
+        \caption{Recurrent (left) and 1-D convolutional (right) ANNs are more appropriate in time domains, e.g., where the given data set has a dynamic system background}
 \end{figure}
 	%2-D Convolutional NNs are the state of the art in image processing
 }
@@ -693,7 +693,7 @@ Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learn
 	\begin{minipage}[r]{\linewidth}
 		\begin{figure}
 			\includegraphics[width=\textwidth]{fig/lec08/decision_tree.pdf}
-			\caption{Exemplary decision tree for binary classification and two regressors.}
+			\caption{Exemplary decision tree for binary classification and two regressors}
 			\label{fig:decision_tree}
 		\end{figure}
 		
@@ -756,7 +756,7 @@ This is a sum of single-variabled quadratic functions.
 }
 
 \frame{\frametitle{Implementation Considerations}
-	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g. XGBoost, LightGBM, CatBoost).
+	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g., XGBoost, LightGBM, CatBoost).
 	As always, regularization is also part of the optimization but was not outlined here for conciseness.
 	The spectrum of regularization factors comprises:
 	\begin{itemize}
@@ -770,7 +770,7 @@ This is a sum of single-variabled quadratic functions.
 \frame{\frametitle{Hyperparameter Optimization (1)}
 	\begin{figure}
 		\includegraphics[width=10cm]{fig/lec08/levels_of_opt.pdf}
-		\caption{The three levels of optimization.}
+		\caption{The three levels of optimization}
 		\label{fig:levels_of_opt}
 	\end{figure}
 	

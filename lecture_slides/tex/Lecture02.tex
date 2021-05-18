@@ -9,12 +9,12 @@
 \frame{\frametitle{Preface}
 \begin{itemize}
 	\onslide<2->\item Markov decision processes (MDP) are a \hl{mathematically idealized form of RL problems}.
-	\onslide<2->\item They allow precise theoretical statements (e.g. on optimal solutions).
+	\onslide<2->\item They allow precise theoretical statements (e.g., on optimal solutions).
 	\onslide<2->\item They deliver insights into suitable RL algorithms since many real-world problems can be abstracted as MDPs. 
 	\onslide<3->\item In the following \hl{we'll focus on}:
 	\onslide<3->\begin{itemize}
-		\item fully observable MDPs (i.e. $\bm{x}_k=\bm{y}_k$) and 
-		\item finite MDPs (i.e. finite number of states \& actions).
+		\item fully observable MDPs (i.e., $\bm{x}_k=\bm{y}_k$) and 
+		\item finite MDPs (i.e., finite number of states \& actions).
 	\end{itemize}
 \end{itemize}
 \hfill
@@ -43,8 +43,8 @@
 \begin{itemize}
 	\onslide<1->\item The position of a chess piece can be represented in two ways:
 	\begin{itemize}
-		\onslide<1->\item Vectorial: $\bm{x}=\begin{bmatrix}x_h & x_v\end{bmatrix}\T$ i.e. a two-element vector with horizontal and vertical information (e.g. $\bm{x}=\begin{bmatrix}c & 1 \end{bmatrix}\T$) or
-		\onslide<2->\item \hl{Scalar: simple enumeration of all available positions (e.g. $x=3$).}
+		\onslide<1->\item Vectorial: $\bm{x}=\begin{bmatrix}x_h & x_v\end{bmatrix}\T$, i.e., a two-element vector with horizontal and vertical information (e.g., $\bm{x}=\begin{bmatrix}c & 1 \end{bmatrix}\T$) or
+		\onslide<2->\item \hl{Scalar: simple enumeration of all available positions (e.g., $x=3$).}
 	\end{itemize}
 	\onslide<3->\item Both ways represent the same amount of information and can be easily converted into each other.
 	\onslide<3->\item For sake of readability \hl{we will stick to the scalar representation of states and actions in finite MDPs} whenever possible.
@@ -73,7 +73,7 @@ A state $X_k$ is called an information or Markov state if and only if
 \end{block}
 \pause
 \begin{itemize}
-	\item History is fully condensed in the sample $X_k$, i.e. $X_{k+1}$ is only depending on $X_k$.
+	\item History is fully condensed in the sample $X_k$, i.e., $X_{k+1}$ is only depending on $X_k$.
 	\item A given system can be fully described by $X_k$.
 	\item Further past observations $X_{k-1},X_{k-2},\ldots$ are irrelevant.
 \end{itemize}
@@ -187,7 +187,7 @@ Possible \hl{samples} for the given Markov chain example starting from $x=1$ (sm
 %% Forest Markov Chain Example (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Example of a Markov Chain (3)}
-For $k=0$ the initial state probability is given $\bm{p}_{k=0}=\begin{bmatrix} 1 & 0 & 0 & 0\end{bmatrix}$, i.e. we are in state $x=1$. What is the state probability after $k=1,2,\ldots$ steps with $\alpha = 0.2$?
+For $k=0$ the initial state probability is given $\bm{p}_{k=0}=\begin{bmatrix} 1 & 0 & 0 & 0\end{bmatrix}$, i.e., we are in state $x=1$. What is the state probability after $k=1,2,\ldots$ steps with $\alpha = 0.2$?
 \begin{alignat*}{2}
 	\onslide<2->{\bm{p}_{1}&=\begin{bmatrix}0 & 0.8 & 0 & 0.2\end{bmatrix}&&=\underbrace{\begin{bmatrix} 1 & 0 & 0 & 0\end{bmatrix}}_{\bm{p}_{0}}\underbrace{\begin{bmatrix}0 & 0.8 & 0 & 0.2  \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 & 0 & 1\end{bmatrix}}_{\bm{\mathcal{P}}}},\\
 	\onslide<3->{\bm{p}_{2}&=\begin{bmatrix}0 & 0 & 0.64 & 0.36\end{bmatrix}&&=\underbrace{\begin{bmatrix} 0 & 0.8 & 0 & 0.2\end{bmatrix}}_{\bm{p}_{1}}\underbrace{\begin{bmatrix}0 & 0.8 & 0 & 0.2  \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 & 0 & 1\end{bmatrix}}_{\bm{\mathcal{P}}}},\\
@@ -296,7 +296,7 @@ terminating at step $N$ while it is an infinite series for \hl{continuing tasks}
 %% Value in MRP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Value Function in MRP}
-
+\vspace{-0.25cm}
 \begin{defi}{Value function in MRP}{value_function_MRP}
 The \hl{state-value function} $v(x_k)$ of an MRP is the expected return starting from state $x_k$
 \begin{equation}
@@ -396,7 +396,7 @@ Possible solutions:
 \begin{itemize}
 	\item Direct inversion (Gaussian elimination, $\mathcal{O}(n^3)$)\pause
 	\item Matrix decomposition (QR, Cholesky, etc. , $\mathcal{O}(n^3)$)\pause
-	\item Iterative solutions (e.g. Krylov-subspaces, often better than $\mathcal{O}(n^3)$)\pause
+	\item Iterative solutions (e.g., Krylov-subspaces, often better than $\mathcal{O}(n^3)$)\pause
 \end{itemize}
 \vspace{0.5cm}
 In RL identifying and solving \eqref{eq:MRP_normal_equation} is a key task, which is often realized only approximately for high-order state spaces. 
@@ -620,7 +620,7 @@ Given a policy $\pi$ and following the same assumptions as for \eqref{eq:Bellman
 	\begin{bmatrix} v_{1}^{\pi} \\ \vdots \\ v_{n}^{\pi} \end{bmatrix} &= \begin{bmatrix} \mathcal{R}_{1}^{\pi} \\ \vdots \\ \mathcal{R}_{n}^{\pi} \end{bmatrix} + \gamma\begin{bmatrix} p_{11}^{\pi} & \cdots & p_{1n}^{\pi}\\ \vdots &  & \vdots\\ p_{n1}^{\pi} & \cdots & p_{nn}^{\pi}\end{bmatrix}\begin{bmatrix} v_{1}^{\pi} \\ \vdots \\ v_{n}^{\pi} \end{bmatrix}.
 \end{split}
 \end{equation}
-Here, $\bm{r}_{\mathcal{X}}^{\pi}$ and $\bm{\mathcal{P}}_{xx'}^{\pi}$ are the rewards and state transition probability following policy $\pi$. \pause Hence, the state value can be calculated by solving \eqref{eq:Bellman_MDP_linear} for $\bm{v}_{\mathcal{X}}^{\pi}$, e.g. by direct matrix inversion:
+Here, $\bm{r}_{\mathcal{X}}^{\pi}$ and $\bm{\mathcal{P}}_{xx'}^{\pi}$ are the rewards and state transition probability following policy $\pi$. \pause Hence, the state value can be calculated by solving \eqref{eq:Bellman_MDP_linear} for $\bm{v}_{\mathcal{X}}^{\pi}$, e.g., by direct matrix inversion:
 \begin{equation}
 	\bm{v}_{\mathcal{X}}^{\pi}=\left(\bm{I}-\gamma\bm{\mathcal{P}}_{xx'}^{\pi}\right)^{-1}\bm{r}_{\mathcal{X}}^{\pi}.
 \end{equation}
@@ -690,13 +690,14 @@ Is the '\textit{fifty-fifty-policy}' maximizing our long-term reward? How can yo
 %% Optimal Value Functions in MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Optimal Value Functions in an MDP}
-
+\vspace{-0.35cm}
 \begin{defi}{Optimal state-value function}{optimal_state_value_MDP}
 The optimal state-value function of an MDP is the maximum state-value function over all polices:
 \begin{equation}
 		v^*(x) = \max_{\pi} v_{\pi}(x)\,.
 	\end{equation}
 \end{defi}
+\vspace{-0.2cm}
 \pause
 \begin{defi}{Optimal action-value function}{optimal_action_value_MDP}
 The optimal action-value function of an MDP is the maximum action-value function over all polices:
@@ -704,6 +705,7 @@ The optimal action-value function of an MDP is the maximum action-value function
 		q^*(x,u) = \max_{\pi} q_\pi(x,u)\, .
 	\end{equation}
 \end{defi}
+\vspace{-0.1cm}
 \pause
 \begin{itemize}
 	\item The optimal value function denotes the best possible agent's performance for a given MDP / environment. \pause
@@ -740,7 +742,7 @@ For any MDP
 \end{theo}
 }
 \begin{itemize}
-	\onslide<2->{\item Any policy (i.e. also the optimal one) must satisfy the self-consistency condition given by the Bellman expectation equation.}
+	\onslide<2->{\item Any policy (i.e., also the optimal one) must satisfy the self-consistency condition given by the Bellman expectation equation.}
 	\onslide<3->{\item An optimal policy must equal the expected return for the best action of a given state:}
 \end{itemize}
 \onslide<4->{
@@ -856,7 +858,7 @@ Remember the forest tree MDP example:
 \frame{\frametitle{Optimal Policy for Forest Tree MDP: State Value (2)}
 \begin{itemize}
 	\item Due to presence of terminal state ($x=4$) only three unknowns
-	\item Solution: numerical optimization approach (e.g. simplex method, gradient descent,...)
+	\item Solution: numerical optimization approach (e.g., simplex method, gradient descent,...)
 \end{itemize}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process_Optimal_State_Value.pdf}

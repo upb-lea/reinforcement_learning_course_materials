@@ -16,7 +16,7 @@
 \begin{block}{Basic DP definition}
 \begin{itemize}
 	\item \hl{Dynamic}: sequential or temporal problem structure
-	\item \hl{Programming}: mathematical optimization, i.e. numerical solutions
+	\item \hl{Programming}: mathematical optimization, i.e., numerical solutions
 \end{itemize}
 \end{block}
 \pause
@@ -89,7 +89,7 @@ How is that connected to MDPs?
 %% Utility DP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Utility of DP in the RL Context}
-DP is used for iterative \hl{planning} (i.e. \hl{model-based} prediction and control) in an MDP.
+DP is used for iterative \hl{planning} (i.e., \hl{model-based} prediction and control) in an MDP.
 \begin{itemize}
 	\item Prediction:
 	\begin{itemize}
@@ -137,7 +137,7 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 					\begin{bmatrix} v_{1}^{\pi} \\ \vdots \\ v_{n}^{\pi} \end{bmatrix} &= \begin{bmatrix} \mathcal{R}_{1}^{\pi} \\ \vdots \\ \mathcal{R}_{n}^{\pi} \end{bmatrix} + \gamma\begin{bmatrix} p_{11}^{\pi} & \cdots & p_{1n}^{\pi}\\ \vdots &  & \vdots\\ p_{n1}^{\pi} & \cdots & p_{nn}^{\pi}\end{bmatrix}\begin{bmatrix} v_{1}^{\pi} \\ 			\vdots \\ v_{n}^{\pi} \end{bmatrix}.
 			\end{split}
 			\end{equation*}\pause
-			\item Solving the Bellman equation for $v_\pi$ requires handling a linear equation system with $n$ unknowns (i.e. number of states).
+			\item Solving the Bellman equation for $v_\pi$ requires handling a linear equation system with $n$ unknowns (i.e., number of states).
 			\item Remember that the reward function $\mathcal{R}_{x}^{\pi}$ might also contains stochastic influences depending on the MDP structure (see \defref{defi:Markov_decision_process}).
 \end{itemize}
 }
@@ -147,7 +147,7 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Policy Evaluation Background (2)}
 \begin{itemize}
-	\item Problem: directly calculating $v_\pi$ is numerically costly for high-dimensional state spaces (e.g. by matrix inversion). \pause
+	\item Problem: directly calculating $v_\pi$ is numerically costly for high-dimensional state spaces (e.g., by matrix inversion). \pause
 	\item General idea: \hl{apply iterative approximations} $\hat{v}_{i}(x_{k})=v_{i}(x_{k})$ of $v_\pi(x_{k})$ with decreasing errors:
 	\begin{equation}
 	\left\|v_{i}(x_{k}) - v_\pi\right\|_{\infty}\rightarrow 0 \quad \mbox{for} \quad i=1,2,3,\ldots
@@ -296,7 +296,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Input{full model of the MDP i.e. $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$ including policy $\pi$}
+\Input{full model of the MDP, i.e., $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$ including policy $\pi$}
 \Param{$\delta>0$ as accuracy termination threshold}
 \Init{$v_0(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal}
  \Repeat{$\Delta<\delta$}{
@@ -320,7 +320,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 \begin{itemize}
 	\item In-place algorithms allow to update states in a beneficial order. \pause
 	\item May converge faster than regular Richardson iteration if state update order is chosen wisely (sweep through state space).\pause
-	\item For forest tree MDP: reverse order i.e. start with $x=4$.\pause
+	\item For forest tree MDP: reverse order, i.e., start with $x=4$.\pause
 	\item As can be seen in \tabref{tab:Forest_tree_policy_eval_in_place} the in-place updates especially converge faster for the 'early states'.
 \end{itemize}
 
@@ -444,7 +444,7 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 \begin{itemize}
 	\item This is the Bellman optimality equation, which guarantees that $\pi'=\pi$ must be optimal policies.\pause
 	\item Although proof for policy improvement theorem was presented for deterministic policies, transfer to stochastic policies $\pi(u_k|x_k)$ is possible.\pause
-	\item Takeaway message: \hl{policy improvement theorem guarantees finding optimal policies in finite MDPs} (e.g. by DP).
+	\item Takeaway message: \hl{policy improvement theorem guarantees finding optimal policies in finite MDPs} (e.g., by DP).
 \end{itemize}	
 }
 
@@ -470,7 +470,7 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 \end{equation}
 \begin{itemize}
 	\item Evaluate $\rightarrow$ improve $\rightarrow$ evaluate $\rightarrow$ improve ...\pause
-	\item In the 'classic' policy iteration, each policy evaluation step in \eqref{eq:policy_iter} is fully executed, i.e. for each policy $\pi_i$ an exact estimate of $v_{\pi_i}$ is provided either by iterative policy evaluation with a sufficiently high number of steps or by any other method that fully solves \eqref{eq:Bellman_matrix_Ab}.
+	\item In the 'classic' policy iteration, each policy evaluation step in \eqref{eq:policy_iter} is fully executed, i.e., for each policy $\pi_i$ an exact estimate of $v_{\pi_i}$ is provided either by iterative policy evaluation with a sufficiently high number of steps or by any other method that fully solves \eqref{eq:Bellman_matrix_Ab}.
 \end{itemize}
 }
 
@@ -612,7 +612,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Input{full model of the MDP i.e. $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$}
+\Input{full model of the MDP, i.e., $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$}
 \Param{$\delta>0$ as accuracy termination threshold}
 \Init{$v_0(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal}
  \Repeat{$\Delta<\delta$}{
@@ -792,7 +792,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 		\item While utilizing full knowledge of the MDP structure.
 	\end{itemize}
 	\pause
-	\item Hence, DP is can be effective up to medium-sized MDPs (i.e. million states)\pause
+	\item Hence, DP is can be effective up to medium-sized MDPs (i.e., million states)\pause
 	\item For large problems DP suffers from the \hl{curse of dimensionality}:
 	\begin{itemize}
 		\item Number of finite states $n$ grows exponentially with the number of state variables.
@@ -809,7 +809,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 \frametitle{Summary: What You've Learned Today}
 \begin{itemize}
 	\item DP is applicable for prediction and control problems in MDPs.\pause
-	\item But requires always full knowledge about the environment (i.e. it is a model-based solution also called planning).\pause
+	\item But requires always full knowledge about the environment (i.e., it is a model-based solution also called planning).\pause
 	\item DP is more efficient than exhaustive search.\pause
 	\item But suffers from the curse of dimensionality for large MDPs.\pause
 	\item (Iterative) policy evaluations and (greedy) improvements solve MDPs.\pause
