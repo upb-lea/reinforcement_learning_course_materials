@@ -412,7 +412,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 \Input{an arbitrary behavior policy $b$ with $b(u|x)>0 \, \forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
 \Param{$\alpha\in(0,1]$, $n\in\mathbb{Z}^+$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
 \Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
-\Init{$\pi$ to be $\varepsilon$-greedy with respect to $\hat{q}$ or to a given, fixed policy}
+\Init{$\pi$ to be greedy with respect to $\hat{q}$ or to a given, fixed policy}
  \For{$j=1,\ldots,J$ episodes}{
 		initialize $x_{0}$ and action $u_0 \sim b(\cdot | x_0)$ and store them\;
 		$T\leftarrow\infty$\;
