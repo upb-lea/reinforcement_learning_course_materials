@@ -845,7 +845,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 	\item \hl{Deep $Q$-networks (DQN)}	transfer this to an approximate solution:
 	\end{itemize}
 	 \begin{equation}
-	 \bm{w} = \bm{w} + \alpha\left[r+\gamma \max_u \hat{q}(\bm{x}', u, \bm{w}) - \hat{q}(\bm{x}, u, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}, u, \bm{w})
+	 \bm{w} = \bm{w} + \alpha\left[r+\gamma \max_u \hat{q}(\bm{x}', u, \bm{w}) - \hat{q}(\bm{x}, u, \bm{w})\right]\nabla_{\bm{w}} \hat{q}(\bm{x}, u, \bm{w}).
  \end{equation}\pause
 However, instead of using above semi-gradient step-by-step updates, DQN is characterized by
 	\begin{itemize}
@@ -913,7 +913,7 @@ Motivation behind:
 			sample mini-batch $\bm{\mathcal{D}}_b$ from $\bm{\mathcal{D}}$ (after initial memory warmup)\;
 			\For(calculate $Q$-targets){$i=1,\ldots,b$ samples}{
 				\lIf{$\bm{x}_{i+1}$ is terminal}{$y_i=r_{i+1}$}
-				\lElse{$y_i= r_{i+1}+ \gamma \max_u \hat{q}(x_{i+1},u,\bm{w}^-)$}
+				\lElse{$y_i= r_{i+1}+ \gamma \max_u \hat{q}(\bm{x}_{i+1},u,\bm{w}^-)$}
 			}
 			fit $\bm{w}$ on loss $\mathcal{L}(\bm{w})=[y_i - \hat{q}(\bm{x}_i, u_i, \bm{w})]^2_{\bm{\mathcal{D}}_b}$\;
 			\lIf{$k \mod k_w=0$}{$\bm{w}^-\leftarrow \bm{w}$ (update target weights)}
