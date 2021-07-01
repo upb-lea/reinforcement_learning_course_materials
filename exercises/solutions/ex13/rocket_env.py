@@ -102,7 +102,9 @@ class GoddardEnv(gym.Env):
         'render.modes': ['human', 'rgb_array'],
         'video.frames_per_second': 30
     }
-
+    
+    TIMEOUT = 300
+    
     def __init__(self, rocket=Default()):
         super(GoddardEnv, self).__init__()
 
@@ -157,10 +159,12 @@ class GoddardEnv(gym.Env):
 
         is_done = bool(
             is_tank_empty and self._state[self.V_INDEX] < 0 and self._h_max > self._r.H0
-        ) or self.number_of_steps >= 300
+        ) or self.number_of_steps >= self.TIMEOUT
 
         if is_done:
             reward = self._h_max - self._r.H0
+            if number_of_steps >= self.TIMEOUT:
+                reward = -1
         else:
             reward = 0.0
 
