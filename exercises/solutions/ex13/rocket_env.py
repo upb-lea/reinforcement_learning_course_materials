@@ -163,7 +163,7 @@ class GoddardEnv(gym.Env):
 
         if is_done:
             reward = self._h_max - self._r.H0
-            if number_of_steps >= self.TIMEOUT:
+            if self.number_of_steps >= self.TIMEOUT:
                 reward = -1
         else:
             reward = 0.0
