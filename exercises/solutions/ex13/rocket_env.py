@@ -178,6 +178,7 @@ class GoddardEnv(gym.Env):
         self._state = (self._r.V0, self._r.H0, self._r.M0)
         self._h_max = self._r.H0
         self._thrust_last = None
+        self.number_of_steps = 0
         return self._observation()
 
     def render(self, mode='human'):
