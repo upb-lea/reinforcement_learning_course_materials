@@ -108,6 +108,7 @@ class GoddardEnv(gym.Env):
 
         self._r = rocket
         self.viewer = None
+        self.number_of_steps = 0
 
         self.U_INDEX = 0
         self.action_space = gym.spaces.Box(
@@ -130,6 +131,9 @@ class GoddardEnv(gym.Env):
         return ['action', 'thrust', 'drag', 'gravity']
 
     def step(self, action):
+
+        self.number_of_steps += 1
+
         v, h, m = self._state
 
         is_tank_empty = (m <= self._r.M1)
@@ -153,7 +157,7 @@ class GoddardEnv(gym.Env):
 
         is_done = bool(
             is_tank_empty and self._state[self.V_INDEX] < 0 and self._h_max > self._r.H0
-        )
+        ) or self.number_of_steps >= 300
 
         if is_done:
             reward = self._h_max - self._r.H0
