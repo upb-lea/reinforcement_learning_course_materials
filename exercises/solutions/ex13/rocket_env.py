@@ -114,14 +114,14 @@ class GoddardEnv(gym.Env):
             low   = np.array([0.0]),
             high  = np.array([1.0]),
             shape = (1,),
-            dtype = np.float
+            dtype = np.float32
         )
 
         self.V_INDEX, self.H_INDEX, self.M_INDEX = 0, 1, 2
         self.observation_space = gym.spaces.Box(
             low   = np.array([np.finfo(np.float).min, 0.0, self._r.M1]),
             high  = np.array([np.finfo(np.float).max, np.finfo(np.float).max, self._r.M0]),
-            dtype = np.float
+            dtype = np.float32
         )
 
         self.reset()
