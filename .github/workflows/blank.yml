@@ -32,3 +32,13 @@ jobs:
           run: |
             cd lecture_slides
             python3 build.py
+      - name: Deploy PDFs to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.UPB_HOST }}
+          username: ${{ secrets.UPB_USER }}
+          password: ${{ secrets.UPB_PW }}
+          port: 22
+          source: "built/"
+          target: ${{ LEA_GRP_PATH_RL }}"/lectureslides/"
+
