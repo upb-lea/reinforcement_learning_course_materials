@@ -40,5 +40,5 @@ jobs:
           password: ${{ secrets.UPB_PW }}
           port: 22
           source: "built/"
-          target: ${{ LEA_GRP_PATH_RL }}"/lecture_slides/"
+          target: ${{ LEA_GRP_PATH_RL }}/lecture_slides/
 
