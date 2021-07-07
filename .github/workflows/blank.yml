@@ -27,8 +27,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/texlive-action/small@v1
         with:
-          root_file: main.tex
-        env:
-          TEXINPUTS: ".:./lecture_slides//:"
+          run: |
+            cd lecture_slides
+            python3 build.py
