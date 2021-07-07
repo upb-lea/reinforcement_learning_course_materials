@@ -27,62 +27,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Compile LaTeX document
-        uses: xu-cheng/texlive-action/small@v1
+        uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
-            tlmgr install luatex
-            tlmgr install latex-bin luahbtex platex uplatex tex xetex ocgx2 \
-              beamer        \
-              media9  \
-              etoolbox  \
-              geometry  \
-              graphics  \
-              xcolor  \
-              atbegshi  \
-              infwarerr  \
-              ltxcmds  \
-              hyperref  \
-              hobsub  \
-              intcalc  \
-              etexcmds  \
-              kvsetkeys  \
-              kvdefinekeys  \
-              pdftexcmds  \
-              pdfescape  \
-              bigintcalc  \
-              bitset  \
-              uniquecounter  \
-              letltxmacro  \
-              atveryend  \
-              refcount  \
-              everysel \
-              hycolor  \
-              auxhook  \
-              kvoptions  \
-              url  \
-              rerunfilecheck  \
-              amsfonts  \
-              translator  \
-              amsmath  \
-              algorithm2e  \
-              ifoddpage  \
-              relsize  \
-              subfig  \
-              caption  \
-              ragged2e  \
-              units  \
-              animate  \
-              xkeyval  \
-              pdfbase  \
-              multirow  \
-              xmpincl  \
-              tcolorbox  \
-              pgf  \
-              environ  \
-              trimspaces  \
-              listings  \
-              grfext  \
-              gettitlestring  \
-              zref
             cd lecture_slides
             python3 build.py
