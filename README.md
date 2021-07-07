@@ -44,7 +44,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
     * [Lecture video](https://www.youtube.com/watch?v=xLUXeASnqwE)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture11.pdf) 
 12. Policy Gradient Methods
-    * [Lecture video](https://www.youtube.com/watch?v=pk3zIYW2-G8&feature=youtu.be)
+    * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
 
 
