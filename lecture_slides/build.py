@@ -1,6 +1,5 @@
 import os
 import fileinput
-from tqdm import tqdm
 from subprocess import call
 
 os.makedirs('built', exist_ok=True)
@@ -33,7 +32,7 @@ os.replace('main.pdf', os.path.join('built', 'main.pdf'))
 chap_list = [os.path.splitext(p)[0] for p in os.listdir('tex')
              if p.endswith('.tex')]
 
-for tex_file in tqdm(chap_list):
+for tex_file in chap_list:
     clear_tex_binaries()
     with fileinput.input('main.tex', inplace=True) as f:
         for line in f:
