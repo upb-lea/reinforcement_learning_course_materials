@@ -30,5 +30,6 @@ jobs:
         uses: xu-cheng/texlive-action/small@v1
         with:
           run: |
+            texlive_install.sh
             cd lecture_slides
             python3 build.py
