@@ -901,7 +901,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 \end{theo}\pause
 \begin{itemize}
 \item Again, $q$ needs to be approximated using samples, e.g., implementing a critic via TD learning.\pause
-\item Bias problem applies as in the stochastic case and can be compensated using compatible function approximation w.r.t to $\hat{q}$.\pause
+\item Bias problem applies as in the stochastic case and can be compensated using compatible function approximation w.r.t. $\hat{q}$.\pause
 \item It turns out that \eqref{eq:policy_gradient_theo_det} is also (approximately) valid in the off-policy case, i.e., if the sample distribution is obtained from a behavior policy.\pause  
 \item Proof can be found in \href{http://proceedings.mlr.press/v32/silver14.pdf}{D. Silver et al., \textit{Deterministic Policy Gradient Algorithms}, International Conference on Machine Learning, 2014}
 
@@ -1006,48 +1006,6 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 actor-critic (COPDAC) on continuous-action reinforcement learning (source: D. Silver et al., \textit{Deterministic Policy Gradient Algorithms}, International Conference on Machine Learning, 2014)}
 \label{fig:SLH_Benchmarks}
 \end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Outlook: Other Contempororay Algorithms (1)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: Other Contemporary Algorithms (1)}
-The selection of algorithms appears endless:
-\begin{itemize}
-	\item \href{https://arxiv.org/pdf/1509.02971.pdf}{Deep Deterministic Policy Gradient (DDPG) Algorithms}
-	\item \href{https://arxiv.org/pdf/1502.05477.pdf}{Trust Region Policy Optimization (TRPO)}
-	\item \href{https://arxiv.org/abs/1707.06347}{Proximal Policy Optimization (PPO)}
-	\item \href{https://arxiv.org/pdf/1611.01224.pdf}{Actor Critic with Experience Replay (ACER)}
-	\item \href{https://arxiv.org/pdf/1801.01290.pdf}{Soft Actor-Critic (SAC)}
-	\item ....
-\end{itemize}
-\vspace{0.5cm}\pause
-Remarks: 
-\begin{itemize}
-	\item \hl{You have already learned the basic building blocks in order to make yourself familiar with any value-/policy-based or hybrid RL approach. \pause
-	\item Use this knowledge! \pause
-	\item Focus on primary scientific literature for self-studying and not on arbitrary blogs or other possible non-reliable sources!} 
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Outlook: Other Contempororay Algorithms (2)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: Other Contemporary Algorithms (2)}
-Algorithm collections with tutorial-style documentation:
-\begin{itemize}
-	\item \href{https://spinningup.openai.com/en/latest/index.html}{OpenAI Spinning Up}
-	\item \href{https://nervanasystems.github.io/coach/}{Intel Reinforcement Learning Coach}
-\end{itemize}\pause
-\vspace{0.75cm}
-Algorithm collections with decent application-oriented documentation:
-\begin{itemize}
-	\item \href{https://github.com/tensorflow/agents}{TF-Agents}
-	\item \href{https://github.com/google/dopamine}{Google Dopamine}
-	\item \href{https://github.com/DLR-RM/stable-baselines3}{Stable Baselines3}
-	\item \href{https://github.com/tensorforce/tensorforce}{Tensorforce}
-	\item ...
-\end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
