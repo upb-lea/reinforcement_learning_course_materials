@@ -29,4 +29,6 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: lecture_slides/main.tex
+          root_file: main.tex
+        env:
+          TEXINPUTS: ".:./lecture_slides//:"
