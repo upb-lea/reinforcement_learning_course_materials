@@ -175,8 +175,13 @@ class GoddardEnv(gym.Env):
     def maximum_altitude(self):
         return self._h_max
 
-    def _observation(self):
-        return np.array(self._state)
+    def _observation(self, normalize=True):
+        # normalize
+        state = np.array(self._state)
+        if normalize:
+            return (state - np.array([self._r.V0, self._r.H0, self._r.M1])) / np.array([0.14, 0.015, self._r.M0 - self._r.M1])
+        else:
+            return state
 
     def reset(self):
         self._state = (self._r.V0, self._r.H0, self._r.M0)
@@ -186,7 +191,7 @@ class GoddardEnv(gym.Env):
         return self._observation()
 
     def render(self, mode='human'):
-        _, h, m = self._observation()
+        _, h, m = self._observation(normalize=False)
 
         if self.viewer is None:
             from gym.envs.classic_control import rendering
