@@ -5,10 +5,15 @@ name: Build and render Latex documents to PDF
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
+  #  and only when there are changes in tex-files
   push:
     branches: [ master ]
+    paths:
+      - '**.tex'
   pull_request:
     branches: [ master ]
+    paths:
+      - '**.tex'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
