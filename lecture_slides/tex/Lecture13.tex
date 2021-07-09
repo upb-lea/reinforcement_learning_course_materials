@@ -25,7 +25,7 @@
  \end{equation*}
 	\item For every policy inference and updating step we need to find $\max_u \hat{q}(\bm{x}', u, \bm{w})$. 
 	\item If $u\in\mathcal{U}\subset\mathbb{Z}$ (i.e., using integer-encoded actions) is a sufficiently small discrete set, that is straightforward by an exhaustive search.
-	\item In contrast, if $\bm{u}\in\mathcal{U}\subset\mathbb{R}^m$ is a (quasi-)continuous variable solving $\max_{\bm{u}} \hat{q}(\bm{x}', \bm{u}, \bm{w})$  requires an \hl{own optimization routine} which is computational expensive if we use nonlinear function approximation. 
+	\item In contrast, if $\bm{u}\in\mathcal{U}\subset\mathbb{R}^m$ is a (quasi-)continuous variable solving $\max_{\bm{u}} \hat{q}(\bm{x}', \bm{u}, \bm{w})$  requires an own \hl{optimization routine} which is computationally expensive if we use nonlinear function approximation. 
 \end{itemize}
 }
 
@@ -38,16 +38,12 @@
 	\begin{equation}
 		\max_{\bm{u}} \hat{q}(\bm{x}', \bm{u}, \bm{w}) \approx \hat{q}(\bm{x}', \bm{\mu}(\bm{x}, \bm{\theta}), \bm{w}).
 	\end{equation}
-	\item Hence, we can obtain explicit $Q$-learning targets for continuous actions when using a deterministic policy. For improving the policy we reuse the deterministic policy gradient theorem in an off-policy fashion
+	\item Hence, we can obtain explicit $Q$-learning targets for continuous actions when using a deterministic policy. 
+	\item For improving the policy we reuse the deterministic policy gradient theorem in an off-policy fashion
 	\begin{equation}
-	\nabla_{\bm{\theta}} J(\bm{\theta}) = \El{\nabla_{\bm{\theta}} \bm{\mu}(\bm{x},\bm{\theta}) \nabla_{\bm{u}} q(\bm{x},\bm{u})\vert_{\bm{u}=\bm{\mu}(\bm{x})}}{\bm{x}\sim\rho^{\bm{b}}}
+	\nabla_{\bm{\theta}} J(\bm{\theta}) = \El{\nabla_{\bm{\theta}} \bm{\mu}(\bm{X},\bm{\theta}) \nabla_{\bm{u}} q(\bm{X},\bm{U})\left|\bm{U}=\bm{\mu}(\bm{X}, \bm{\theta})\right.}{b}
 \end{equation}
-where $\El{\cdot}{\bm{x}\sim\rho^{\bm{b}}}$ is the expected value w.r.t. the state distribution
-\begin{equation}
-	\rho^{\bm{b}}(\bm{x}')=\int_\mathcal{X}\sum_{k=1}^\infty\gamma^{k-1}p_1(\bm{x})p(\bm{x}\rightarrow\bm{x}',k,\bm{b})
-\end{equation}
-given a behavior policy $\bm{b}(\bm{u}|\bm{x})$ and starting state density $p_1(\bm{x})$.
-\item Above, $p(\bm{x}\rightarrow\bm{x}',k,\bm{b})$ is the density at state $\bm{x}'$ after transitioning for $k$ time steps from a starting state $\bm{x}$ following $\bm{b}(\bm{u}|\bm{x})$.
+given a behavior policy $b(\bm{u}|\bm{x})$.
 \end{itemize}
 }
 
@@ -62,12 +58,12 @@ given a behavior policy $\bm{b}(\bm{u}|\bm{x})$ and starting state density $p_1(
 \vspace{0.25cm}
 \hl{Tweak \#1}: experience replay buffer
 \begin{itemize}
-	\item We store $\left\langle \bm{x}, u, r, \bm{x}'\right\rangle$ in $\bm{\mathcal{D}}$ after each transition step.
+	\item We store $\left\langle \bm{x}, \bm{u}, r, \bm{x}'\right\rangle$ in $\bm{\mathcal{D}}$ after each transition step.
 	\item The replay buffer $\bm{\mathcal{D}}$ is of limited capacity, i.e., it discards the oldest data sample when updating once it is full (ring memory).
 	\item This allows us to improve the $Q$-learning critic minimizing the mean-squared Bellman error (MSBE):
 	\begin{equation}
 	\label{eq:MSBE_DDPG}
-		\mathcal{L}(\bm{w}) = \El{\left[\left(r+ \gamma q(\bm{x}',\bm{\mu}(\bm{x}',\bm{\theta}),\bm{w})\right) - q(\bm{x},\bm{u},\bm{w}) \right]^2}{\left\langle \bm{x}, u, r, \bm{x}'\right\rangle\sim\bm{\mathcal{D}}} .
+		\mathcal{L}(\bm{w}) = \left[\left(r+ \gamma q(\bm{x}',\bm{\mu}(\bm{x}',\bm{\theta}),\bm{w})\right) - q(\bm{x},\bm{u},\bm{w}) \right]^2_{\bm{\mathcal{D}}} .
 	\end{equation}
 \end{itemize}
 }
@@ -164,8 +160,8 @@ given a behavior policy $\bm{b}(\bm{u}|\bm{x})$ and starting state density $p_1(
 				\lIf{$\bm{x}_{i+1}$ is terminal}{$y_i=r_{i+1}$}
 				\lElse{$y_i= r_{i+1}+ \gamma \hat{q}(\bm{x}_{i+1},\bm{\mu}(\bm{x}_{i+1},\bm{\theta}^{-}),\bm{w}^{-})$}
 			}
-			fit $\bm{w}$ on loss $\mathcal{L}(\bm{w})=[y_i - \hat{q}(\bm{x}_i, \bm{u}_i, \bm{w})]^2_{\bm{\mathcal{D}}_b}$ with step size $\alpha_{w}$\;
-			$\bm{\theta} \leftarrow \bm{\theta} + \alpha_{\theta} [\nabla_{\bm{\theta}}\bm{\mu}(\bm{x}_k,\bm{\theta})\nabla_{\bm{u}}\hat{q}(\bm{x}_k, \bm{u}_k, \bm{w})\vert_{\bm{u}=\bm{\mu}(\bm{x})}]_{\bm{\mathcal{D}}_b}$\; 
+			fit $\bm{w}$ on loss $\mathcal{L}(\bm{w})=[y - \hat{q}(\bm{x}, \bm{u}, \bm{w})]^2_{\bm{\mathcal{D}}_b}$ with step size $\alpha_{w}$\;
+			$\bm{\theta} \leftarrow \bm{\theta} + \alpha_{\theta} [\nabla_{\bm{\theta}}\bm{\mu}(\bm{x},\bm{\theta})\nabla_{\bm{u}}\hat{q}(\bm{x}, \bm{u}, \bm{w})\vert_{\bm{u}=\bm{\mu}_{\bm{\theta}}(\bm{x})}]_{\bm{\mathcal{D}}_b}$\; 
 			Update target net. $\bm{w}^{-} \leftarrow (1-\tau)\bm{w}^{-}+\tau\bm{w}, \,\, \bm{\theta}^{-} \leftarrow (1-\tau)\bm{\theta}^{-}+\tau\bm{\theta}$\;
 		}
 	}
@@ -209,8 +205,8 @@ However, we did not address this possible problem in an actor-critic context usi
 	\item Then, we perform the policy update
 	\begin{equation}
 \begin{aligned}
-\tilde{\bm{\theta}} &= \bm{\theta} + \frac{\alpha}{Z_1} \El{\nabla_{\bm{\theta}} \pi_{\bm{\theta}}(\bm{x}) \nabla_{\bm{u}} \hat{q}_{\bm{w}}(\bm{x},\bm{u})|_{\bm{u}=\bm{\pi}_{\bm{\theta}}(\bm{x})}}{\bm{x} \sim \rho_{\bm{\pi}}},\\
-\bm{\theta}^* &= \bm{\theta} + \frac{\alpha}{Z_2} \El{\nabla_{\bm{\theta}} \pi_{\bm{\theta}}(\bm{x}) \nabla_{\bm{u}} q^{\bm{\pi}}(\bm{x},\bm{u})|_{\bm{u}=\bm{\pi}_{\bm{\theta}}(\bm{x})}}{\bm{x} \sim \rho_{\bm{\pi}}},
+\tilde{\bm{\theta}} &= \bm{\theta} + \frac{\alpha}{Z_1} \El{\nabla_{\bm{\theta}} \pi_{\bm{\theta}}(\bm{X}) \nabla_{\bm{u}} \hat{q}_{\bm{w}}(\bm{X},\bm{U})\left|\bm{U}=\bm{\pi}_{\bm{\theta}}(\bm{X})\right.}{\pi},\\
+\bm{\theta}^* &= \bm{\theta} + \frac{\alpha}{Z_2} \El{\nabla_{\bm{\theta}} \pi_{\bm{\theta}}(\bm{X}) \nabla_{\bm{u}} q^{\bm{\pi}}(\bm{X},\bm{U})\left|\bm{U}=\bm{\pi}_{\bm{\theta}}(\bm{X})\right.}{\pi},
 \end{aligned}
 \end{equation} 
 where $Z_1$ and $Z_2$ normalize the gradient such that $Z^{-1}||\El{\cdot}{}|| = 1$.
@@ -225,11 +221,11 @@ where $Z_1$ and $Z_2$ normalize the gradient such that $Z^{-1}||\El{\cdot}{}|| =
 	\item Lets denote $\tilde{\bm{\pi}}$ and $\bm{\pi}^*$ as the policies with updated parameters $\tilde{\bm{\theta}}$ and $\bm{\theta}^*$ respectively.
 	\item As the gradient direction is a local maximizer, there exists $\epsilon_1$ sufficiently small such that if $\alpha \leq \epsilon_1$ then the \emph{approximate} value of $\tilde{\bm{\pi}}$ will be bounded below by the \emph{approximate} value of $\bm{\pi}^*$:
 \begin{equation} \label{eq:approx_q_TD3}
-\E{\hat{q}_{\bm{w}}(\bm{x}, \tilde{\bm{\pi}}(\bm{x}))} \geq \E{\hat{q}_{\bm{w}}(\bm{x}, \bm{\pi}^*(\bm{x}))}.
+\E{\hat{q}_{\bm{w}}(\bm{X}, \tilde{\bm{\pi}}(\bm{X}))} \geq \E{\hat{q}_{\bm{w}}(\bm{X}, \bm{\pi}^*(\bm{X}))}.
 \end{equation}
 \item Conversely, there exists $\epsilon_2$ sufficiently small such that if $\alpha \leq \epsilon_2$ then the \emph{true} value of $\tilde{\bm{\pi}}$ will be bounded above by the \emph{true} value of $\bm{\pi}^*$:
 \begin{equation} \label{eq:true_q_TD3}
-\E{q^{\bm{\pi}}(\bm{x}, \bm{\pi}^*(\bm{x}))} \geq \E{q^{\bm{\pi}}(\bm{x}, \tilde{\bm{\pi}}(\bm{x}))}.
+\E{q^{\bm{\pi}}(\bm{X}, \bm{\pi}^*(\bm{X}))} \geq \E{q^{\bm{\pi}}(\bm{X}, \tilde{\bm{\pi}}(\bm{X}))}.
 \end{equation}
 \item In other words: if the approximate and true critics differ from each other, the according policy gradient updates cannot lead to better policy updates of the respective other framework.  
 \end{itemize}	
@@ -242,11 +238,11 @@ where $Z_1$ and $Z_2$ normalize the gradient such that $Z^{-1}||\El{\cdot}{}|| =
 \begin{itemize}
 	\item If the expected, estimated action value will be at least as large as the \textit{true} action value w.r.t. $\bm{\theta}^*$
 	\begin{equation}
-  \E{\hat{q}_{\bm{w}}(\bm{x}, \bm{\pi}^*(\bm{x}))} \geq \E{q^{\bm{\pi}}(\bm{x}, \bm{\pi}^*(\bm{x}))}, 
+  \E{\hat{q}_{\bm{w}}(\bm{X}, \bm{\pi}^*(\bm{X}))} \geq \E{q^{\bm{\pi}}(\bm{X}, \bm{\pi}^*(\bm{X}))}, 
 \end{equation}
 then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply 
 	\begin{equation}
-  \E{\hat{q}_{\bm{w}}(\bm{x}, \tilde{\bm{\pi}}(\bm{x}))} \geq \E{q^{\bm{\pi}}(\bm{x}, \tilde{\bm{\pi}}(\bm{x}))}
+  \E{\hat{q}_{\bm{w}}(\bm{X}, \tilde{\bm{\pi}}(\bm{X}))} \geq \E{q^{\bm{\pi}}(\bm{X}, \tilde{\bm{\pi}}(\bm{X}))}
 \end{equation}
 	with a sufficiently small $\alpha<\min\{\epsilon_1, \epsilon_2\}$.
 	\item Hence, the \hl{maximization bias is also present in actor-critic} updates.
@@ -274,13 +270,11 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 \begin{itemize}
 	\item Using function approximation, the \hl{Bellman equation is never exactly satisfied} leaving room for some amount of \hl{residual TD-error} $\tilde{\delta}(\bm{x}, \bm{u})$:
 	\begin{equation}
-		\hat{q}_{\bm{w}}(\bm{x}, \bm{u}) = r + \gamma \E{\hat{q}_{\bm{w}}(\bm{x}', \bm{u}')} - \tilde{\delta}(\bm{x}, \bm{u}).
+		\hat{q}_{\bm{w}}(\bm{x}, \bm{u}) = r + \gamma \El{\hat{q}_{\bm{w}}(\bm{X}', \bm{U}')|\bm{X}'=\bm{x}', \bm{U}'=\bm{u}'}{\pi} - \tilde{\delta}(\bm{x}, \bm{u}).
 	\end{equation}
 	\item Although this error might be considered small per update step, it may accumulate over future steps if biased:
 	\begin{align}
-		\hat{q}_{\bm{w}}(\bm{x}_k, \bm{u}_k) &= r_k + \gamma \E{r_{k+1} + \gamma \E{\hat{q}_{\bm{w}}(\bm{x}_{k+2}, \bm{u}_{k+2})} - \tilde{\delta}_{k+1}} - \tilde{\delta}_{k}\notag\\
-		&=\ldots\\
-		&=\El{\sum_{k=1}^T\gamma^{i-k}(r_i-\tilde{\delta}_{i})}{\bm{x}_i\sim\rho_{\bm{\pi}}, \bm{u}_i\sim\bm{\pi}}\notag.
+		\hat{q}_{\bm{w}}(\bm{x}, \bm{u}) =\El{\sum_{k=0}^\infty\gamma^{k}\left(R_k-\tilde{\delta}_{k}(\bm{X}, \bm{U})\right)\left|\vphantom{\sum_{k=0}^\infty}\bm{X}=\bm{x}, \bm{U}=\bm{u}\right.}{\pi}.
 	\end{align}
 	\item Observation: the \hl{variance of $\hat{q}$ will be proportional to the variance of future reward and residual TD-errors}.
 	\item If $\gamma$ is large, the estimation variance might increase significantly.
@@ -318,7 +312,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 	\item Background: deterministic policies $\bm{\mu}$ tend to overfit to narrow peaks in the action-value estimate.
 	\item Counteraction: fit the action value of a small area around the target action (i.e., smoothing $\hat{q}$ in the action space):
 	\begin{equation}
-		y = r + \gamma \hat{q}_{\bm{w}^{-}}(\bm{x}', \bm{\mu}_{\bm{\theta}^{-}}+\bm{\epsilon}).
+		y = r + \gamma \hat{q}_{\bm{w}^{-}}(\bm{x}', \bm{\mu}_{\bm{\theta}^{-}}(\bm{x}')+\bm{\epsilon}).
 	\end{equation}
 	\item Here, $\bm{\epsilon}\sim\mathrm{clip}\left(\mathcal{N}(\bm{0},\bm{\Sigma}), -\bm{c},\bm{c}\right)$ is a mean-free, Gaussian noise with covariance $\bm{\Sigma}$, which is clipped at $\pm \bm{c}$ while $\bm{\theta}^{-}$ are the policy target network parameters.
 	\item To satisfy possible action constraints (denoted by upper and lower box constraints $\{\underline{\bm{u}}, \overline{\bm{u}}\}$), we add an additional clipping:
@@ -386,9 +380,9 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 							$y_i= r_{i+1}+ \gamma \min_{l=1,2}\hat{q}(\bm{x}_{i+1},\bm{u}',\bm{w}_{l}^{-})$\;
 							}
 			}
-			fit $\bm{w}_{l}$ on loss $\mathcal{L}(\bm{w}_{l})=[y_i - \hat{q}(\bm{x}_i, \bm{u}_i, \bm{w}_{l})]^2_{\bm{\mathcal{D}}_b}$ with step size $\alpha_{w}$ $\forall l$\;
+			fit $\bm{w}_{l}$ on loss $\mathcal{L}(\bm{w}_{l})=[y - \hat{q}(\bm{x}, \bm{u}, \bm{w}_{l})]^2_{\bm{\mathcal{D}}_b}$ with step size $\alpha_{w}$ $\forall \, l$\;
 			\If{$k \mod k_w=0$}{
-					$\bm{\theta} \leftarrow \bm{\theta} + \alpha_{\theta} [\nabla_{\bm{\theta}}\bm{\mu}(\bm{x}_k,\bm{\theta})\nabla_{\bm{u}}\hat{q}(\bm{x}_k, \bm{u}_k, \bm{w}_1)\vert_{\bm{u}=\bm{\mu}(\bm{x})}]_{\bm{\mathcal{D}}_b}$\; 
+					$\bm{\theta} \leftarrow \bm{\theta} + \alpha_{\theta} [\nabla_{\bm{\theta}}\bm{\mu}(\bm{x},\bm{\theta})\nabla_{\bm{u}}\hat{q}(\bm{x}, \bm{u}, \bm{w}_1)\vert_{\bm{u}=\bm{\mu}_{\bm{\theta}}(\bm{x})}]_{\bm{\mathcal{D}}_b}$\; 
 					$\bm{w}_{l}^{-} \leftarrow (1-\tau)\bm{w}_{l}^{-}+\tau\bm{w}_{l}, \,\, \bm{\theta}^{-} \leftarrow (1-\tau)\bm{\theta}^{-}+\tau\bm{\theta}$\;
 			}
 	}
@@ -416,12 +410,12 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 	\item In contrast to the previous two algorithms, we will \hl{focus on stochastic policies} $\pi(\bm{u}|\bm{x})$ in the following.
 	\item First, we rewrite the performance metric \eqref{eq:performance_metric_episodic} to obtain
 		\begin{equation}
-		J_{\pi} =\El{\sum_{k=0}^\infty \gamma^k r_k}{\bm{x}\sim p(\bm{x}_{k+1}|\bm{x}_{k}, \bm{u}_{k}), \bm{u}_k \sim \pi(\bm{u}|\bm{x})}.
+		J_{\pi} =\El{\sum_{k=0}^\infty \gamma^k R_k}{\pi}.
 	\end{equation}\vspace{-0.5cm}
 	\item Using the advantage $a_\pi(\bm{x},\bm{u})= q_{\pi}(\bm{x},\bm{u})-v_{\pi}(\bm{x})$ we can calculate the performance of an updated policy $\bm{\pi}\rightarrow\tilde{\bm{\pi}}$\footnote{proof from: S. Kakade and J. Langford, \textit{Approximately optimal approximate reinforcement learning}, ICML, vol. 2, pp 267-274, 2002}:
 		\begin{equation}
 		\label{eq:TRPO_perf_change}
-		J_{\tilde{\pi}} =J_{\pi} + \int_\mathcal{X}\rho^{\tilde{\pi}}(\bm{x})\int_{\mathcal{U}} \tilde{\pi}(\bm{u}|\bm{x})a_\pi(\bm{x},\bm{u}).
+		J_{\tilde{\pi}} =J_{\pi} + \int_\mathcal{X}p^{\tilde{\pi}}(\bm{x})\int_{\mathcal{U}} \tilde{\pi}(\bm{u}|\bm{x})a_\pi(\bm{x},\bm{u}).
 	\end{equation}\vspace{-0.5cm}
 	\item While for finite MDPs, the policy improvement theorem guaranteed  $J_{\tilde{\pi}} \geq J_{\pi}$ for each policy update, there might be some states where $\int_{\mathcal{U}} \tilde{\pi}(\bm{u}|\bm{x})a_\pi<0$ for continuous MDPs using function approximation. 
 \end{itemize}
@@ -434,9 +428,9 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 \begin{itemize}
 	\item For easier calculation, we introduce a local approximation to \eqref{eq:TRPO_perf_change}
 	\begin{equation}
-		\mathcal{L}_{\pi}(\tilde{\pi}) =J_{\pi} + \int_\mathcal{X}\rho^{\pi}(\bm{x})\int_{\mathcal{U}} \tilde{\pi}(\bm{u}|\bm{x})a_\pi(\bm{x},\bm{u})
+		\mathcal{L}_{\pi}(\tilde{\pi}) =J_{\pi} + \int_\mathcal{X}p^{\pi}(\bm{x})\int_{\mathcal{U}} \tilde{\pi}(\bm{u}|\bm{x})a_\pi(\bm{x},\bm{u})
 	\end{equation}
-	where $\rho^{\pi}(\bm{x})$ is used instead of $\rho^{\tilde{\pi}}(\bm{x})$, i.e., neglecting the state distribution change due to a policy update.
+	where $p^{\pi}(\bm{x})$ is used instead of $p^{\tilde{\pi}}(\bm{x})$, i.e., neglecting the state distribution change due to a policy update.
 	\item For any parametrized and differentiable policy $\pi_{\bm{\theta}}(\bm{u}|\bm{x})$, it can be shown that
 	\begin{equation}
 	\begin{split}
@@ -486,9 +480,13 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 	\end{split}
 	\end{equation}
 	with 
+\end{itemize}
+\vspace{0.15cm}
 	\begin{equation*}
-\overline{D}_{\mathrm{KL}}(\bm{\theta}_k, \bm{\theta})=\overline{D}_{\mathrm{KL}}(\pi_{\bm{\theta}_k}, \pi_{\bm{\theta}})=\El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{x}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{x}))}{\bm{x} \sim \pi_{\bm{\theta}_k}}.
+\overline{D}_{\mathrm{KL}}(\bm{\theta}_k, \bm{\theta})=\overline{D}_{\mathrm{KL}}(\pi_{\bm{\theta}_k}, \pi_{\bm{\theta}})=\El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{\pi_{\bm{\theta}_k}}.
 	\end{equation*}
+	\vspace{-0.25cm}
+\begin{itemize}
 	\item Hence, we want to \hl{limit the average KL divergence w.r.t. the states visited by the old policy}.
 	\item The constraint $\kappa$ is a TRPO hyperparameter (typically $\kappa<<1$). 
 	\item Although \eqref{eq:TRPO_opt_prob}  does not provide any formal convergence guarantee, we at least have a link between changes in the parameter and policy distribution space. Therefore, \hl{we can use this tool to prevent erratic policy changes}.  
@@ -503,14 +501,14 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 	\item To actually solve \eqref{eq:TRPO_opt_prob} we will make use of samplings from \hl{Monte-Carlo rollouts}.
 	\item Expanding the objective yields
 	\begin{equation}
-		\max_{\bm{\theta}}  \, \mathcal{L}_{\bm{\theta}_k}(\bm{\theta})= \max_{\bm{\theta}} \, J_{\pi_k} + \int_\mathcal{X}\rho^{\pi_k}(\bm{x})\int_{\mathcal{U}} \pi_{\bm{\theta}}(\bm{u}|\bm{x})a_{\pi_k}(\bm{x},\bm{u}).
+		\max_{\bm{\theta}}  \, \mathcal{L}_{\bm{\theta}_k}(\bm{\theta})= \max_{\bm{\theta}} \, J_{\pi_k} + \int_\mathcal{X}p^{\pi_k}(\bm{x})\int_{\mathcal{U}} \pi_{\bm{\theta}}(\bm{u}|\bm{x})a_{\pi_k}(\bm{x},\bm{u}).
 	\end{equation}
 	\item The first term $J_{\pi_k}$ can be dropped, since it is irrelevant for the optimization result (constant).
-	\item Using samples we can approximate $\int_\mathcal{X}\rho^{\pi_k}(\bm{x})\approx\frac{1}{1-\gamma}\El{\cdot}{\bm{x}\sim\rho^{\pi_k}}$.
-	\item Moreover, $\int_{\mathcal{U}} \pi_{\bm{\theta}}(\bm{u}|\bm{x})a_{\pi_k}(\bm{x},\bm{u})\approx\El{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u})}{\bm{u}\sim\pi_k}$ is also approximated applying importance sampling based on data from the old policy.
+	\item Using samples we can approximate $\int_\mathcal{X}p^{\pi_k}(\bm{x})\approx\frac{1}{1-\gamma}\El{\bm{X}}{\pi_{\bm{\theta}_k}}$.
+	\item Moreover, $\int_{\mathcal{U}} \pi_{\bm{\theta}}(\bm{u}|\bm{x})a_{\pi_k}(\bm{x},\bm{u})\approx\El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})}{\pi_{\bm{\theta}_k}}$ is also approximated applying importance sampling based on data from the old policy.
 	\item Hence, the sampled objective is
 	\begin{equation}
-		\max_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u})}{\bm{x}\sim\rho^{\pi_k}, \bm{u}\sim\pi_k}.
+		\max_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})}{\pi_{\bm{\theta}_k}}.
 	\end{equation}
 \end{itemize}
 }
@@ -532,13 +530,17 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 \frame{\frametitle{Sample-Based Objective and Constraint Estimation (2)}
 \begin{itemize}
 	\item Applying the previous sample-based estimation we obtain
+\end{itemize}
+\vspace{0.15cm}
 		\begin{equation}
 	\label{eq:TRPO_opt_prob_sample}
 	\begin{split}
-		 &\bm{\theta}_{k+1} = \argmax_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u})}{\bm{x}\sim\rho^{\pi_k}, \bm{u}\sim\pi_k},\\
-		 \mbox{s.t.} \quad\quad  & \El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{x}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{x}))}{\bm{x} \sim \pi_{\bm{\theta}_k}}\leq\kappa.
+		 &\bm{\theta}_{k+1} = \argmax_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})}{\pi_{\bm{\theta}_k}},\\
+		 \mbox{s.t.} \quad\quad  & \El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{{\pi_{\bm{\theta}_k}}}\leq\kappa.
 	\end{split}
 	\end{equation}
+	\vspace{-0.25cm}
+\begin{itemize}
 	\item Hence, we have a \hl{three-step procedure} for each TRPO update:
 \end{itemize}
 \begin{enumerate}
@@ -557,7 +559,7 @@ Solving  \eqref{eq:TRPO_opt_prob_sample} is generally a nonlinear optimization p
 \frame{\frametitle{Generalized Advantage Estimation}
 \setcounter{footnote}{0}
 \begin{itemize}
-	\item Having data $\left\langle \bm{x}, u, r, \bm{x}'\right\rangle\sim\bm{\mathcal{D}}$ from a Monte Carlo rollout available, an imporant problem is to estimate $a_{\pi_k}(\bm{x},\bm{u})$ in \eqref{eq:TRPO_opt_prob_sample}.
+	\item Having data $\left\langle \bm{x}, \bm{u}, r, \bm{x}'\right\rangle$ in $\bm{\mathcal{D}}$ from a Monte Carlo rollout available, an imporant problem is to estimate $a_{\pi_k}(\bm{x},\bm{u})$ in \eqref{eq:TRPO_opt_prob_sample}.
 	\item A particular suggestion in the TRPO context is to use a \hl{generalized advantage estimator (GAE)} \footnote{cf. J. Schulmann et al., \textit{High Dimensional Continuous Control Using Generalized Advantage Estimation}, \href{https://arxiv.org/abs/1506.02438}{https://arxiv.org/abs/1506.02438}, 2015} defined as
 	\begin{equation}
 	\label{eq:GAE}
@@ -605,14 +607,17 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Background and Motivation}
 \begin{itemize}
-	\item The upcoming \hl{proximal policy optimization (PPO)} algorithm tries to mimic the constrained TRPO problem
+	\item The upcoming \hl{proximal policy optimization (PPO)} algorithm tries to mimic the constrained TRPO problem based on related unconstrained problems. 
+\end{itemize}	
+\vspace{0.15cm}
 		\begin{equation*}
 	\begin{split}
-		 &\bm{\theta}_{k+1} = \argmax_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u})}{\bm{x}\sim\rho^{\pi_k}, \bm{u}\sim\pi_k},\\
-		 \mbox{s.t.} \quad\quad  & \El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{x}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{x}))}{\bm{x} \sim \pi_{\bm{\theta}_k}}\leq\kappa.
+		 &\bm{\theta}_{k+1} = \argmax_{\bm{\theta}} \,\El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})}{\pi_{\bm{\theta}_k}},\\
+		 \mbox{s.t.} \quad\quad  & \El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{{\pi_{\bm{\theta}_k}}}\leq\kappa.
 	\end{split}
 	\end{equation*}
-	based on related unconstrained problems. 
+\vspace{-0.25cm}
+\begin{itemize}
 	\item Hence, the objective will be reformulated to incorporate mechanisms preventing excessively large variations of the policy distribution during a parameter update (leading to an updated policy with sufficient proximity to the old one).  
 	\item Moreover, PPO incorporates two variants which we will discuss:
 	\begin{enumerate}
@@ -633,7 +638,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 \small
 \begin{equation}
 \label{eq:PPO_CSO}
-		\El{\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}\right\}}{\bm{x}\sim\rho^{\pi_k}, \bm{u}\sim\pi_k}.
+		\hspace{-0.2cm}\El{\min\left\{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}(\bm{X},\bm{U})\right\}}{\pi_{\bm{\theta}_k}}.
 \end{equation}
 \normalsize
 \begin{itemize}
@@ -654,7 +659,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 \end{itemize}
 \vspace{0.1cm}
 \begin{equation*}
-		\max_{\bm{\theta}}\,\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}(\bm{u}|\bm{x})\right\}.
+		\max_{\bm{\theta}}\,\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}(\bm{x}, \bm{u})\right\}.
 \end{equation*}
 \begin{itemize}
 	\item Because the advantage is positive, the objective will increase if the action becomes more likely , i.e., if $\pi_{\bm{\theta}}(\bm{u}|\bm{x})$ increases.
@@ -677,7 +682,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 \end{itemize}
 \vspace{0.1cm}
 \begin{equation*}
-		\max_{\bm{\theta}}\,\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}(\bm{u}|\bm{x})\right\}.
+		\max_{\bm{\theta}}\,\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u}), \mathrm{clip}\left(\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}, 1-\epsilon, 1+\epsilon\right)a_{\pi_k}(\bm{x},\bm{u})\right\}.
 \end{equation*}
 \begin{itemize}
 	\item Because the advantage is negative, the objective will increase if the action becomes less likely , i.e., if $\pi_{\bm{\theta}}(\bm{u}|\bm{x})$ decreases.
@@ -697,10 +702,16 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 \frame{\frametitle{Adaptive KL Penalty}
 \begin{itemize}
 	\item The second PPO variant makes use of the following KL-penalized objective
+\end{itemize}
+\vspace{0.15cm}
+\small
 	\begin{equation}
 	\label{eq:PPO_AKP}
-      \El{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})}a_{\pi_k}(\bm{x},\bm{u})-\beta D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{x}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{x}))}{\bm{x}\sim\rho^{\pi_k}, \bm{u}\sim\pi_k}.		
+      \El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})-\beta D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{\pi_{\bm{\theta}_k}}.		
 	\end{equation}
+	\normalsize
+	\vspace{-0.25cm}
+\begin{itemize}
 	\item Transfers the KL-based constraint into a penalty for large policy distribution changes.
 	\item The parameter $\beta$ weights the penalty against the policy improvement.
 	\item The original PPO implementation suggests an adaptive tuning of $\beta$ w.r.t. the sampled average KL divergence $\overline{D}_{\mathrm{KL}}(\bm{\theta}_k, \bm{\theta})$ from previous experience
