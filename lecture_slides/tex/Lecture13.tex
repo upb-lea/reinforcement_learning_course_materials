@@ -36,7 +36,7 @@
 \begin{itemize}
 	\item When using a greedy, deterministic policy $\bm{\pi}(\bm{x}, \bm{\theta}) = \bm{\mu}(\bm{x}, \bm{\theta})$ we can utilize it to approximate
 	\begin{equation}
-		\max_{\bm{u}} \hat{q}(\bm{x}', \bm{u}, \bm{w}) \approx \hat{q}(\bm{x}', \bm{\mu}(\bm{x}, \bm{\theta}), \bm{w}).
+		\max_{\bm{u}} \hat{q}(\bm{x}', \bm{u}, \bm{w}) \approx \hat{q}(\bm{x}', \bm{\mu}(\bm{x}', \bm{\theta}), \bm{w}).
 	\end{equation}
 	\item Hence, we can obtain explicit $Q$-learning targets for continuous actions when using a deterministic policy.\pause 
 	\item For improving the policy we reuse the deterministic policy gradient theorem in an off-policy fashion
@@ -365,7 +365,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 \SetKwInput{Param}{parameter}
 \Input{diff. det. policy fct. $\bm{\mu}(\bm{x},\bm{\theta})$ and action-value fct. $\hat{q}(\bm{x},\bm{u},\bm{w})$}
 \Param{step sizes and filter constant $\{\alpha_{w}, \alpha_{\theta}, \tau\}\in\left\{\mathbb{R}|0<\alpha, \tau<1\right\}$, policy update rate $k_w\in\left\{\mathbb{N}|1\leq k_w\right\}$, target noise $\bm{\Sigma}\in\mathbb{R}^{m \times m}$ and $\bm{c}\in\mathbb{R}^{m}$}
-\Init{weights $\bm{w}=\bm{w}_{1}^{-}=\bm{w}_{2}^{-}\in\mathbb{R}^{\zeta}$ and $\bm{\theta}=\bm{\theta}^{-}\in\mathbb{R}^d$ arbitrarily, memory $\bm{\mathcal{D}}$}\pause
+\Init{weights $\{\bm{w}_{1}=\bm{w}_{1}^{-}$, $\bm{w}_{2}=\bm{w}_{2}^{-}\}\in\mathbb{R}^{\zeta}$,  $\bm{\theta}=\bm{\theta}^{-}\in\mathbb{R}^d$ arbitrarily, memory $\bm{\mathcal{D}}$}\pause
  \For{$j=1,2,\ldots,$ episodes}{
 		initialize $\bm{x}_0$\; 
 		\For{$k=0,1,\ldots, T-1$ time steps}{
