@@ -46,7 +46,9 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 12. Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
-
+13. Deep Deterministic Policy Gradient & Proximal Policy Optimization
+    * Lecture video
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
 
 * Summary of Part One: Reinforcement Learning in Finite State and Action Spaces
     * [Lecture video](https://www.youtube.com/watch?v=bRpWfOSvMTg)
@@ -107,6 +109,10 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
     * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
     * [Tutorial template](../master/exercises/templates/ex12)
     * [Tutorial solution](../master/exercises/solutions/ex12) 
+13. Shoot to the moon with DDPG & PPO
+    * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
+    * [Tutorial template](../master/exercises/templates/ex13)
+    * [Tutorial solution](../master/exercises/solutions/ex13) 
 
 # Citation
 Please use the following BibTeX entry for citing us:
