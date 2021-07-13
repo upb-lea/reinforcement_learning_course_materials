@@ -46,15 +46,15 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 12. Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
-13. Deep Deterministic Policy Gradient & Proximal Policy Optimization
-    * Lecture video
+13. Further Contemporary RL Algorithms (DDPG, TD3, TRPO, PPO)
+    * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
 
 * Summary of Part One: Reinforcement Learning in Finite State and Action Spaces
     * [Lecture video](https://www.youtube.com/watch?v=bRpWfOSvMTg)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_One.pdf) 
 * Summary of Part Two: Course Completion and Outlook
-    * [Lecture video](https://www.youtube.com/watch?v=4pYqOkXVX2w&feature=youtu.be)
+    * [Lecture video](https://www.youtube.com/watch?v=F_dkTOlVACM)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_Two.pdf) 
 * Full course slides
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/main.pdf)
