@@ -321,8 +321,8 @@ Also note:
 \begin{equation*}
 \begin{split}
 	\pi(u|\bm{x},\bm{\theta}) &= \frac{e^{\bm{\theta}\T\tilde{\bm{x}}(\bm{x}, u)}}{\sum_i e^{\bm{\theta}\T\tilde{\bm{x}}(\bm{x}, i)}}\\}
-	\onslide<2->{\Leftrightarrow\quad \nabla_{\bm{\theta}}\ln \pi(u|\bm{x},\bm{\theta}) &= \nabla_{\bm{\theta}}\left(\bm{\theta}\T\tilde{\bm{x}}(\bm{x}, u) - \sum_i \bm{\theta}\T\tilde{\bm{x}}(\bm{x}, i)\right)\\}
-			\onslide<3->{& = \tilde{\bm{x}}(\bm{x},\bm{u}) - \El{\tilde{\bm{x}}(\bm{x},\cdot)}{\pi}}
+	\onslide<2->{\Leftrightarrow\quad \nabla_{\bm{\theta}}\ln \pi(u|\bm{x},\bm{\theta}) &= \nabla_{\bm{\theta}}\left(\bm{\theta}\T\tilde{\bm{x}}(\bm{x}, u) - \ln\left(\sum_i e^{\bm{\theta}\T\tilde{\bm{x}}(\bm{x}, i)}\right)\right)\\}
+			\onslide<3->{ & = \tilde{\bm{x}}(\bm{x},\bm{u}) - \El{\tilde{\bm{x}}(\bm{x},\cdot)}{\pi}}
 \end{split}
 \end{equation*}
 \onslide<4->{Univariate Gaussian policy with linear function approximation and given $\sigma$:
