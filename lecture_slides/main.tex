@@ -97,6 +97,11 @@
 \def\themyalgo{\arabic{part}.\arabic{myalgo}}
 \tcbmaketheorem{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{myalgo}{algo}
 
+%Ensure that overlay/pause does not increase counter when an overlay slide is incremented
+\resetcounteronoverlays{mydefi}
+\resetcounteronoverlays{mytheo}
+\resetcounteronoverlays{myalgo}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
