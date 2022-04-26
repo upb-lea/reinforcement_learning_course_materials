@@ -1,7 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%% Very basic document style settings %%%%%%%%%
 \documentclass[handout]{beamer}
-%\documentclass{beamer}
 \usetheme{Madrid}
 \usefonttheme{professionalfonts}
 \setbeamertemplate{itemize items}[triangle]
@@ -83,25 +82,13 @@
 \usepackage{tikz}
 
 %Math. definitions
-\newcounter{mydefi}[section]
-\def\themydefi{\arabic{part}.\arabic{mydefi}}
-\tcbmaketheorem{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{mydefi}{defi}		
+\newtcbtheorem[number within=part, reset counter on overlays=true]{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{defi}
 
 %Math. theorems		
-\newcounter{mytheo}[section]
-\def\themytheo{\arabic{part}.\arabic{mytheo}}
-\tcbmaketheorem{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{mytheo}{theo}
+\newtcbtheorem[number within=part, reset counter on overlays=true]{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{theo}
 
 %Algorithms	
-\newcounter{myalgo}[section]
-\def\themyalgo{\arabic{part}.\arabic{myalgo}}
-\tcbmaketheorem{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{myalgo}{algo}
-
-%Ensure that overlay/pause does not increase counter when an overlay slide is incremented
-\resetcounteronoverlays{mydefi}
-\resetcounteronoverlays{mytheo}
-\resetcounteronoverlays{myalgo}
-
+\newtcbtheorem[number within=part, reset counter on overlays=true]{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{algo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,8 +103,6 @@
  \beamer@tocsectionnumber=0\relax
   \setcounter{section}{0}
 	\setcounter{framenumber}{0}
-	\setcounter{mytheo}{0}
-	\setcounter{mydefi}{0}
 }
 \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +177,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%Lecture Include Onlys%%%
-%\includeonly{tex/Lecture12}
+%\includeonly{tex/Lecture02}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
