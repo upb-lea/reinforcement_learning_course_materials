@@ -8,6 +8,10 @@ message: >-
   metadata from this file.
 type: software
 authors:
+  - given-names: Oliver
+    family-names: Wallscheid
+    affiliation: Paderborn University
+    orcid: 'https://orcid.org/0000-0001-9362-8777'
   - given-names: Wilhelm
     family-names: Kirchgässner
     orcid: 'https://orcid.org/0000-0001-9490-1843'
@@ -16,10 +20,6 @@ authors:
     family-names: Schenke
     affiliation: Paderborn University
     orcid: 'https://orcid.org/0000-0001-5427-9527'
-  - given-names: Oliver
-    family-names: Wallscheid
-    affiliation: Paderborn University
-    orcid: 'https://orcid.org/0000-0001-9362-8777'
   - given-names: Daniel
     family-names: Weber
     affiliation: Paderborn University
