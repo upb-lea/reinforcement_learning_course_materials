@@ -114,17 +114,6 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
     * [Tutorial template](../master/exercises/templates/ex13)
     * [Tutorial solution](../master/exercises/solutions/ex13) 
 
-# Citation
-Please use the following BibTeX entry for citing us:
-
-    @Misc{KSWW2020,
-      author = {Wilhelm Kirchgässner and Maximilian Schenke and Oliver Wallscheid and Daniel Weber},
-      note   = {Paderborn University},
-      title  = {Reinforcement Learning Course Material},
-      year   = {2020},
-      url    = {https://github.com/upb-lea/reinforcement_learning_course_materials},
-    }
-
 # Contributions
 We highly appreciate any feedback and input to the course material e.g.
 * typos or content-related discussions (please raise an issue)
@@ -139,3 +128,7 @@ The lecture notes are inspired by
 
 The tutorials are partly using pre-packed environments from
 * [OpenAI Gym](https://gym.openai.com/)
+
+# Citation
+See "Cite this repository" on top
+
