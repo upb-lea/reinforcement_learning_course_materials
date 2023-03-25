@@ -965,12 +965,12 @@ Can this lead to efficient and optimal solutions?
 \frame{\frametitle{Problem Reconsideration}
 The reward hypothesis in \theoref{theo:reward_hypo} is basically an \hl{infinite-horizon optimal control} problem (with $r_k$ interpreted as costs):
 \begin{equation}
-	v_k^* = \min_{\bm{u}_k} \sum_{i=1}^\infty r_{k+i} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
+	v_k^* = \min_{\bm{u}_k} \sum_{i=0}^\infty r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}
 \pause
 For certain cases closed-form solutions can be found, e.g., a LTI system with quadratic costs and no further constraints can be optimally controlled by a linear-quadratic regulator (LQR). However, for arbitrary cases that is not possible and one relaxes the problem to a \hl{finite-horizon optimal control} problem:   
 \begin{equation}
-	v_k^* = \min_{\bm{u}_k} \sum_{i=1}^{N_p} r_{k+i} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
+	v_k^* = \min_{\bm{u}_k} \sum_{i=0}^{N_p} r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}
 \pause
 Here, an internal model $\bm{x}_{k+1}=\bm{f}(\bm{x}_k,\bm{u}_k)$ is utilized to predict the system behavior for $N_p$ future steps. This \hl{model predictive control} (MPC) approach can be solved using numeric solvers. 
@@ -983,8 +983,8 @@ Here, an internal model $\bm{x}_{k+1}=\bm{f}(\bm{x}_k,\bm{u}_k)$ is utilized to 
 While in RL the desired system behavior must be solely represented by $r_k$, MPC can directly take into account system constraints:
 \begin{equation}
 	\begin{split}
-	v_k^* &= \min_{\bm{u}_k} \sum_{i=1}^{N_p} r_k (\bm{x}_{k+i}, \bm{u}_{k+i})\, ,\\
-	s.t. \quad \bm{x}_{k+1}&=\bm{f}(\bm{x}_k,\bm{u}_k), \, \bm{x}_k \in \mathcal{X},\, \bm{u}_k \in \mathcal{U}\,.\\
+	v_k^* &= \min_{\bm{u}_k} \sum_{i=0}^{N_p} r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\, ,\\
+	\mathrm{s.t.} \quad \bm{x}_{k+i+1}&=\bm{f}(\bm{x}_{k+i},\bm{u}_{k+i}), \, \bm{x}_{k+i} \in \mathcal{X},\, \bm{u}_{k+i} \in \mathcal{U}\,.\\
 \end{split}
 \end{equation}
 \begin{figure}
