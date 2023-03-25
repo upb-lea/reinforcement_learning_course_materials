@@ -225,7 +225,7 @@ A \hl{finite Markov reward process (MRP)} is a tuple $\left\langle\mathcal{X}, \
 \begin{itemize}
 	\item Markov chain extended with rewards \pause
 	\item Still an autonomous stochastic process without specific inputs \pause
-	\item Rewards $R_k$ only dependent on state $X_k$
+	\item Reward $R_{k+1}$ only depends on state $X_k$
 \end{itemize}
 }
 
@@ -741,7 +741,7 @@ For any finite MDP
 }
 \begin{itemize}
 	\onslide<2->{\item Any policy (i.e., also the optimal one) must satisfy the self-consistency condition given by the Bellman expectation equation.}
-	\onslide<3->{\item An optimal policy must equal the expected return for the best action of a given state:}
+	\onslide<3->{\item An optimal policy must deliver the maximum expected return being in a given state:}
 \end{itemize}
 \onslide<4->{
 \begin{equation}
