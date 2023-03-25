@@ -598,6 +598,7 @@ In finite MDPs the action value can be directly linked to the state value (cf.~\
 \frame{\frametitle{Bellman Expectation Equation (3)}
 Inserting \eqref{eq:q_MDP_finite} into \eqref{eq:v_MDP_finite} directly results in:
 \begin{equation}
+\label{eq:Bellman_MDP_linear_non_matrix}
 	v_\pi(x_k)	= \sum_{u_k\in\mathcal{U}}\pi(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_\pi(x_{k+1})\right) \, .
 \end{equation}
 \pause

@@ -221,11 +221,11 @@ follows. Hence, \hl{when discounting the Richardson iteration always converges f
 %% Iterative Policy Evaluation by Richardson Iteration (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Iterative Policy Evaluation by Richardson Iteration (1)}
-General form for any $x_k\in\mathcal{X}$ at iteration $i$ is given as:
+Applying the Richardson iteration \eqref{eq:richardson_general} to the Bellman equation \eqref{eq:Bellman_MDP_linear_non_matrix} for any $x_k\in\mathcal{X}$ at iteration $i$ results in:
 \begin{equation}
 	v_{i+1}(x_k)	= \sum_{u_k\in\mathcal{U}}\bm{\pi}(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1})\right)\, .
 \end{equation}\pause
-Matrix form then is:
+Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 \begin{equation}
 \label{eq:iterative_policy_eval_matrix}
 	\bm{v}_{\mathcal{X},i+1}^{\pi} =\bm{r}_{\mathcal{X}}^{\pi}+\gamma\bm{\mathcal{P}}_{xx'}^{\pi}\bm{v}_{\mathcal{X},i}^{\pi}\, .
