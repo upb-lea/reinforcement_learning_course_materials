@@ -101,7 +101,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
     * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
     * [Tutorial template](../master/exercises/templates/ex10)
     * [Tutorial solution](../master/exercises/solutions/ex10) 
-11. Improve the Value-Based Mount Car Solution using Sarsa(Lambda)
+11. Improve the Value-Based Mountain Car Solution using Sarsa(Lambda)
     * [Tutorial video](https://www.youtube.com/watch?v=bhZGpuh5-6M)
     * [Tutorial template](../master/exercises/templates/ex11)
     * [Tutorial solution](../master/exercises/solutions/ex11) 
