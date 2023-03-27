@@ -7,11 +7,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   #  and only when there are changes in tex-files
   push:
-    branches: [ master ]
+    branches: [ master, v2022 ]
     paths:
       - '**.tex'
   pull_request:
-    branches: [ master ]
+    branches: [ master, v2022 ]
     paths:
       - '**.tex'
 
