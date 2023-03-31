@@ -4,14 +4,14 @@ name: Build and render Latex documents to PDF
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for certain branches
   #  and only when there are changes in tex-files
   push:
-    branches: [ master, v2022 ]
+    branches: [v2022]
     paths:
       - '**.tex'
   pull_request:
-    branches: [ master, v2022 ]
+    branches: [v2022]
     paths:
       - '**.tex'
 
@@ -44,6 +44,6 @@ jobs:
           username: ${{ secrets.UPB_USER }}
           password: ${{ secrets.UPB_PW }}
           port: 22
-          source: "lecture_slides/built/"
+          source: "lecture_slides/built_2022/"
           target: ${{ secrets.LEA_GRP_PATH_RL }}
 
