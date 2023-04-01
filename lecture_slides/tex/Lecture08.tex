@@ -3,12 +3,12 @@
 \title[RL Lecture 08]{Lecture 08: Function Approximation \\with Supervised Learning}  
 \date{}  
 \frame{\titlepage} 
-\frame{\frametitle{Table of Contents}\tableofcontents} 
+\frame{\frametitle{Table of contents}\tableofcontents} 
 
 
-\section{Motivation and Background} 
+\section{Motivation and background} 
 
-\frame{\frametitle{The Machine Learning Triad}
+\frame{\frametitle{The machine learning triad}
 \begin{figure}
 	\includegraphics[width=11cm]{fig/lec01/Machine_Learning_Disciplines.pdf}
 	\caption{Disciplines of machine learning 
@@ -18,7 +18,7 @@
 \end{figure}
 }
 
-\frame{\frametitle{Introductory Material}
+\frame{\frametitle{Introductory material}
 Machine learning (ML) and especially the field of supervised learning (SL) is extensively researched and taught.
 \begin{itemize}
 	\item Courses at UPB
@@ -42,7 +42,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 
 %  ML hype in industry
-\frame{\frametitle{Machine Learning in Industry}
+\frame{\frametitle{Machine learning in industry}
 	Machine learning applications are a \href{https://magazine.startus.cc/how-machine-learning-is-changing-the-major-industries/}{fast growing industry itself}, and enhance more and more automation in classical industry as well.
 	
 	Among others, popular industries are:
@@ -57,7 +57,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	The demand for highly skilled ML engineers is growing correspondingly.
 }
 
-\frame{\frametitle{Instances of ML Applications}
+\frame{\frametitle{Instances of ml applications}
 	\begin{itemize}
 		\item Recommendation systems
 		\begin{itemize}
@@ -80,7 +80,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 %  Kaggle comps
-\frame{\frametitle{ML Competitions with Price Pool}
+\frame{\frametitle{Ml competitions with price pool}
 	\begin{figure}
 		\includegraphics[width=9cm]{fig/lec08/comp_logos.pdf}
 		\caption{Kaggle and DrivenData}
@@ -96,7 +96,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 %  Typical ML pipeline
-\frame{\frametitle{Typical Supervised Learning Pipeline}
+\frame{\frametitle{Typical supervised learning pipeline}
 	\begin{figure}
 		\includegraphics[width=9cm]{fig/lec08/ML_pipeline.png}
 		\caption{A typical supervised learning pipeline -- sometimes more art than science}
@@ -107,7 +107,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 %  How does this contribute to RL? See AlphaGo, which is built on SL
 %	Future RL will benefit from methods borrowed from SL, 
-\frame{\frametitle{Supervised Learning in Reinforcement Learning}
+\frame{\frametitle{Supervised learning in reinforcement learning}
 	\hl{SL approximates functions, RL approximates policies.}
 	\pause
 	
@@ -126,9 +126,9 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{itemize}
 }
 
-\section{Supervised Learning Problem Statement}
+\section{Supervised learning problem statement}
 
-\frame{\frametitle{Supervised Learning Problem Statement}
+\frame{\frametitle{Supervised learning problem statement}
 	\begin{block}{Supervised learning}
 		Given a \hl{labeled} data set $\left\langle\bm x_k, \bm y_k\right\rangle \in \bm{\mathcal{D}}$ with $k \in [0, K]$ and $K$ being the data set size, approximate the mapping function $f^\ast: \bm x_k \mapsto \bm y_k$ with a parameterizable ML \hl{model} $f_{\bm w}: \bm x_k \mapsto \hat{\bm y}_k \approx \bm y_k \quad\forall k$.
 				
@@ -141,7 +141,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{itemize}
 }
 
-\frame{\frametitle{Bias and Variance}
+\frame{\frametitle{Bias and variance}
 	\begin{figure}
 		\includegraphics[width=12cm]{fig/lec08/bias_variance.pdf}
 		\caption{Left: Decision boundaries in binary classification, $k$-nearest neighbors with one (bright) and nine (dark) neighbors. Right: Regression example, least squares (dark) and $2$-nearest neighbors (bright).}
@@ -149,7 +149,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{figure}
 }
 
-\frame{\frametitle{Generalization Error}
+\frame{\frametitle{Generalization error}
 	
 	\begin{block}{Supervised learning performance}
 		SL performance is measured by a model's \hl{generalization error}, i.e., goodness of fit on unseen data.
@@ -166,7 +166,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	
 }
 
-\frame{\frametitle{$k$-fold Cross-Validation}
+\frame{\frametitle{$k$-fold cross-validation}
 	\begin{columns}[t,onlytextwidth]
 	\begin{column}{0.55\textwidth}
 	\begin{minipage}[c]{\linewidth}
@@ -193,7 +193,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 
-\frame{\frametitle{Means to Improve an SL Model}
+\frame{\frametitle{Means to improve an sl model}
 	SL performance can be improved by:
 	\begin{itemize}
 		\item Collecting more data, i.e., increasing $K$ (more data is always better).\pause
@@ -204,12 +204,12 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{itemize}
 }
 
-\section{Feature Engineering}
-\frame{\frametitle{Table of Contents}
+\section{Feature engineering}
+\frame{\frametitle{Table of contents}
 \tableofcontents[currentsection]
 }
 
-\frame{\frametitle{Feature Engineering}
+\frame{\frametitle{Feature engineering}
 	Additional features might be:
 	\begin{itemize}
 		\item Coming from the real world via additional sensors or additional tracking mechanisms (think of a user's click behavior on a website)\pause
@@ -223,7 +223,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{alertblock}
 }
 
-\frame{\frametitle{Feature Engineering Example (Classification)}
+\frame{\frametitle{feature engineering example (classification)}
 
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example.pdf}
@@ -234,7 +234,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 
-\frame{\frametitle{Feature Engineering Example (Regression)}
+\frame{\frametitle{feature engineering example (regression)}
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example2.pdf}
 		\caption{Log-transform of the target signal exhibits linear relationship to the regressor}
@@ -255,7 +255,7 @@ Typical normalizaton schemes:
 In an unnormalized data set, features with high variance will eclipse patterns in other features.
 }
 
-\frame{\frametitle{Data Types}
+\frame{\frametitle{Data types}
 Several different data types can be utilized for ML:
 \begin{itemize}
 	\item Binary: 1 or 0 (True or False).\pause
@@ -267,7 +267,7 @@ Several different data types can be utilized for ML:
 
 }
 
-\frame{\frametitle{Data Type Specific Normalization}
+\frame{\frametitle{Data type specific normalization}
 
 How to normalize categorical data?\pause
 
@@ -291,7 +291,7 @@ How to normalize categorical data?\pause
 \end{itemize}
 }
 
-\frame{\frametitle{Typical Feature Engineering Schemes}
+\frame{\frametitle{Typical feature engineering schemes}
 	Feature design is often of the following form (tricks of the trade):
 	
 	Given $K$ feature vectors $\bm x_k \in \mathbb R^P$ with, e.g., $P=3$ (two real-valued regressors and a categorical independent variable $\bm x_k = (x_{k,r_1}, x_{k,r_2}, x_{k,c})$):\pause
@@ -313,14 +313,14 @@ How to normalize categorical data?\pause
 	\end{itemize}
 }
 
-\section{Typical Machine Learning Models}
+\section{Typical machine learning models}
 
-\frame{\frametitle{Table of Contents}
+\frame{\frametitle{Table of contents}
 \tableofcontents[currentsection]
 }
 
 %  Model zoo (and their Hyperparameters)
-\frame{\frametitle{Model Landscape}
+\frame{\frametitle{Model landscape}
 	When trying to find an appropriate mapping between input and output data, one can choose from a variety of models:\pause
 	
 	\begin{itemize}
@@ -345,7 +345,7 @@ How to normalize categorical data?\pause
 	\end{itemize}
 }
 
-\frame{\frametitle{Model Choice}
+\frame{\frametitle{Model choice}
 	\begin{figure}
 		\includegraphics[width=9cm]{fig/lec08/bigdrill.png}
 		\caption{Choose models appropriate for the problem!\\(Source: Adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
@@ -357,7 +357,7 @@ How to normalize categorical data?\pause
 
 
 \subsection{Linear Regression}
-\frame{\frametitle{Linear Regression (1)}
+\frame{\frametitle{linear regression (1)}
 %\textit{In the following, ML models for regression are presented. 
 %Each model is equivalently suitable for classification though after minor adaptions.}
 
@@ -374,7 +374,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 \end{equation}
 }
 
-\frame{\frametitle{Linear Regression (2)}
+\frame{\frametitle{linear regression (2)}
 	Deriving (\ref{eq:rss}) with respect to $\bm w$ and setting it to zero while assuming $\bm{\Xi}\T\bm{\Xi}$ is positive definite, yields an analytically closed solution form:
 	\begin{equation}
 		\hat{\bm{y}} = \bm{\Xi\hat{w}} = \bm{\Xi} (\bm{\Xi}\T\bm{\Xi})^{-1}\bm{\Xi}\T\bm{y}.
@@ -396,7 +396,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 }
 
 \subsection{Artificial Neural Networks}
-\frame{\frametitle{Artificial Neural Networks}
+\frame{\frametitle{Artificial neural networks}
 	Artificial neural networks (ANNs) describe non-linear approximators $\hat{\bm y} = f(\bm{\Xi; \bm w})$ that are end-to-end differentiable.\pause
 	\newline
 	\begin{columns}[t,onlytextwidth]
@@ -424,7 +424,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	
 }
 
-\frame{\frametitle{Multi-Layer Perceptron}
+\frame{\frametitle{Multi-layer perceptron}
 	A vanilla ANN is the so-called \hl{feed-forward ANN} or \hl{multi-layer perceptron}.
 	\newline
 	\begin{columns}[t,onlytextwidth]
@@ -456,7 +456,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	Weight matrix $\bm{\mathcal{W}}^{(l)} \in \mathbb{R}^{H^{(l-1)}\times H^{(l)}}$ and (broadcasted) bias matrix $\bm{b}^{(l)} \in \mathbb{R}^{K\times H^{(l)}}$ are iteratively optimized, and constitute $\bm w$.
 }
 
-\frame{\frametitle{Activation Functions}
+\frame{\frametitle{Activation functions}
 	
 	
 	\begin{columns}[t,onlytextwidth]
@@ -494,7 +494,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 		\end{itemize}
 }
 
-\frame{\frametitle{Training Neural Networks (1)}
+\frame{\frametitle{training neural networks (1)}
 	ANN parameters are usually iteratively optimized via a variant of \hl{gradient descent}, e.g., stochastic gradient descent (SGD).
 	\begin{align}
 	\label{eq:weight_update}
@@ -514,7 +514,7 @@ Typical loss functions:
 Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 }
 
-\frame{\frametitle{Training Neural Networks (2)}
+\frame{\frametitle{training neural networks (2)}
 
 % typ. gradientenabstiegsbild und da dann nochmal eine gesondere erklärung worin sich SGD und GD unterscheidet.
 
@@ -548,7 +548,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 
 
 
-\frame{\frametitle{Training Neural Networks (3)}
+\frame{\frametitle{training neural networks (3)}
 	\textbf{How to retrieve the gradients:}
 	
 	Recall chain rule for vector derivatives, e.g., with $\bm y = g(\bm x)$ and $z = f(\bm y)$ where $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ and $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
@@ -562,7 +562,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{block}
 }
 
-\frame{\frametitle{Training Neural Networks (4)}
+\frame{\frametitle{training neural networks (4)}
 	\setlength{\algomargin}{0.5em}
 	\begin{algorithm}[H]
 	\SetKwInput{Input}{input} 
@@ -591,7 +591,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{algorithm}
 }
 
-\frame{\frametitle{Error Backpropagation Example (1)}
+\frame{\frametitle{error backpropagation example (1)}
 % minimalproblem wo man mal den Loss ausrechnet und einen gradienten abstiegsschritt darstellt
 Assume $\bm x_0 = [2, 5, 7], y_0 = 2.5$, and a two-layered ANN with the MSE cost, and sigmoid activation functions $\sigma(z) = \frac{1}{1+e^{-z}}$.
 The hidden layer contains two neurons with output $\bm h^{(1)} \in \mathbb{R}^2$, while the weight vectors are initialized with $\bm{\mathcal W}^{(1)} = \big[\begin{smallmatrix} 0.1& -0.3 & 0.2\\
@@ -606,7 +606,7 @@ Applying SGD, we start with forward propagation:
 				
 }
 
-\frame{\frametitle{Error Backpropagation Example (2)}
+\frame{\frametitle{error backpropagation example (2)}
 	Backpropagation (with $\sigma^\prime(z) = \partial_z \sigma(z) = \sigma(z)(1-\sigma(z))$):
 	
 	\begin{align*}
@@ -625,7 +625,7 @@ Applying SGD, we start with forward propagation:
 
 
 
-\frame{\frametitle{Weight Initialization}
+\frame{\frametitle{Weight initialization}
 
 Early in deep learning research, it was found that random uniform or random normal weight initialization leads to poor training.
 
@@ -640,7 +640,7 @@ Please note that generally due to the random weight initialization the result of
 This equals to \hl{local optimization in highly non-linear parameter spaces at random starting points}.
 }
 
-\frame{\frametitle{Regularizing Neural Networks}
+\frame{\frametitle{Regularizing neural networks}
 	In order to mitigate overfitting, ANNs must be regularized by
 	\begin{itemize}
 		\item weight decay, i.e., adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
@@ -656,7 +656,7 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 	\end{itemize}
 }
 
-\frame{\frametitle{Advanced Topologies}
+\frame{\frametitle{Advanced topologies}
 	\begin{figure}[tbp]
     \centering
     \begin{minipage}[t]{0.38\textwidth}
@@ -673,7 +673,7 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 }
 
 \subsection{Gradient Boosting Machines}
-\frame{\frametitle{Gradient Boosting Machines}
+\frame{\frametitle{Gradient boosting machines}
 Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learners} $\psi(\bm{\Xi})$, where each learner tries to minimize the whole ensemble's overall loss $\mathcal{L}(\bm y, \hat{\bm y}_m)$ given the preceding ensemble $\hat{\bm y}_{m-1}$ (assume scalar regression):
 \begin{equation}
 	\hat{\bm y}_m = \hat{\bm y}_{m-1} + \psi_m(\bm{\Xi}) = \sum_{m=1}^M \psi_m(\bm{\Xi}).
@@ -704,7 +704,7 @@ Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learn
 %	Boosting Algorithm
 }
 
-\frame{\frametitle{Boosting Tree Ensembles (1)}
+\frame{\frametitle{boosting tree ensembles (1)}
 	The minimization objective $J_m$ for growing trees at the $m$-th boosting round can be taylor-expanded to the second-order approximation:
 	\begin{align}
 	\begin{split}
@@ -723,7 +723,7 @@ Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learn
 	\end{align}
 }
 
-\frame{\frametitle{Boosting Tree Ensembles (2)}
+\frame{\frametitle{boosting tree ensembles (2)}
 Now consider a single tree with $N$ leaves to be defined as a vector of leaf-scores $\psi_m(\bm{x}) = \bm{w}_{s(\bm x)}, \bm w \in \mathbb{R}^N, s: \mathbb{R}^P \rightarrow [1, N]$ where $s$ maps data observations to the index of the tree's corresponding outcome (leaf).
 
 Consider the set of observations in leaf $n$ to be $I_n = \{ k | s(\bm x_k) = n \}$.\pause
@@ -738,7 +738,7 @@ Then, we can regroup the objective by each leaf:
 This is a sum of single-variabled quadratic functions.
 }
 	
-\frame{\frametitle{Boosting Tree Ensembles (3)}
+\frame{\frametitle{boosting tree ensembles (3)}
 	Assuming a fixed tree structure $s(\bm x)$, the optimal weights and corresponding loss directly follow:
 	\begin{align}
 		w_n^\ast = \frac{-T'_k}{T''_k}\qquad \tilde{J} = -\frac{1}{2}\sum_{n=1}^N\frac{(T')_k^2}{T''_k}.
@@ -755,7 +755,7 @@ This is a sum of single-variabled quadratic functions.
 	\end{block}	
 }
 
-\frame{\frametitle{Implementation Considerations}
+\frame{\frametitle{Implementation considerations}
 	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g., XGBoost, LightGBM, CatBoost).
 	As always, regularization is also part of the optimization but was not outlined here for conciseness.
 	The spectrum of regularization factors comprises:
@@ -767,7 +767,7 @@ This is a sum of single-variabled quadratic functions.
 	\end{itemize}
 }
 
-\frame{\frametitle{Hyperparameter Optimization (1)}
+\frame{\frametitle{hyperparameter optimization (1)}
 	\begin{figure}
 		\includegraphics[width=10cm]{fig/lec08/levels_of_opt.pdf}
 		\caption{The three levels of optimization}
@@ -776,7 +776,7 @@ This is a sum of single-variabled quadratic functions.
 	
 }
 
-\frame{\frametitle{Hyperparameter Optimization (2)}
+\frame{\frametitle{hyperparameter optimization (2)}
 	\begin{itemize}
 		\item Hyperparameter optimization is, again, a non-linear optimization problem.
 		\item Evaluation of any point in this space can be very costly, though.
@@ -790,7 +790,7 @@ This is a sum of single-variabled quadratic functions.
 	\end{itemize}
 }
 
-\frame{\frametitle{SL Toolboxes}
+\frame{\frametitle{Sl toolboxes}
 	\begin{itemize}
 		\item Deep learning
 		\begin{itemize}
@@ -818,7 +818,7 @@ This is a sum of single-variabled quadratic functions.
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item Industry has high demand for ML applications.\pause
 	\item Higher bias trades off variance for a better overall score.\pause

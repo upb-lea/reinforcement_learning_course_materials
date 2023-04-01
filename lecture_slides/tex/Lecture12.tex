@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preface (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Preface (1)}
+\frame{\frametitle{preface (1)}
 Shift from (indirect) value-based approaches
 \begin{equation}
 			\hat{q}(\bm{x}, u, \bm{w}) \approx q(\bm{x}, u)
@@ -32,7 +32,7 @@ to (direct) policy-based solutions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preface (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Preface (2)}
+\frame{\frametitle{preface (2)}
 \begin{figure}
 	\includegraphics[width=7cm]{fig/lec01/RL_Agent_Taxonomy.pdf}
 	\caption{Main categories of reinforcement learning algorithms\\  \SilverLectureSource}
@@ -40,10 +40,10 @@ to (direct) policy-based solutions:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Policy Approximation and its Advantages} 
+\section{Policy approximation and its advantages} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
@@ -51,7 +51,7 @@ to (direct) policy-based solutions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Motivating Example (1): Short Corridor Problem %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Motivating Example (1): Short-Corridor Problem}
+\frame{\frametitle{motivating example (1): short-corridor problem}
 \begin{itemize}
 	\onslide<1->\item Gridworld style problem with two actions: left (l), right (r)
 	\onslide<2->\item Second-left state's action execution is reversed
@@ -69,7 +69,7 @@ to (direct) policy-based solutions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Motivating Example (2): Strategic Gaming %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Motivating Example (2): Strategic Gaming}
+\frame{\frametitle{motivating example (2): strategic gaming}
 \onslide<1->Task: Two-player game of extended rock-paper-scissors 
 \begin{itemize}
 	\onslide<2->\item A deterministic policy (i.e., value-based with given feature representation) can be easily exploited by the opponent.
@@ -86,7 +86,7 @@ to (direct) policy-based solutions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example Policy Function: Discrete Action Space %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example Policy Function: Discrete Action Space}
+\frame{\frametitle{example policy function: discrete action space}
 Assumption:
 \begin{itemize}
 	\item Action space is discrete and compact.
@@ -111,7 +111,7 @@ A typical policy function is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example Policy Function: Continuous Action Space (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example Policy Function: Continuous Action Space (1)}
+\frame{\frametitle{example policy function: continuous action space (1)}
 Assumption:
 \begin{itemize}
 	\item Action space is continuous and there is only one scalar action $u\in\mathbb{R}$.
@@ -136,7 +136,7 @@ A typical policy function is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example Policy Function: Continuous Action Space (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example Policy Function: Continuous Action Space (2)}
+\frame{\frametitle{example policy function: continuous action space (2)}
 \begin{itemize}
 	\item Output of the functions $\mu_k=(\bm{x}_k,\bm{\theta}_k)$ and $\sigma_k=(\bm{x}_k,\bm{\theta}_k)$ can change in every time step.
 	\item Depending on $\sigma$ exploration is an inherent part of the (stochastic) policy. 
@@ -151,7 +151,7 @@ A typical policy function is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example Policy Function: Continuous Action Space (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example Policy Function: Continuous Action Space (3)}
+\frame{\frametitle{example policy function: continuous action space (3)}
 Assumption:
 \begin{itemize}
 	\item Action space is continuous and there are multiple actions $\bm{u}\in\mathbb{R}^m$.
@@ -172,7 +172,7 @@ A typical policy function is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example Policy Function: Continuous Action Space (4) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example Policy Function: Continuous Action Space (4)}
+\frame{\frametitle{example policy function: continuous action space (4)}
 \begin{itemize}
 	\item Below we find an example for 
 \end{itemize}
@@ -189,7 +189,7 @@ A typical policy function is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Objective Function %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy Objective Function}
+\frame{\frametitle{Policy objective function}
 \begin{itemize}
 	\item Goal: find optimal $\bm{\theta}^*$ given the policy $\bm{\pi}(\bm{u}|\bm{x}, \bm{\theta})$. \pause
 	\item Problem: which measure of optimality should we use? \pause
@@ -216,7 +216,7 @@ Possible optimality metrics:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Optimization %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy Optimization}
+\frame{\frametitle{Policy optimization}
 \begin{itemize}
 	\onslide<1->\item In essence, policy-based RL is an \hl{optimization problem}.
 	\onslide<2->{\item Depending on the policy function and task, finding $\bm{\theta}^*$ might be a 
@@ -238,7 +238,7 @@ Possible optimality metrics:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% How to Retrieve the Gradient? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy Gradient}
+\frame{\frametitle{Policy gradient}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.475\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -272,7 +272,7 @@ Possible optimality metrics:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Gradient Theorem %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy Gradient Theorem}
+\frame{\frametitle{Policy gradient theorem}
 \begin{theo}{Policy Gradient}{policy_gradient}
 Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performance_metric_episodic} or continuing tasks \eqref{eq:performance_metric_continuing} and a parameterizable policy $\pi(\bm{u}|\bm{x},\bm{\theta})$ the policy gradient is
 \begin{equation}
@@ -294,7 +294,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Intuitive Interpretation of Policy Parameter Update %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Intuitive Interpretation of Policy Parameter Update}
+\frame{\frametitle{Intuitive interpretation of policy parameter update}
 \begin{itemize}
 	\item Inserting the policy gradient theorem into gradient ascent approach: 
 \end{itemize}
@@ -316,7 +316,7 @@ Also note:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Simple Score Function Examples %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Simple Score Function Examples}
+\frame{\frametitle{Simple score function examples}
 \onslide<1->{Soft-max policy with linear function approximation:
 \begin{equation*}
 \begin{split}
@@ -338,7 +338,7 @@ Also note:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Pro and Cons %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Pro and Cons: Policy vs. Value-Based Approaches}
+\frame{\frametitle{pro and cons: policy vs. value-based approaches}
 \hl{Pro value-based solutions} (e.g., $Q$-learning):\pause
 \begin{itemize}
 	\item Estimated value is an intuitive performance metric.\pause
@@ -361,17 +361,17 @@ Mutual hassle:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte Carlo Policy Gradient} 
+\section{Monte carlo policy gradient} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Gradient Theorem %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Basic Concept}
+\frame{\frametitle{Basic concept}
 Initial situation:
 \begin{itemize}
 	\item Score function $\nabla_{\bm{\theta}}\ln \pi(\bm{u}|\bm{x},\bm{\theta})$ can be calculated analytically using suitable policy and chain rule (e.g., by algorithmic differentiation).
@@ -400,7 +400,7 @@ Monte Carlo policy gradient:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Monte Carlo Policy Gradient %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Monte Carlo Policy Gradient}
+\frame{\frametitle{algorithmic implementation: monte carlo policy gradient}
 \begin{itemize}
 	\item Usual technical convergence requirements regarding $\alpha$ apply. 
 	\item Use sampled return as unbiased estimate of $q$.
@@ -431,7 +431,7 @@ Monte Carlo policy gradient:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% REINFORCE Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{REINFORCE Example: Short-Corridor Problem}
+\frame{\frametitle{reinforce example: short-corridor problem}
 \begin{figure}
 \includegraphics[width=11cm]{fig/lec12/REINFORCE_short_corridor.pdf}
 \caption{Comparison of Monte Carlo policy gradient approach on short-corridor problem from \figref{fig:Short_Corridor_Problem} for different learning rates (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -469,7 +469,7 @@ Monte Carlo policy gradient:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantage %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Advantage Function}
+\frame{\frametitle{Advantage function}
 \begin{itemize}
 	\item Intuitive choice of the baseline is the state value $b(\bm{x})=v_{\pi}(\bm{x})$.
 	\item The resulting policy gradient becomes
@@ -491,7 +491,7 @@ Monte Carlo policy gradient:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Monte Carlo Policy Gradient with Baseline%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: MC Policy Gradient with Baseline}
+\frame{\frametitle{algo. implementation: mc policy gradient with baseline}
 \begin{itemize}
 	\item Implementation requires approximation $b(\bm{x})\approx \hat{v}(\bm{x},\bm{w})$.
 	\item Hence, we are learning two parameter sets $\bm{\theta}$ and $\bm{w}$. 
@@ -524,7 +524,7 @@ Monte Carlo policy gradient:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% REINFORCE Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{REINFORCE Comparison w/o Baseline}
+\frame{\frametitle{reinforce comparison w/o baseline}
 \begin{figure}
 \includegraphics[width=11cm]{fig/lec12/REINFORCE_short_corridor_baseline.pdf}
 \caption{Comparison of Monte Carlo policy gradient on short-corridor problem from \figref{fig:Short_Corridor_Problem} where both algorithms' learning rates have been tuned (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -533,17 +533,17 @@ Monte Carlo policy gradient:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Actor-Critic Methods (Episodic Tasks)} 
+\section{Actor-critic methods (episodic tasks)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Actor-Critic Idea %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{General Actor-Critic Idea}
+\frame{\frametitle{General actor-critic idea}
 Conclusion of Monte Carlo policy gradient with baseline:
 \begin{itemize}
 	\item Will learn an unbiased policy gradient.
@@ -569,7 +569,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Integrating the Advantage Function %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Integrating the Advantage Function}
+\frame{\frametitle{Integrating the advantage function}
 \begin{itemize}
 	\item The TD error is 
 \begin{equation}
@@ -597,7 +597,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Actor-Critic Structure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Actor-Critic Structure}
+\frame{\frametitle{Actor-critic structure}
 \begin{itemize}
 	\item Critic (policy evaluation) and actor (policy improvement) can be considered another form of generalized policy iteration (GPI).
 	\item Online and on-policy algorithm for discrete and continuous action spaces with built-in exploration by stochastic policy functions.
@@ -612,7 +612,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:Actor-Critic with TD(0) Targets %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: Actor-Critic with TD(0) Targets}
+\frame{\frametitle{algo. implementation: actor-critic with td(0) targets}
 \begin{itemize}
 	\item Analog to MC-based policy gradient optional discounting on the gradient updates is introduced.
 \end{itemize}
@@ -645,7 +645,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Actor-Critic Generalization %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Actor-Critic Generalization}
+\frame{\frametitle{Actor-critic generalization}
 \begin{itemize}
 	\item Using the TD(0) error as the target to train the critic is convenient. \pause
 	\item However, the usual alternatives can be applied to train $\hat{v}(\bm{x}, \bm{w})$.\pause
@@ -670,7 +670,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:Actor-Critic with TD($\lambda$) Targets %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: Actor-Critic with TD($\lambda$) Targets}
+\frame{\frametitle{algo. implementation: actor-critic with td($\lambda$) targets}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -700,7 +700,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Compatible Function Approximation (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Compatible Function Approximation (1)}
+\frame{\frametitle{compatible function approximation (1)}
 \begin{itemize}
 	\item Most default prediction techniques will add a bias to $\hat{q}(\bm{w}) \approx q$.\pause
 	\item A biased policy gradient may not find the right solution. \pause
@@ -722,7 +722,7 @@ then the policy gradient using $\hat{q}(\bm{w})$ is exact.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Compatible Function Approximation (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Compatible Function Approximation (2)}
+\frame{\frametitle{compatible function approximation (2)}
 Interpretation:
 \begin{itemize}
 	\item The policy gradient $\nabla_{\bm{\theta}} \ln \pi_{\bm{\theta}}(\bm{x}, \bm{u})$ delivers input features for a linear mapping of the value function approximation:
@@ -739,17 +739,17 @@ Interpretation:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Actor-Critic Methods (Continuing Tasks)} 
+\section{Actor-critic methods (continuing tasks)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introducing Average Rewards for Continuing Tasks %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Introducing Average Rewards for Continuing Tasks}
+\frame{\frametitle{Introducing average rewards for continuing tasks}
 \begin{itemize}
 	\item For continuing tasks the differential reward is used as the performance
 \begin{equation}
@@ -774,7 +774,7 @@ Interpretation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Actor-Critic with Differential Targets %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Actor-Critic with Differential Targets}
+\frame{\frametitle{Actor-critic with differential targets}
 \begin{itemize}
 	\item The episodic actor-critic approach can be directly transferred to continuing tasks. \pause
 	\item The critic is estimating the differential state value from \eqref{eq:diff_values}: 
@@ -799,7 +799,7 @@ Interpretation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:Actor-Critic with Diff. TD(0) Targets %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Implementation: Actor-Critic with Diff. TD(0) Targets}
+\frame{\frametitle{implementation: actor-critic with diff. td(0) targets}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -826,7 +826,7 @@ Interpretation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:Actor-Critic with Diff. TD($\lambda$) Targets %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Implementation: Actor-Critic with Diff. TD($\lambda$) Targets}
+\frame{\frametitle{implementation: actor-critic with diff. td($\lambda$) targets}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -855,17 +855,17 @@ Interpretation:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deterministic Gradient Policy} 
+\section{Deterministic gradient policy} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Motivation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Background and Motivation}
+\frame{\frametitle{Background and motivation}
 Recap on policy gradient so far:
 \begin{itemize}
 	\item The previously discussed policy functions and the policy gradient theorem were assuming stochastic polices. \pause
@@ -890,7 +890,7 @@ The alternative:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Deterministic Policy Gradient Theorem %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Deterministic Policy Gradient (DPG) Theorem}
+\frame{\frametitle{deterministic policy gradient (dpg) theorem}
 \begin{theo}{Deterministic Policy Gradient}{determ_policy_gradient}
 Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performance_metric_episodic} or continuing tasks \eqref{eq:performance_metric_continuing} and  a parameterizable policy $\mu(\bm{x},\bm{\theta})$ the deterministic policy gradient is
 \begin{equation}
@@ -910,7 +910,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exploration %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exploration with a Deterministic Policy}
+\frame{\frametitle{Exploration with a deterministic policy}
 \begin{itemize}
 	\item If the DPG approach is applied on-policy there is no inherent exploration.
 	\item How to learn something?\pause
@@ -934,7 +934,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Deterministic Actor-Critic %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: Deterministic Actor-Critic (1)}
+\frame{\frametitle{algo. implementation: deterministic actor-critic (1)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -965,7 +965,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Deterministic Actor-Critic %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: Deterministic Actor-Critic (2)}
+\frame{\frametitle{algo. implementation: deterministic actor-critic (2)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -994,7 +994,7 @@ Given a metric $J(\bm{\theta})$ for the undiscounted episodic \eqref{eq:performa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exemplary Comparison to Stochastic Policy Gradient %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exemplary Comparison to Stochastic Policy Gradient}
+\frame{\frametitle{Exemplary comparison to stochastic policy gradient}
 \begin{itemize}
 	\item DPG-based approach uses compatible function approximation, i.e., suitable linear $\hat{q}$ estimation. A fixed Gaussian behavior policy is applied for exploration. 
 	\item SAC uses a Gaussian policy with linear function approximation.
@@ -1011,7 +1011,7 @@ actor-critic (COPDAC) on continuous-action reinforcement learning (source: D. Si
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item Policy-based methods are a new class within the RL toolbox.
 	\begin{itemize}

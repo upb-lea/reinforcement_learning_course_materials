@@ -2,20 +2,20 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="118.79652mm"
    height="75.17794mm"
    viewBox="0 0 118.79652 75.17794"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="ML_AI.svg">
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="ML_AI.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,18 +25,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="188.11718"
-     inkscape:cy="139.98215"
+     inkscape:zoom="2.8"
+     inkscape:cx="282.14286"
+     inkscape:cy="170.89286"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:lockguides="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
+     inkscape:window-width="2560"
+     inkscape:window-height="1361"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -45,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -156,171 +159,142 @@
       <g
          id="g962"
          style="stroke-width:13.10047245">
-	<g
-   id="g960"
-   style="stroke-width:13.10047245">
-		<g
-   id="g958"
-   style="stroke-width:13.10047245">
-			<path
-   id="path934"
-   d="M 374,250.136 400.728,223.4 344.16,166.832 317.424,193.56 c -9.328,-5.152 -19.2,-9.176 -29.432,-12.128 v -37.088 c 25.84,-13.904 40,-36.736 40,-64.776 0,-33.784 -21.432,-64.064 -53.328,-75.36 L 264,0.432 V 65.8 L 248,71.136 232,65.8 V 0.432 L 221.328,4.208 C 189.432,15.504 168,45.784 168,79.568 c 0,28.04 14.16,50.872 40,64.776 v 37.088 c -10.232,2.96 -20.104,6.976 -29.432,12.128 l -26.736,-26.728 -56.568,56.568 26.728,26.736 c -5.16,9.336 -9.248,19.192 -12.2,29.432 H 72 v 80 h 37.792 c 2.96,10.24 7.04,20.096 12.2,29.432 l -26.728,26.736 56.568,56.568 26.736,-26.728 c 9.336,5.16 19.192,9.248 29.432,12.2 v 37.792 h 80 v -37.792 c 10.24,-2.96 20.096,-7.04 29.432,-12.2 l 26.736,26.728 56.568,-56.568 L 374.008,389 c 5.16,-9.336 9.248,-19.192 12.2,-29.432 H 424 v -80 h -37.792 c -2.96,-10.24 -7.04,-20.096 -12.208,-29.432 z M 184,79.568 c 0,-23.048 12.488,-44.064 32,-55.352 v 53.12 L 248,88 280,77.336 v -53.12 c 19.512,11.288 32,32.304 32,55.352 0,23.464 -12.248,41.664 -35.424,52.632 L 272,134.368 v 129.2 h 16 V 250.24 c 24.632,14.128 40,40.2 40,69.328 0,29.536 -16.128,55.32 -40,69.176 V 279.568 H 272 V 395.88 c -7.584,2.392 -15.64,3.688 -24,3.688 -8.36,0 -16.416,-1.296 -24,-3.688 V 134.368 L 219.424,132.2 C 196.248,121.232 184,103.032 184,79.568 Z m 224,264 h -34.24 l -1.48,6.12 c -3.112,12.872 -8.192,25.136 -15.112,36.44 l -3.288,5.376 24.232,24.224 -33.944,33.944 -24.224,-24.232 -5.376,3.288 c -11.312,6.92 -23.568,12 -36.44,15.112 L 272,445.328 v 34.24 h -48 v -34.24 l -6.12,-1.48 c -12.872,-3.112 -25.136,-8.192 -36.44,-15.112 l -5.376,-3.288 -24.224,24.232 -33.944,-33.944 24.232,-24.224 -3.288,-5.376 c -6.92,-11.312 -12,-23.568 -15.112,-36.44 l -1.488,-6.128 H 88 v -48 h 34.24 l 1.48,-6.12 c 3.112,-12.872 8.192,-25.136 15.112,-36.44 l 3.288,-5.376 -24.232,-24.224 33.944,-33.944 24.224,24.232 5.376,-3.288 c 8.376,-5.128 17.28,-9.232 26.56,-12.28 v 34.208 c -34.184,15.624 -56,49.256 -56,87.24 0,52.936 43.064,96 96,96 52.936,0 96,-43.064 96,-96 0,-37.992 -21.816,-71.624 -56,-87.24 v -34.208 c 9.28,3.056 18.184,7.16 26.56,12.28 l 5.376,3.288 24.224,-24.232 33.944,33.944 -24.232,24.224 3.288,5.376 c 6.92,11.312 12,23.568 15.112,36.44 l 1.496,6.12 H 408 Z m -200,-93.32 v 138.496 c -23.872,-13.856 -40,-39.64 -40,-69.176 0,-29.12 15.368,-55.192 40,-69.32 z"
-   inkscape:connector-curvature="0"
-   style="stroke-width:13.10047245" />
-
-			<path
-   id="path936"
-   d="M 32,393.04 V 103.568 c 0,-4.408 3.592,-8 8,-8 h 65.472 c 3.312,9.288 12.112,16 22.528,16 13.232,0 24,-10.768 24,-24 0,-13.232 -10.768,-24 -24,-24 -10.416,0 -19.216,6.712 -22.528,16 H 40 c -13.232,0 -24,10.768 -24,24 V 393.04 c -9.288,3.312 -16,12.112 -16,22.528 0,13.232 10.768,24 24,24 13.232,0 24,-10.768 24,-24 0,-10.416 -6.712,-19.216 -16,-22.528 z M 128,79.568 c 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 z m -104,344 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z"
-   inkscape:connector-curvature="0"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect938"
-   height="16"
-   width="16"
-   y="111.568"
-   x="48"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect940"
-   height="16"
-   width="16"
-   y="143.56799"
-   x="48"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect942"
-   height="16"
-   width="16"
-   y="175.56799"
-   x="48"
-   style="stroke-width:13.10047245" />
-
-			<path
-   id="path944"
-   d="M 480,393.04 V 103.568 c 0,-13.232 -10.768,-24 -24,-24 h -65.472 c -3.312,-9.288 -12.112,-16 -22.528,-16 -13.232,0 -24,10.768 -24,24 0,13.232 10.768,24 24,24 10.416,0 19.216,-6.712 22.528,-16 H 456 c 4.408,0 8,3.592 8,8 V 393.04 c -9.288,3.312 -16,12.112 -16,22.528 0,13.232 10.768,24 24,24 13.232,0 24,-10.768 24,-24 0,-10.416 -6.712,-19.216 -16,-22.528 z M 368,95.568 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z m 104,328 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z"
-   inkscape:connector-curvature="0"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect946"
-   height="16"
-   width="16"
-   y="111.568"
-   x="432"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect948"
-   height="16"
-   width="16"
-   y="143.56799"
-   x="432"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect950"
-   height="16"
-   width="16"
-   y="175.56799"
-   x="432"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect952"
-   height="16"
-   width="16"
-   y="367.56799"
-   x="240"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect954"
-   height="16"
-   width="16"
-   y="335.56799"
-   x="240"
-   style="stroke-width:13.10047245" />
-
-			<rect
-   id="rect956"
-   height="16"
-   width="16"
-   y="303.56799"
-   x="240"
-   style="stroke-width:13.10047245" />
-
-		</g>
-
-	</g>
-
-</g>
+        <g
+           id="g960"
+           style="stroke-width:13.10047245">
+          <g
+             id="g958"
+             style="stroke-width:13.10047245">
+            <path
+               id="path934"
+               d="M 374,250.136 400.728,223.4 344.16,166.832 317.424,193.56 c -9.328,-5.152 -19.2,-9.176 -29.432,-12.128 v -37.088 c 25.84,-13.904 40,-36.736 40,-64.776 0,-33.784 -21.432,-64.064 -53.328,-75.36 L 264,0.432 V 65.8 L 248,71.136 232,65.8 V 0.432 L 221.328,4.208 C 189.432,15.504 168,45.784 168,79.568 c 0,28.04 14.16,50.872 40,64.776 v 37.088 c -10.232,2.96 -20.104,6.976 -29.432,12.128 l -26.736,-26.728 -56.568,56.568 26.728,26.736 c -5.16,9.336 -9.248,19.192 -12.2,29.432 H 72 v 80 h 37.792 c 2.96,10.24 7.04,20.096 12.2,29.432 l -26.728,26.736 56.568,56.568 26.736,-26.728 c 9.336,5.16 19.192,9.248 29.432,12.2 v 37.792 h 80 v -37.792 c 10.24,-2.96 20.096,-7.04 29.432,-12.2 l 26.736,26.728 56.568,-56.568 L 374.008,389 c 5.16,-9.336 9.248,-19.192 12.2,-29.432 H 424 v -80 h -37.792 c -2.96,-10.24 -7.04,-20.096 -12.208,-29.432 z M 184,79.568 c 0,-23.048 12.488,-44.064 32,-55.352 v 53.12 L 248,88 280,77.336 v -53.12 c 19.512,11.288 32,32.304 32,55.352 0,23.464 -12.248,41.664 -35.424,52.632 L 272,134.368 v 129.2 h 16 V 250.24 c 24.632,14.128 40,40.2 40,69.328 0,29.536 -16.128,55.32 -40,69.176 V 279.568 H 272 V 395.88 c -7.584,2.392 -15.64,3.688 -24,3.688 -8.36,0 -16.416,-1.296 -24,-3.688 V 134.368 L 219.424,132.2 C 196.248,121.232 184,103.032 184,79.568 Z m 224,264 h -34.24 l -1.48,6.12 c -3.112,12.872 -8.192,25.136 -15.112,36.44 l -3.288,5.376 24.232,24.224 -33.944,33.944 -24.224,-24.232 -5.376,3.288 c -11.312,6.92 -23.568,12 -36.44,15.112 L 272,445.328 v 34.24 h -48 v -34.24 l -6.12,-1.48 c -12.872,-3.112 -25.136,-8.192 -36.44,-15.112 l -5.376,-3.288 -24.224,24.232 -33.944,-33.944 24.232,-24.224 -3.288,-5.376 c -6.92,-11.312 -12,-23.568 -15.112,-36.44 l -1.488,-6.128 H 88 v -48 h 34.24 l 1.48,-6.12 c 3.112,-12.872 8.192,-25.136 15.112,-36.44 l 3.288,-5.376 -24.232,-24.224 33.944,-33.944 24.224,24.232 5.376,-3.288 c 8.376,-5.128 17.28,-9.232 26.56,-12.28 v 34.208 c -34.184,15.624 -56,49.256 -56,87.24 0,52.936 43.064,96 96,96 52.936,0 96,-43.064 96,-96 0,-37.992 -21.816,-71.624 -56,-87.24 v -34.208 c 9.28,3.056 18.184,7.16 26.56,12.28 l 5.376,3.288 24.224,-24.232 33.944,33.944 -24.232,24.224 3.288,5.376 c 6.92,11.312 12,23.568 15.112,36.44 l 1.496,6.12 H 408 Z m -200,-93.32 v 138.496 c -23.872,-13.856 -40,-39.64 -40,-69.176 0,-29.12 15.368,-55.192 40,-69.32 z"
+               inkscape:connector-curvature="0"
+               style="stroke-width:13.10047245" />
+            <path
+               id="path936"
+               d="M 32,393.04 V 103.568 c 0,-4.408 3.592,-8 8,-8 h 65.472 c 3.312,9.288 12.112,16 22.528,16 13.232,0 24,-10.768 24,-24 0,-13.232 -10.768,-24 -24,-24 -10.416,0 -19.216,6.712 -22.528,16 H 40 c -13.232,0 -24,10.768 -24,24 V 393.04 c -9.288,3.312 -16,12.112 -16,22.528 0,13.232 10.768,24 24,24 13.232,0 24,-10.768 24,-24 0,-10.416 -6.712,-19.216 -16,-22.528 z M 128,79.568 c 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 z m -104,344 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z"
+               inkscape:connector-curvature="0"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect938"
+               height="16"
+               width="16"
+               y="111.568"
+               x="48"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect940"
+               height="16"
+               width="16"
+               y="143.56799"
+               x="48"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect942"
+               height="16"
+               width="16"
+               y="175.56799"
+               x="48"
+               style="stroke-width:13.10047245" />
+            <path
+               id="path944"
+               d="M 480,393.04 V 103.568 c 0,-13.232 -10.768,-24 -24,-24 h -65.472 c -3.312,-9.288 -12.112,-16 -22.528,-16 -13.232,0 -24,10.768 -24,24 0,13.232 10.768,24 24,24 10.416,0 19.216,-6.712 22.528,-16 H 456 c 4.408,0 8,3.592 8,8 V 393.04 c -9.288,3.312 -16,12.112 -16,22.528 0,13.232 10.768,24 24,24 13.232,0 24,-10.768 24,-24 0,-10.416 -6.712,-19.216 -16,-22.528 z M 368,95.568 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z m 104,328 c -4.408,0 -8,-3.592 -8,-8 0,-4.408 3.592,-8 8,-8 4.408,0 8,3.592 8,8 0,4.408 -3.592,8 -8,8 z"
+               inkscape:connector-curvature="0"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect946"
+               height="16"
+               width="16"
+               y="111.568"
+               x="432"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect948"
+               height="16"
+               width="16"
+               y="143.56799"
+               x="432"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect950"
+               height="16"
+               width="16"
+               y="175.56799"
+               x="432"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect952"
+               height="16"
+               width="16"
+               y="367.56799"
+               x="240"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect954"
+               height="16"
+               width="16"
+               y="335.56799"
+               x="240"
+               style="stroke-width:13.10047245" />
+            <rect
+               id="rect956"
+               height="16"
+               width="16"
+               y="303.56799"
+               x="240"
+               style="stroke-width:13.10047245" />
+          </g>
+        </g>
+      </g>
       <g
          id="g964"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g966"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g968"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g970"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g972"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g974"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g976"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g978"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g980"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g982"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g984"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g986"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g988"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g990"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
       <g
          id="g992"
-         style="stroke-width:13.10047245">
-</g>
+         style="stroke-width:13.10047245" />
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.336347"
        y="248.62422"
        id="text1035"><tspan
@@ -328,77 +302,75 @@
          id="tspan1033"
          x="1.336347"
          y="248.62422"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Machine Learning (ML)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583">Machine Learning (ML)</tspan><tspan
          sodipodi:role="line"
          x="1.336347"
          y="254.35686"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1039" /><tspan
          sodipodi:role="line"
          x="1.336347"
          y="260.08951"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1037" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.5907083"
        y="278.87512"
        id="text1043"><tspan
          sodipodi:role="line"
          x="1.5907083"
          y="278.87512"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1045">Any device that perceives its environment and </tspan><tspan
          sodipodi:role="line"
          x="1.5907083"
          y="282.84387"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1049">takes actions that maximize its chance of </tspan><tspan
          sodipodi:role="line"
          x="1.5907083"
          y="286.81262"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1051">successfully achieving its goals. AI is often used to </tspan><tspan
          sodipodi:role="line"
          x="1.5907083"
          y="290.78137"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1053">describe machines  that mimic &quot;cognitive&quot; functions </tspan><tspan
          sodipodi:role="line"
          x="1.5907083"
          y="294.75012"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1055">that humans associate with the human mind.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.4222566"
        y="253.27126"
        id="text1043-7"><tspan
          sodipodi:role="line"
          x="1.4222566"
          y="253.27126"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1125">A subset of AI involved with the creation of </tspan><tspan
          sodipodi:role="line"
          x="1.4222566"
          y="257.23999"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1129">algorithms which can modify itself without </tspan><tspan
          sodipodi:role="line"
          x="1.4222566"
          y="261.20874"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1131">human intervention to produce desired output </tspan><tspan
          sodipodi:role="line"
          x="1.4222566"
          y="265.17749"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1133">by feeding itself through structured data.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.6423728"
        y="274.65637"
        id="text1035-3"><tspan
@@ -406,41 +378,39 @@
          id="tspan1033-2"
          x="1.6423728"
          y="274.65637"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Artifical Intelligence (AI)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583">Artifical Intelligence (AI)</tspan><tspan
          sodipodi:role="line"
          x="1.6423728"
          y="280.38901"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1039-6" /><tspan
          sodipodi:role="line"
          x="1.6423728"
          y="286.12164"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1037-5" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.3103406"
        y="232.08171"
        id="text1043-7-4"><tspan
          sodipodi:role="line"
          x="1.3103406"
          y="232.08171"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
-         id="tspan1195">A class of ML which uses huge, layered models </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
+         id="tspan1195">A class of ML which uses large, layered models </tspan><tspan
          sodipodi:role="line"
          x="1.3103406"
          y="236.05046"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
-         id="tspan1199">(e.g. large artifical neural networks) to </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
+         id="tspan1199">(e.g., vast artifical neural networks) to </tspan><tspan
          sodipodi:role="line"
          x="1.3103406"
          y="240.01921"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.175px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
          id="tspan1197">progressively extract more information from the data.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="1.0349889"
        y="227.79515"
        id="text1035-9"><tspan
@@ -448,16 +418,14 @@
          id="tspan1033-7"
          x="1.0349889"
          y="227.79515"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Deep Learning (DL)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583">Deep Learning (DL)</tspan><tspan
          sodipodi:role="line"
          x="1.0349889"
          y="233.52779"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1039-3" /><tspan
          sodipodi:role="line"
          x="1.0349889"
          y="239.26042"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611107px;font-family:Arial;-inkscape-font-specification:'Arial, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
          id="tspan1037-8" /></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

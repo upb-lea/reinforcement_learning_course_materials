@@ -32,7 +32,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Types of Action-Value Function Approximation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Types of Action-Value Function Approximation}
+\frame{\frametitle{Types of action-value function approximation}
 \begin{figure}
 \includegraphics[width=9.5cm]{fig/lec10/Model_types_action_value.pdf}
 \label{fig:Model_types_action_value}
@@ -48,7 +48,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Feature Engineering %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Feature Engineering}
+\frame{\frametitle{Feature engineering}
 \begin{itemize}
 	\item Also for action-value estimation a proper feature engineering (FE) is of vital importance.
 	\item Compared to the state-value prediction, the action becomes part of the FE processing: 
@@ -63,17 +63,17 @@ Today's focus:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{On-Policy Control With (Semi-)Gradients} 
+\section{On-policy control with (semi-)gradients} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Gradient-Based Action-Value Learning %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Gradient-Based Action-Value Learning}
+\frame{\frametitle{Gradient-based action-value learning}
 
 \begin{itemize}
 	\item Transferring the objective \eqref{eq:VE_J} from on-policy prediction to control yields:
@@ -98,7 +98,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Houston: We have a Problem (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Houston: We have a Problem (1)}
+\frame{\frametitle{houston: we have a problem (1)}
 \begin{itemize}
 	\item Recall tabular \hl{policy improvement theorem} (\theoref{theo:Policy_improvement}): guarantee to find a globally better or equally good policy in each update step.\pause
 	\item With parameter updates \eqref{eq:gradient_param_value_action} generalization applies. 
@@ -132,7 +132,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Houston: We have a Problem (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Houston: We have a Problem (2)}
+\frame{\frametitle{houston: we have a problem (2)}
 \begin{figure}
 	\subfloat{
 		\includegraphics[height=4.4cm]{fig/lec10/Sarsa_Brakeout.pdf}
@@ -147,7 +147,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Gradient Monte Carlo On-Policy Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Gradient MC Control}
+\frame{\frametitle{algorithmic implementation: gradient mc control}
 \begin{itemize}
 	\item Direct transfer from tabular case to function approximation
 	\item Update target becomes the sampled return $q_\pi(\bm{x}_k, u_k)\approx g_k$ 
@@ -178,7 +178,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Semi-Gradient Sarsa}
+\frame{\frametitle{algorithmic implementation: semi-gradient sarsa}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -211,7 +211,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Application Example: Mountain Car (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Application Example: Mountain Car (1)}
+\frame{\frametitle{sarsa application example: mountain car (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.475\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -243,7 +243,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Application Example: Mountain Car (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Application Example: Mountain Car (2)}
+\frame{\frametitle{sarsa application example: mountain car (2)}
 \begin{figure}
 \includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS.pdf}
 \caption{Cost-to-go function $-\max_u \hat{q}(\bm{x},u,\bm{w})$ for mountain car task using linear approximation with Sarsa and tile coding (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -253,7 +253,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tile Coding %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Tile Coding}
+\frame{\frametitle{Tile coding}
 \begin{itemize}
 	\item Problem space is grouped into (overlapping) partitions / tiles.
 	\item Performs a discretization of the problem space.
@@ -269,7 +269,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Application Example: Mountain Car (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Application Example: Mountain Car (3)}
+\frame{\frametitle{sarsa application example: mountain car (3)}
 \begin{figure}
 \includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_Learning_Rate.pdf}
 \caption{Mountain car learning curves with semi-gradient Sarsa for different learning rates $\alpha$ (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -316,7 +316,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mountain Car: one vs eight-step semi-gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Mountain Car: One vs Eight-Step Semi-Gradient Sarsa}
+\frame{\frametitle{mountain car: one vs eight-step semi-gradient sarsa}
 \begin{figure}
 \includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_n_step_comp.pdf}
 \caption{Mountain car learning curves comparing one-step Sarsa ($\alpha=0.5/8$) and eight-step Sarsa ($\alpha=0.3/8$) based on same problem definition as in \figref{fig:Mountain_car_gym} (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -326,7 +326,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Mountain Car: one vs eight-step semi-gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Mountain Car: Early Performance Evaluation}
+\frame{\frametitle{mountain car: early performance evaluation}
 \begin{figure}
 \includegraphics[width=10cm]{fig/lec10/Mountain_Car_BS_early_performance.pdf}
 \caption{Effect of learning rate $\alpha$ and step variable $n$ on early performance of $n$-step semi-gradient Sarsa and tile coding function approximation on the mountain car task. Abscissa is scaled with the number of used tiles, here equal to eight (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -334,17 +334,17 @@ Today's focus:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Average Reward: An Alternative for Continuing Tasks} 
+\section{Average reward: an alternative for continuing tasks} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Average Reward %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The Average Reward Definition}
+\frame{\frametitle{The average reward definition}
 \begin{itemize}
 	\item Is an alternative performance metric in continuing tasks.
 	\begin{itemize}
@@ -369,7 +369,7 @@ for policy $\pi$ with $\mu_\pi$ being the steady-state distribution $\mu_\pi(\bm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Equivalence in terms of optimality (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Equivalence in Terms of Optimality (1)}
+\frame{\frametitle{equivalence in terms of optimality (1)}
 To compare the average reward against the usual discounted reward setting in continuing tasks when utilizing function approximation, we introduce the performance metric
 \begin{equation}
 	J_\pi = \int_\mathcal{X}\mu_\pi(\bm{x})v_\pi^\gamma(\bm{x}) .
@@ -389,7 +389,7 @@ Inserting the average reward $\overline{r}_\pi$ definition \eqref{eq:avg_return}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Equivalence in terms of optimality (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Equivalence in Terms of Optimality (2)}
+\frame{\frametitle{equivalence in terms of optimality (2)}
 In the last equation \eqref{eq:prev_avg_return_comp} the term
 \begin{equation*}
 	\int_\mathcal{X}\mu_\pi(\bm{x})\sum_u\pi(u|\bm{x})\int_{\mathcal{X},\mathcal{R}}p(\bm{x}', r|\bm{x},u)
@@ -404,7 +404,7 @@ holds since it does not make any difference if we start from $\bm{x}$ or $\bm{x}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Equivalence in terms of optimality (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Equivalence in Terms of Optimality (3)}
+\frame{\frametitle{equivalence in terms of optimality (3)}
 Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp} yields:
 \begin{equation}
 \begin{split}
@@ -426,7 +426,7 @@ Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introducing the Differential Return %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Introducing the Differential Return}
+\frame{\frametitle{Introducing the differential return}
 \begin{itemize}
 	\item Since discounting is not used in the average reward definition we have to reformulate the return and value definitions. \pause
 	\item Intuitive approach: introduce \hl{differential quantities} describing the deviations towards $\overline{r}_\pi$. \pause
@@ -449,7 +449,7 @@ Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Integrating the average reward into RL Solutions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Integrating the Average Reward into RL Solutions}
+\frame{\frametitle{Integrating the average reward into rl solutions}
 \begin{itemize}
 	\item Based on the differential return \eqref{eq:differential_return} we can reintroduce the TD error in combination with function approximation:
 		\begin{equation}
@@ -473,7 +473,7 @@ Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Differential Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Impl.: Differential Semi-Gradient Sarsa}
+\frame{\frametitle{algorithmic impl.: differential semi-gradient sarsa}
 \begin{itemize}
 	\item For incremental average estimation of $\overline{r}_\pi$ we introduce $\beta$.
 	\item Similar to the discussion around $\gamma$, the averaging step size $\beta$ is also a solution parameter of the RL algorithm.
@@ -505,7 +505,7 @@ Inserting \eqref{eq:prev_avg_return_ergodic} into \eqref{eq:prev_avg_return_comp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on Differential Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on Differential Semi-Gradient Sarsa}
+\frame{\frametitle{Remarks on differential semi-gradient sarsa}
 What is the \hl{key motivation to use the differential returns} and not the discounted returns in continuing tasks?\pause
 \begin{itemize}
 	\item If one is interested in the long-term control behavior setting the discount close to one ($\gamma \rightarrow 1$) is required.\pause
@@ -530,7 +530,7 @@ Moreover, $n$-step bootstrapping  can be implemented as well:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Differential Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Impl.: Differential $n$-Step Semi-Gradient Sarsa}
+\frame{\frametitle{algorithmic impl.: differential $n$-step semi-gradient sarsa}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -559,10 +559,10 @@ Moreover, $n$-step bootstrapping  can be implemented as well:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Least Squares Policy Iteration (LSPI)} 
+\section{Least squares policy iteration (lspi)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
@@ -570,7 +570,7 @@ Moreover, $n$-step bootstrapping  can be implemented as well:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfering LSTD-Style Batch Learning to Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Transferring LSTD-Style Batch Learning to Action Values}
+\frame{\frametitle{Transferring lstd-style batch learning to action values}
 \begin{itemize}
 	\item In the previous lecture we developed a closed-form batch learning tool, LSTD, which estimated the state values of a given policy if
 	\begin{itemize}
@@ -600,7 +600,7 @@ Moreover, $n$-step bootstrapping  can be implemented as well:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% On and Off-Policy LSTDQ %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{On and Off-Policy LS-Sarsa}
+\frame{\frametitle{On and off-policy ls-sarsa}
 With $b$ samples we can form a target vector $\bm{y}$ and regressor matrix $\bm{\Xi}$:
 \begin{equation}
 	\bm{y} = \begin{bmatrix} r_1 \\ r_2 \\ \vdots \\ r_b \end{bmatrix}, \quad \bm{\Xi}=\begin{bmatrix} \left(\tilde{\bm{x}}\T_{0} - \gamma \tilde{\bm{x}}\T_{1}\right) \\ \left(\tilde{\bm{x}}\T_{1} - \gamma \tilde{\bm{x}}\T_{2}\right)\\ \vdots \\\left(\tilde{\bm{x}}\T_{b-1} - \gamma \tilde{\bm{x}}\T_{b}\right) \end{bmatrix}\, .
@@ -621,7 +621,7 @@ If we apply off-policy LS-Sarsa then
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% On and Off-Policy LSTDQ %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{LS-Sarsa}
+\frame{\frametitle{Ls-sarsa}
 \begin{block}{LS-Sarsa solution}
 Having arranged $i=1,\ldots,b$ samples $\left\langle \bm{x}_i, u_i, r_{i+1}, \bm{x}_{i+1}, u_{i+1}\right\rangle\sim\bm{\mathcal{D}}$ using one-step bootstrapping \eqref{eq:bootstrapping_LSTDQ} and linear function approximation as in \eqref{eq:LSTDQ_data}, the LS-Sarsa solution is
 \begin{equation}
@@ -643,7 +643,7 @@ Possible modifications:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Least Squares Policy Iteration (LSPI) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Least Squares Policy Iteration (LSPI)}
+\frame{\frametitle{least squares policy iteration (lspi)}
 General idea:
 \begin{itemize}
 	\item apply general policy improvement (GPI) based on data set $\bm{\mathcal{D}}$ 
@@ -668,7 +668,7 @@ Some remarks:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: LSPI}
+\frame{\frametitle{algorithmic implementation: lspi}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -700,7 +700,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% LSPI Application Example: Inverted Pendulum %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{LSPI Application Example: Inverted Pendulum (1)}
+\frame{\frametitle{lspi application example: inverted pendulum (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.475\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -732,7 +732,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% LSPI Application Example: Inverted Pendulum (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{LSPI Application Example: Inverted Pendulum (2)}
+\frame{\frametitle{lspi application example: inverted pendulum (2)}
 \begin{itemize}
 	\item Initial training samples for $\bm{\mathcal{D}}$ following a policy selecting actions at uniform probability
 	\item Additional samples have been manually added during the training
@@ -747,7 +747,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RLS-TD Algorithmic Implementation  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Online LSPI}
+\frame{\frametitle{algorithmic implementation: online lspi}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -781,7 +781,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on Online LSPI %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on Online LSPI}
+\frame{\frametitle{Remarks on online lspi}
 \begin{itemize}
 	\item $k_w$ depicts the number of steps between policy improvement cycles.\pause
 	\item Forgetting factor $\lambda$ and $k_w$ require mutual tuning:
@@ -797,7 +797,7 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Online LSPI Application Example: Inverted Pendulum %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Online LSPI Application Example: Inverted Pendulum }
+\frame{\frametitle{online lspi application example: inverted pendulum }
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -825,17 +825,17 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deep \texorpdfstring{$Q$}{Q}-Networks (DQN)} 
+\section{Deep \texorpdfstring{$q$}{Q}-Networks (DQN)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Background on DQN  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{General Background on DQN}
+\frame{\frametitle{General background on dqn}
 \begin{itemize}
 	\item Recall incremental learning step from tabular $Q$-learning:
 	\begin{equation*}
@@ -861,7 +861,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary of DQN Working Principle  (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Summary of DQN Working Principle (1)}
+\frame{\frametitle{summary of dqn working principle (1)}
 \begin{itemize}
 	\item Take actions $u$ based on $\hat{q}(\bm{x},u,\bm{w})$ (e.g., $\varepsilon$-greedy). \pause
 	\item Store observed tuples $\left\langle \bm{x}, u, r, \bm{x}'\right\rangle$ in memory buffer $\bm{\mathcal{D}}$.\pause
@@ -881,7 +881,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary of DQN Working Principle  (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Summary of DQN Working Principle (2)}
+\frame{\frametitle{summary of dqn working principle (2)}
 \begin{figure}
 \includegraphics[height=5.5cm]{fig/lec10/DQN.pdf}
 \caption{DQN structure from a bird's-eye perspective (derivative work of \figref{fig:RL_Wiki} and \href{https://commons.wikimedia.org/wiki/File:Multi-Layer_Neural_Network-Vector.svg?uselang=de}{wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
@@ -892,7 +892,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algo DQN %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: DQN}
+\frame{\frametitle{algorithmic implementation: dqn}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -926,7 +926,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on DQN Implementation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on DQN Implementation}
+\frame{\frametitle{Remarks on dqn implementation}
 \begin{itemize}
 	\item General framework is based on V. Mnih et al., \textit{Human-level control through deep reinforcement learning}, Nature, pp. 529-533, 2015.\pause
 	\item Often 'deep' artificial neural networks are used as function approximation for DQN.
@@ -954,7 +954,7 @@ Motivation behind:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DQN Application Example: Atari Games (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{DQN Application Example: Atari Games (1)}
+\frame{\frametitle{dqn application example: atari games (1)}
 \begin{itemize}
 	\item End-to-end learning of $\hat{q}(\bm{x},u)$ from monitor pixels $\bm{x}$
 	\item Feature engineering obtains stacking of raw pixes from last 4 frames
@@ -970,7 +970,7 @@ Motivation behind:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DQN Application Example: Atari Games (2%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{DQN Application Example: Atari Games (2)}
+\frame{\frametitle{dqn application example: atari games (2)}
 \begin{figure}
 \includegraphics[height=6.5cm]{fig/lec10/DQN_Atari_Results.pdf}
 \caption{DQN performance results in Atari games against human performance \SilverLectureSource}
@@ -981,7 +981,7 @@ Motivation behind:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item From a simplified perspective, the procedures from the approximate prediction can simply be transferred to value-based control.\pause
 	\item On the contrary, the policy improvement theorem no longer applies in the approximate RL case (generalization impact).\pause

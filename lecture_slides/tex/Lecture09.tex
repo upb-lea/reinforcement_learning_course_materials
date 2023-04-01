@@ -34,10 +34,10 @@ Focus of this and the next lecture:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Impact of Function Approximation to the RL Task} 
+\section{Impact of function approximation to the rl task} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
@@ -69,7 +69,7 @@ Focus of this and the next lecture:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Prediction Objective with Function Approximation (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Prediction Framework with Function Approximation (1)}
+\frame{\frametitle{prediction framework with function approximation (1)}
 \begin{itemize}
 	\item Estimate true value function $v_\pi(\bm{x})$ using a parametrizable approximate value function
 		\begin{equation}
@@ -91,7 +91,7 @@ Due to the usage of function approximation one incremental learning step changes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Prediction Objective with Function Approximation (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Prediction Framework with Function Approximation (2)}
+\frame{\frametitle{prediction framework with function approximation (2)}
 \begin{itemize}
 	\item In the tabular case a specific \hl{prediction objective} was not needed:
 	\begin{itemize}
@@ -116,7 +116,7 @@ with $\mu(\bm{x})\in\left\{\mathbb{R}|\mu(\bm{x})\geq 0\right\}$ being a state d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Simplification for On-Policy Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Simplification for On-Policy Prediction}
+\frame{\frametitle{Simplification for on-policy prediction}
 \begin{itemize}
 	\item For prediction we focus entirely on the on-policy case. 
 	\item Hence, \hl{$\mu(\bm{x})$ is the on-policy distribution} under $\pi$. \pause
@@ -139,7 +139,7 @@ with $\mu(\bm{x})\in\left\{\mathbb{R}|\mu(\bm{x})\geq 0\right\}$ being a state d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Prediction Challenges with Function Approximation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Prediction Challenges with Function Approximation}
+\frame{\frametitle{Prediction challenges with function approximation}
 Summarizing the two previous slides:
 \begin{itemize}
 	\item The goal is to find 
@@ -168,17 +168,17 @@ Second challenge:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Gradient-Based Prediction} 
+\section{Gradient-based prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Updating the Parameter Vector to Find (Local) Optimum %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Updating the Parameter Vector to Find (Local) Optimum}
+\frame{\frametitle{updating the parameter vector to find (local) optimum}
 Transferring the idea of incremental learning steps from the tabular case 
 \begin{equation}
 	\hat{v}(x) \leftarrow \hat{v}(x) + \alpha \left[v_\pi(x) - \hat{v}(x)\right] 
@@ -197,7 +197,7 @@ to function approximation using a gradient descent update:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% How to Retrieve the Gradient? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{How to Retrieve the Gradient?}
+\frame{\frametitle{how to retrieve the gradient?}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.475\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -233,7 +233,7 @@ to function approximation using a gradient descent update:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Asking an Expert on Convergence Properties %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Asking an Expert on Convergence Properties}
+\frame{\frametitle{Asking an expert on convergence properties}
 The optimization task \eqref{eq:min_prediction_objective} could be
 \begin{itemize}
 	\item non-linear,
@@ -254,7 +254,7 @@ Applying gradient descent to such a problem requires:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SGD-Based Learning Step %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{SGD-Based Learning Step}
+\frame{\frametitle{Sgd-based learning step}
 Despite the possible problems we apply SGD-based learning due to its striking simplicity (and wide distribution in the literature): 
 \begin{block}{Gradient-based parameter update}
 To optimize \eqref{eq:min_prediction_objective} by an appropriate function approximator $\hat{v}(\tilde{\bm{x}}, \bm{w})$ the incremental learning update per step is
@@ -273,7 +273,7 @@ Nevertheless, the true update target $v_\pi(\bm{x}_k)$ is often unknown due to
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Generalization Example for Gradient-Based Parameter Update %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Generalization Example for Parameter Update}
+\frame{\frametitle{Generalization example for parameter update}
 \begin{itemize}
 	\item Function approximation $\hat{v}(\tilde{\bm{x}}, \bm{w})=\begin{bmatrix}w_1 & w_2 & w_3\end{bmatrix}\begin{bmatrix}x_1 & x_2 & 1\end{bmatrix}\T$\pause
 	\item Initial parameter: $\bm{w}\T_0=\begin{bmatrix}1 & 1 & 1\end{bmatrix}$, $v_\pi(\bm{x}_0=\begin{bmatrix}1 & 1\end{bmatrix}\T)=1$,  $\alpha=0.1$\pause
@@ -294,7 +294,7 @@ Nevertheless, the true update target $v_\pi(\bm{x}_k)$ is often unknown due to
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Gradient Monte Carlo %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Gradient Monte Carlo}
+\frame{\frametitle{algorithmic implementation: gradient monte carlo}
 \begin{itemize}
 	\item Direct transfer from tabular case to function approximation
 	\item Update target becomes the sampled return $v_\pi(\bm{x}_k)\approx g_k$
@@ -324,7 +324,7 @@ Nevertheless, the true update target $v_\pi(\bm{x}_k)$ is often unknown due to
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient Methods %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Semi-Gradient Methods}
+\frame{\frametitle{Semi-gradient methods}
 \begin{itemize}
 	\item If bootstrapping is applied, the true target $v_\pi(\bm{x}_k)$ is approximated by a target depending on the estimate $\hat{v}(\tilde{\bm{x}}_k, \bm{w})$.\pause
 	\item If $\hat{v}(\tilde{\bm{x}}_k, \bm{w})$ does not perfectly fit  $v_\pi(\bm{x}_k)$, \hl{the update target becomes a biased estimate of $v_\pi(\bm{x}_k)$}.\pause
@@ -352,7 +352,7 @@ When bootstrapping is applied, the gradient does not take into account any gradi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient TD(0) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Semi-Gradient TD(0)}
+\frame{\frametitle{algorithmic implementation: semi-gradient td(0)}
 The semi-gradient of $J(\bm{w})$ for TD(0) from prev. slide is then
 \begin{equation}
 	\nabla_{\bm{w}} J(\bm{w}) \approx -\left[r_{k+1} + \gamma \hat{v}(\tilde{\bm{x}}_{k+1}, \bm{w}_k) - \hat{v}(\tilde{\bm{x}}_k, \bm{w}_k)\right]\nabla_{\bm{w}}\hat{v}(\tilde{\bm{x}}_k, \bm{w}_k) .
@@ -418,17 +418,17 @@ The semi-gradient of $J(\bm{w})$ for TD(0) from prev. slide is then
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Batch Learning} 
+\section{Batch learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Motivation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Background and Motivation}
+\frame{\frametitle{Background and motivation}
 \begin{itemize}
 	\item As already discussed in the tabular case: incremental learning is not data efficient (cf. example \figref{fig:Batch_AB_Example}).
 	\begin{itemize}
@@ -453,7 +453,7 @@ The semi-gradient of $J(\bm{w})$ for TD(0) from prev. slide is then
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SGD with Experience Replay %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{SGD with Experience Replay}
+\frame{\frametitle{Sgd with experience replay}
 Based on the data set
 \begin{equation*}
 	\bm{\mathcal{D}}=\left\{\left\langle \bm{x}_0, v_\pi(\bm{x}_0)\right\rangle, \left\langle \bm{x}_1, v_\pi(\bm{x}_1)\right\rangle,\ldots\right\}
@@ -480,7 +480,7 @@ repeat:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% (Ordinary) Least Squares%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{(Ordinary) Least Squares}
+\frame{\frametitle{(ordinary) least squares}
 Assuming the following applies: 
 \begin{itemize}
 	\item $\hat{v}(\tilde{\bm{x}}, \bm{w})$ is a linear estimator and
@@ -506,7 +506,7 @@ We focus on the \hl{combination of OLS and TD(0) (so-called LSTD)}, but the foll
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ordindary LSTD (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Ordinary LSTD (2)}
+\frame{\frametitle{ordinary lstd (2)}
 The quadratic cost function
 \begin{equation*}
 		J(\bm{w}) = \sum_k \left[r_{k+1} - \left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)\bm{w}\right]^2
@@ -526,7 +526,7 @@ With $b$ samples we can form a target vector $\bm{y}$ and regressor matrix $\bm{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ordindary LSTD (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Ordinary LSTD and Regularization}
+\frame{\frametitle{Ordinary lstd and regularization}
 Applying the linear regression solution \eqref{eq:OLS_estimate} from previous lecture:
 \begin{block}{LSTD solution}
 Having arranged $i=1,\ldots,b$ samples $\left\langle \bm{x}_i, v_\pi(\bm{x}_i)\right\rangle\sim\bm{\mathcal{D}}$ using TD(0) and linear function approximation as in \eqref{eq:LSTD_data}, the LSTD solution is
@@ -554,7 +554,7 @@ Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recursive Least Squares%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recursive Least Squares}
+\frame{\frametitle{Recursive least squares}
 \begin{itemize}
 	\item OLS computational complexity is $\mathcal{O}(\kappa^3)$. 
 	\begin{itemize}
@@ -575,7 +575,7 @@ Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recursive LSTD  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recursive LSTD}
+\frame{\frametitle{Recursive lstd}
 After every step we receive
 \begin{itemize}
 	\item a new regressor vector $\bm{\xi}\T_{k+1}=\left(\tilde{\bm{x}}\T_{k} - \gamma \tilde{\bm{x}}\T_{k+1}\right)$ and
@@ -601,7 +601,7 @@ with
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RLS-TD Algorithmic Implementation  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: RLS-TD}
+\frame{\frametitle{algorithmic implementation: rls-td}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -633,7 +633,7 @@ with
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some Remarks on RLS Usage in RL Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Some Remarks on RLS Usage in RL Prediction}
+\frame{\frametitle{Some remarks on rls usage in rl prediction}
 \begin{itemize}
 	\item Covariance matrix $\bm{P}$ can be inspected for certainty analysis. 
 	\begin{itemize}
@@ -659,17 +659,17 @@ Squares Identification}, Proceedings of 35th IEEE Conference on Decision and Con
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Possible Extensions and Modifications} 
+\section{Possible extensions and modifications} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Possible Problems With Gradients %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Possible Problems With Gradients (1)}
+\frame{\frametitle{possible problems with gradients (1)}
 The gradient-based update in \eqref{eq:gradient_learning} is an RL standard but not irreplaceable. What are its possible issues?\pause
 \begin{itemize}
 	\item Even if (semi) SGD update converges, we only locate a parameter vector $\bm{w}^*$ close to the local optimum of $J$ highly depending on $\bm{w}_0$.
@@ -684,7 +684,7 @@ The gradient-based update in \eqref{eq:gradient_learning} is an RL standard but 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Possible solutions for the continued use of SGD %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Possible Solutions for the Continued Use of SGD}
+\frame{\frametitle{Possible solutions for the continued use of sgd}
 Reinitialize SGD-based learning (multistart approach), e.g.,
 \begin{itemize}
 	\item grid search or
@@ -700,7 +700,7 @@ Reinitialize SGD-based learning (multistart approach), e.g.,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Possible Problems With Gradients (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Possible Problems With Gradients (2)}
+\frame{\frametitle{possible problems with gradients (2)}
 What other possible issue may arise when dealing with gradient-based updates?
 \begin{itemize}
 	\item Depending on the application, one may be forced to use a non differentiable function approximator. 
@@ -716,7 +716,7 @@ What other possible issue may arise when dealing with gradient-based updates?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Gradient-free optimization possibilities %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Gradient-Free Optimization Possibilities}
+\frame{\frametitle{Gradient-free optimization possibilities}
 \onslide<1->{If batch learning is feasible and a consistent data set $\bm{\mathcal{D}}$ is available, gradient-free optimization techniques may become an option like
 \begin{itemize}
 	\item meta-heuristics such as evolutionary algorithms (EA)  or}
@@ -737,7 +737,7 @@ What other possible issue may arise when dealing with gradient-based updates?
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item To cover unfeasible large or continuous state spaces function approximation is required.
 	\begin{itemize}\pause

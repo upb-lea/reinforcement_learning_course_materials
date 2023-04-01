@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lets Unify MC and One-Step TD Learning %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Lets Unify MC and One-Step TD Learning}
+\frame{\frametitle{Lets unify mc and one-step td learning}
 \begin{figure}		
 	\includegraphics[width=7cm]{fig/lec06/Compare_RL_Methods_Update.pdf}
 	\caption{MC and TD are the 'extreme options' in terms of the update's depth: what about intermediate solutions? (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -15,17 +15,17 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-Step}{n-Step} TD Prediction} 
+\section{\texorpdfstring{$n$-step}{n-Step} TD Prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% n-Step Bootstrapping Idea %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-Step Bootstrapping Idea}
+\frame{\frametitle{$n$-step bootstrapping idea}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -52,7 +52,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Formal Notation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Formal Notation (1)}
+\frame{\frametitle{formal notation (1)}
 Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:inc_impl_MC_pred_non_stat}:
 \begin{itemize}
 	\item Monte Carlo: Builds on the complete sampled return series
@@ -77,7 +77,7 @@ Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Formal Notation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Formal Notation (2)}
+\frame{\frametitle{formal notation (2)}
 \begin{block}{$n$-step state-value prediction target}
 Now, the target is generalized to an arbitrary $n$-step target:
 \begin{equation}
@@ -125,7 +125,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step TD-Based Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: $n$-step TD Prediction}
+\frame{\frametitle{algorithmic implementation: $n$-step td prediction}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -160,7 +160,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Convergence %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example: 19 State Random Walk}
+\frame{\frametitle{example: 19 state random walk}
 \begin{figure}		
 	\includegraphics[width=9cm]{fig/lec06/Random_Walk_19_States.pdf}
 	\caption{Exemplary random walk Markov reward process (MRP)}
@@ -191,17 +191,17 @@ The worst error of the expected $n$-step return is always less than or equal to 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-Step}{n-Step} Sarsa} 
+\section{\texorpdfstring{$n$-step}{n-Step} Sarsa} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer the $n$-step Approach to State-Action Values (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Transfer the $n$-step Approach to State-Action Values (1)}
+\frame{\frametitle{transfer the $n$-step approach to state-action values (1)}
 \begin{itemize}
 	\item For on-policy control by Sarsa action-value estimates are required. 
 	\item Recap the one-step action-value update as required for 'Sarsa(0)':
@@ -227,7 +227,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer $n$-step Update to Action Values (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Transfer the $n$-step Approach to State-Action Values (2)}
+\frame{\frametitle{transfer the $n$-step approach to state-action values (2)}
 \begin{itemize}
 	\item For $n$-step \hl{expected Sarsa}, the update is similar but the state-action value estimate at step $k+n$ becomes the \hl{expected approximate value of $x$} under the target policy valid at time step $k$:
 		\begin{equation}
@@ -246,7 +246,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $n$-Step Bootstrapping for State-Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-Step Bootstrapping for State-Action Values}
+\frame{\frametitle{$n$-step bootstrapping for state-action values}
 \begin{figure}		
 	\includegraphics[width=8cm]{fig/lec06/Back_Up_n_Step_Sarsa.pdf}
 	\caption{Different backup diagrams of $n$-step state-action value update targets}
@@ -257,7 +257,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: $n$-step Sarsa}
+\frame{\frametitle{algorithmic implementation: $n$-step sarsa}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -294,7 +294,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Illustration with Grid-World Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Illustration with Grid-World Example}
+\frame{\frametitle{Illustration with grid-world example}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec06/n_step_Sarsa_Grid_World_Example.pdf}
 	\caption{Executed updates (highlighted by arrows) for different $n$-step Sarsa implementations during an episode (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -309,17 +309,17 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-Step}{n-Step} Off-Policy Learning with Importance Sampling} 
+\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning with Importance Sampling} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap on Off-Policy Learning with Importance Sampling%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recap on Off-Policy Learning  with Importance Sampling}
+\frame{\frametitle{Recap on off-policy learning  with importance sampling}
 Consider two separate policies in order to break the on-policy optimality trade-off:
 	\begin{itemize}
 		\item \hl{Behavior policy} $b(u|x)$: Explores in order to generate experience.
@@ -340,7 +340,7 @@ The relative probability of a trajectory under the target and behavior policy, t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer Importance Sampling to $n$-Step Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Transfer Importance Sampling to $n$-Step Updates}
+\frame{\frametitle{transfer importance sampling to $n$-step updates}
 For a straightforward \hl{$n$-step off-policy TD-style update}, just weight the update by the importance sampling ratio:
 \begin{align}
 	\hat{v}_{k+n}(x_k) &= \hat{v}_{k+n-1}(x_k) + \alpha \hl{\rho_{k:k+n-1}}\left[g_{k:k+n} - \hat{v}_{k+n-1}(x_k)\right], \quad 0\leq k < T, \notag \\
@@ -363,7 +363,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Off-Policy $n$-step TD Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Implementation: Off-Policy $n$-step TD-Based Prediction}
+\frame{\frametitle{implementation: off-policy $n$-step td-based prediction}
 \vspace{-0.15cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -400,7 +400,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Off-Policy $n$-step Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Off-Policy $n$-step Sarsa}
+\frame{\frametitle{algorithmic implementation: off-policy $n$-step sarsa}
 \setlength{\algomargin}{0.5em}
 \vspace{-0.15cm}
 \begin{algorithm}[H]
@@ -437,17 +437,17 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-Step}{n-Step} Off-Policy Learning with Tree Backup Approach} 
+\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning with Tree Backup Approach} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Learning Without Importance Sampling %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off-Policy Learning Without Importance Sampling (1)}
+\frame{\frametitle{off-policy learning without importance sampling (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.27\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -479,7 +479,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Learning Without Importance Sampling (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off-Policy Learning Without Importance Sampling (2)}
+\frame{\frametitle{off-policy learning without importance sampling (2)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.27\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -511,7 +511,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Derive Formal Tree-Backup Equations (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Derive Formal Tree-Backup Equations (1)}
+\frame{\frametitle{derive formal tree-backup equations (1)}
 The 1-step tree-backup target is equal to that of expected Sarsa:
 		\begin{equation}
 		g_{k:k+1} = r_{k+1}+\gamma \sum_{u} \pi(u|x_{k+1}) \hat{q}_k(x_{k+1}, u), \quad k<T-1 .
@@ -529,7 +529,7 @@ In the 2-step case, the probability of being in $x_{k+1}$ and applying the sampl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Derive Formal Tree-Backup Equations (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Derive Formal Tree-Backup Equations (2)}
+\frame{\frametitle{derive formal tree-backup equations (2)}
 Extending the previous scheme delivers a general definition of the tree-backup target in a recursive form:
 \begin{block}{$n$-step tree-backup return}
 For $k < T-n$ and $n \geq 2$ the $n$-step tree-backup return is:
@@ -551,7 +551,7 @@ For $k < T-n$ and $n \geq 2$ the $n$-step tree-backup return is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step Tree Backup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{%\frametitle{Algorithmic Implementation: $n$-step Tree Backup}
+\frame{%\frametitle{algorithmic implementation: $n$-step tree backup}
 \setlength{\algomargin}{0.5em}
 \vspace{0.15cm}
 \begin{algorithm}[H]
@@ -586,17 +586,17 @@ For $k < T-n$ and $n \geq 2$ the $n$-step tree-backup return is:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bringing Everything Together: \texorpdfstring{$n$-Step $Q(\sigma)$}{n-Step Q-Sigma}} 
+\section{Bringing everything together: \texorpdfstring{$n$-step $q(\sigma)$}{n-Step Q-Sigma}} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $n$-Step Bootstrapping for State-Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Illustration of the Idea Compared to the Previous Methods}
+\frame{\frametitle{Illustration of the idea compared to the previous methods}
 \begin{figure}		
 	\includegraphics[width=6cm]{fig/lec06/Back_Up_Q_sigma.pdf}
 	\caption{The backup diagrams of the previous of $n$-step state-action value updates plus the so-called \hl{$n$-step $Q(\sigma)$} method that unifies
@@ -608,7 +608,7 @@ them all (exemplary 4-step case is depicted). \hl{The latter allows for choosing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on $\sigma$ %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on $\sigma$}
+\frame{\frametitle{remarks on $\sigma$}
 \begin{itemize}
 	\item In each time step $k$, consider a \hl{continuous mixing of sampling and expectation} by $\sigma_k\in [0,1]$. \pause
 	\item Special cases are included:
@@ -624,7 +624,7 @@ them all (exemplary 4-step case is depicted). \hl{The latter allows for choosing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $n$-Step $Q(\sigma)$ Target%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-Step $Q(\sigma)$ Target (1)}
+\frame{\frametitle{$n$-step $q(\sigma)$ target (1)}
 Firstly, we rewrite the $n$-step tree backup \eqref{eq:target_tree_backup}
 \begin{equation*}
 	g_{k:k+n} = r_{k+1}+\gamma \sum_{u \neq u_{k+1}} \pi(u|x_{k+1}) \hat{q}_{k+1}(x_{k+1}, u)+\gamma \pi(u_{k+1}|x_{k+1})g_{k+1:k+n}
@@ -645,7 +645,7 @@ using $\overline{v}_k(x_{k})=\sum_u \pi(u|x)\hat{q}_{k}(x_{k}, u)$ for the time 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $n$-Step $Q(\sigma)$ Target%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-Step $Q(\sigma)$ Target (2)}
+\frame{\frametitle{$n$-step $q(\sigma)$ target (2)}
 Similarly, a recursive formulation for the off-policy importance sampling  target \eqref{eq:rho_off_policy_TD} can be found:
 \begin{block}{Rewritten $n$-step importance sampling target}
 \vspace{-0.4cm}
@@ -671,7 +671,7 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step Tree Backup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: $n$-step $Q(\sigma)$}
+\frame{\frametitle{algorithmic implementation: $n$-step $q(\sigma)$}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -695,7 +695,7 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step Tree Backup %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{%\frametitle{Algorithmic Implementation: $n$-step $Q(\sigma)$ (2)}
+\frame{%\frametitle{algorithmic implementation: $n$-step $q(\sigma)$ (2)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -736,7 +736,7 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparison on 19 State Random Walk Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Comparison on 19 State Random Walk Example }
+\frame{\frametitle{Comparison on 19 state random walk example }
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.55\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -768,7 +768,7 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item $n$-step updates allow for an intermediate solution in between temporal difference and Monte Carlo:
 	\begin{itemize}

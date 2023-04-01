@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recall: RL Agent Taxonomy%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recap: RL Agent Taxonomy}
+\frame{\frametitle{recap: rl agent taxonomy}
 \begin{figure}
 	\includegraphics[width=5.5cm]{fig/lec01/RL_Agent_Taxonomy.pdf}
 	\caption{Main categories of reinforcement learning algorithms\\  \SilverLectureSource}
@@ -18,17 +18,17 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Repetition: Model-based and Model-free RL} 
+\section{Repetition: model-based and model-free rl} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model-based RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Model-based RL}
+\frame{\frametitle{Model-based rl}
 \begin{itemize}
 	\item \hl{Plan/predict} value functions and/or policy from a model.
 	\item Requires an a priori model or to learn a model from experience.
@@ -48,7 +48,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is a Model? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{What is a Model?}
+\frame{\frametitle{what is a model?}
 \begin{itemize}
 	\item A model $\mathcal{M}$ is an MDP tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$. \pause
 	\item In particular, we require the  
@@ -76,7 +76,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model Learning / Identification %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Model Learning / Identification}
+\frame{\frametitle{model learning / identification}
 \begin{itemize}
 	\item Ideally, the model $\mathcal{M}$ is exactly known a priori (e.g., gridworld case). \pause
 	\item On the contrary, a model might be too complex to derive or not exactly available (e.g., real physical systems). \pause
@@ -103,7 +103,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Distribution vs. Sample Models %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Distribution vs. Sample Models}
+\frame{\frametitle{distribution vs. sample models}
 \begin{itemize}
 	\onslide<1->{\item A model based on $\bm{\mathcal{P}}$ and $\mathcal{R}$ is called a \hl{distribution model}.
 	\begin{itemize}
@@ -124,7 +124,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model-free RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Model-free RL}
+\frame{\frametitle{Model-free rl}
 \begin{itemize}
 	\item \hl{Learn} value functions and/or policy directly from experience.
 	\item Requires no model at all (policy can be considered an implicit model). \pause
@@ -145,7 +145,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages and Drawbacks: Model-free vs. Model-based RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Advantages \& Drawbacks: Model-free vs. Model-based RL }
+\frame{\frametitle{advantages \& drawbacks: model-free vs. model-based rl }
 \onslide<1->{Pro model-based / indirect RL:
 \begin{itemize}
 	\item Efficiently uses limited amount of experience (e.g., by replay).  
@@ -165,17 +165,17 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Dyna: Integrated Planning, Acting and Learning} 
+\section{Dyna: integrated planning, acting and learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The General Dyna Architecture (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The General Dyna Architecture (1)}
+\frame{\frametitle{the general dyna architecture (1)}
 \begin{itemize}
 	\item Proposed by R. Sutton in 1990's
 	\item General framework with many different implementation variants
@@ -190,7 +190,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The General Dyna Architecture (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The General Dyna Architecture (2)}
+\frame{\frametitle{the general dyna architecture (2)}
 \begin{itemize}
 	\onslide<1->{\item \hl{Direct RL update}: any model-free algorithm: $Q$-learning, Sarsa, ...}
 	\onslide<2->{\item \hl{Model learning}:
@@ -209,7 +209,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Dyna-Q %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Dyna-$Q$}
+\frame{\frametitle{algorithmic implementation: dyna-$q$}
 
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -245,7 +245,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on Dyna-Q Implementation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on Dyna-$Q$ Implementation}
+\frame{\frametitle{remarks on dyna-$q$ implementation}
 The specific Dyna-$Q$ characteristics are:
 \begin{itemize}
 	\item Direct RL update: $Q$-learning, 
@@ -272,7 +272,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maze Example (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Maze Example (1)}
+\frame{\frametitle{maze example (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -303,7 +303,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maze Example (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Maze Example (2)}
+\frame{\frametitle{maze example (2)}
 \begin{itemize}
 	\item Blocks without an arrow depict a neutral policy (equal action values).
 	\item Black squares indicate agent's position during second episode.
@@ -321,7 +321,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What if the Model is Wrong? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{What if the Model is Wrong?}
+\frame{\frametitle{what if the model is wrong?}
 Possible model error sources:
 \begin{itemize}
 	\item A provided a priori model may be inaccurate (expert knowledge). \pause
@@ -341,7 +341,7 @@ Consequences:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Blocking Maze Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The Blocking Maze Example}
+\frame{\frametitle{The blocking maze example}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -371,7 +371,7 @@ Consequences:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Shortcut Maze Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The Shortcut Maze Example}
+\frame{\frametitle{The shortcut maze example}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -401,7 +401,7 @@ Consequences:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dyna-Q+ Extensions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Dyna-$Q$+ Extensions}
+\frame{\frametitle{dyna-$q$+ extensions}
 Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the following extensions: 
 \begin{itemize}
 	\item Search heuristic: add $\kappa \sqrt{\tau}$ to regular reward.
@@ -419,17 +419,17 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Prioritized Sweeping} 
+\section{Prioritized sweeping} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Idea %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Background and Idea}
+\frame{\frametitle{Background and idea}
 
 \begin{itemize}
 	\item Dyna-$Q$ randomly samples from the memory buffer.
@@ -456,7 +456,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Prioritized sweeping %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Prioritized Sweeping}
+\frame{\frametitle{algorithmic implementation: prioritized sweeping}
 \vspace{-0.15cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -497,7 +497,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on Prioritized Sweeping Implementation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remarks on Prioritized Sweeping Implementation}
+\frame{\frametitle{Remarks on prioritized sweeping implementation}
 The specific prioritized sweeping characteristics are:
 \begin{itemize}
 	\item Direct RL update: $Q$-learning, 
@@ -519,7 +519,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparing Against Dyna-$Q$ on Simple Maze Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Comparing Against Dyna-$Q$ on Simple Maze Example}
+\frame{\frametitle{comparing against dyna-$q$ on simple maze example}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -545,17 +545,17 @@ Moreover:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Update Variants} 
+\section{Update variants} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Update Rule Alternatives %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Update Rule Alternatives}
+\frame{\frametitle{Update rule alternatives}
 \begin{itemize}
 	\item Dyna updates (search strategy) are not bound to $Q$-learning during planning and can be exchanged in many ways (see \figref{fig:Backup_one_step}).
 	\item Even evaluating a fixed policy $\pi$ in terms of $v_\pi(x)$ and $q_\pi(x,u)$ is possible.
@@ -570,7 +570,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages and Drawbacks: Expected vs. Sampled Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Advantages \& Drawbacks: Expected vs. Sampled Updates}
+\frame{\frametitle{advantages \& drawbacks: expected vs. sampled updates}
 Pro expected updates:
 \begin{itemize}
 	\item Delivers more accurate value estimates (no sampling error).  \pause
@@ -596,7 +596,7 @@ Leads to trade-off:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example for Sampled vs. Expected Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example for Sampled vs. Expected Updates}
+\frame{\frametitle{example for sampled vs. expected updates}
 \begin{itemize}
 	\item Artificial prediction task where all $b$ successor states are equally likely
 	\item Method initialization such that RMS error is always one 
@@ -612,7 +612,7 @@ Leads to trade-off:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Alternative on Distributing the Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Alternatives on Distributing the Updates}
+\frame{\frametitle{Alternatives on distributing the updates}
 Recap:
 \begin{itemize}
 	\item Dynamic programming: sweep through the entire state(-action) space
@@ -631,7 +631,7 @@ Alternative: update according to on-policy distribution
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exemplary Update Distribution Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exemplary Update Distribution Comparison}
+\frame{\frametitle{Exemplary update distribution comparison}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.62\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -660,17 +660,17 @@ Example:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Planning at Decision Time} 
+\section{Planning at decision time} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background Planning vs. Planning at Decision Time %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Background Planning vs. Planning at Decision Time}
+\frame{\frametitle{background planning vs. planning at decision time}
 \hl{Background Planning} (discussed so far):
 \begin{itemize}
 	\item Gradually improves policy or value function if time is available.
@@ -691,7 +691,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Heuristic Search %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Heuristic Search}
+\frame{\frametitle{Heuristic search}
 \begin{itemize}
 	\item Develop \hl{tree-like continuations} from each state encountered. 
 	\item Approximate value function at leaf nodes (using a model) and back up towards the current state.
@@ -708,7 +708,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Rollout Algorithms %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Rollout Algorithms}
+\frame{\frametitle{Rollout algorithms}
 \begin{itemize}
 	\item Similar to heuristic search, but: \hl{simulate trajectories following a rollout policy}.
 	\item Use Monte Carlo estimates of action value \hl{only for current state} to evaluate on best action.
@@ -725,7 +725,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Monte Carlo Tree Search (MCTS) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Monte Carlo Tree Search (MCTS)}
+\frame{\frametitle{monte carlo tree search (mcts)}
 \begin{itemize}
 	\item Rollout algorithm, but: 
 	\begin{itemize}
@@ -743,7 +743,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Basic MCTS Procedure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Basic MCTS Procedure}
+\frame{\frametitle{Basic mcts procedure}
 Repeat the following steps while prediction time is available:
 \begin{enumerate}
 	\item \hl{Selection}: Starting at root node, use a tree policy (e.g., $\varepsilon$-greedy) to travel through the tree until arriving at a leaf node.\pause
@@ -763,7 +763,7 @@ Repeat the following steps while prediction time is available:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Further MCTS Remarks %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Further MCTS Remarks}
+\frame{\frametitle{Further mcts remarks}
 What is happening after reaching the feasible simulation runs?
 \begin{itemize}
 	\item After time is up, MCTS picks an appropriate action regarding the root node, e.g.:
@@ -797,7 +797,7 @@ Further reading on MCTS:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item Model-free RL is easy to implement and cannot suffer any model learning error while model-based approaches use a limited amount of experience much more efficient. \pause
 	\item Integrating these two RL branches can be achieved using the Dyna framework (background planning) incorporating the steps:

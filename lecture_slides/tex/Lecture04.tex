@@ -2,16 +2,16 @@
 \title[RL Lecture 04]{Lecture 04: Monte Carlo Methods}  
 \date{}  
 \frame{\titlepage} 
-\frame{\frametitle{Table of Contents}\tableofcontents} 
+\frame{\frametitle{Table of contents}\tableofcontents} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{General Idea and Differences to Dynamic Programming} 
+\section{General idea and differences to dynamic programming} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Monte Carlo Methods vs. Dynamic Programming %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Monte Carlo Methods vs. Dynamic Programming}
+\frame{\frametitle{monte carlo methods vs. dynamic programming}
 Dynamic Programming:
 \begin{itemize}
 	\item \hl{Model-based} prediction and control 
@@ -31,7 +31,7 @@ Monte Carlo methods:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Monte Carlo Methods' Characteristics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{General Monte Carlo (MC) Methods' Characteristics}
+\frame{\frametitle{general monte carlo (mc) methods' characteristics}
 \begin{itemize}
 	\onslide<1->\item \hl{Learning  from experience}, i.e., sequences of samples $\left\langle x_k, u_k, r_{k+1}\right\rangle$
 	\onslide<2->\item Main concept: Estimation by \hl{averaging sample returns}
@@ -46,17 +46,17 @@ Monte Carlo methods:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Basic Monte Carlo Prediction} 
+\section{Basic monte carlo prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task Description and Basic Solution %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Task Description and Basic Solution}
+\frame{\frametitle{Task description and basic solution}
 \begin{block}{MC prediction problem statement}
 \begin{itemize}
 	\item Estimate state value $v_{\pi}(x)$ for a given policy $\pi$.
@@ -81,7 +81,7 @@ MC solution approach:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:MC-Based Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: MC-Based Prediction}
+\frame{\frametitle{algorithmic implementation: mc-based prediction}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -110,7 +110,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Incremental Implementation%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Incremental Implementation}
+\frame{\frametitle{Incremental implementation}
 \begin{itemize}
 	\item \algoref{algo:MC_state_prediction_first_visit} is inefficient due to large memory demand.
 	\item Better: use \hl{incremental / recursive implementation}.\pause
@@ -137,7 +137,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Statistical Properties of MC-Based Prediction (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Statistical Properties of MC-Based Prediction (1)}
+\frame{\frametitle{statistical properties of mc-based prediction (1)}
 \onslide<1->{First-time visit MC:
 \begin{itemize}
 	\item Each return sample $g_j$ is independent from the others since they were drawn from separate episodes.   
@@ -158,7 +158,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Statistical Properties of MC-Based Prediction (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Statistical Properties of MC-Based Prediction (2)}
+\frame{\frametitle{statistical properties of mc-based prediction (2)}
 
 \begin{itemize}
 	\item State-value estimates for each state are independent.
@@ -183,7 +183,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Prediction Example: Forest Tree MDP (1)}
+\frame{\frametitle{mc-based prediction example: forest tree mdp (1)}
 Let's reuse the forest tree MDP example with \textit{fifty-fifty policy} and discount factor $\gamma=0.8$
 plus disaster probability $\alpha=0.2$:
 \vspace{0.5cm}
@@ -197,7 +197,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Prediction Example: Forest Tree MDP (2)}
+\frame{\frametitle{mc-based prediction example: forest tree mdp (2)}
 
 \begin{figure}		
 	%\hspace*{-1.5cm}
@@ -210,7 +210,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Blackjack (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Prediction Example: Blackjack (1)}
+\frame{\frametitle{mc-based prediction example: blackjack (1)}
 \begin{itemize}
 	\item \hl{States} (200 in total)
 	\begin{itemize}
@@ -238,7 +238,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Blackjack (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Prediction Example: Blackjack (2)}
+\frame{\frametitle{mc-based prediction example: blackjack (2)}
 \begin{figure}
 		\includegraphics[width=9cm]{fig/lec04/MC_Black_Jack.pdf}
 		\caption{Approximate state-value functions by first-visit MC prediction for a \hl{player's policy that sticks only on 20 or 21} (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -253,7 +253,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC Estimation of Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC Estimation of Action Values}
+\frame{\frametitle{Mc estimation of action values}
 Is a \hl{model available} (i.e., tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$)? 
 \begin{itemize}
 	\item \hl{Yes}: state values plus one-step prediction deliver optimal policy.
@@ -275,17 +275,17 @@ Possible problem when following a deterministic policy $\pi$:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Basic Monte Carlo Control} 
+\section{Basic monte carlo control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applying Generalized Policy Iteration (GPI) to MC Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Applying Generalized Policy Iteration (GPI) to MC Control}
+\frame{\frametitle{applying generalized policy iteration (gpi) to mc control}
 \onslide<1->{GPI concept is directly applied to MC framework using action values:
 \begin{equation}
 \label{eq:GPI_MC}
@@ -312,7 +312,7 @@ Possible problem when following a deterministic policy $\pi$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Improvement Theoreom %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy Improvement Theorem}
+\frame{\frametitle{Policy improvement theorem}
 Assuming that one is operating in an \hl{unknown MDP}, the policy improvement theorem \theoref{theo:Policy_improvement} is still valid for MC-based control:
 \begin{block}{Policy improvement for MC-based control}
 \begin{equation}
@@ -336,7 +336,7 @@ Assuming that one is operating in an \hl{unknown MDP}, the policy improvement th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: MC-Based Control Using Exploring Start %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: MC-Based Control}
+\frame{\frametitle{algorithmic implementation: mc-based control}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -370,7 +370,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Blackjack %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Control Example: Blackjack}
+\frame{\frametitle{mc-based control example: blackjack}
 \begin{figure}
 		\includegraphics[width=9cm]{fig/lec04/MC_ES_Black_Jack.pdf}
 		\caption{The optimal policy and state-value function for blackjack found by MC-based control using exploring starts. (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -379,17 +379,17 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Extensions to Monte Carlo On-Policy Control} 
+\section{Extensions to monte carlo on-policy control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off- and On-Policy Learning %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off- and On-Policy Learning}
+\frame{\frametitle{Off- and on-policy learning}
 \begin{itemize}
 	\item \hl{On-policy learning}
 	\begin{itemize}
@@ -411,7 +411,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Epsilon-Greedy as an On-Policy Alternative %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$\varepsilon$-Greedy as an On-Policy Alternative}
+\frame{\frametitle{$\varepsilon$-greedy as an on-policy alternative}
 \begin{itemize}
 	\item Exploration requirement:
 	\begin{itemize}
@@ -436,7 +436,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic implementation $\varepsilon$-Greedy MC-Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation $\varepsilon$-Greedy MC-Control}
+\frame{\frametitle{algorithmic implementation $\varepsilon$-greedy mc-control}
 \vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -472,7 +472,7 @@ $n(x,u)\leftarrow$ an empty list counting state-action visits $\forall \, \left\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $\varepsilon$-Greedy Policy Improvement (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$\varepsilon$-Greedy Policy Improvement (1)}
+\frame{\frametitle{$\varepsilon$-greedy policy improvement (1)}
 \begin{theo}{Policy improvement for $\varepsilon$-greedy policy}{policy_improv_eps_greedy}
 Given an MDP, for any $\varepsilon$-greedy policy $\pi$ the $\varepsilon$-greedy policy $\pi'$ with respect to $q_\pi$ is an improvement, i.e., $v_{\pi'} > v_{\pi} \quad \forall x\in\mathcal{X}$.
 \end{theo}\pause
@@ -492,7 +492,7 @@ In the inequality line, the second term is the weighted sum over action values g
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $\varepsilon$-Greedy Policy Improvement (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$\varepsilon$-Greedy Policy Improvement (2)}
+\frame{\frametitle{$\varepsilon$-greedy policy improvement (2)}
 Continuation:
 \small
 \begin{equation}
@@ -513,7 +513,7 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Control Example: Forest Tree MDP (1)}
+\frame{\frametitle{mc-based control example: forest tree mdp (1)}
 \vspace{-0.5cm}
 \begin{figure}		
 	\includegraphics{fig/lec04/Forest_Tree_MC_Control_eps_02.pdf}
@@ -525,7 +525,7 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Control Example: Forest Tree MDP (2)}
+\frame{\frametitle{mc-based control example: forest tree mdp (2)}
 \vspace{-0.5cm}
 \begin{figure}		
 	\includegraphics{fig/lec04/Forest_Tree_MC_Control_eps_005.pdf}
@@ -537,7 +537,7 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Control Example: Forest Tree MDP (3)}
+\frame{\frametitle{mc-based control example: forest tree mdp (3)}
 Observations on forest tree MDP with $\varepsilon$-greedy MC-based control:
 \begin{itemize}
 	\item Rather slow convergence rate: quite a number of episodes is required. \pause
@@ -551,7 +551,7 @@ Observations on forest tree MDP with $\varepsilon$-greedy MC-based control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Greedy in the Limit with Infinite Exploration (GLIE) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Greedy in the Limit with Infinite Exploration (GLIE)}
+\frame{\frametitle{greedy in the limit with infinite exploration (glie)}
 \begin{defi}{Greedy in the limit with infinite exploration (GLIE)}{GLIE}
 A learning policy $\pi$ is called GLIE if it satisfies the following two properties:
 \begin{itemize}
@@ -570,7 +570,7 @@ A learning policy $\pi$ is called GLIE if it satisfies the following two propert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% GlIE Monte-Carlo Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{GLIE Monte Carlo Control}
+\frame{\frametitle{Glie monte carlo control}
 \begin{theo}{Optimal decision using MC-control with $\varepsilon$-greedy}{GLIE_MC}
 MC-based control using $\varepsilon$-greedy exploration is GLIE, if $\varepsilon$ is decreased at rate
 \begin{equation}
@@ -591,17 +591,17 @@ Remarks:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte Carlo Off-Policy Prediction} 
+\section{Monte carlo off-policy prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Learning Background %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off-Policy Learning Background}
+\frame{\frametitle{Off-policy learning background}
 Drawback of on-policy learning:
 \begin{itemize}
 	\item Only a compromise: comes with inherent exploration but at the cost of learning action values for a \hl{near-optimal policy}. 
@@ -626,7 +626,7 @@ Idea off-policy learning:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Prediction Problem Statement %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off-Policy Prediction Problem Statement}
+\frame{\frametitle{Off-policy prediction problem statement}
 \begin{block}{MC off-policy prediction problem statement}
 \begin{itemize}
 	\item Estimate $v_\pi$ and/or $q_\pi$ while following $b(u|x)$.
@@ -651,7 +651,7 @@ Requirement:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Importance Sampling %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Importance Sampling}
+\frame{\frametitle{Importance sampling}
 What is the probability of observing a certain trajectory on random variables $U_k, X_{k+1}, U_{k+1}, \ldots, X_{T}$ starting in $X_{k}$ while following $\pi$?
 \begin{equation}
 \begin{split}
@@ -673,7 +673,7 @@ The relative probability of a trajectory under the target and behavior policy, t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Importance Sampling for Monte Carlo Prediction (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Importance Sampling for Monte Carlo Prediction (1)}
+\frame{\frametitle{importance sampling for monte carlo prediction (1)}
 \begin{defi}{State-value estimation via Monte Carlo importance sampling}{MC_ord_import_sampl}
 Estimating the state value $v_\pi$ following a behavior policy $b$ using (ordinary) importance sampling (OIS) results in scaling and averaging the sampled returns by the importance sampling ratio per episode:
 \begin{equation}
@@ -696,7 +696,7 @@ General remark:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Importance Sampling for Monte Carlo Prediction (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Importance Sampling for Monte Carlo Prediction (2)}
+\frame{\frametitle{importance sampling for monte carlo prediction (2)}
 \begin{defi}{Weighted importance sampling for MC-based prediction}{MC_weighted_import_sampl}
 Estimating the state value $v_\pi$ following a behavior policy $b$ using weighted importance sampling (WIS) results in a scaling and a weighted averaging of the sampled returns by the importance sampling ratio per episode:
 \begin{equation}
@@ -720,7 +720,7 @@ Comparison to OIS:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Importance Sampling Example: Blackjack%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Importance Sampling Example: Blackjack}
+\frame{\frametitle{importance sampling example: blackjack}
 \begin{itemize}
 	\item Behavior policy: stick or hit at equal probability.
 	\item Target policy: stick if player has sum of 20 or 21 (cf. \figref{fig:Blackjack_MC}).
@@ -736,7 +736,7 @@ Comparison to OIS:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Weighted Importance Sampling: Incremental Implementation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{WIS: Incremental Implementation}
+\frame{\frametitle{wis: incremental implementation}
 \begin{itemize}
 	\item For OIS, \eqref{eq:OIS} can be directly transformed into an incremental implementation following \eqref{eq:inc_impl_MC_pred}.\pause
 	\item For WIS an incremental implementation is also highly desirable to save memory and computational resources.\pause
@@ -756,7 +756,7 @@ Comparison to OIS:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: MC-Based Off-Policy Prediction Using WIS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Off-Policy Prediction Using WIS}
+\frame{\frametitle{Mc-based off-policy prediction using wis}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -787,7 +787,7 @@ $c(x,u)\leftarrow 0$ cumulative sum of WIS weights $\forall \, \left\{x\in\mathc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Off-Policy Prediction Using WIS: Forest Tree MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Off-Policy Prediction: Forest Tree MDP}
+\frame{\frametitle{mc-based off-policy prediction: forest tree mdp}
 \begin{itemize}
 	\item Behavior policy $b$: '\textit{fifty-fifty}'
 	\item Target policy $\pi$: optimal policy from \figref{fig:Forest_Markov_Decision_Process_Optimal_Action_Value}
@@ -802,17 +802,17 @@ $c(x,u)\leftarrow 0$ cumulative sum of WIS weights $\forall \, \left\{x\in\mathc
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte Carlo Off-Policy Control} 
+\section{Monte carlo off-policy control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Monte Carlo Control: Introduction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Off-Policy Monte Carlo Control: Introduction}
+\frame{\frametitle{off-policy monte carlo control: introduction}
 Just put everything together:
 \begin{itemize}
 	\item MC-based control utilizing GPI (cf. \figref{fig:GPI_MC}),
@@ -829,7 +829,7 @@ Requirement for off-policy MC-based control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: MC-Based Off-Policy Control Using WIS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Off-Policy Control Using WIS}
+\frame{\frametitle{Mc-based off-policy control using wis}
 \vspace{-0.175cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -865,7 +865,7 @@ $\pi(x) \leftarrow \argmax_{u} \hat{q}(x,u)$ (with ties broken consistently)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Off-Policy Control Using WIS: Forest Tree MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{MC-Based Off-Policy Control: Forest Tree MDP}
+\frame{\frametitle{mc-based off-policy control: forest tree mdp}
 \begin{itemize}
 	\item Behavior policy $b$: '\textit{fifty-fifty}'
 	\item Initial target policy $\pi$: '\textit{fifty-fifty}'
@@ -882,7 +882,7 @@ $\pi(x) \leftarrow \argmax_{u} \hat{q}(x,u)$ (with ties broken consistently)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remark on MC-Based Off-Policy Control with WIS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remark on MC-Based Off-Policy Control with WIS}
+\frame{\frametitle{Remark on mc-based off-policy control with wis}
 Potential problems with MC-based off-policy control:
 \begin{itemize}
 	\item Learns only 'from tails' of episodes if the remaining actions generated by $b$ are greedy with respect to $\pi$. 
@@ -910,7 +910,7 @@ Possible improvements/extensions:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item MC methods allow model-free learning of value functions and optimal policies from experience in the form of sampled episodes.
 	\item Using deep back-ups over full episodes, MC is largely based on averaging returns. \pause

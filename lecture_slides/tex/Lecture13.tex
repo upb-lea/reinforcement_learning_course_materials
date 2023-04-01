@@ -5,17 +5,17 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deep Deterministic Policy Gradient (DDPG)} 
+\section{Deep deterministic policy gradient (ddpg)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Motivation / General Idea %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Motivation / General Idea}
+\frame{\frametitle{motivation / general idea}
 \begin{itemize}
 	\item The upcoming \hl{deep deterministic policy gradient (DDPG)} algorithm was very much inspired by the successes of DQNs (cf. \algoref{algo:DQN} and landmark \href{https://www.nature.com/articles/nature14236?wm=book_wap_0005}{paper by Mnih et al.}) on discrete action spaces.\pause
 	\item However, \hl{DQNs are not directly applicable to (quasi-)continuous action spaces}.\pause
@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Deterministic Policy Trick %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The Deterministic Policy Trick}
+\frame{\frametitle{The deterministic policy trick}
 \begin{itemize}
 	\item When using a greedy, deterministic policy $\bm{\pi}(\bm{x}, \bm{\theta}) = \bm{\mu}(\bm{x}, \bm{\theta})$ we can utilize it to approximate
 	\begin{equation}
@@ -50,7 +50,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DDPG $\approx$ DQN + DPG %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{DDPG $\approx$ DQN + DPG}
+\frame{\frametitle{ddpg $\approx$ dqn + dpg}
 \begin{itemize}
 	\item Hence, we can consider the DDPG approach as a combination of DQN + DPG rendering it an \hl{actor-critic off-policy approach for continuous state and action spaces}.\pause
 	\item Similarly to DQN we will introduce \hl{several 'tweaks'} to stabilize and improve the DDPG learning process.\pause	
@@ -71,7 +71,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional DDPG Tweaks (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Additional DDPG Tweaks (1)}
+\frame{\frametitle{additional ddpg tweaks (1)}
 \hl{Tweak \#2}: target networks
 \begin{itemize}
 	\item Similar to DQN we introduce a (delayed) target network to estimate the $Q$-learning target $$r+ \gamma q(\bm{x}',\bm{\mu}(\bm{x}',\bm{\theta}),\bm{w})$$ since it depends on the same parameters $\bm{w}$ which we want to update.\pause
@@ -88,7 +88,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional DDPG Tweaks (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Additional DDPG Tweaks (2)}
+\frame{\frametitle{additional ddpg tweaks (2)}
 \hl{Tweak \#3}: mini-batch sampling
 \begin{itemize}
 	\item Given a sufficiently filled memory $\bm{\mathcal{D}}$ and the target networks parametrized by $\bm{w}^{-}$ and $\bm{\theta}^{-}$ we draw uniformly distributed mini-batch samples $\bm{\mathcal{D}}_b$ from $\bm{\mathcal{D}}$.\pause
@@ -110,7 +110,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Additional DDPG Tweaks (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Additional DDPG Tweaks (3)}
+\frame{\frametitle{additional ddpg tweaks (3)}
 \setcounter{footnote}{0}
 \hl{Tweak \#5}: exploration
 \begin{itemize}
@@ -127,7 +127,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary of DQN Working Principle  (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Visual Summary of DDPG Working Principle}
+\frame{\frametitle{Visual summary of ddpg working principle}
 \begin{figure}
 \includegraphics[height=5.75cm]{fig/lec13/DDPG.pdf}
 \caption{DDPG structure from a bird's-eye perspective (derivative work of \figref{fig:RL_Wiki} and \href{https://commons.wikimedia.org/wiki/File:Multi-Layer_Neural_Network-Vector.svg?uselang=de}{wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
@@ -138,7 +138,7 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: DDPG %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: DDPG}
+\frame{\frametitle{algo. implementation: ddpg}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -171,17 +171,17 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Twin Delayed Deep Deterministic Policy Gradient (TD3)} 
+\section{Twin delayed deep deterministic policy gradient (td3)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Bias %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overestimation Bias}
+\frame{\frametitle{Overestimation bias}
 \begin{itemize}
 	\item For $Q$-learning in the tabular case we have already discussed the \hl{maximization bias} (cf. \figref{Double_Learning_Example}) issue.\pause
 	\item Recap: Due to the greedy policy targets, $\hat{q}$ was overestimated when calculated using sampled values of stochastic MDPs.\pause
@@ -196,7 +196,7 @@ However, we did not address this possible problem in an actor-critic context usi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Bias in Actor-Critic Approaches (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overestimation Bias in Actor-Critic Approaches (1)}
+\frame{\frametitle{overestimation bias in actor-critic approaches (1)}
 \begin{itemize}
 	\item It turns out that the overestimation bias is also an issue for actor-critic methods as shown next \footnote[1]{Source: S. Fujimoto et al., \textit{Addressing Function Approximation Error in Actor-Critic Methods}, \href{https://arxiv.org/abs/1802.09477}{https://arxiv.org/abs/1802.09477}, 2018}.\pause
 	\item Consider an actor-critic policy with the current policy parameters $\bm{\theta}$.\pause
@@ -216,7 +216,7 @@ where $Z_1$ and $Z_2$ normalize the gradient such that $Z^{-1}||\El{\cdot}{}|| =
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Bias in Actor-Critic Approaches (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overestimation Bias in Actor-Critic Approaches (2)}
+\frame{\frametitle{overestimation bias in actor-critic approaches (2)}
 \begin{itemize}
 	\item Lets denote $\tilde{\bm{\pi}}$ and $\bm{\pi}^*$ as the policies with updated parameters $\tilde{\bm{\theta}}$ and $\bm{\theta}^*$ respectively.\pause
 	\item As the gradient direction is a local maximizer, there exists $\epsilon_1$ sufficiently small such that if $\alpha \leq \epsilon_1$ then the \emph{approximate} value of $\tilde{\bm{\pi}}$ will be bounded below by the \emph{approximate} value of $\bm{\pi}^*$:
@@ -234,7 +234,7 @@ where $Z_1$ and $Z_2$ normalize the gradient such that $Z^{-1}||\El{\cdot}{}|| =
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Bias in Actor-Critic Approaches (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overestimation Bias in Actor-Critic Approaches (3)}
+\frame{\frametitle{overestimation bias in actor-critic approaches (3)}
 \begin{itemize}
 	\item If the expected, estimated action value will be at least as large as the \textit{true} action value w.r.t. $\bm{\theta}^*$
 	\begin{equation}
@@ -254,7 +254,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Example for DDPG%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overestimation Example for DDPG}
+\frame{\frametitle{Overestimation example for ddpg}
 \vspace{0.75cm}
 \begin{figure}
 \includegraphics[height=4cm]{fig/lec13/DDPG_Overestimation.pdf}
@@ -266,7 +266,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Example for DDPG%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Increased Variance due to Accumulating TD Errors}
+\frame{\frametitle{Increased variance due to accumulating td errors}
 \begin{itemize}
 	\item Using function approximation, the \hl{Bellman equation is never exactly satisfied} leaving room for some amount of \hl{residual TD-error} $\tilde{\delta}(\bm{x}, \bm{u})$:
 	\begin{equation}
@@ -285,7 +285,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD3 Extensions and Modifications (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD3 Extensions and Modifications (1)}
+\frame{\frametitle{td3 extensions and modifications (1)}
 \begin{block}{}
 	 In order to reduce both the maximization bias and the learning variance, TD3 introduces mainly three measures on top of the DDPG algorithm. Hence, \hl{TD3 is a direct successor of DDPG}. 
 \end{block}\pause
@@ -306,7 +306,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD3 Extensions and Modifications (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD3 Extensions and Modifications (2)}
+\frame{\frametitle{td3 extensions and modifications (2)}
 \hl{Measure \#2}: target policy smoothing regularization
 \begin{itemize}
 	\item Background: deterministic policies $\bm{\mu}$ tend to overfit to narrow peaks in the action-value estimate.\pause
@@ -326,7 +326,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD3 Extensions and Modifications (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD3 Extensions and Modifications (3)}
+\frame{\frametitle{td3 extensions and modifications (3)}
 \hl{Measure \#3}: delayed policy updates
 \begin{itemize}
 	\item Similar to DDPG, TD3 uses policy target networks $\bm{\theta}^{-}$ and (two) critic target networks $\{\bm{w}^{-}_{1}, \bm{w}^{-}_{2}\}$ in order to provide (rather) fixed $Q$-learning targets trying to stabilize the learning of $\hat{q}$.\pause
@@ -343,7 +343,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD3 Extensions and Modifications (4) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD3 Extensions and Modifications (4)}
+\frame{\frametitle{td3 extensions and modifications (4)}
 \vspace{0.775cm}
 \begin{figure}
 \includegraphics[height=4cm]{fig/lec13/Policy_Update_Frequency_TD3.pdf}
@@ -355,7 +355,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: TD3 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{%\frametitle{Algo. Implementation: TD3}
+\frame{%\frametitle{algo. implementation: td3}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -393,10 +393,10 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Trust Region Policy Optimization (TRPO)} 
+\section{Trust region policy optimization (trpo)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
@@ -404,7 +404,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %% Reinterpreting the Policy Gradient for Stochastic Policies (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{footnote}{0}
-\frame{\frametitle{Reinterpreting the Stochastic Policy Gradient (1)}
+\frame{\frametitle{reinterpreting the stochastic policy gradient (1)}
 \vspace{-0.2cm}
 \begin{itemize}
 	\item In contrast to the previous two algorithms, we will \hl{focus on stochastic policies} $\pi(\bm{u}|\bm{x})$ in the following.\pause
@@ -424,7 +424,7 @@ then \eqref{eq:approx_q_TD3} and \eqref{eq:true_q_TD3} imply
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Reinterpreting the Policy Gradient for Stochastic Policies (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Reinterpreting the Stochastic Policy Gradient  (2)}
+\frame{\frametitle{reinterpreting the stochastic policy gradient  (2)}
 \begin{itemize}
 	\item For easier calculation, we introduce a local approximation to \eqref{eq:TRPO_perf_change}
 	\begin{equation}
@@ -449,7 +449,7 @@ However, we do not know how much the actual stochastic policy will change while 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Adding a Trust Region Constraint (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Adding a Trust Region Constraint (1)}
+\frame{\frametitle{adding a trust region constraint (1)}
 \begin{itemize}
 	\item From the previous discussion it can be concluded that we want a \hl{metric describing how much a policy is changed in the action space when updating the policy in the parameter space}. \pause 
 	\item Against this background, we make use of the \hl{Kullback-Leibler divergence} (also called relative entropy)
@@ -469,7 +469,7 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Adding a Trust Region Constraint (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Adding a Trust Region Constraint (2)}
+\frame{\frametitle{adding a trust region constraint (2)}
 \begin{itemize}
 	\item The \hl{trust region policy optimization (TRPO)} updates the policy parameters while constraining the KL divergence between the new and the old policy distribution:
 	\begin{equation}
@@ -496,7 +496,7 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-Based Estimation of the Objective and Constraint%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sample-Based Objective and Constraint Estimation (1)}
+\frame{\frametitle{sample-based objective and constraint estimation (1)}
 \begin{itemize}
 	\item To actually solve \eqref{eq:TRPO_opt_prob} we will make use of samplings from \hl{Monte-Carlo rollouts}.\pause
 	\item Expanding the objective yields
@@ -516,7 +516,7 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Smooth Policy Updates via TRPO %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Smooth Policy Updates via TRPO}
+\frame{\frametitle{Smooth policy updates via trpo}
 \begin{figure}
 \includegraphics[height=5.75cm]{fig/lec13/TRPO_Style_Updates.pdf}
 \caption{Simplified representation of the policy evolution for a scalar action given some fixed state. Left: TRPO-style updates finding the optimal action with increasing probability. Right: Unmonitored policy distributions not converging towards an optimal policy ('policy chattering').}
@@ -527,7 +527,7 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-Based Estimation of the Objective and Constraint%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sample-Based Objective and Constraint Estimation (2)}
+\frame{\frametitle{sample-based objective and constraint estimation (2)}
 \begin{itemize}
 	\item Applying the previous sample-based estimation we obtain
 \end{itemize}
@@ -556,7 +556,7 @@ Solving  \eqref{eq:TRPO_opt_prob_sample} is generally a nonlinear optimization p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Generalized Advantage Estimation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Generalized Advantage Estimation}
+\frame{\frametitle{Generalized advantage estimation}
 \setcounter{footnote}{0}
 \begin{itemize}
 	\item Having data $\left\langle \bm{x}, \bm{u}, r, \bm{x}'\right\rangle$ in $\bm{\mathcal{D}}$ from a Monte Carlo rollout available, an imporant problem is to estimate $a_{\pi_k}(\bm{x},\bm{u})$ in \eqref{eq:TRPO_opt_prob_sample}.\pause
@@ -575,7 +575,7 @@ Solving  \eqref{eq:TRPO_opt_prob_sample} is generally a nonlinear optimization p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TRPO Summary}
+\frame{\frametitle{Trpo summary}
 \vspace{-0.1cm}
 The TRPO's key facts are:
 \begin{itemize}
@@ -595,17 +595,17 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proximal Policy Optimization (PPO)} 
+\section{Proximal policy optimization (ppo)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Motivation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Background and Motivation}
+\frame{\frametitle{Background and motivation}
 \begin{itemize}
 	\item The upcoming \hl{proximal policy optimization (PPO)} algorithm tries to mimic the constrained TRPO problem based on related unconstrained problems. 
 \end{itemize}	
@@ -630,7 +630,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Clipped Surrogate Objective %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Clipped Surrogate Objective}
+\frame{\frametitle{Clipped surrogate objective}
 \begin{itemize}
 	\item The first approach is based on the following objective:
 \end{itemize}
@@ -653,7 +653,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Clipped Surrogate Objective: Positive Advantage %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Clipped Surrogate Objective: Positive Advantage}
+\frame{\frametitle{clipped surrogate objective: positive advantage}
 \begin{itemize}
 	\item Consider a single sample $(\bm{x}, \bm{u})$ with a \hl{positive advantage} $a_{\pi_k}(\bm{x},\bm{u})$:\pause
 \end{itemize}
@@ -676,7 +676,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Clipped Surrogate Objective: Negative Advantage %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Clipped Surrogate Objective: Negative Advantage}
+\frame{\frametitle{clipped surrogate objective: negative advantage}
 \begin{itemize}
 	\item Consider a single sample $(\bm{x}, \bm{u})$ with a \hl{negative advantage} $a_{\pi_k}(\bm{x},\bm{u})$:\pause
 \end{itemize}
@@ -699,7 +699,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Adaptive KL Penalty %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Adaptive KL Penalty}
+\frame{\frametitle{Adaptive kl penalty}
 \begin{itemize}
 	\item The second PPO variant makes use of the following KL-penalized objective
 \end{itemize}
@@ -728,7 +728,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: PPO %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algo. Implementation: PPO}
+\frame{\frametitle{algo. implementation: ppo}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -756,7 +756,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some PPO Remarks %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Some PPO Remarks}
+\frame{\frametitle{Some ppo remarks}
 \setcounter{footnote}{0}
 \begin{itemize}
 	\item Clipping the surrogate objective \eqref{eq:PPO_CSO} was reported to achieve higher performances than the KL penalty \eqref{eq:PPO_AKP}.\footnote{cf. original PPO paper results by J. Schulman et al., \textit{Proximal Policy Optimization Algorithms}, \href{https://arxiv.org/abs/1707.06347}{https://arxiv.org/abs/1707.06347}, 2017}\pause
@@ -771,7 +771,7 @@ Although PPO is derived from a TRPO background pursuing monotonically increasing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exemplary Performance Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exemplary Performance Comparison}
+\frame{\frametitle{Exemplary performance comparison}
 \begin{figure}
 \includegraphics[height=5.25cm]{fig/lec13/Algo_Compare.pdf}
 \caption{Learning curves for \href{https://gym.openai.com/envs/\#mujoco}{OpenAI Gym} continuous control tasks. The shaded region represents half a standard deviation of the average evaluation over ten trials (source: S. Fujimoto et al., \textit{Addressing Function Approximation Error in Actor-Critic Methods}, 2018).}
@@ -782,7 +782,7 @@ Although PPO is derived from a TRPO background pursuing monotonically increasing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outlook: Other Contempororay Algorithms (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: Other Contemporary Algorithms (1)}
+\frame{\frametitle{outlook: other contemporary algorithms (1)}
 The selection of algorithms appears endless:
 \begin{itemize}
 	\item DQN variants such as
@@ -809,7 +809,7 @@ Remarks:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outlook: Other Contempororay Algorithms (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: Other Contemporary Algorithms (2)}
+\frame{\frametitle{outlook: other contemporary algorithms (2)}
 Algorithm collections with tutorial-style documentation:
 \begin{itemize}
 	\item \href{https://nervanasystems.github.io/coach/}{Intel Reinforcement Learning Coach}
@@ -833,7 +833,7 @@ Algorithm collections with decent application-oriented documentation:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item The deep deterministic policy gradient (DDPG) approach 'transfers' many deep $Q$-network (DQN) ideas to continuous action spaces.\pause
 	\item It mainly combines DQN + deterministic policy gradients + policy and value target networks (plus additional minor tweaks).\pause

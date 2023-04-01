@@ -7,7 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Temporal-Difference Learning and the Previous Methods %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Temporal-Difference Learning and the Previous Methods}
+\frame{\frametitle{Temporal-difference learning and the previous methods}
 Temporal-difference (TD) learning combines the previous ideas introduced in DP and MC:
 \begin{itemize}
 	\item From Monte Carlo (MC) methods: Learns directly from experience.
@@ -24,17 +24,17 @@ Hence, TD characteristics are:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-Difference Prediction} 
+\section{Temporal-difference prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General TD Prediction Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{General TD Prediction Updates}
+\frame{\frametitle{General td prediction updates}
 Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for non-stationary problems: 
 \begin{equation}
 	\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha\left[g_k - \hat{v}(x_k)\right] .
@@ -62,7 +62,7 @@ Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: TD-Based Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: TD-Based Prediction}
+\frame{\frametitle{algorithmic implementation: td-based prediction}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -92,7 +92,7 @@ Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD Error %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD Error}
+\frame{\frametitle{Td error}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.25\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -127,7 +127,7 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD Error and its Relation to the MC Error %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD Error and its Relation to the MC Error }
+\frame{\frametitle{Td error and its relation to the mc error }
 \onslide<1->{Let's assume that the TD(0) estimate $\hat{v}(x)$ is not changing over one episode as it would be for MC prediction: 
 \begin{equation}
 \begin{split}
@@ -149,7 +149,7 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overview of the RL methods considered so far %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Overview of the RL Methods Considered so far}
+\frame{\frametitle{Overview of the rl methods considered so far}
 \begin{figure}		
 	\includegraphics[width=7cm]{fig/lec05/Compare_RL_Methods_Update.pdf}
 	\caption{Comparison of the RL methods considered so far with regard to the update rules (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -160,7 +160,7 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Driving Home Example (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Driving Home Example (1)}
+\frame{\frametitle{driving home example (1)}
 \begin{table}
 	\centering
 		\begin{tabular}{l|M{2cm}|M{2cm}|M{2cm}}
@@ -184,7 +184,7 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Driving Home Example (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Driving Home Example (2)}
+\frame{\frametitle{driving home example (2)}
 \begin{figure}		
 	\includegraphics[width=10cm]{fig/lec05/Driving_home_example.pdf}
 	\caption{Updates by MC (left) and TD (right) for $\alpha = 1$ (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -207,7 +207,7 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD(0) Prediction Example: Forest Tree MDP (1 )%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD(0) Prediction Example: Forest Tree MDP (1)}
+\frame{\frametitle{td(0) prediction example: forest tree mdp (1)}
 Let's reuse the forest tree MDP example with \textit{fifty-fifty policy} and discount factor $\gamma=0.8$
 plus disaster probability $\alpha=0.2$:
 \vspace{0.5cm}
@@ -221,7 +221,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD(0) Prediction Example: Forest Tree MDP(2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD(0) Prediction Example: Forest Tree MDP (2)}
+\frame{\frametitle{td(0) prediction example: forest tree mdp (2)}
 \vspace{-0.5cm}
 \begin{figure}		
 \hspace*{-1.0cm}
@@ -234,7 +234,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD(0) vs. MC Prediction Example: Forest Tree MDP(1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD(0) vs. MC Prediction Example: Forest Tree MDP (1)}
+\frame{\frametitle{td(0) vs. mc prediction example: forest tree mdp (1)}
 \vspace{-0.25cm}
 \begin{figure}		
 \hspace*{-0.5cm}
@@ -247,7 +247,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD(0) Prediction Example: Forest Tree MDP(2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD(0) vs. MC Prediction Example: Forest Tree MDP (2)}
+\frame{\frametitle{td(0) vs. mc prediction example: forest tree mdp (2)}
 \vspace{-0.25cm}
 \begin{figure}		
 \hspace*{-0.5cm}
@@ -260,7 +260,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Convergence of TD(0)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Convergence of TD(0)}
+\frame{\frametitle{convergence of td(0)}
 \begin{theo}{Convergence of TD(0)}{converge_TD_zero}
 Given a finite MDP and a fixed policy $\pi$ the state-value estimate of TD(0) converges to the true $v_\pi$
 \begin{itemize}
@@ -283,7 +283,7 @@ Above $k$ is the sample index (i.e., how often the TD update was applied).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Batch Training%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Batch Training}
+\frame{\frametitle{Batch training}
 \begin{itemize}
 	\item If experience $\rightarrow\infty$ both MC and TD converge $\hat{v}(x)\rightarrow v(x)$.
 	\item But how to handle limited experience, i.e., a finite set of episodes
@@ -307,7 +307,7 @@ Above $k$ is the sample index (i.e., how often the TD update was applied).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Batch Training: AB-Example (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Batch Training: AB-Example (1)}
+\frame{\frametitle{batch training: ab-example (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -350,7 +350,7 @@ Above $k$ is the sample index (i.e., how often the TD update was applied).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Batch Training: AB-Example (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Batch Training: AB-Example (2)}
+\frame{\frametitle{batch training: ab-example (2)}
 First, recap MC and TD(0) update rules:
 \begin{align*}
 	\mbox{MC}: \quad &\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha\left[g_k - \hat{v}(x_k)\right],\\
@@ -371,7 +371,7 @@ Considering a batch learning sweep over $j=1,\ldots,J$ episodes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Batch Training: AB-Example (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Batch Training: AB-Example (3)}
+\frame{\frametitle{batch training: ab-example (3)}
 Apply the previous equations first to state B. Since B is a terminal state, $\hat{v}(x_{k+1})=0$ and $g_{k,j}= r_{k+1,j}$ apply, i.e., the MC and TD updates are identical for B:
 \begin{alignat*}{3}
 	\mbox{MC}|_{x=\mbox{B}}: \quad &0=\sum_{j=1}^J g_{k,j} - \hat{v}(x_{k,j})\quad &&\Leftrightarrow \quad &&\hat{v}(\mbox{B})=\frac{1}{J}\sum_{j=1}^J g_{k,j},\\
@@ -386,7 +386,7 @@ This is the average return of the available episodes from \tabref{tab:state_rewa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Batch Training: AB-Example (4) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Batch Training: AB-Example (4)}
+\frame{\frametitle{batch training: ab-example (4)}
 Now consider state A assuming the steady state of batch learning process:
 \begin{itemize}
 	\item The instantaneous reward is always $r=0$.
@@ -406,7 +406,7 @@ Where does this mismatch between the MC and TD estimates come from?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Certainty Equivalence %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Certainty Equivalence}
+\frame{\frametitle{Certainty equivalence}
 \begin{itemize}
 	\item MC batch learning converges to the \hl{least squares fit} of the sampled returns:
 	\begin{equation}
@@ -424,17 +424,17 @@ Where does this mismatch between the MC and TD estimates come from?
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-Difference On-Policy Control: Sarsa} 
+\section{Temporal-difference on-policy control: sarsa} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applying Generalized Policy Iteration (GPI) to MC Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Applying Generalized Policy Iteration (GPI) to TD Control}
+\frame{\frametitle{applying generalized policy iteration (gpi) to td control}
 GPI concept is directly applied to the TD framework using action values:
 \begin{equation}
 	\pi_0 \rightarrow \hat{q}_{\pi_0} \rightarrow \pi_1 \rightarrow \hat{q}_{\pi_1} \rightarrow \cdots \pi^* \rightarrow \hat{q}_{\pi^*} \, .
@@ -459,7 +459,7 @@ GPI concept is directly applied to the TD framework using action values:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD-Based On-Policy Control (Sarsa) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD-Based On-Policy Control (Sarsa)}
+\frame{\frametitle{td-based on-policy control (sarsa)}
 \vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -493,7 +493,7 @@ Convergence properties are comparable to MC-based on-policy control:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Example: Windy Gridworld %%
-\frame{\frametitle{Example: Sarsa with Windy Gridworld}
+\frame{\frametitle{example: sarsa with windy gridworld}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \begin{minipage}[t]{\linewidth}
@@ -527,7 +527,7 @@ Convergence properties are comparable to MC-based on-policy control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Example: Forest Tree MDP (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Example: Forest Tree MDP (1)}
+\frame{\frametitle{sarsa example: forest tree mdp (1)}
 
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -540,7 +540,7 @@ Convergence properties are comparable to MC-based on-policy control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Example: Forest Tree MDP (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Example: Forest Tree MDP (2)}
+\frame{\frametitle{sarsa example: forest tree mdp (2)}
 
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -553,7 +553,7 @@ Convergence properties are comparable to MC-based on-policy control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Example: Forest Tree MDP (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Example: Forest Tree MDP (3)}
+\frame{\frametitle{sarsa example: forest tree mdp (3)}
 
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -566,7 +566,7 @@ Convergence properties are comparable to MC-based on-policy control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Example: Forest Tree MDP (4)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Example: Forest Tree MDP (4)}
+\frame{\frametitle{sarsa example: forest tree mdp (4)}
 
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -577,17 +577,17 @@ Convergence properties are comparable to MC-based on-policy control:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-Difference Off-Policy Control: \texorpdfstring{$Q$}{Q}-Learning} 
+\section{Temporal-difference off-policy control: \texorpdfstring{$q$}{Q}-Learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Q-Learning Approach %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$Q$-Learning Approach}
+\frame{\frametitle{$q$-learning approach}
 Similar to Sarsa updates, but $Q$-learning directly estimates $q^*$:
 \begin{block}{$Q$-learning action-value update}
 	The $Q$-learning action-value update is:
@@ -608,7 +608,7 @@ Requirement for $Q$-learning control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TD-Based Off-Policy Control (Q-learning) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{TD-Based Off-Policy Control ($Q$-Learning)}
+\frame{\frametitle{td-based off-policy control ($q$-learning)}
 
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -643,7 +643,7 @@ Requirement for $Q$-learning control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Q-Learning Control Example: Cliff Walking %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$Q$-Learning Control Example: Cliff Walking}
+\frame{\frametitle{$q$-learning control example: cliff walking}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{0.58\textwidth}
 \begin{minipage}[t]{\linewidth}
@@ -674,17 +674,17 @@ Requirement for $Q$-learning control:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Expected Sarsa} 
+\section{Expected sarsa} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Q-Learning Approach %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Expected Sarsa: A Hybrid Approach}
+\frame{\frametitle{expected sarsa: a hybrid approach}
 \begin{block}{Expected Sarsa action-value update}
 	The expected Sarsa action-value update is:
 		\small
@@ -709,7 +709,7 @@ Requirement for $Q$-learning control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Back-up Diagrams for TD-Based Control Approaches %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Back-up Diagrams for TD-Based Control Approaches}
+\frame{\frametitle{Back-up diagrams for td-based control approaches}
 \begin{minipage}[t]{0.32\linewidth}
 	\begin{figure}
 		\includegraphics[height=3.0cm]{fig/lec05/Back_Up_Sarsa.pdf}
@@ -748,7 +748,7 @@ Requirement for $Q$-learning control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparison Based on Cliff-Walking Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Comparison Based on Cliff-Walking Example}
+\frame{\frametitle{Comparison based on cliff-walking example}
 \vspace{-0.2cm}
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -759,17 +759,17 @@ Requirement for $Q$-learning control:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Maximization Bias and Double Learning} 
+\section{Maximization bias and double learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maximization Bias %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Maximization Bias}
+\frame{\frametitle{Maximization bias}
 All control algorithms discussed so far \hl{involve maximization operations}:
 \begin{itemize}
 	\item $Q$-learning: target policy is greedy and directly uses $\max$ operator for action-value updates.
@@ -792,7 +792,7 @@ Small example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Double Learning Approach %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Double Learning Approach}
+\frame{\frametitle{Double learning approach}
 
 Split the learning process:
 \begin{itemize}
@@ -817,7 +817,7 @@ Assign specific tasks to each estimate:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Double Q-Learning Algorithm %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Double $Q$-Learning Algorithm}
+\frame{\frametitle{double $q$-learning algorithm}
 \vspace{0.1cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -849,7 +849,7 @@ Assign specific tasks to each estimate:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maximization Bias Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Maximization Bias Example}
+\frame{\frametitle{Maximization bias example}
 \vspace{-0.2cm}
 \begin{figure}		
 	\hspace*{-1.0cm}
@@ -863,7 +863,7 @@ Assign specific tasks to each estimate:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item TD unites two key characteristics from DP and MC:
 	\begin{itemize}

@@ -38,14 +38,14 @@
 \section{\texorpdfstring{$\lambda$}{Lambda}-Returns} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Averiging of $n$-Step Returns %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{General Averaging of $n$-Step Returns}
+\frame{\frametitle{general averaging of $n$-step returns}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.35\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -77,7 +77,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $\lambda$-Return (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$\lambda$-Return (1)}
+\frame{\frametitle{$\lambda$-return (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.45\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -111,7 +111,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $\lambda$-Return (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$\lambda$-Return (2)}
+\frame{\frametitle{$\lambda$-return (2)}
 \onslide<1->{\begin{itemize}
 	\item Rewrite $\lambda$-return for episodic tasks with termination at $k=T$:
 		\begin{equation}
@@ -135,7 +135,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Offline $\lambda$-Return Semi-Gradient Algorithm %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Offline $\lambda$-Return Semi-Gradient Algorithm}
+\frame{\frametitle{offline $\lambda$-return semi-gradient algorithm}
 \begin{itemize}
 	\item Applying semi-gradient updates with fct. approximation we receive:
 		\begin{equation}
@@ -155,7 +155,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Truncated $\lambda$-Returns %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Truncated $\lambda$-Returns }
+\frame{\frametitle{truncated $\lambda$-returns }
 \begin{itemize}
 	\item Using $\lambda$-returns as in \eqref{eq:lambda_return} is not feasible for continuing tasks.
 	\item One would have to wait infinitely long to receive the trajectory.\pause
@@ -172,7 +172,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forward View %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Forward View}
+\frame{\frametitle{Forward view}
 \onslide<1->{\begin{itemize}
 	\item Both, $n$-step and $\lambda$-return updates, are based on a forward view.  
 	\item We have to wait for future states and rewards to arrive before we are able to perform an update.}
@@ -186,17 +186,17 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{TD(\texorpdfstring{$\lambda$}{Lambda})} 
+\section{Td(\texorpdfstring{$\lambda$}{Lambda})} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Backward View %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Backward View of TD($\lambda$)}
+\frame{\frametitle{backward view of td($\lambda$)}
 \onslide<1->{General idea:
 \begin{itemize}
 	\item Use $\lambda$-weighted returns looking into the past. 
@@ -213,7 +213,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Eligibility Trace (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Eligibility Trace (1)}
+\frame{\frametitle{eligibility trace (1)}
 Why is the exponential weighting particular suitable for TD($\lambda$)?\pause
 \begin{itemize}
 	\item Because we can easily implement this in a recursive fashion.\pause
@@ -234,7 +234,7 @@ with $\beta$ being the smoothing factor.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Eligibility Trace (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Eligibility Trace (2)}
+\frame{\frametitle{eligibility trace (2)}
 With TD and function approximation 
 \begin{itemize}
 	\item the \hl{eligibility trace $z_k\in\mathbb{R}^\zeta$} is a vector with same dimensions as $\bm{w}$:
@@ -261,7 +261,7 @@ Further remarks:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Eligibility Trace (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Simplified Eligibility Trace Example}
+\frame{\frametitle{Simplified eligibility trace example}
 \begin{itemize}
 	\item Consider linear function approximation with a single state being the feature vector
 		\begin{equation*}
@@ -281,7 +281,7 @@ Further remarks:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient TD($\lambda$) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Semi-Gradient TD($\lambda$)}
+\frame{\frametitle{semi-gradient td($\lambda$)}
 Together with \eqref{eq:Elig_trace} the semi-gradient TD($\lambda$) update is:
 	\begin{equation}
 \begin{split}
@@ -322,7 +322,7 @@ Together with \eqref{eq:Elig_trace} the semi-gradient TD($\lambda$) update is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exemplary Comparison %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exemplary Comparison}
+\frame{\frametitle{Exemplary comparison}
 \begin{itemize}
 	\item \hl{TD($\lambda$) is not an exact representation of offline $\lambda$-returns} (see below).
 	\item For $\lambda=0$: matches exactly semi-gradient one-step TD ('TD(0)').
@@ -339,14 +339,14 @@ Together with \eqref{eq:Elig_trace} the semi-gradient TD($\lambda$) update is:
 \section{Online \texorpdfstring{$\lambda$}{Lambda}-Return Updates} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Truncated $\lambda$-Returns for Online Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Truncated $\lambda$-Returns for Online Updates}
+\frame{\frametitle{truncated $\lambda$-returns for online updates}
 \begin{itemize}
 	\item Recall the truncated $\lambda$-return after $h$ steps 
 	\begin{equation*}
@@ -367,7 +367,7 @@ Together with \eqref{eq:Elig_trace} the semi-gradient TD($\lambda$) update is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Increase Approximation Quality by Redoing Updates (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Increase Approximation Quality by Redoing Updates (1)}
+\frame{\frametitle{increase approximation quality by redoing updates (1)}
 General trade-off regarding the truncated $\lambda$-returns (forward view):
 \begin{itemize}
 	\item If $n$ is small: delay and memory demand are low.
@@ -389,7 +389,7 @@ Idea to solve this compromise: \hl{redoing updates}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Increase Approximation Quality by Redoing Updates (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Increase Approximation Quality by Redoing Updates (2)}
+\frame{\frametitle{increase approximation quality by redoing updates (2)}
 The update sequence from example \figref{fig:Redoing_Updates} using semi-gradients:
 \begin{alignat*}{2}
 &h=1: \quad &&\bm{w}_1^1 = \bm{w}_0^1 + \alpha\left[g_{0:1}^\lambda - \hat{v}(\bm{x}_0, \bm{w}_0^1)\right]\nabla_{\bm{w}} \hat{v}(\bm{x}_0, \bm{w}_0^1)\\
@@ -406,7 +406,7 @@ The update sequence from example \figref{fig:Redoing_Updates} using semi-gradien
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Increase Approximation Quality by Redoing Updates (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Increase Approximation Quality by Redoing Updates (3)}
+\frame{\frametitle{increase approximation quality by redoing updates (3)}
 Generalization of the example:
 \begin{block}{Online $\lambda$-return}
 Having samples $\bm{\mathcal{D}}_k\sim\left\langle \bm{x}_k, r_k, \bm{x}_{k+1}\right\rangle$ up to horizon $h$ available, the general online $\lambda$-return update is
@@ -430,7 +430,7 @@ with the final parameter vector $\bm{w}_k=\bm{w}_{k}^k$ at the given time step.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparison Online Vs. Offline $\lambda$-Returns %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Comparison Online Vs. Offline $\lambda$-Returns}
+\frame{\frametitle{comparison online vs. offline $\lambda$-returns}
 \begin{itemize}
 	\item Through the repeated updates, the online $\lambda$-return algorithm can even increase the prediction quality compared to its offline variant.
 \end{itemize}
@@ -446,7 +446,7 @@ with the final parameter vector $\bm{w}_k=\bm{w}_{k}^k$ at the given time step.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% True Online TD(\$\lambda$) for Linear Approximation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{True Online TD($\lambda$) for Linear Approximation}
+\frame{\frametitle{true online td($\lambda$) for linear approximation}
 If linear function approximation $\hat{v}=\tilde{\bm{x}}\T\bm{w}$ is applied the
 \begin{itemize}
 	\item online $\lambda$-return updates \eqref{eq:online_lambda_return_update} and 
@@ -470,7 +470,7 @@ The true online TD($\lambda$) update equations are\footnote[1]{\onslide<3->{Find
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: True Online TD($\lambda$) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: True Online TD($\lambda$)}
+\frame{\frametitle{algorithmic implementation: true online td($\lambda$)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -506,14 +506,14 @@ The true online TD($\lambda$) update equations are\footnote[1]{\onslide<3->{Find
 \section{Sarsa(\texorpdfstring{$\lambda$}{Lambda})} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer for Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Transfer for Action Values}
+\frame{\frametitle{Transfer for action values}
 First, transfer truncated $\lambda$-returns to action values (forward view):
 \begin{equation}
 \begin{split}
@@ -539,7 +539,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Semi-Gradient Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: Semi-Gradient Sarsa($\lambda$)}
+\frame{\frametitle{algorithmic implementation: semi-gradient sarsa($\lambda$)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -574,7 +574,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa Learning Comparison in Gridworld Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa Learning Comparison in Gridworld Example}
+\frame{\frametitle{Sarsa learning comparison in gridworld example}
 \begin{itemize}
 	\item $\lambda$ can be interpreted as the discounting factor acting on the eligibility trace (see right-most panel below).
 	\item Intuitive interpretation: more recent transitions are more certain/relevant for the current update step. 
@@ -590,7 +590,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sarsa($\lambda$) vs $n$-step Sarsa on Mountain Car Task %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Sarsa($\lambda$) vs $n$-Step Sarsa on Mountain Car Task}
+\frame{\frametitle{sarsa($\lambda$) vs $n$-step sarsa on mountain car task}
 \begin{itemize}
 	\item Sarsa($\lambda$) is able to learn significantly faster than any $n$-step variant.
 	\item However, only intermediate performance is shown after 50 episodes.
@@ -606,7 +606,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% True Online Sarsa($\lambda$) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{True Online Sarsa($\lambda$)}
+\frame{\frametitle{true online sarsa($\lambda$)}
 \begin{itemize}
 	\item Likewise TD($\lambda$) for state values, Sarsa($\lambda$) is not an exact backward view implementation of the offline $\lambda$-return algorithm \eqref{eq:offline_lambda_return_action}.\pause
  \item To improve the Sarsa($\lambda$) performance we again have two options:
@@ -631,7 +631,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: True Online Sarsa($\lambda$) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Algorithmic Implementation: True Online Sarsa($\lambda$)}
+\frame{\frametitle{algorithmic implementation: true online sarsa($\lambda$)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -666,7 +666,7 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item Multiple $n$-step return estimates can be weighted to form a compound update (adds more degrees of freedom).\pause
 	\item $\lambda$-returns use this idea with exponentially-decaying weights.

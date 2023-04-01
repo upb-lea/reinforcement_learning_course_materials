@@ -39,7 +39,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remark: Scalar and Vectorial State/Action Representation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Scalar and Vectorial Representations in Finite MDPs}
+\frame{\frametitle{Scalar and vectorial representations in finite mdps}
 \begin{itemize}
 	\onslide<1->\item The position of a chess piece can be represented in two ways:
 	\begin{itemize}
@@ -54,16 +54,16 @@
 \end{figure}
 }
 
-\frame{\frametitle{Table of Contents}\tableofcontents} 
+\frame{\frametitle{Table of contents}\tableofcontents} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite Markov Chains} 
+\section{Finite markov chains} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap Markov Property %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recap on Markov Property}
+\frame{\frametitle{Recap on markov property}
 
 \begin{block}{Information state}
 A state $X_k$ is called an information or Markov state if and only if
@@ -82,7 +82,7 @@ A state $X_k$ is called an information or Markov state if and only if
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% State Transistion Matrix %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{State Transition Matrix}
+\frame{\frametitle{State transition matrix}
 
 \begin{defi}{State transition matrix}{STM}
 Given a Markov state $X_k=x$ and its successor $X_{k+1}=x'$ , the \hl{state transition probability} $\forall \left\{x,x'\right\}\in \mathcal{X}$ is defined by the matrix
@@ -101,7 +101,7 @@ with $p_{ij}\in\left\{\mathbb{R}|0 \leq p_{ij} \leq 1 \right\}$ being the specif
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Markov Chain %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Markov Chain}
+\frame{\frametitle{Markov chain}
 
 \onslide<1->\begin{defi}{Finite Markov chain}{Markov_chain}
 A \hl{finite Markov chain} is a tuple $\left\langle\mathcal{X}, \bm{\mathcal{P}} \right\rangle$ with
@@ -121,7 +121,7 @@ A \hl{finite Markov chain} is a tuple $\left\langle\mathcal{X}, \bm{\mathcal{P}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Chapman–Kolmogorov Equation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Chapman-Kolmogorov Equation}
+\frame{\frametitle{Chapman-kolmogorov equation}
 Define $\bm{p}_k\in\mathbb{R}^n$ as a \hl{probability row vector} where $p_{i,k}$ gives the probability of being in state $X_k \in\mathcal{X}$ at time-step $k$.  
 \begin{defi}{Chapman-Kolmogorov equation for finite Markov chains}{Chapman_Kolmogorov_Equation}
 The probability of being in state $X_{k+m}$ at time-step $(k+m)$ starting from state $x_{k}$ is given by:
@@ -142,7 +142,7 @@ Solving \eqref{eq:Chapman_steady} for $\bm{p}$ given the transition probability 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Chain Example (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Chain (1)}
+\frame{\frametitle{example of a markov chain (1)}
 \begin{minipage}[t]{0.53\linewidth}
 		\vspace{0pt}
 		\begin{figure}		\includegraphics[width=6cm]{fig/lec02/Forest_Markov_Chain.pdf}
@@ -170,7 +170,7 @@ Solving \eqref{eq:Chapman_steady} for $\bm{p}$ given the transition probability 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Chain Example (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Chain (2)}
+\frame{\frametitle{example of a markov chain (2)}
 \begin{figure}		
 	\includegraphics[width=6cm]{fig/lec02/Forest_Markov_Chain.pdf}
 \end{figure}
@@ -186,7 +186,7 @@ Possible \hl{samples} for the given Markov chain example starting from $x=1$ (sm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Chain Example (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Chain (3)}
+\frame{\frametitle{example of a markov chain (3)}
 For $k=0$ the initial state probability is given $\bm{p}_{k=0}=\begin{bmatrix} 1 & 0 & 0 & 0\end{bmatrix}$, i.e., we are in state $x=1$. What is the state probability after $k=1,2,\ldots$ steps with $\alpha = 0.2$?
 \begin{alignat*}{2}
 	\onslide<2->{\bm{p}_{1}&=\begin{bmatrix}0 & 0.8 & 0 & 0.2\end{bmatrix}&&=\underbrace{\begin{bmatrix} 1 & 0 & 0 & 0\end{bmatrix}}_{\bm{p}_{0}}\underbrace{\begin{bmatrix}0 & 0.8 & 0 & 0.2  \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 &0.8 & 0.2 \\ 0 & 0 & 0 & 1\end{bmatrix}}_{\bm{\mathcal{P}}}},\\
@@ -200,17 +200,17 @@ For $k=0$ the initial state probability is given $\bm{p}_{k=0}=\begin{bmatrix} 1
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite Markov Reward Processes} 
+\section{Finite markov reward processes} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Markov Reward Process %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Markov Reward Process}
+\frame{\frametitle{Markov reward process}
 
 \begin{defi}{Finite Markov reward process}{Markov_reward_process}
 A \hl{finite Markov reward process (MRP)} is a tuple $\left\langle\mathcal{X}, \bm{\mathcal{P}}, \hl{\mathcal{R}, \gamma} \right\rangle$ with
@@ -232,7 +232,7 @@ A \hl{finite Markov reward process (MRP)} is a tuple $\left\langle\mathcal{X}, \
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Reward Process %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Reward Process}
+\frame{\frametitle{Example of a markov reward process}
 \begin{figure}		
 	\includegraphics[width=10cm]{fig/lec02/Forest_Markov_Reward_Process.pdf}
 	\caption{Forest Markov reward process}
@@ -252,7 +252,7 @@ A \hl{finite Markov reward process (MRP)} is a tuple $\left\langle\mathcal{X}, \
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap Return %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recap on Return}
+\frame{\frametitle{Recap on return}
 
 \begin{block}{Return}
 The return $G_k$ is the total discounted reward starting from step $k$ onwards. For \hl{episodic tasks} it becomes the finite series
@@ -272,7 +272,7 @@ terminating at step $N$ while it is an infinite series for \hl{continuing tasks}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remark on notation: Episodic and Continuing Tasks %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remark on Notation: Episodic and Continuing Tasks}
+\frame{\frametitle{remark on notation: episodic and continuing tasks}
 \begin{itemize}
 	\item In episodic tasks there is not only one (long/infinite) sequence of time steps.
 	\item Instead there is a sequence of time steps of an arbitrary episode $j$.
@@ -295,7 +295,7 @@ terminating at step $N$ while it is an infinite series for \hl{continuing tasks}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Value in MRP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Value Function in MRP}
+\frame{\frametitle{Value function in mrp}
 %\vspace{-0.25cm}
 \begin{defi}{Value function in MRP}{value_function_MRP}
 The \hl{state-value function} $v(x_k)$ of an MRP is the expected return starting from state $x_k$
@@ -317,7 +317,7 @@ The \hl{state-value function} $v(x_k)$ of an MRP is the expected return starting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% State-Value Samples Forest Markov Reward Process %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{State-Value Samples of Forest MRP}
+\frame{\frametitle{State-value samples of forest mrp}
 \begin{figure}		
 	\includegraphics[width=8cm]{fig/lec02/Forest_Markov_Reward_Process.pdf}
 \end{figure}
@@ -333,7 +333,7 @@ Exemplary \hl{samples} $\hat{v}$ with $\gamma=0.5$ starting in $x=1$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Equation for MRPs (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Equation for MRPs (1)}
+\frame{\frametitle{bellman equation for mrps (1)}
 Problem: How to calculate all state values in closed form?\\ 
 	\onslide<2->Solution: Bellman equation.
 \begin{equation}
@@ -361,7 +361,7 @@ Problem: How to calculate all state values in closed form?\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Equation for MRPs (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Equation for MRPs (2)}
+\frame{\frametitle{bellman equation for mrps (2)}
 Assuming non-random rewards for every state $X=x\in\mathcal{X}$
 \begin{equation}
 	\bm{r}_{\mathcal{X}}= \begin{bmatrix} \mathcal{R}(x_1) & \cdots & \mathcal{R}(x_n)\end{bmatrix}\T = \begin{bmatrix} \mathcal{R}_1 & \cdots & \mathcal{R}_n\end{bmatrix}\T
@@ -383,7 +383,7 @@ one can derive a linear equation system based on \figref{fig:Back_Up_MRP}:\pause
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sovling the MRP Bellman Equation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Solving the MRP Bellman Equation}
+\frame{\frametitle{Solving the mrp bellman equation}
 Above, \eqref{eq:Bellman_MRP_linear} is a normal equation in $\bm{v}_{\mathcal{X}}$:
 \begin{equation}
 \label{eq:MRP_normal_equation}
@@ -404,7 +404,7 @@ In RL identifying and solving \eqref{eq:MRP_normal_equation} is a key task, whic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Reward Process with State-Values%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Reward Process with State Values}
+\frame{\frametitle{Example of a markov reward process with state values}
 \begin{figure}		
 	\includegraphics[width=10cm]{fig/lec02/Forest_Markov_Reward_Process_State_Value.pdf}
 	\caption{Forest Markov reward process including state values}
@@ -417,17 +417,17 @@ In RL identifying and solving \eqref{eq:MRP_normal_equation} is a key task, whic
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite Markov Decision Processes} 
+\section{Finite markov decision processes} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Markov Decision Process %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Markov Decision Process}
+\frame{\frametitle{Markov decision process}
 
 \begin{defi}{Finite Markov decision process}{Markov_decision_process}
 A \hl{finite Markov decision process (MDP)} is a tuple $\left\langle\mathcal{X}, \hl{\mathcal{U}}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$ with
@@ -449,7 +449,7 @@ A \hl{finite Markov decision process (MDP)} is a tuple $\left\langle\mathcal{X},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Decision Process (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Decision Process (1)}
+\frame{\frametitle{example of a markov decision process (1)}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process.pdf}
 	\caption{Forest Markov decision process}
@@ -469,7 +469,7 @@ A \hl{finite Markov decision process (MDP)} is a tuple $\left\langle\mathcal{X},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Forest Markov Decision Process (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Example of a Markov Decision Process (2)}
+\frame{\frametitle{example of a markov decision process (2)}
 For the previous example the state transition probability matrix and reward function are given as:
 \begin{alignat*}{2}
 	\bm{\mathcal{P}}_{xx'}^{u=c} &= \begin{bmatrix}0 & 0 & 0 & 1  \\ 0 & 0 &0 & 1 \\ 0 & 0 &0 & 1 \\ 0 & 0 & 0 & 1\end{bmatrix}, \quad \bm{\mathcal{P}}_{xx'}^{u=w} &&= \begin{bmatrix}0 & 1-\alpha & 0 & \alpha  \\ 0 & 0 &1-\alpha & \alpha \\ 0 & 0 &1-\alpha & \alpha \\ 0 & 0 & 0 & 1\end{bmatrix},\\
@@ -483,7 +483,7 @@ For the previous example the state transition probability matrix and reward func
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy (1)}
+\frame{\frametitle{policy (1)}
 \onslide<1->{
 \begin{defi}{Policy in MDP (1)}{Policy_MDP}
 In an MDP environment, a \hl{policy} is a distribution over actions given states:
@@ -510,7 +510,7 @@ In an MDP environment, a \hl{policy} is a distribution over actions given states
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy (2)}
+\frame{\frametitle{policy (2)}
 Given an MDP $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$ and a policy $\bm{\pi}$:
 \begin{itemize}
 	\item The state sequence $X_k, X_{k+1},\ldots$ is a Markov chain $\left\langle\mathcal{X}, \bm{\mathcal{P}}^{\pi} \right\rangle$ since the state transition probability is only depending on the state:
@@ -527,7 +527,7 @@ Given an MDP $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap on Value functions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Recap on MDP Value Functions}
+\frame{\frametitle{Recap on mdp value functions}
 
 \begin{defi}{State-value function}{state_value_MDP}
 The state-value function of an MDP is the expected return starting in $x_k$ following policy $\pi$:
@@ -547,7 +547,7 @@ The action-value function of an MDP is the expected return starting in $x_k$ tak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation (1)}
+\frame{\frametitle{bellman expectation equation (1)}
 Analog to \eqref{eq:Bellman_MRP}, the state value of an MDP can be decomposed into a Bellman notation:
 \begin{equation}
 	v_\pi(x_k)	= \El{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_k=x_k}{\pi}\, .
@@ -571,7 +571,7 @@ In finite MDPs the state value can be directly linked to the action value (cf.~\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation (2)}
+\frame{\frametitle{bellman expectation equation (2)}
 Likewise, the action value of an MDP can be decomposed into a Bellman notation:
 \begin{equation}
 	q_\pi(x_k,u_k)	= \El{R_{k+1} + \gamma 	q_{\pi}(X_{k+1},U_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}{\pi}\, .
@@ -595,7 +595,7 @@ In finite MDPs the action value can be directly linked to the state value (cf.~\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation (3)}
+\frame{\frametitle{bellman expectation equation (3)}
 Inserting \eqref{eq:q_MDP_finite} into \eqref{eq:v_MDP_finite} directly results in:
 \begin{equation}
 \label{eq:Bellman_MDP_linear_non_matrix}
@@ -611,7 +611,7 @@ Conversely, the action value becomes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation in Matrix Form %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation in Matrix Form}
+\frame{\frametitle{Bellman expectation equation in matrix form}
 Given a policy $\pi$ and following the same assumptions as for \eqref{eq:Bellman_MRP_linear}, the Bellman expectation equation can be expressed in Matrix form:
 \begin{equation}
 \label{eq:Bellman_MDP_linear}
@@ -629,7 +629,7 @@ Here, $\bm{r}_{\mathcal{X}}^{\pi}$ and $\bm{\mathcal{P}}_{xx'}^{\pi}$ are the re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation Applied to Forest Tree Example (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation \& Forest Tree Example (1)}
+\frame{\frametitle{bellman expectation equation \& forest tree example (1)}
 Let's assume following very simple policy ('\textit{fifty-fifty}')
 \begin{equation*}
 \pi(u = \mbox{cut}|x) = 0.5, \quad \pi(u = \mbox{wait}|x) = 0.5 \quad\forall x\in\mathcal{X} \, .
@@ -650,7 +650,7 @@ one receives:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation Applied to Forest Tree Example (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation \& Forest Tree Example (2)}
+\frame{\frametitle{bellman expectation equation \& forest tree example (2)}
 \begin{figure}		
 	%\hspace*{-1.5cm}
 	\includegraphics[width=10cm]{fig/lec02/Forest_Markov_Decision_Process_State_Value.pdf}
@@ -666,7 +666,7 @@ one receives:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Expectation Equation Applied to Forest Tree Example (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Expectation Equation \& Forest Tree Example (3)}
+\frame{\frametitle{bellman expectation equation \& forest tree example (3)}
 Using the Bellman expectation eq. \eqref{eq:q_MDP_finite} the action values can be directly calculated: 
 \vspace{0.5cm}
 \begin{figure}		
@@ -679,17 +679,17 @@ Is the '\textit{fifty-fifty-policy}' maximizing our long-term reward? How can yo
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Optimal Policies and Value Functions} 
+\section{Optimal policies and value functions} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Table of Contents}
+\frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Value Functions in MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Value Functions in an MDP}
+\frame{\frametitle{Optimal value functions in an mdp}
 \begin{defi}{Optimal state-value function}{optimal_state_value_MDP}
 The optimal state-value function of an MDP is the maximum state-value function over all polices:
 \begin{equation}
@@ -715,7 +715,7 @@ The optimal action-value function of an MDP is the maximum action-value function
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy in MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy in an MDP}
+\frame{\frametitle{Optimal policy in an mdp}
 Define a partial ordering over polices
 \begin{equation}
 	\pi \geq \pi' \quad \mbox{if} \quad v_{\pi}(x) \geq v_{\pi'}(x) \quad \forall x\in\mathcal{X} \,.
@@ -734,7 +734,7 @@ For any finite MDP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Optimality Equation (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Optimality Equation (1)}
+\frame{\frametitle{bellman optimality equation (1)}
 \onslide<1->{
 \begin{theo}{Bellman's principle of optimality}{bellman_principle_optimality}
 ``\textit{An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.}''(R.E. Bellman, Dynamic Programming, 1957) 
@@ -758,7 +758,7 @@ For any finite MDP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Optimality Equation (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Optimality Equation (2)}
+\frame{\frametitle{bellman optimality equation (2)}
 Again, the Bellman optimality equation can be visualized by a backup diagram: 
 \begin{figure}	
 		 %\hspace*{-1.5cm}
@@ -777,7 +777,7 @@ For a finite MDP the following expression results:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bellman Optimality Equation (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Bellman Optimality Equation (3)}
+\frame{\frametitle{bellman optimality equation (3)}
 Likewise, the Bellman optimality equation is applicable to the action value:
 \begin{equation}
 	q^*(x_k,u_k) = \E{R_{k+1}+ \gamma \max_{u_{k+1}} q^*(X_{k+1},U_{k+1})|X_k=x_k, U_k=u_k} . 
@@ -800,7 +800,7 @@ And, in the finite MDP case:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solving the Bellman Optimality Equation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Solving the Bellman Optimality Equation}
+\frame{\frametitle{Solving the bellman optimality equation}
 \begin{itemize}
 	\item In finite MDPs with $n$ states, \eqref{eq:Bellman_Optimal_State_Value_MDP} delivers an \hl{algebraic equation system} with $n$ unknowns and $n$ \hl{state-value equations}. \pause
 	\item Likewise, \eqref{eq:Bellman_Optimal_action_Value_MDP} delivers an algebraic equation system with up to $n\cdot m$ unknowns and $n \cdot m$ \hl{action-value equations} ($m=$number of actions). \pause
@@ -818,7 +818,7 @@ And, in the finite MDP case:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Forest MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP}
+\frame{\frametitle{Optimal policy for forest tree mdp}
 Remember the forest tree MDP example:
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process_No_Color.pdf}
@@ -838,7 +838,7 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: State-Value (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: State Value (1)}
+\frame{\frametitle{optimal policy for forest tree mdp: state value (1)}
 \onslide<1->{Start with $v(x=4)$ ('gone') and then continue going backwards:}
 \onslide<2->{
 \begin{align*}
@@ -854,7 +854,7 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: State-Value (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: State Value (2)}
+\frame{\frametitle{optimal policy for forest tree mdp: state value (2)}
 \begin{itemize}
 	\item Due to presence of terminal state ($x=4$) only three unknowns
 	\item Solution: numerical optimization approach (e.g., simplex method, gradient descent,...)
@@ -869,7 +869,7 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: State-Value (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: State Value (3)}
+\frame{\frametitle{optimal policy for forest tree mdp: state value (3)}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process_Optimal_State_Value_Gamma09.pdf}
 		\caption{State values under optimal policy (\hl{$\gamma=0.9$},	$\alpha=0.2$)}
@@ -880,7 +880,7 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: Action-Value (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: Action Value (1)}
+\frame{\frametitle{optimal policy for forest tree mdp: action value (1)}
 \onslide<1->{Use $u_{k+1}=u'$ to set up equation system:
 \begin{align*}
 q^*(x=1,u=c) &= 1\, ,}\\
@@ -902,7 +902,7 @@ q^*(x=1,u=c) &= 1\, ,}\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: Action-Value (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: Action Value (2)}
+\frame{\frametitle{optimal policy for forest tree mdp: action value (2)}
 \onslide<1->{
 Rearrange $\max$ expressions for unknown action values: 
 \begin{align*}
@@ -916,7 +916,7 @@ q^*(x=1,u=w) &= \gamma(1-\alpha)\max\begin{cases}\gamma(1-\alpha)\max\begin{case
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: Action-Value (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: Action Value (3)}
+\frame{\frametitle{optimal policy for forest tree mdp: action value (3)}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process_Optimal_Action_Value.pdf}
 		\caption{Action values under optimal policy ($\gamma=0.8$,	$\alpha=0.2$)}
@@ -927,7 +927,7 @@ q^*(x=1,u=w) &= \gamma(1-\alpha)\max\begin{cases}\gamma(1-\alpha)\max\begin{case
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Policy for Forest Tree MDP: Action-Value (4)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Optimal Policy for Forest Tree MDP: Action Value (4)}
+\frame{\frametitle{optimal policy for forest tree mdp: action value (4)}
 \begin{figure}		
 	\includegraphics[width=11cm]{fig/lec02/Forest_Markov_Decision_Process_Optimal_Action_Value_Gamma09.pdf}
 		\caption{Action values under optimal policy (\hl{$\gamma=0.9$},	$\alpha=0.2$)}
@@ -938,7 +938,7 @@ q^*(x=1,u=w) &= \gamma(1-\alpha)\max\begin{cases}\gamma(1-\alpha)\max\begin{case
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Solving an MDP by Calculating Optimal State and Action-Values%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Direct Numerical State and Action-Value Calculation}
+\frame{\frametitle{Direct numerical state and action-value calculation}
 \begin{itemize}
 	\item Possible only for \hl{small action and state-space} MDPs
 	\begin{itemize}
@@ -969,7 +969,7 @@ Facing the above issues, RL addresses mainly two topics:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: What You've Learned Today}
+\frametitle{summary: what you've learned today}
 \begin{itemize}
 	\item Differentiate finite Markov process models with or w/o rewards and actions.\pause
 	\item Interpret such stochastic processes as simplified abstractions of real-world problems.\pause
