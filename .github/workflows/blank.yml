@@ -44,6 +44,6 @@ jobs:
           username: ${{ secrets.UPB_USER }}
           password: ${{ secrets.UPB_PW }}
           port: 22
-          source: "lecture_slides/built_2022/"
-          target: ${{ secrets.LEA_GRP_PATH_RL }}
+          source: "lecture_slides/built/"
+          target: ${{ secrets.LEA_GRP_PATH_RL_2022 }}
 
