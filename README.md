@@ -12,52 +12,52 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 
 01. Introduction to Reinforcement Learning
     * [Lecture video](https://www.youtube.com/watch?v=9LLzaIJuu-E&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture01.pdf)   
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture01.pdf)   
 02. Markov Decision Processes
     * [Lecture video](https://www.youtube.com/watch?v=WswYbJOyJUo&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture02.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture02.pdf) 
 03. Dynamic Programming
     * [Lecture video](https://www.youtube.com/watch?v=RPHaH0c6k-I&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture03.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture03.pdf) 
 04. Monte Carlo Methods
     * [Lecture video](https://www.youtube.com/watch?v=YsAm3w2ev0g&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture04.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture04.pdf) 
 05. Temporal-Difference Learning
     * [Lecture video](https://www.youtube.com/watch?v=w10WMaYgCMQ)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture05.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture05.pdf) 
 06. n-Step Bootstrapping
     * [Lecture video](https://www.youtube.com/watch?v=HEt9z3CASn0&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture06.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture06.pdf) 
 07. Planning and Learning with Tabular Methods
     * [Lecture video](https://www.youtube.com/watch?v=bLl3s2VgRag&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture07.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture07.pdf) 
 08. Function Approximation with Supervised Learning
     * [Lecture video](https://www.youtube.com/watch?v=xitBw9azPKE&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture08.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture08.pdf) 
 09. On-Policy Prediction with Function Approximation
     * [Lecture video](https://www.youtube.com/watch?v=vxenJGAFM4g&feature=youtu.be)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture09.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture09.pdf) 
 10. Value-Based Control with Function Approximation
     * [Lecture video](https://www.youtube.com/watch?v=YNf-ezTKB78)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture10.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture10.pdf) 
 11. Eligibility Traces
     * [Lecture video](https://www.youtube.com/watch?v=xLUXeASnqwE)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture11.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture11.pdf) 
 12. Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture12.pdf) 
 13. Further Contemporary RL Algorithms (DDPG, TD3, TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Lecture13.pdf)
 
 * Summary of Part One: Reinforcement Learning in Finite State and Action Spaces
     * [Lecture video](https://www.youtube.com/watch?v=bRpWfOSvMTg)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_One.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Summary_Part_One.pdf) 
 * Summary of Part Two: Course Completion and Outlook
     * [Lecture video](https://www.youtube.com/watch?v=F_dkTOlVACM)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_Two.pdf) 
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/Summary_Part_Two.pdf) 
 * Full course slides
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/main.pdf)
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning_2022/lecture_slides/built/main.pdf)
 
 
 # Exercise Content
