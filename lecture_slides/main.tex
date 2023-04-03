@@ -81,14 +81,18 @@
 \usepackage[listings,theorems]{tcolorbox}
 \usepackage{tikz}
 
+%%General blocks
+\setbeamercolor{block title}{fg=white,bg=blue!50!black}
+\setbeamercolor{block body}{fg=black,bg=gray!15} 
+
 %Math. definitions
-\newtcbtheorem[number within=part, reset counter on overlays=true]{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{defi}
+\newtcbtheorem[number within=part, reset counter on overlays=true]{defi}{Definition}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = blue!50!black}{defi}
 
 %Math. theorems		
-\newtcbtheorem[number within=part, reset counter on overlays=true]{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{theo}
+\newtcbtheorem[number within=part, reset counter on overlays=true]{theo}{Theorem}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = blue!50!black}{theo}
 
 %Algorithms	
-\newtcbtheorem[number within=part, reset counter on overlays=true]{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback=block body.bg,colframe = block title.bg}{algo}
+\newtcbtheorem[number within=part, reset counter on overlays=true]{algo}{Algorithm}{grow to left by=0.15cm, grow to right by=0.15cm, left=0.05cm, right=0.05cm,bottom=0.05cm, top=0.05cm,arc=1mm, colback = gray!15, colframe = blue!50!black}{algo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,7 +181,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%Lecture Include Onlys%%%
-%\includeonly{tex/Lecture01}
+%\includeonly{tex/Lecture02}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
