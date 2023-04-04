@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Dynamic Programming? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{what is dynamic programming (dp)?}
+\frame{\frametitle{What is dynamic programming (DP)?}
 
 \begin{block}{Basic DP definition}
 \begin{itemize}
@@ -36,7 +36,7 @@ Further characteristics:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Requirements %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Requirements for dp}
+\frame{\frametitle{Requirements for DP}
 DP can be applied to problems with the following characteristics.
 \begin{itemize}
 	\item Optimal substructure:
@@ -66,7 +66,7 @@ How is that connected to MDPs?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example: DP vs. Exhaustive Search (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{example: dp vs. exhaustive search (1)}
+\frame{\frametitle{Example: DP vs. exhaustive search (1)}
 \begin{figure}		
 	\animategraphics[loop,controls,width=10cm]{0.75}{fig/lec03/gif/PB_Bi_ES-}{0}{6}
 	\caption{Shortest path problem to travel from Paderborn to Bielefeld: Eshaustive search requires 14 travel segment evaluations since every possible travel route is evaluated independently.}
@@ -77,7 +77,7 @@ How is that connected to MDPs?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Example: DP vs. Exhaustive Search (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{example: dp vs. exhaustive search (2)}
+\frame{\frametitle{Example: DP vs. exhaustive search (2)}
 \begin{figure}		
 	\animategraphics[loop,controls,width=10cm]{0.75}{fig/lec03/gif/PB_Bi_DP-}{0}{5}
 	\caption{Shortest path problem to travel from Paderborn to Bielefeld: DP requires only 10 travel segment evaluations in order to calculate the optimal travel policy due to the reuse of subproblem results.}
@@ -88,8 +88,8 @@ How is that connected to MDPs?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Utility DP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Utility of dp in the rl context}
-DP is used for iterative \hl{planning} (i.e., \hl{model-based} prediction and control) in an MDP.
+\frame{\frametitle{Utility of DP in the RL context}
+DP is used for iterative \hl{model-based} prediction and control in an MDP.
 \begin{itemize}
 	\item Prediction:
 	\begin{itemize}
@@ -121,10 +121,10 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Evaluation Background (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy evaluation background (1)}
+\frame{\frametitle{Policy evaluation background (1)}
 \begin{itemize}
 	\item Problem: evaluate a given policy $\pi$ to predict $v_\pi$. \pause
-	\item Recap: Bellman equation for $x_k\in\mathcal{X}$ is given as
+	\item Recap: Bellman expectation equation for $x_k\in\mathcal{X}$ is given as
 	\begin{align*}
 	v_\pi(x_k) &= \El{G_k|X_k=x_k}{\pi},\\
 									&= \El{R_{k+1}+ \gamma G_{k+1}|X_k=x_k}{\pi},\\
@@ -137,15 +137,14 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 					\begin{bmatrix} v_{1}^{\pi} \\ \vdots \\ v_{n}^{\pi} \end{bmatrix} &= \begin{bmatrix} \mathcal{R}_{1}^{\pi} \\ \vdots \\ \mathcal{R}_{n}^{\pi} \end{bmatrix} + \gamma\begin{bmatrix} p_{11}^{\pi} & \cdots & p_{1n}^{\pi}\\ \vdots &  & \vdots\\ p_{n1}^{\pi} & \cdots & p_{nn}^{\pi}\end{bmatrix}\begin{bmatrix} v_{1}^{\pi} \\ 			\vdots \\ v_{n}^{\pi} \end{bmatrix}.
 			\end{split}
 			\end{equation*}\pause
-			\item Solving the Bellman equation for $v_\pi$ requires handling a linear equation system with $n$ unknowns (i.e., number of states).
-			\item Remember that the reward function $\mathcal{R}_{x}^{\pi}$ might also contains stochastic influences depending on the MDP structure (see \defref{defi:Markov_decision_process}).
+			\item Solving the Bellman expectation equation for $v_\pi$ requires handling a linear equation system with $n$ unknowns (i.e., number of states).
 \end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Evaluation Background (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy evaluation background (2)}
+\frame{\frametitle{Policy evaluation background (2)}
 \begin{itemize}
 	\item Problem: directly calculating $v_\pi$ is numerically costly for high-dimensional state spaces (e.g., by matrix inversion). \pause
 	\item General idea: \hl{apply iterative approximations} $\hat{v}_{i}(x_{k})=v_{i}(x_{k})$ of $v_\pi(x_{k})$ with decreasing errors:
@@ -169,7 +168,7 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Richardson Iteration (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{richardson iteration (1)}
+\frame{\frametitle{Richardson iteration (1)}
 In the MDP context, the Richardson iteration became the default solution approach to iteratively solve:
 \begin{equation*}
 	\bm{A}\bm{\zeta} =\bm{b}.
@@ -193,7 +192,7 @@ To evaluate convergence we inspect the following norm:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Richardson Iteration (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{richardson iteration (2)}
+\frame{\frametitle{Richardson iteration (2)}
 Since any induced matrix norm is sub-multiplicative, we can approximate \eqref{eq:richardson_error_sequence} by the inequality:
 \begin{equation}
 	\left\|\bm{e}_{i+1}\right\|_{\infty} \leq \left\|\left(\bm{I}-\omega\bm{A}\right)\right\|_{\infty} \left\|\bm{e}_{i}\right\|_{\infty}.
@@ -220,7 +219,7 @@ follows. Hence, \hl{when discounting the Richardson iteration always converges f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Iterative Policy Evaluation by Richardson Iteration (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{iterative policy evaluation by richardson iteration (1)}
+\frame{\frametitle{Iterative policy evaluation by richardson iteration (1)}
 Applying the Richardson iteration \eqref{eq:richardson_general} to the Bellman equation \eqref{eq:Bellman_MDP_linear_non_matrix} for any $x_k\in\mathcal{X}$ at iteration $i$ results in:
 \begin{equation}
 	v_{i+1}(x_k)	= \sum_{u_k\in\mathcal{U}}\bm{\pi}(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1})\right)\, .
@@ -230,10 +229,8 @@ Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 \label{eq:iterative_policy_eval_matrix}
 	\bm{v}_{\mathcal{X},i+1}^{\pi} =\bm{r}_{\mathcal{X}}^{\pi}+\gamma\bm{\mathcal{P}}_{xx'}^{\pi}\bm{v}_{\mathcal{X},i}^{\pi}\, .
 \end{equation}\pause
-\vspace{0.5cm}
 \begin{figure}		
-	%\hspace*{-1.5cm}
-	\includegraphics[width=7cm]{fig/lec03/Back_Up_Value_Policy_Evaluation.pdf}
+	\includegraphics[height=0.25\textheight]{fig/lec03/Back_Up_Value_Policy_Evaluation.pdf}
 	\caption{Backup diagram for iterative policy evaluation}
 	\label{fig:Back_Up_Value_Policy_Evaluation}
 \end{figure}
@@ -243,7 +240,7 @@ Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Iterative Policy Evaluation by Richardson Iteration (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{iterative policy evaluation by richardson iteration (2)}
+\frame{\frametitle{Iterative policy evaluation by richardson iteration (2)}
 \begin{itemize}
 	\item During one Richardson iteration the 'old' value of $x_k$ is replaced with a 'new' value from the 'old' values of the successor state $x_{k+1}$.
 	\begin{itemize}
@@ -252,7 +249,7 @@ Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 	\end{itemize}\pause
 	\item The Richardson iteration can be interpreted as a gradient descent algorithm for solving \eqref{eq:Bellman_matrix_Ab}.\pause
 	\item This leads to \hl{synchronous, full backups} of the entire state space $\mathcal{X}$.\pause
-	\item Also called \hl{expected update} because it is based on the expectation over all possible next states (utilizing full knowledge).\pause
+	\item Also called \hl{expected update} because it is based on the expectation over all possible next states (utilizing full model knowledge).\pause
 	\item In subsequent lectures, the expected update will be supplemented by data-driven samples from the environment.
 \end{itemize}
 
@@ -261,18 +258,17 @@ Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Iterative Policy Evaluation Example: Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{iterative policy evaluation example: forest tree mdp}
-Let's reuse the forest tree MDP example from \figref{fig:Forest_Markov_Decision_Process_State_Value} with \textit{fifty-fifty policy} and discount factor $\gamma=0.8$
-plus disaster probability $\alpha=0.2$:
+\frame{\frametitle{Iterative policy evaluation example: forest tree MDP}
+Let's reuse the forest tree MDP example from \figref{fig:Forest_Markov_Decision_Process_State_Value} with \textit{fifty-fifty policy}:
 \begin{equation*}
 	\bm{\mathcal{P}}_{xx'}^{\pi} = \begin{bmatrix}0 & \frac{1-\alpha}{2} & 0 & \frac{1+\alpha}{2}  \\ 0 & 0 &\frac{1-\alpha}{2} & \frac{1+\alpha}{2} \\ 0 & 0 &\frac{1-\alpha}{2} & \frac{1+\alpha}{2} \\ 0 & 0 & 0 & 1\end{bmatrix}, \quad\bm{r}_{\mathcal{X}}^{\pi} = \begin{bmatrix}0.5 \\ 1 \\ 2 \\ 0 \end{bmatrix} \, .
 \end{equation*}
 \pause
 \begin{table}
 	\centering
-		\begin{tabular}{l|l|l|l|l}
+		\begin{tabular}{ccccc}
 			$i$ & $v_i(x=1)$ & $v_i(x=2)$ & $v_i(x=3)$ & $v_i(x=4)$\\
-			\hline
+			\toprule
 			0  & 0 & 0 & 0 & 0\\ \pause
 			1  & 0.5 & 1 & 2 &0\\ \pause
 			2  & 0.82 & 1.64 & 2.64 & 0\\ \pause
@@ -281,14 +277,14 @@ plus disaster probability $\alpha=0.2$:
 			$\infty$ & 1.12 & 1.94 & 2.94 & 0
 		\end{tabular}	
 	\label{tab:Forest_tree_policy_eval}
-	\caption{Policy evaluation by Richardson iteration \eqref{eq:iterative_policy_eval_matrix} for forest tree MDP}
+	\caption{Policy evaluation by Richardson iteration \eqref{eq:iterative_policy_eval_matrix} for forest tree MDP with $\gamma=0.8$ and $\alpha=0.2$}
 \end{table}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Variant: In-Place Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{variant: in-place updates}
+\frame{\frametitle{Variant: in-place updates}
 Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector $\bm{v}_{\mathcal{X},i+1}^{\pi}$ in 'one shot' (synchronous backup), an elementwise \hl{in-place} version of the policy evaluation can be carried out: 
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -316,7 +312,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% In-Place Policy Evaluation Updates for Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{In-place policy evaluation updates for forest tree mdp}
+\frame{\frametitle{In-place policy evaluation updates for forest tree MDP}
 \begin{itemize}
 	\item In-place algorithms allow to update states in a beneficial order. \pause
 	\item May converge faster than regular Richardson iteration if state update order is chosen wisely (sweep through state space).\pause
@@ -326,9 +322,9 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 
 \begin{table}
 	\centering
-		\begin{tabular}{l|l|l|l|l}
+		\begin{tabular}{ccccc}
 			$i$ & $v_i(x=1)$ & $v_i(x=2)$ & $v_i(x=3)$ & $v_i(x=4)$\\
-			\hline
+			\toprule
 			0  & 0 & 0 & 0 & 0\\
 			1  & 1.03 & 1.64 & 2 &0\\
 			2  & 1.09 & 1.85 & 2.64 & 0\\
@@ -407,7 +403,7 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Greedy Policy Improvement (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{greedy policy improvement (1)}
+\frame{\frametitle{Greedy policy improvement (1)}
 \begin{itemize}
 	\item So far, policy improvement addressed only changing the policy at a single state.\pause
 	\item Now, extend this scheme to all states by selecting the best action according to $q_\pi(x_{k}, u_{k})$ in every state (\hl{greedy policy improvement}):\pause
@@ -420,15 +416,12 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 										& = \argmax_{u_k\in\mathcal{U}} \mathcal{R}^u_x + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_\pi(x_{k+1}) \, .
 	\end{split}
 \end{equation}
-\begin{itemize}
-	\item Again, consider that $\mathcal{R}^u_x$ could be of deterministic or stochastic nature.
-\end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Greedy Policy Improvement (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{greedy policy improvement (2)}
+\frame{\frametitle{Greedy policy improvement (2)}
 \begin{itemize}
 	\item Each greedy policy improvement takes the best action in a one-step look-ahead search and, therefore, satisfies \theoref{theo:Policy_improvement}.\pause
 	\item If after a policy improvement step $v_{\pi}(x_k) = v_{\pi'}(x_k)$ applies, it follows:
@@ -476,9 +469,9 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Iteration Example: Forest Tree MDP (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy iteration example: forest tree mdp (1)}
+\frame{\frametitle{Policy iteration example: forest tree MDP (1)}
 \begin{figure}		
-	\includegraphics[width=11cm]{fig/lec03/Forest_Markov_Decision_Process.pdf}
+	\includegraphics[height=0.6\textheight]{fig/lec03/Forest_Markov_Decision_Process.pdf}
 \end{figure}
 \begin{itemize}
 	\item Two actions possible in each state:
@@ -492,11 +485,11 @@ Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Iteration Example: Forest Tree MDP (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy iteration example: forest tree mdp (2)}
+\frame{\frametitle{Policy iteration example: forest tree MDP (2)}
 Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree hater' initial policy}:\pause
 \begin{enumerate}
 	\item $\pi_0=\pi(u_k =\mbox{c}|x_k) \quad \,\forall x_k\in\mathcal{X}$.\pause
-	\item Policy evaluation: $v_\mathcal{X}^{\pi_0}=\begin{bmatrix}1 & 2 & 3 & 0\end{bmatrix}^T$\pause
+	\item Policy evaluation: $v_\mathcal{X}^{\pi_0}=\begin{bmatrix}1 & 2 & 3 & 0\end{bmatrix}\T$\pause
 	\item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
@@ -504,7 +497,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree hater' initial pol
 										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\}
 	\end{split}
 \end{equation*}\pause
-\item Policy evaluation: $v_\mathcal{X}^{\pi_1}=\begin{bmatrix}1.28 & 2 & 3 & 0\end{bmatrix}^T$\pause
+\item Policy evaluation: $v_\mathcal{X}^{\pi_1}=\begin{bmatrix}1.28 & 2 & 3 & 0\end{bmatrix}\T$\pause
 \item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
@@ -520,11 +513,11 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree hater' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Iteration Example: Forest Tree MDP (3) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy iteration example: forest tree mdp (3)}
+\frame{\frametitle{Policy iteration example: forest tree MDP (3)}
 Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial policy}:\pause
 \begin{enumerate}
 	\item $\pi_0=\pi(u_k =\mbox{w}|x_k) \quad \,\forall x_k\in\mathcal{X}$.\pause
-	\item Policy evaluation: $v_\mathcal{X}^{\pi_0}=\begin{bmatrix}1.14 & 1.78 & 2.78 & 0\end{bmatrix}^T$\pause
+	\item Policy evaluation: $v_\mathcal{X}^{\pi_0}=\begin{bmatrix}1.14 & 1.78 & 2.78 & 0\end{bmatrix}\T$\pause
 	\item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
@@ -532,7 +525,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\}
 	\end{split}
 \end{equation*}\pause
-\item Policy evaluation: $v_\mathcal{X}^{\pi_1}=\begin{bmatrix}1.28 & 2 & 3 & 0\end{bmatrix}^T$\pause
+\item Policy evaluation: $v_\mathcal{X}^{\pi_1}=\begin{bmatrix}1.28 & 2 & 3 & 0\end{bmatrix}\T$\pause
 \item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
@@ -548,7 +541,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Iteration Example: Jack's Car Rental (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy iteration example: jack's car rental (1)}
+\frame{\frametitle{Policy iteration example: Jack's car rental (1)}
 \begin{figure}		
 	\includegraphics[width=2cm]{fig/lec03/car_rental.pdf}
 \end{figure}
@@ -574,9 +567,9 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Iteration Example: Jack's Car Rental (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{policy iteration example: jack's car rental (2)}
+\frame{\frametitle{Policy iteration example: Jack's car rental (2)}
 \begin{figure}
-		\includegraphics[width=9cm]{fig/lec03/Jack_Car_Rental.pdf}
+		\includegraphics[height=0.6\textheight]{fig/lec03/Jack_Car_Rental.pdf}
 		\caption{Sequence of policies found by policy iteration including optimal state value after termination (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 		\label{fig:Jack_Car_Rental}
 	\end{figure}
@@ -585,13 +578,15 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Value Iteration (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{value iteration (1)}
+\frame{\frametitle{Value iteration (1)}
 \begin{itemize}
 	\item Policy iteration involves full policy evaluation steps between policy improvements.
 	\item In large state-space MDPs the full policy evaluation may be numerically very costly.\pause
-	\item Using a limited number of iterative policy evaluations steps and then apply policy improvement may speed up the entire DP process.\pause
+\end{itemize}
+\vspace{0.5cm}
+\begin{itemize}
 	\item \hl{Value iteration}: One step iterative policy evaluation followed by policy improvement.\pause
-	\item Allows simple update rule which \hl{combines policy improvement with truncated policy evaluation}:
+	\item Allows simple update rule which \hl{combines policy improvement with truncated policy evaluation in a single step}:
 	\begin{equation}
 	\begin{split}
 		v_{i+1}(x_k) &=	\max_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{i}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
@@ -604,7 +599,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Value Iteration (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{value iteration (2)}
+\frame{\frametitle{Value iteration (2)}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -622,19 +617,16 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 			$\Delta \leftarrow \max\left(\Delta, |\tilde{v}-\hat{v}(x_k)|\right)$\;
 		}
 	}
-\Output{Deterministic policy $\pi\approx\pi^*$, such that}
+\Output{deterministic policy $\pi\approx\pi^*$, such that}
 	$\pi(x_k)\leftarrow  \argmax_{u_k\in\mathcal{U}}\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u \hat{v}(x_{k+1})\right)$\;
-\caption{Value iteration (note: compared to policy iteration, value iteration doesn't require an initial policy but only a state-value guess)}
+\caption{Value iteration (note: compared to policy iteration, value iteration does not require an initial policy but only a state-value guess)}
 \end{algorithm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Value Iteration for Forest Tree MDP %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Value iteration for forest tree mdp}
-\begin{figure}		
-	\includegraphics[width=6cm]{fig/lec03/Forest_Markov_Decision_Process.pdf}
-\end{figure}
+\frame{\frametitle{Value iteration example: forest tree MDP}
 \begin{itemize}
 	\item Assume again $\alpha=0.2$ and $\gamma=0.8$.\pause
 	\item Similar to in-place update policy evaluation, reverse order and start value iteration with $x=4$.\pause
@@ -642,9 +634,9 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 \end{itemize}
 \begin{table}
 	\centering
-		\begin{tabular}{l|l|l|l|l}
+		\begin{tabular}{ccccc}
 			$i$ & $v_i(x=1)$ & $v_i(x=2)$ & $v_i(x=3)$ & $v_i(x=4)$\\
-			\hline
+			\toprule
 			0  & 0 & 0 & 0 & 0\\
 			1  & 1.28 & 2 & 3 &0\\
 			*  & 1.28 & 2 & 3 &0
@@ -666,113 +658,36 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summarizing DP Algorithms %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Summarizing dp algorithms}
+\frame{\frametitle{Summarizing DP algorithms}
 \begin{itemize}
-	\item All DP algorithms are based on the state-value $v(x)$.
+	\item All DP algorithms are based on the state value $v(x)$.
 	\begin{itemize}
 		\item Complexity is $\mathcal{O}(m\cdot n^2)$ for $m$ actions and $n$ states.
 		\item Evaluate all $n^2$ state transitions while considering up to $m$ actions per state.
 	\end{itemize}\pause
-	\item Could be also applied to action-values $q(x,u)$.
+	\item Could be also applied to action values $q(x,u)$.
 	\begin{itemize}
 		\item Complexity is inferior with $\mathcal{O}(m^2\cdot n^2)$.
-		\item There are up to $m^2$ action-values which require $n^2$ state transition evaluations each.
+		\item There are up to $m^2$ action values which require $n^2$ state transition evaluations each.
 	\end{itemize}
 \end{itemize}
 \pause
 \begin{table}
 	\centering
-		\begin{tabular}{|M{1.65cm}||M{4.75cm}|M{4cm}|}
-			\hline
+		\begin{tabular}{M{1.65cm}M{4.75cm}M{4cm}}
+			\toprule
 			Problem & Relevant Equations & Algorithm\\
-			\hline\hline
+			\midrule
 			prediction & Bellman expectation eq. &  policy evaluation\\
-			\hline
 			control & Bellman expectation eq. \& greedy policy improvement & policy iteration\\
-			\hline
 			control & Bellman optimality eq. & value iteration\\
-			\hline
+			\bottomrule
 		\end{tabular}	
 		\caption{Short overview addressing the treated DP algorithms}
 		\label{tab:DP_syn_algos}
 \end{table}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%Asynchronous DP%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Asynchronous dp}
-\begin{itemize}
-	\item DP algorithms considered so far used \hl{synchronous backups}:
-	\begin{itemize}
-		\item In one iteration the entire state space is updated.
-		\item May be computational expensive for large MDPs.
-		\item Some state-values or policy parts may converge faster than other but are updated as often as slowly converging states.
-	\end{itemize}
-	\vspace{0.5cm}\pause
-	\item In contrast, \hl{asynchronous backups} update states individually in an (arbitrary) order:
-	\begin{itemize}
-		\item Choose smart order to achieve faster overall convergence rate.
-		\item Some states may be updated more frequently than others.\pause
-		\item Overall algorithms converges if all states are still visited to some extent (\hl{important requirement to ensure convergence}).\pause
-		\item Simple example: in-place policy evaluation where only a subset of all states are updated each iterations (cf. \algoref{algo:in_place_policy_update}).
-	\end{itemize}
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Asynchronous DP: Prioritized Sweeping %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{asynchronous dp: prioritized sweeping}
-\begin{itemize}
-	\item Use magnitude of \hl{Bellman error} as an indicator which state should be updated next:
-	\begin{equation}
-		\argmax_{x_k\in\mathcal{X}}\left|\max_{u_k\in\mathcal{U}} \left(\mathcal{R}^u_x + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1})\right) - v_i(x_k)\right|\, .
-	\end{equation}\pause
-	\item Update the state with the largest Bellman error first. 
-	\item Build up a priority queue of most relevant states by refreshing the Bellman error after each state update.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Asynchronous DP: Real-Time Updates %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{asynchronous dp: real-time updates}
-\begin{itemize}
-	\item Update those states which are frequently visited by the agent.
-	\item Utilizes agent's experience to guide the asynchronous DP updates.
-	\item After each time step $\left\langle x_k, u_k, r_{k+1}\right\rangle$ update $x_k$:
-	\begin{equation}
-		v_i(x_k) \leftarrow \max_{u_k\in\mathcal{U}} \left(\mathcal{R}^u_{x} + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1})\right).
-	\end{equation}
-\end{itemize}
-\begin{figure}
-		\includegraphics[width=5.5cm]{fig/lec03/RTDP.pdf}
-		\caption{Real-time DP updates focus on reachable states (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-		\label{fig:RTDP}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Generalized Policy Iteration %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{generalized policy iteration (gpi)}
-\begin{itemize}
-	\item Almost all RL methods are well-described as GPI.
-	\item \hl{Push-pull}: Improving the policy will deteriorate value estimation.  
-	\item Well balanced \hl{trade-off between evaluating and improving} is required.
-\end{itemize}
-\begin{figure}
-	\subfloat{
-		\includegraphics[height=4cm]{fig/lec03/GPI_01.pdf}
-	}
-	\hspace{1cm}
-	\subfloat{
-		\includegraphics[height=4cm]{fig/lec03/GPI_02.pdf}
-	}
-\caption{Interpreting generalized policy iteration to switch back and forth between (arbitrary) evaluations and improvement steps (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-\end{figure}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Curse of Dimensionality %%
@@ -791,30 +706,49 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 		\item While utilizing full knowledge of the MDP structure.
 	\end{itemize}
 	\pause
-	\item Hence, DP is can be effective up to medium-sized MDPs (i.e., million states)\pause
+	\item Hence, DP is can be effective up to medium-sized MDPs (i.e., million finite states)\pause
 	\item For large problems DP suffers from the \hl{curse of dimensionality}:
 	\begin{itemize}
-		\item Number of finite states $n$ grows exponentially with the number of state variables.
-		\item Also: if continuous variables need quantization typically a large number of states results. 
-		\item Single state update may become computational infeasible. 
+		\item Single update step may become computational infeasible. 
+		\item Also: if continuous states need quantization, number of finite states $n$ grows exponentially with the number of state variables (assuming fixed number of discretization levels). 
 	\end{itemize}
 \end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Generalized Policy Iteration %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Generalized policy iteration (GPI)}
+\begin{itemize}
+	\item Almost all RL methods are well-described as GPI.
+	\item \hl{Push-pull}: Improving the policy will deteriorate value estimation.  
+	\item Well balanced \hl{trade-off between evaluating and improving} is required.
+\end{itemize}
+\begin{figure}
+	\subfloat{
+		\includegraphics[height=4cm]{fig/lec03/GPI_01.pdf}
+	}
+	\hspace{1cm}
+	\subfloat{
+		\includegraphics[height=4cm]{fig/lec03/GPI_02.pdf}
+	}
+\caption{Interpreting generalized policy iteration to switch back and forth between (arbitrary) evaluations and improvement steps (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\end{figure}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{summary: what you've learned today}
+\frametitle{Summary: what you've learned in this lecture}
 \begin{itemize}
 	\item DP is applicable for prediction and control problems in MDPs.\pause
-	\item But requires always full knowledge about the environment (i.e., it is a model-based solution also called planning).\pause
+	\item But requires always full knowledge about the environment (i.e., it is a model-based solution).\pause
 	\item DP is more efficient than exhaustive search.\pause
 	\item But suffers from the curse of dimensionality for large MDPs.\pause
 	\item (Iterative) policy evaluations and (greedy) improvements solve MDPs.\pause
 	\item Both steps can be combined via value iteration.\pause
 	\item This idea of (generalized) policy iteration is a basic scheme of RL.\pause
-	\item Implementing DP algorithms comes with many degrees of freedom.
-	\item For example how to order the state updates (asyn. vs. sync.).
+	\item Implementing DP algorithms comes with many degrees of freedom regarding the update order.
 \end{itemize}
 \end{frame}

@@ -20,16 +20,16 @@
 \hfill
 \onslide<1->\begin{table}
 	\centering
-		\begin{tabular}{|M{0.5cm}|M{1cm}||M{3cm}|M{3cm}|}
-		\cline{3-4}
-			\multicolumn{2}{c||}{\multirow{2}{*}{}}& \multicolumn{2}{c|}{All states observable?}\\
+		\begin{tabular}{M{0.5cm}M{1cm}M{3cm}M{3cm}}
+		%\cline{3-4}
+			\multicolumn{2}{c}{\multirow{2}{*}{}}& \multicolumn{2}{c}{All states observable?}\\
+			%\cline{3-4}
+			\multicolumn{2}{c}{} & Yes & No\\
 			\cline{3-4}
-			\multicolumn{2}{c||}{} & Yes & No\\
-			\hline\hline
 			 \multirow{2}{*}{\rotatebox{90}{Actions?}} & No & Markov chain &Hidden Markov model\\
-			\cline{2-4}
+			%\cline{2-4}
 			& Yes & Markov decision process (MDP) & Partially observable MDP\\
-			\hline
+			\cline{3-4}
 		\end{tabular}
 	\caption{Different Markov models}
 	\label{tab:DifferentMarkovModels}
@@ -883,7 +883,7 @@ Facing the above issues, RL addresses mainly two topics:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: what you've learned today}
+\frametitle{Summary: what you've learned in this lecture}
 \begin{itemize}
 	\item Differentiate finite Markov process models with or w/o rewards and actions.\pause
 	\item Interpret such stochastic processes as simplified abstractions of real-world problems.\pause

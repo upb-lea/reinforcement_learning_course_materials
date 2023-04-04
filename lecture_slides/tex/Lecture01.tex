@@ -924,7 +924,7 @@ Two fundamental solutions to sequential decision making:
 \begin{block}{Remark on learning and planning}
 Above the two extreme cases are confronted: 
 \begin{itemize}
-	\item RL = only learning without using available pre-knowledge.
+	\item RL = learning based on data obtained from interacting with the system.
 	\item Planning = iterating on a model without improving it based on data. 
 \end{itemize}
 \pause
@@ -976,8 +976,9 @@ While in RL the desired system behavior must be solely represented by $r_k$, MPC
 \begin{table}
 	\centering
 		\begin{tabular}{lll}
+			\toprule
 			Property & MPC & RL\\
-			\hline
+			\midrule
 			\onslide<1->Objective 									& minimize costs 									& maximize return  \\
 			\onslide<2->A priori model 							& required \xmark 								& not required \cmark \\
 			\onslide<3->Pre-knowledge integration 	& easy \cmark 										& rather complex \xmark \\
@@ -985,8 +986,9 @@ While in RL the desired system behavior must be solely represented by $r_k$, MPC
 			\onslide<5->Adaptivity									& requires add-ons \xmark 				&	inherent \cmark \\
 			\onslide<6->Online complexity						& it depends \cmark/\xmark		 		&	it depends \cmark/\xmark \\
 			\onslide<7->Stability theory						& mature \cmark 									&	immature \xmark \\
+			\bottomrule
 		\end{tabular}
-	\onslide<1->\caption{Key differences on MPC vs. RL\\(based on D. Görges, \textit{Relations between Model Predictive Control and Reinforcement Learning}, IFAC PapersOnine 50-1, pp. 4920-4928, 2017)}
+	\onslide<1->\caption{Key differences on MPC vs. RL\\(inspired from D. Görges, \textit{Relations between Model Predictive Control and Reinforcement Learning}, IFAC PapersOnine 50-1, pp. 4920-4928, 2017)}
 	\label{tab:KeyDifferences}
 \end{table}
 }
@@ -995,7 +997,7 @@ While in RL the desired system behavior must be solely represented by $r_k$, MPC
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Summary: what you've learned today}
+\frametitle{Summary: what you've learned in this lecture}
 \begin{itemize}
 	\item Understanding the role of RL in machine learning and optimal sequential decision making. \pause
 	\item Become acquainted with the basic RL interaction loop (agent, environment, interpreter). \pause
