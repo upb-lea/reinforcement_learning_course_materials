@@ -90,7 +90,7 @@
 \pause
 \begin{block}{Pre-exam homework assignment}
 \begin{itemize}
-	\item Made available via Panda at end of the lecture series.
+	\item Will be made available via Panda at end of the lecture series.
 	\item Practical RL programming task, i.e., solve a typical RL problem.
 	\item Further regulations:
 	\begin{itemize}
@@ -182,12 +182,12 @@ The course will cover the following content:
 \hfill
 \begin{column}{0.38\textwidth}
 \begin{minipage}[c]{\linewidth}
-\vspace{0.3cm}
+\vspace{0.3cm}\pause
 Key characteristics:
 	\begin{itemize}
 		\item No supervisor
-		\item Data-driven
-		\item Discrete time steps
+		\item Data-driven\pause
+		\item Discrete time steps\pause
 		\item Sequential data stream (not i.i.d. data)
 		\item Agent actions affect subsequent data (sequential decision making)
 	\end{itemize}
@@ -379,8 +379,8 @@ Limited selection from a broad field:
 	\item A \hl{reward} is a scalar \hl{random variable} $R_k$ with \hl{realizations} $r_k$.
 	\item Often it is considered a real-number $r_k\in\mathbb{R}$ or an integer $r_k\in\mathbb{Z}$.\pause
 	\item The reward function (interpreter) may be naturally given or is a design degree of freedom (i.e., can be manipulated).\pause 
-	\item It fully indicates how well an RL agent is doing at step $k$.
-	\item The agent's task is to \hl{maximize its reward over time}.\pause
+	\item It fully indicates how well an RL agent is doing at step $k$. \pause
+	\item The agent's task is to \hl{maximize its reward over time}.
 \end{itemize}
 \begin{theo}{Reward hypothesis}{reward_hypo}
 All goals can be described by the maximization of the expected cumulative reward:
@@ -438,14 +438,14 @@ Rewards can have many different flavors and are highly depending on the given pr
 		\item Examples: Stock trading, strategic board games,...
 	\end{itemize}
 	\pause
-	\item Rewards can be positive and negative real values.
+	\item Rewards can be positive and negative values.
 	\begin{itemize}
-		\item Certain situations (e.g. car hits wall) might lead to a negative reward.
+		\item Certain situations (e.g., car hits wall) might lead to a negative reward.
 	\end{itemize}
 	\pause
 	\item Exogenous impacts might introduce stochastic reward components.
 \begin{itemize}
-	\item Example: A wind gust pushes the helicopter into a tree. 
+	\item Example: A wind gust pushes an autonomous helicopter into a tree. 
 \end{itemize}
 \end{itemize}
 \pause
@@ -536,7 +536,7 @@ The RL agent's learning process is heavily linked with the reward distribution o
 \frame{\frametitle{State (1)}
 \hlh{Environment state}  \blfootnote{\hl{Bold symbols} are non-scalar multidimensional quantities, e.g., vectors and matrices.}
 \begin{itemize}
-	\item Random variable $\bm{X}_k^e$ with realizations $\bm{x}_k^e$ \blfootnote{\hl{Capital symbols} denote random variables and small symbols their realizations.}
+	\item Random variable $\bm{X}_k^\mathrm{e}$ with realizations $\bm{x}_k^\mathrm{e}$ \blfootnote{\hl{Capital symbols} denote random variables and small symbols their realizations.}
 	\item Internal status representation of the environment, e.g.,
 	\begin{itemize}
 		\item Physical states, e.g., car velocity or motor current
@@ -560,10 +560,10 @@ The RL agent's learning process is heavily linked with the reward distribution o
 \frame{\frametitle{State (2)}
 \hlh{Agent state} 
 \begin{itemize}
-  \item Random variable $\bm{X}_k^a$ with realizations $\bm{x}_k^a$ 
+  \item Random variable $\bm{X}_k^\mathrm{a}$ with realizations $\bm{x}_k^\mathrm{a}$ 
 	\item Internal status representation of the agent
 	\pause
-	\item In general: $\bm{x}_k^a\neq \bm{x}_k^e$, e.g., due to measurement noise or an additional agent's memory
+	\item In general: $\bm{x}_k^\mathrm{a}\neq \bm{x}_k^\mathrm{e}$, e.g., due to measurement noise or an additional agent's memory
 	\pause
 	\item Agent's condensed information relevant for next action
 	\item Dependent on internal knowledge / policy representation of the agent
@@ -654,7 +654,7 @@ Nonlinear time-invariant state-space model:
 	\item Major distinction:
 	\begin{itemize}
 		\item \hl{Finite action set} (FAS): $\bm{u}_k\in\left\{\bm{u}_{k,1},\bm{u}_{k,2},\ldots\right\}\in\mathbb{R}^m$
-		\item \hl{Continuous action set} (CAS): Infinite number of actions: $\bm{u}_k\in\mathbb{R}^m$
+		\item \hl{Continuous action set} (CAS): Infinite number of actions: $\bm{u}_k\in\mathbb{R}^m$ \pause
 		\item Deterministic $\bm{u}_k$ or random $\bm{U}_k$ variable
 		\item Often state-dependent and potentially constrained:$\bm{u}_k\in\mathcal{U}(\bm{x}_k)\subseteq\mathbb{R}^m$  \pause
 	\end{itemize}
@@ -752,6 +752,24 @@ Evaluating the state and action spaces (e.g., finite vs. continuous) of a new RL
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Exploration and Exploitation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Exploration and exploitation}
+\begin{itemize}
+	\item In RL the environment is initially unknown. How to act optimal?
+	\item \hl{Exploration}: find out more about the environment.
+	\item \hl{Exploitation}: maximize current reward using limited
+	information.\pause
+	\item Trade-off problem: what's the best split between both strategies?
+\end{itemize}	
+\begin{figure}
+	\includegraphics[width=7cm]{fig/lec01/Exploration_Exploitation.pdf}
+	\caption{The exploration-exploitation dilemma}
+	\label{fig:Exploration_Exploitation}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Model}
@@ -770,24 +788,6 @@ Evaluating the state and action spaces (e.g., finite vs. continuous) of a new RL
 	\item In general, those models could be stochastic (as denoted above) but in some problems relax to a deterministic form.\pause
 	\item Using data in order to fit a model is a learning problem of its own and often called \hl{system identification}.
 \end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Exploration and Exploitation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exploration and exploitation}
-\begin{itemize}
-	\item In RL the environment is initially unknown. How to act optimal?
-	\item \hl{Exploration}: find out more about the environment.
-	\item \hl{Exploitation}: maximize current reward using limited
-	information.\pause
-	\item Trade-off problem: what's the best split between both strategies?
-\end{itemize}	
-\begin{figure}
-	\includegraphics[width=7cm]{fig/lec01/Exploration_Exploitation.pdf}
-	\caption{The exploration-exploitation dilemma}
-	\label{fig:Exploration_Exploitation}
-\end{figure}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -935,7 +935,7 @@ Above the two extreme cases are confronted:
 	\item Planning = iterating on a model without improving it based on data. 
 \end{itemize}
 \pause
-Can this lead to efficient and optimal solutions?
+Can one of these extreme cases lead alone to an efficient and optimal solution?
 \end{block}
 }
 
@@ -943,14 +943,14 @@ Can this lead to efficient and optimal solutions?
 %% Problem Statement MPC/Rl%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Problem reconsideration}
-The reward hypothesis in \theoref{theo:reward_hypo} is basically an \hl{infinite-horizon optimal control} problem (with $r_k$ interpreted as costs):
+The reward hypothesis in \theoref{theo:reward_hypo} is basically an (discounted) \hl{infinite-horizon optimal control} problem (with $r_k$ interpreted as costs):
 \begin{equation}
-	v_k^*(\bm{x}_k) = \min_{\bm{u}_k} \sum_{i=0}^\infty r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
+	v_k^*(\bm{x}_k) = \min_{\bm{u}_k} \sum_{i=0}^\infty \gamma^i r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}
 \pause
 For certain cases closed-form solutions can be found, e.g., a LTI system with quadratic costs and no further constraints can be optimally controlled by a linear-quadratic regulator (LQR). However, for arbitrary cases that is not possible and one relaxes the problem to a \hl{finite-horizon optimal control} problem:   
 \begin{equation}
-	v_k^*(\bm{x}_k) = \min_{\bm{u}_k} \sum_{i=0}^{N_\mathrm{p}} r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
+	v_k^*(\bm{x}_k) = \min_{\bm{u}_k} \sum_{i=0}^{N_\mathrm{p}} \gamma^i r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\,.
 \end{equation}
 \pause
 Here, an internal model $\bm{x}_{k+1}=\bm{f}(\bm{x}_k,\bm{u}_k)$ is utilized to predict the system behavior for $N_\mathrm{p}$ future steps. This \hl{model predictive control} (MPC) approach can be numerically solved. 
@@ -963,7 +963,7 @@ Here, an internal model $\bm{x}_{k+1}=\bm{f}(\bm{x}_k,\bm{u}_k)$ is utilized to 
 While in RL the desired system behavior must be solely represented by $r_k$, MPC can directly take into account system constraints:
 \begin{equation}
 	\begin{split}
-	v_k^* &= \min_{\bm{u}_k} \sum_{i=0}^{N_\mathrm{p}} r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\, ,\\
+	v_k^* &= \min_{\bm{u}_k} \sum_{i=0}^{N_\mathrm{p}} \gamma^i r_{k+i+1} (\bm{x}_{k+i}, \bm{u}_{k+i})\, ,\\
 	\mathrm{s.t.} \quad\quad \bm{x}_{k+i+1}&=\bm{f}(\bm{x}_{k+i},\bm{u}_{k+i}), \quad \bm{x}_{k+i} \in \mathcal{X},\quad \bm{u}_{k+i} \in \mathcal{U}\,.\\
 \end{split}
 \end{equation}
