@@ -14,7 +14,8 @@ The previous versions are all archived as separate releases and thus still avail
 # Lecture Content
 
 01. Introduction to Reinforcement Learning
-    * [Lecture video](https://www.youtube.com/watch?v=9LLzaIJuu-E&feature=youtu.be)
+    * [Lecture video, part 1](https://www.youtube.com/watch?v=YqlNOCD0rfA)
+    * [Lecture video, part 2](https://youtu.be/Yd99sn-64Z8)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture01.pdf)   
 02. Markov Decision Processes
     * [Lecture video](https://www.youtube.com/watch?v=WswYbJOyJUo&feature=youtu.be)
