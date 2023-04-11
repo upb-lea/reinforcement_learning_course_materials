@@ -8,17 +8,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Preface}
 \begin{itemize}
-	\onslide<2->\item Markov decision processes (MDP) are a \hl{mathematically idealized form of RL problems}.
-	\onslide<2->\item They allow precise theoretical statements (e.g., on optimal solutions).
-	\onslide<2->\item They deliver insights into suitable RL algorithms since many real-world problems can be abstracted as MDPs. 
-	\onslide<3->\item In the following \hl{we'll focus on}:
-	\onslide<3->\begin{itemize}
+	\onslide<1->\item Markov decision processes (MDP) are a \hl{mathematically idealized form of RL problems}.
+	\onslide<1->\item They allow precise theoretical statements (e.g., on optimal solutions).
+	\onslide<1->\item They deliver insights into RL solutions since many real-world problems can be abstracted as MDPs. 
+	\onslide<2->\item In the following \hl{we'll focus on}:
+	\onslide<2->\begin{itemize}
 		\item fully observable MDPs (i.e., $\bm{x}_k=\bm{y}_k$) and 
 		\item finite MDPs (i.e., finite number of states \& actions).
 	\end{itemize}
 \end{itemize}
 \hfill
-\onslide<1->\begin{table}
+\onslide<3->\begin{table}
 	\centering
 		\begin{tabular}{M{0.5cm}M{1cm}M{3cm}M{3cm}}
 		%\cline{3-4}
@@ -75,7 +75,7 @@ A \hl{finite Markov chain} is a tuple $\left\langle\mathcal{X}, \bm{\mathcal{P}}
 \begin{itemize}
 	\onslide<2->\item Specific stochastic process model
 	\onslide<2->\item Sequence of random variables $X_k, X_{k+1},\ldots$
-	\onslide<2->\item 'Memoryless'
+	\onslide<2->\item 'Memoryless', i.e., system properties are time invariant
 	\onslide<3->\item In continuous-time framework: Markov process\only<3->{\footnote[1]{However, this results in a literature nomenclature inconsistency with Markov decision/reward 'processes'.}} 
 \end{itemize}
 }
@@ -240,15 +240,15 @@ The \hl{state-value function} $v(x_k)$ of an MRP is the expected return starting
 %% State-Value Samples Forest Markov Reward Process %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{State-value samples of forest MRP}
-\begin{figure}		
+\onslide<1->{\begin{figure}		
 	\includegraphics[height=0.5\textheight]{fig/lec02/Forest_Markov_Reward_Process.pdf}
 \end{figure}
-Exemplary \hl{samples} $\hat{v}$ with $\gamma=0.5$ starting in $x=1$:
+Exemplary \hl{samples} for $\hat{v}$ with $\gamma=0.5$ starting in $x=1$:
 \begin{alignat*}{2}
-	&x=1 \rightarrow 4, &&\hat{v}= 1,\\ 
-	&x=1 \rightarrow 2 \rightarrow 4, &&\hat{v}= 1 + 0.5\cdot 2=2.0,\\
-	&x=1 \rightarrow 2 \rightarrow 3  \rightarrow 4, \quad&&\hat{v}=1+ 0.5\cdot 2+ 0.25\cdot 3=3.75,\\
-	&x=1 \rightarrow 2 \rightarrow 3 \rightarrow 3 \rightarrow 4, \quad&&\hat{v}=1+ 0.5\cdot 2+0.25 \cdot 3+ 0.125\cdot3=4.13.
+							 &x=1 \rightarrow 4, &&\hat{v}= 1,\\ }
+	\onslide<2->{&x=1 \rightarrow 2 \rightarrow 4, &&\hat{v}= 1 + 0.5\cdot 2=2.0,\\ }
+	\onslide<3->{&x=1 \rightarrow 2 \rightarrow 3  \rightarrow 4, \quad&&\hat{v}=1+ 0.5\cdot 2+ 0.25\cdot 3=3.75,\\ }
+	\onslide<4->{&x=1 \rightarrow 2 \rightarrow 3 \rightarrow 3 \rightarrow 4, \quad&&\hat{v}=1+ 0.5\cdot 2+0.25 \cdot 3+ 0.125\cdot3=4.13.}
 \end{alignat*}
 }
 
@@ -288,7 +288,7 @@ Assuming a known reward function $\mathcal{R}(x)$ for every state $X=x\in\mathca
 \begin{equation}
 	\bm{r}_{\mathcal{X}}= \begin{bmatrix} \mathcal{R}(x_1) & \cdots & \mathcal{R}(x_n)\end{bmatrix}\T = \begin{bmatrix} \mathcal{R}_1 & \cdots & \mathcal{R}_n\end{bmatrix}\T
 \end{equation}
-for a finite number of $n$ states with unknown state values
+for a finite number of $n$ states \pause with unknown state values
 \begin{equation}
 	\bm{v}_{\mathcal{X}}= \begin{bmatrix} v(x_1) & \cdots & v(x_n)\end{bmatrix}\T = \begin{bmatrix} v_1 & \cdots & v_n\end{bmatrix}\T
 \end{equation}
@@ -313,7 +313,7 @@ Above, \eqref{eq:Bellman_MRP_linear} is a normal equation in $\bm{v}_{\mathcal{X
 \bm{v}_{\mathcal{X}}&=\bm{r}_{\mathcal{X}}+\gamma\bm{\mathcal{P}}_{xx'}\bm{v}_{\mathcal{X}},\\
 \Leftrightarrow \underbrace{\left(\bm{I}-\gamma\bm{\mathcal{P}}_{xx'}\right)}_{\bm{A}}\underbrace{\bm{v}_{\mathcal{X}}}_{x}&=\underbrace{\bm{r}_{\mathcal{X}}}_{\bm{b}}.
 \end{split}
-\end{equation}
+\end{equation} \pause
 Possible solutions are (among others):
 \begin{itemize}
 	\item Direct inversion (Gaussian elimination, $\mathcal{O}(n^3)$),\pause
@@ -724,11 +724,12 @@ And, in the finite MDP case:
 \begin{itemize}
 	\item In finite MDPs with $n$ states, \eqref{eq:Bellman_Optimal_State_Value_MDP} delivers an \hl{algebraic equation system} with $n$ unknowns and $n$ \hl{state-value equations}. \pause
 	\item Likewise, \eqref{eq:Bellman_Optimal_action_Value_MDP} delivers an algebraic equation system with up to $n\cdot m$ unknowns and $n \cdot m$ \hl{action-value equations} ($m=$number of actions). \pause
-	\item Due to $\max$ operator the equation set is generally \hl{nonlinear}. Direct, closed form solution rarely available. \pause
-	\item Hence, often  approximate / iterative solutions are required (upcoming lectures).\pause
+\end{itemize}
+\vspace{0.5cm}
+\begin{itemize}
 	\item If environment is exactly known, solving for $v^*$ or $q^*$ directly delivers optimal policy. 
 	\begin{itemize}
-		\item If $v(x)$ is known, a one-step-ahead search is required to get $q(x)$.
+		\item If $v(x)$ is known, a one-step-ahead search is required to get $q(x, u)$.
 		\item If $q(x, u)$ is known, directly choose $q^*$. \pause
 	\end{itemize}
 	\item Even though above decisions are very short sighted (one-step-ahead search for $v$ or direct choice of $q$), by Bellman's principle of optimality one receives the long-term maximum of the expected reward.
@@ -777,8 +778,11 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Optimal policy for forest tree MDP: state value (2)}
 \begin{itemize}
-	\item Due to presence of terminal state ($x=4$) only three unknowns
-	\item Solution: numerical optimization approach (e.g., simplex method, gradient descent,...)
+	\item Possible solutions:
+	\begin{itemize}
+		\item numerical optimization approach (e.g., simplex method, gradient descent,...)
+		\item manual case-by-case equation solving (dynamic programming, cf. next lecture)
+	\end{itemize}
 \end{itemize}
 \begin{figure}		
 	\includegraphics[height=0.6\textheight]{fig/lec02/Forest_Markov_Decision_Process_Optimal_State_Value.pdf}
@@ -827,11 +831,11 @@ q^*(x=1,u=c) &= 1\, ,}\\
 \onslide<1->{
 Rearrange $\max$ expressions for unknown action values: 
 \begin{align*}
-q^*(x=1,u=w) &= \gamma(1-\alpha)\max\begin{cases}\gamma(1-\alpha)\max\begin{cases}1+\gamma(1-\alpha)q^*(3,w)\\3\end{cases}\\2\end{cases}}\\
-\onslide<2->{q^*(x=2,u=w) &= \gamma(1-\alpha)\max\begin{cases}1+\gamma(1-\alpha)q^*(3,w)\\3\end{cases}}\\
-\onslide<3->{q^*(x=3,u=w) &= 1+\gamma(1-\alpha)\max\begin{cases}q^*(3,w)\\3\end{cases}\, .}
+q^*(x=1,u=w) &= \gamma(1-\alpha)\max\begin{cases}\gamma(1-\alpha)\max\begin{cases}1+\gamma(1-\alpha)q^*(3,w),\\3,\end{cases}\\2,\end{cases}}\\
+\onslide<2->{q^*(x=2,u=w) &= \gamma(1-\alpha)\max\begin{cases}1+\gamma(1-\alpha)q^*(3,w),\\3,\end{cases}}\\
+\onslide<3->{q^*(x=3,u=w) &= 1+\gamma(1-\alpha)\max\begin{cases}q^*(3,w),\\3.\end{cases}\,}
 \end{align*}
-\onslide<4->{Again, retrieve unknown optimal action values by numerical optimization solvers.}
+\onslide<4->{Again, retrieve unknown optimal action values by numerical optimization solvers or manual backwards calculation (dynamic programming).}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -891,6 +895,6 @@ Facing the above issues, RL addresses mainly two topics:
 	\item Formulate value-function equation systems by the Bellman principle.\pause
 	\item Recognize optimal policies.\pause
 	\item Setting up nonlinear equation systems for retrieving optimal policies by the Bellman principle.\pause
-	\item Solving for different value functions in MRP/MDP contexts by numerical optimization.
+	\item Solving for different value functions in MRP/MDP by brute force optimization.
 \end{itemize}
 \end{frame}
