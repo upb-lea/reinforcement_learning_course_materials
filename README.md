@@ -18,7 +18,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video, part 2](https://youtu.be/Yd99sn-64Z8)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture01.pdf)   
 02. Markov Decision Processes
-    * [Lecture video](https://www.youtube.com/watch?v=WswYbJOyJUo&feature=youtu.be)
+    * [Lecture video](https://www.youtube.com/watch?v=ywn81iGQISE)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture02.pdf) 
 03. Dynamic Programming
     * [Lecture video](https://www.youtube.com/watch?v=RPHaH0c6k-I&feature=youtu.be)
