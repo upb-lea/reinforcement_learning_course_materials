@@ -65,8 +65,8 @@ The previous versions are all archived as separate releases and thus still avail
 
 
 # Exercise Content
-01. Basics of Python for Scientific Computing
-    * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)
+01. Basics of Python for Scientific Computing 
+    * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be) (only 2022 edition available due to technical outage)
     * [Tutorial template](../master/exercises/templates/ex01)
     * [Tutorial solution](../master/exercises/solutions/ex01) 
 02. Manually Solving Basic Markov Chain, Reward and Decision Problems
