@@ -219,8 +219,8 @@ follows. Hence, \hl{when discounting the Richardson iteration always converges f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Iterative Policy Evaluation by Richardson Iteration (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Iterative policy evaluation by richardson iteration (1)}
-Applying the Richardson iteration \eqref{eq:richardson_general} to the Bellman equation \eqref{eq:Bellman_MDP_linear_non_matrix} for any $x_k\in\mathcal{X}$ at iteration $i$ results in:
+\frame{\frametitle{Iterative policy evaluation by Richardson iteration (1)}
+Applying the Richardson iteration \eqref{eq:richardson_general} with $w=1$ to the Bellman equation \eqref{eq:Bellman_MDP_linear_non_matrix} for any $x_k\in\mathcal{X}$ at iteration $i$ results in:
 \begin{equation}
 	v_{i+1}(x_k)	= \sum_{u_k\in\mathcal{U}}\bm{\pi}(u_k|x_k)\left(\mathcal{R}^u_x + \gamma\sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1})\right)\, .
 \end{equation}\pause
@@ -240,7 +240,7 @@ Matrix form based on \eqref{eq:Bellman_MDP_linear} then is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Iterative Policy Evaluation by Richardson Iteration (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Iterative policy evaluation by richardson iteration (2)}
+\frame{\frametitle{Iterative policy evaluation by Richardson iteration (2)}
 \begin{itemize}
 	\item During one Richardson iteration the 'old' value of $x_k$ is replaced with a 'new' value from the 'old' values of the successor state $x_{k+1}$.
 	\begin{itemize}
@@ -356,7 +356,7 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 	\begin{itemize}
 		\item Consider a new (non-policy conform) action $u\neq{\pi}(x_k)$.
 		\item Follow thereafter the current policy $\pi$.
-		\item Check the action-value of this 'new move'. If it is better than the 'old' value, take it.
+		\item Check the action value of this 'new move'. If it is better than the 'old' value, take it:
 	\end{itemize}
 \end{itemize}
 	\begin{equation}
@@ -382,20 +382,20 @@ applies, then the policy $\pi'$ must be as good as or better than $\pi$. Hence, 
 %% Proof of Policy Improvement Theorem %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Proof of policy improvement theorem}
-Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:policy_improv_theo01}:
+\onslide<1->{Start with \eqref{eq:policy_improv_theo02} and recursively reapply \eqref{eq:policy_improv_theo01}:}
 \begin{equation}
 \hspace{-0.35cm}
 	\begin{split}
-		v_{\pi}(x_k) &\leq q_{\pi}(x_k,\pi'(x_k)),\\
-											&= \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=\pi'(x_{k})},\\
-											&= \El{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k}}{\pi'},\\
-											&\leq \El{R_{k+1} + \gamma 	q_{\pi}(x_{k+1},\pi'(x_{k+1}))|X_{k}=x_{k}}{\pi'},\\
-											&= \El{R_{k+1} + \gamma 	\El{R_{k+2} + \gamma 	v_{\pi}(X_{k+2})|X_{k+1},\pi'(x_{k+1})}{\pi'}|X_{k}=x_{k}}{\pi'},\\
-											&= \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 v_{\pi}(X_{k+2})|X_{k}=x_{k}}{\pi'},\\
-											&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 v_{\pi}(X_{k+3})|X_{k}=x_{k}}{\pi'},\\
-											&\hspace{0.2cm}\vdots\\
+		\onslide<1->{v_{\pi}(x_k) &\leq q_{\pi}(x_k,\pi'(x_k)),\\}
+											\onslide<2->{&= \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=\pi'(x_{k})},\\}
+											\onslide<3->{&= \El{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k}}{\pi'},\\}
+											\onslide<4->{&\leq \El{R_{k+1} + \gamma 	q_{\pi}(x_{k+1},\pi'(x_{k+1}))|X_{k}=x_{k}}{\pi'},\\}
+											\onslide<5->{&= \El{R_{k+1} + \gamma 	\El{R_{k+2} + \gamma 	v_{\pi}(X_{k+2})|X_{k+1},\pi'(x_{k+1})}{\pi'}|X_{k}=x_{k}}{\pi'},\\}
+											\onslide<6->{&= \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 v_{\pi}(X_{k+2})|X_{k}=x_{k}}{\pi'},\\}
+											\onslide<7->{&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 v_{\pi}(X_{k+3})|X_{k}=x_{k}}{\pi'},\\}
+											\onslide<8->{&\hspace{0.2cm}\vdots\\
 											&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 R_{k+4}+\cdots|X_{k}=x_{k}}{\pi'},\\
-											&=v_{\pi'}(x_k).
+											&=v_{\pi'}(x_k).}
 	\end{split}
 \end{equation}
 }
@@ -539,43 +539,6 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Policy Iteration Example: Jack's Car Rental (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy iteration example: Jack's car rental (1)}
-\begin{figure}		
-	\includegraphics[width=2cm]{fig/lec03/car_rental.pdf}
-\end{figure}
-\begin{itemize}
-	\item States: Two rental locations, maximum of 20 cars each\pause
-	\item Actions: Move up to 5 cars between locations overnight\pause
-	\item Reward: 
-	\begin{itemize}
-		\item  +10 \$ for each car rented (if available at location)
-		\item -2 \$ for each overnight car transfer
-		\item Discount: $\gamma=0.9$
-	\end{itemize}\pause 
-	\item Dynamics: Cars returned and requested randomly following Poisson distribution
-	\begin{itemize}
-		\item $P_\lambda(n)=\frac{\lambda^n}{n!}e^{-\lambda}$
-		\item $P_\lambda(n)=$ probability of observing $n$ events with mean event rate $\lambda$
-		\item 1st location: $\lambda_{\mbox{req.}}=3$, $\lambda_{\mbox{ret.}}=3$
-		\item 2nd location: $\lambda_{\mbox{req.}}=4$, $\lambda_{\mbox{ret.}}=2$
-	\end{itemize}
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Policy Iteration Example: Jack's Car Rental (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy iteration example: Jack's car rental (2)}
-\begin{figure}
-		\includegraphics[height=0.6\textheight]{fig/lec03/Jack_Car_Rental.pdf}
-		\caption{Sequence of policies found by policy iteration including optimal state value after termination (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-		\label{fig:Jack_Car_Rental}
-	\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Value Iteration (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Value iteration (1)}
@@ -630,7 +593,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 \begin{itemize}
 	\item Assume again $\alpha=0.2$ and $\gamma=0.8$.\pause
 	\item Similar to in-place update policy evaluation, reverse order and start value iteration with $x=4$.\pause
-	\item As shown in \tabref{tab:Forest_tree_value_iteration} value iteration converges in one step (for the given problem) to the optimal state-value. 
+	\item As shown in \tabref{tab:Forest_tree_value_iteration} value iteration converges in one step (for the given problem) to the optimal state value. 
 \end{itemize}
 \begin{table}
 	\centering
