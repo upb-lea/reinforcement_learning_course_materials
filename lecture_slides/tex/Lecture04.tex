@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Monte Carlo Methods vs. Dynamic Programming %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{monte carlo methods vs. dynamic programming}
+\frame{\frametitle{Monte Carlo methods vs. dynamic programming}
 Dynamic Programming:
 \begin{itemize}
 	\item \hl{Model-based} prediction and control 
@@ -31,7 +31,7 @@ Monte Carlo methods:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Monte Carlo Methods' Characteristics %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{general monte carlo (mc) methods' characteristics}
+\frame{\frametitle{General Monte Carlo (MC) methods' characteristics}
 \begin{itemize}
 	\onslide<1->\item \hl{Learning  from experience}, i.e., sequences of samples $\left\langle x_k, u_k, r_{k+1}\right\rangle$
 	\onslide<2->\item Main concept: Estimation by \hl{averaging sample returns}
@@ -46,7 +46,7 @@ Monte Carlo methods:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Basic monte carlo prediction} 
+\section{Basic Monte Carlo prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -81,7 +81,7 @@ MC solution approach:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation:MC-Based Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: mc-based prediction}
+\frame{\frametitle{Algorithmic implementation: MC-based prediction}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \SetKwInput{Input}{input} 
@@ -118,10 +118,8 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 \end{itemize}
 \begin{equation}
 	\begin{split}
-		\mu_j &= \frac{1}{j}\sum_{i=1}^j g_i,\\
-					&= \frac{1}{j}\left[g_j + \sum_{i=1}^{j-1} g_i\right],\\
-					&= \frac{1}{j}\left[g_j + (j-1) \mu_{j-1}\right],\\
-					&=\mu_{j-1} + \frac{1}{j}\left[g_j-\mu_{j-1}\right].
+		\mu_j &= \frac{1}{j}\sum_{i=1}^j g_i= \frac{1}{j}\left[g_j + \sum_{i=1}^{j-1} g_i\right]\\
+					&= \frac{1}{j}\left[g_j + (j-1) \mu_{j-1}\right] =\mu_{j-1} + \frac{1}{j}\left[g_j-\mu_{j-1}\right].
 	\end{split}
 	\label{eq:inc_impl_MC_pred}
 \end{equation} \pause
@@ -137,7 +135,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Statistical Properties of MC-Based Prediction (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{statistical properties of mc-based prediction (1)}
+\frame{\frametitle{Statistical properties of MC-based prediction (1)}
 \onslide<1->{First-time visit MC:
 \begin{itemize}
 	\item Each return sample $g_j$ is independent from the others since they were drawn from separate episodes.   
@@ -158,7 +156,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Statistical Properties of MC-Based Prediction (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{statistical properties of mc-based prediction (2)}
+\frame{\frametitle{Statistical properties of MC-based prediction (2)}
 
 \begin{itemize}
 	\item State-value estimates for each state are independent.
@@ -183,7 +181,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based prediction example: forest tree mdp (1)}
+\frame{\frametitle{MC-based prediction example: forest tree MDP (1)}
 Let's reuse the forest tree MDP example with \textit{fifty-fifty policy} and discount factor $\gamma=0.8$
 plus disaster probability $\alpha=0.2$:
 \vspace{0.5cm}
@@ -197,63 +195,18 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Predction Example: Forest Tree MDP%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based prediction example: forest tree mdp (2)}
-
+\frame{\frametitle{MC-based prediction example: forest tree MDP (2)}
 \begin{figure}		
-	%\hspace*{-1.5cm}
-	\includegraphics{fig/lec04/Forest_Tree_MC_Value_Prediction.pdf}
+	\includegraphics[height=0.65\textheight]{fig/lec04/Forest_Tree_MC_Value_Prediction.pdf}
 	\caption{State-value estimate of forest tree MDP initial state using MC-based prediction over the number of episodes being evaluated (mean and standard deviation are calculated based on 2000 independent runs)}
 	\label{fig:Forest_Tree_MC_Value_Prediction}
 \end{figure}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MC-Based Predction Example: Blackjack (1) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based prediction example: blackjack (1)}
-\begin{itemize}
-	\item \hl{States} (200 in total)
-	\begin{itemize}
-		\item Player's sum: 12-21 (automatically twist if player's sum $<$ 12)
-		\item Usable ace (counts 1/11): yes/no 
-		\item Dealer's initial card: ace-10
-	\end{itemize}\pause
-	\item Action \hl{stick}: stop receiving cards (terminate episode)\pause
-	\item Reward for \hl{stick}:
-	\begin{itemize}
-		\item +1 if player's sum $>$ dealer's sum
-		\item 0 if player's sum $=$ dealer's sum
-		\item -1 if player's sum $<$ dealer's sum
-	\end{itemize}\pause
-	\item Action \hl{twist/hit}: take another card (assuming no replacements)\pause
-	\item Reward for \hl{twist/hit}:
-	\begin{itemize}
-		\item -1 if player's sum $>$  21 ('bust', terminates episode)
-		\item 0 otherwise
-	\end{itemize}\pause
-	\item Dealer always sticks on any sum $\geq$ 17.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MC-Based Predction Example: Blackjack (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based prediction example: blackjack (2)}
-\begin{figure}
-		\includegraphics[width=9cm]{fig/lec04/MC_Black_Jack.pdf}
-		\caption{Approximate state-value functions by first-visit MC prediction for a \hl{player's policy that sticks only on 20 or 21} (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-		\label{fig:Blackjack_MC}
-\end{figure}
-}
-%Remarks: 
-%Blackjack could be modeled as a MDP since one has full knowledge of the system 'dynamics'
-%Problem: Analytical/exact calculation of all transition probabilities not easy / a lot of work
-%MC offers an alternative: set up a simulation environment with less effort in order bypass the need of calculating the transition probabilities
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC Estimation of Action Values %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Mc estimation of action values}
+\frame{\frametitle{MC estimation of action values}
 Is a \hl{model available} (i.e., tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$)? 
 \begin{itemize}
 	\item \hl{Yes}: state values plus one-step prediction deliver optimal policy.
@@ -275,7 +228,7 @@ Possible problem when following a deterministic policy $\pi$:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Basic monte carlo control} 
+\section{Basic Monte Carlo control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -285,7 +238,7 @@ Possible problem when following a deterministic policy $\pi$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applying Generalized Policy Iteration (GPI) to MC Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{applying generalized policy iteration (gpi) to mc control}
+\frame{\frametitle{Applying generalized policy iteration (GPI) to MC control}
 \onslide<1->{GPI concept is directly applied to MC framework using action values:
 \begin{equation}
 \label{eq:GPI_MC}
@@ -299,10 +252,10 @@ Possible problem when following a deterministic policy $\pi$:
 	\end{equation}}
 \end{itemize}
 \onslide<1->{\begin{figure}
-\begin{minipage}[c]{0.35\textwidth}
-    \includegraphics[width=4cm]{fig/lec04/MC_GPI.pdf}
-  \end{minipage}\hfill
-  \begin{minipage}[c]{0.65\textwidth}
+\begin{minipage}[c]{0.25\textwidth}
+    \includegraphics[height=0.4\textheight]{fig/lec04/MC_GPI.pdf}
+  \end{minipage}
+  \begin{minipage}[c]{0.45\textwidth}
     \caption{Transferring GPI to MC-based control (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 		\label{fig:GPI_MC}
   \end{minipage}
@@ -336,7 +289,7 @@ Assuming that one is operating in an \hl{unknown MDP}, the policy improvement th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: MC-Based Control Using Exploring Start %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: mc-based control}
+\frame{\frametitle{Algorithmic implementation: MC-based control}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -367,19 +320,8 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 \end{algorithm}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MC-Based Control Example: Blackjack %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based control example: blackjack}
-\begin{figure}
-		\includegraphics[width=9cm]{fig/lec04/MC_ES_Black_Jack.pdf}
-		\caption{The optimal policy and state-value function for blackjack found by MC-based control using exploring starts. (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-		\label{fig:MC_ES_Black_Jack}
-\end{figure}
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Extensions to monte carlo on-policy control} 
+\section{Extensions to Monte Carlo on-policy control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -436,8 +378,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic implementation $\varepsilon$-Greedy MC-Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation $\varepsilon$-greedy mc-control}
-\vspace{-0.2cm}
+\frame{\frametitle{Algorithmic implementation $\varepsilon$-greedy MC-control}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -445,8 +386,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Output{Optimal $\varepsilon$-greedy policy $\pi^*(u|x)$}
-\Param{$\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
+\Output{Optimal $\varepsilon$-greedy policy $\pi^*(u|x)$, \hspace{0.5cm}\textbf{parameter:} $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}%\Param{}
 \Init{$\pi_{i=0}(u|x)$ arbitrarily soft $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$\newline
 $\hat{q}(x,u)$ arbitrarily $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$\newline 
 $n(x,u)\leftarrow$ an empty list counting state-action visits $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
@@ -513,10 +453,9 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based control example: forest tree mdp (1)}
-\vspace{-0.5cm}
+\frame{\frametitle{MC-based control example: forest tree MDP (1)}
 \begin{figure}		
-	\includegraphics{fig/lec04/Forest_Tree_MC_Control_eps_02.pdf}
+	\includegraphics[height=0.65\textheight]{fig/lec04/Forest_Tree_MC_Control_eps_02.pdf}
 	\caption{Different estimates of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC control with \hl{$\varepsilon=0.2$} over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent uns.}
 	\label{fig:Forest_Tree_MC_Control_eps_02}
 \end{figure}
@@ -525,10 +464,9 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based control example: forest tree mdp (2)}
-\vspace{-0.5cm}
+\frame{\frametitle{MC-based control example: forest tree MDP (2)}
 \begin{figure}		
-	\includegraphics{fig/lec04/Forest_Tree_MC_Control_eps_005.pdf}
+	\includegraphics[height=0.65\textheight]{fig/lec04/Forest_Tree_MC_Control_eps_005.pdf}
 	\caption{Different estimates of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC control with \hl{$\varepsilon=0.05$} over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent runs.}
 	\label{fig:Forest_Tree_MC_Control_eps_005}
 \end{figure}
@@ -537,7 +475,7 @@ Continuation:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MC-Based Control Example: Forest Tree MDP (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based control example: forest tree mdp (3)}
+\frame{\frametitle{MC-based control example: forest tree MDP (3)}
 Observations on forest tree MDP with $\varepsilon$-greedy MC-based control:
 \begin{itemize}
 	\item Rather slow convergence rate: quite a number of episodes is required. \pause
@@ -551,7 +489,7 @@ Observations on forest tree MDP with $\varepsilon$-greedy MC-based control:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Greedy in the Limit with Infinite Exploration (GLIE) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{greedy in the limit with infinite exploration (glie)}
+\frame{\frametitle{Greedy in the limit with infinite exploration (GLIE)}
 \begin{defi}{Greedy in the limit with infinite exploration (GLIE)}{GLIE}
 A learning policy $\pi$ is called GLIE if it satisfies the following two properties:
 \begin{itemize}
@@ -570,7 +508,7 @@ A learning policy $\pi$ is called GLIE if it satisfies the following two propert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% GlIE Monte-Carlo Control %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Glie monte carlo control}
+\frame{\frametitle{GLIE Monte Carlo control}
 \begin{theo}{Optimal decision using MC-control with $\varepsilon$-greedy}{GLIE_MC}
 MC-based control using $\varepsilon$-greedy exploration is GLIE, if $\varepsilon$ is decreased at rate
 \begin{equation}
@@ -591,7 +529,7 @@ Remarks:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte carlo off-policy prediction} 
+\section{Monte Carlo off-policy prediction and control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -655,9 +593,8 @@ Requirement:
 What is the probability of observing a certain trajectory on random variables $U_k, X_{k+1}, U_{k+1}, \ldots, X_{T}$ starting in $X_{k}$ while following $\pi$?
 \begin{equation}
 \begin{split}
-	&\Pb{U_k, X_{k+1}, U_{k+1}, \ldots , X_{T}| X_{k}, \pi},\\
-	=&\pi(U_k|X_{k})p(X_{k+1}|X_{k}, U_{k})\pi(U_{k+1}|X_{k+1})\cdots\,,\\
-	=&\prod_k^{T-1} \pi(U_k|X_{k})p(X_{k+1}|X_{k}, U_{k}).
+	&\Pb{U_k, X_{k+1}, U_{k+1}, \ldots , X_{T}| X_{k}, \pi}=\pi(U_k|X_{k})p(X_{k+1}|X_{k}, U_{k})\pi(U_{k+1}|X_{k+1})\cdots\,,\\
+	&=\prod_k^{T-1} \pi(U_k|X_{k})p(X_{k+1}|X_{k}, U_{k}).
 	\end{split}
 \end{equation}
 Above $p$ is the state-transition probability (cf. \defref{defi:Markov_decision_process}).\pause
@@ -671,9 +608,9 @@ The relative probability of a trajectory under the target and behavior policy, t
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Importance Sampling for Monte Carlo Prediction (1)%%
+%% Importance Sampling for Monte Carlo Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{importance sampling for monte carlo prediction (1)}
+\frame{\frametitle{Importance sampling for Monte Carlo prediction}
 \begin{defi}{State-value estimation via Monte Carlo importance sampling}{MC_ord_import_sampl}
 Estimating the state value $v_\pi$ following a behavior policy $b$ using (ordinary) importance sampling (OIS) results in scaling and averaging the sampled returns by the importance sampling ratio per episode:
 \begin{equation}
@@ -683,7 +620,7 @@ Estimating the state value $v_\pi$ following a behavior policy $b$ using (ordina
 \end{defi}
 Notation remark:
 \begin{itemize}
-	\item $\mathcal{T}(x_k)$: set of all time steps in which the state $x_k$ is visited the first or each time per episode.
+	\item $\mathcal{T}(x_k)$: set of all time steps in which the state $x_k$ is visited.
 	\item $T(k)$: Termination of a specific episode starting from $k$.
 \end{itemize}\pause
 General remark:
@@ -693,130 +630,15 @@ General remark:
 \end{itemize}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Importance Sampling for Monte Carlo Prediction (2)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{importance sampling for monte carlo prediction (2)}
-\begin{defi}{Weighted importance sampling for MC-based prediction}{MC_weighted_import_sampl}
-Estimating the state value $v_\pi$ following a behavior policy $b$ using weighted importance sampling (WIS) results in a scaling and a weighted averaging of the sampled returns by the importance sampling ratio per episode:
-\begin{equation}
-\begin{split}
-	\hat{v}_\pi(x_k)= \begin{cases}\frac{\sum_{k\in\mathcal{T}(x_k)}\rho_{k:T(k)}g_k}{\sum_{k\in\mathcal{T}(x_k)}\rho_{k:T(k)}}, \quad &\mbox{if}\,\,\sum_{k\in\mathcal{T}(x_k)}\rho_{k:T(k)}\neq0 \\ 0, &\mbox{if}\,\,\sum_{k\in\mathcal{T}(x_k)}\rho_{k:T(k)} = 0\quad \end{cases}.
-\end{split}
-\label{eq:WIS_MC}
-\end{equation}
-\end{defi}\pause
-Comparison to OIS:
-\begin{itemize}
-	\item Weighting introduces bias (which reduces to zero in the limit).\pause
-	\item But: weighting limits variance while the OIS's variance is unbounded.
-	\begin{itemize}
-		\item Largest weight per return sample for WIS is one, while OIS's weights are unbounded. 
-	\end{itemize}\pause
-	\item Conclusion: WIS delivers 'better' estimates for few samples and, therefore, is often preferred in practice.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Importance Sampling Example: Blackjack%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{importance sampling example: blackjack}
-\begin{itemize}
-	\item Behavior policy: stick or hit at equal probability.
-	\item Target policy: stick if player has sum of 20 or 21 (cf. \figref{fig:Blackjack_MC}).
-	\item True state value of target policy is $v=-0.2773$.\pause
-\end{itemize}
-\begin{figure}		
-	\includegraphics[width=8cm]{fig/lec04/Importance_Sampling_Blackjack.pdf}
-	\caption{Off-policy state-value estimation of single state $\{$dealer's sum = 2, player's sum = 13 and player has usable ace$\}$ (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-	\label{fig:Importance_Sampling_Blackjack}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Weighted Importance Sampling: Incremental Implementation %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{wis: incremental implementation}
-\begin{itemize}
-	\item For OIS, \eqref{eq:OIS} can be directly transformed into an incremental implementation following \eqref{eq:inc_impl_MC_pred}.\pause
-	\item For WIS an incremental implementation is also highly desirable to save memory and computational resources.\pause
-	\item Rewrite WIS \eqref{eq:WIS_MC} for a sequence of returns $g_1, g_2,\ldots$:
-	\begin{equation}
-		\hat{v}_i(x) = \frac{\sum_{k=1}^{i-1} w_k g_k}{\sum_{k=1}^{i-1} w_k} \quad \mbox{with} \quad w_k=\rho_{k:T(k)} .
-	\end{equation}\pause
-	\item The WIS recursive/incremental update rule is then:
-	\begin{align}
-	\hat{v}_{i+1}(x) &= \hat{v}_{i}(x) + \frac{w_i}{c_i}\left(g_i - \hat{v}_{i}(x)\right),\quad i \geq 1 \\
-	c_{i+1} &= c_i + w_{i+1} \quad \mbox{with} \quad c_0=0.
-	\end{align}
-	\item Above, $c_i$ is the cumulative sum of weights over all considered state visits.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Algorithmic Implementation: MC-Based Off-Policy Prediction Using WIS %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Mc-based off-policy prediction using wis}
-\setlength{\algomargin}{0.5em}
-\begin{algorithm}[H]
-\footnotesize
-\SetKwInput{Input}{input} 
-\SetKwInput{Output}{output}
-\SetKwInput{Init}{init}
-\SetKwInput{Param}{parameter}
-\Input{a target policy $\pi$ to be evaluated}
-\Init{$\hat{q}(x,u)$ arbitrarily $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$\newline 
-$c(x,u)\leftarrow 0$ cumulative sum of WIS weights $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
- \For{$j=1,\ldots,J$ episodes}{
-	Choose an arbitrary behavior policy $b$ with coverage of $\pi$\;
-	Generate an episode following $b$: $x_{0}, u_{0}, r_{1},\ldots,x_{T_j}, u_{T_j}, r_{T_{j+1}}$ \;
-	Set $g \leftarrow 0$\;
-	Set $w \leftarrow 1$\;
-	\For{$k=T_i-1, T_i-2, T_i-3,\ldots, 0$ time steps while $w \neq 0$}{
-				$g \leftarrow \gamma g + r_{k+1}$\;
-				$c(x_k,u_k) \leftarrow c(x_k,u_k) + w$\;
-				$\hat{q}(x_k,u_k) \leftarrow \hat{q}(x_k,u_k)+\frac{w}{c(x_k,u_k)}\left(g - \hat{q}(x_k,u_k)\right)$\;
-				$w \leftarrow w\frac{\pi(u_k|x_{k})}{b(u_k|x_{k})}$\;				
-	}
-}
-\caption{MC-based off-policy prediction using WIS}
-\label{algo:MC_off_policy_pred_WIS}
-\end{algorithm}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MC-Based Off-Policy Prediction Using WIS: Forest Tree MDP %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based off-policy prediction: forest tree mdp}
-\begin{itemize}
-	\item Behavior policy $b$: '\textit{fifty-fifty}'
-	\item Target policy $\pi$: optimal policy from \figref{fig:Forest_Markov_Decision_Process_Optimal_Action_Value}
-\end{itemize}
-\vspace{-0.5cm}
-\begin{figure}	
-	\hspace*{-1.0cm}
-	\includegraphics{fig/lec04/Forest_Tree_MC_Off_Policy_Prediction_WIS.pdf}
-	\caption{Action-value estimates of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC-based off-policy prediction with WIS over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent runs.}
-	\label{fig:Forest_Tree_MC_Off_Policy_Prediction_WIS}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte carlo off-policy control} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Off-Policy Monte Carlo Control: Introduction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{off-policy monte carlo control: introduction}
+\frame{\frametitle{Off-policy Monte Carlo control}
 Just put everything together:
 \begin{itemize}
 	\item MC-based control utilizing GPI (cf. \figref{fig:GPI_MC}),
-	\item Off-policy learning based on \algoref{algo:MC_off_policy_pred_WIS}.
+	\item Off-policy learning based on importance sampling (or variants like weighted importance sampling, cf. Barto/Sutton book chapter 5.5).
 \end{itemize}
 \vspace{1cm}
 Requirement for off-policy MC-based control:
@@ -827,90 +649,10 @@ Requirement for off-policy MC-based control:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Algorithmic Implementation: MC-Based Off-Policy Control Using WIS %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Mc-based off-policy control using wis}
-\vspace{-0.175cm}
-\setlength{\algomargin}{0.5em}
-\begin{algorithm}[H]
-\footnotesize
-\SetKwInput{Input}{input} 
-\SetKwInput{Output}{output}
-\SetKwInput{Init}{init}
-\SetKwInput{Param}{parameter}
-\Init{$\hat{q}(x,u)$ arbitrarily $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$\newline 
-$c(x,u)\leftarrow 0$ cumulative sum of WIS weights $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$\newline
-$\pi(x) \leftarrow \argmax_{u} \hat{q}(x,u)$ (with ties broken consistently)}
- \For{$j=1,\ldots,J$ episodes}{
-	Choose an arbitrary soft policy $b$\;
-	Generate an episode following $b$: $x_{0}, u_{0}, r_{1},\ldots,x_{T_j}, u_{T_j}, r_{T_{j+1}}$ \;
-	Set $g \leftarrow 0$\;
-	Set $w \leftarrow 1$\;
-	\For{$k=T_i-1, T_i-2, T_i-3,\ldots, 0$ time steps}{
-				$g \leftarrow \gamma g + r_{k+1}$\;
-				$c(x_k,u_k) \leftarrow c(x_k,u_k) + w$\;
-				$\hat{q}(x_k,u_k) \leftarrow \hat{q}(x_k,u_k)+\frac{w}{c(x_k,u_k)}\left(g - \hat{q}(x_k,u_k)\right)$\;
-				$\pi(x_k) \leftarrow \argmax_{u_k} \hat{q}(x_k,u_k)$ (with ties broken consistently)\;
-				\If{$u_k\neq\pi(x_k)$}{
-						break/exit inner loop\;
-				}
-				$w \leftarrow w\frac{1}{b(u_k|x_{k})}$\;
-	}
-}
-\caption{MC-based off-policy control using WIS}
-\label{algo:MC_off_policy_control_WIS}
-\end{algorithm}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MC-Based Off-Policy Control Using WIS: Forest Tree MDP %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{mc-based off-policy control: forest tree mdp}
-\begin{itemize}
-	\item Behavior policy $b$: '\textit{fifty-fifty}'
-	\item Initial target policy $\pi$: '\textit{fifty-fifty}'
-\end{itemize}
-\vspace{-0.5cm}
-\begin{figure}	
-	\hspace*{-1.0cm}
-	\includegraphics{fig/lec04/Forest_Tree_MC_Off_Policy_Control_WIS.pdf}
-	\caption{Action-value estimates and policy trends of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC-based off-policy control with WIS over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent runs.}
-	\label{fig:Forest_Tree_MC_Off_Policy_Control_WIS}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Remark on MC-Based Off-Policy Control with WIS %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Remark on mc-based off-policy control with wis}
-Potential problems with MC-based off-policy control:
-\begin{itemize}
-	\item Learns only 'from tails' of episodes if the remaining actions generated by $b$ are greedy with respect to $\pi$. 
-	\begin{itemize}
-		\item See last and inner-most \textit{if} query in \algoref{algo:MC_off_policy_control_WIS}.
-		\item Hence, a lot of samples generated by $b$ remain unused for training $\pi$.
-	\end{itemize}\pause
-	\item Slows down training.
-	\item Adds uncertainty to the training process. 
-\end{itemize}
-\vspace{0.5cm}\pause
-Possible improvements/extensions:
-\begin{enumerate}
-	\item \hl{Per-decision importance sampling}
-	\item \hl{Discounting-aware importance sampling} (if discount factor $\gamma<1$)
-\end{enumerate}
-\begin{itemize}
-	\item Introduce modified value estimators for importance sampling.
-	\item Main goal: decrease variance of the learning process.
-	\item For details see chapter 5.8 \& 5.9 of R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018 .
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{summary: what you've learned today}
+\frametitle{Summary: what you've learned today}
 \begin{itemize}
 	\item MC methods allow model-free learning of value functions and optimal policies from experience in the form of sampled episodes.
 	\item Using deep back-ups over full episodes, MC is largely based on averaging returns. \pause
