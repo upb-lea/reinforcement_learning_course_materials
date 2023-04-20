@@ -21,7 +21,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video](https://www.youtube.com/watch?v=ywn81iGQISE)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture02.pdf) 
 03. Dynamic Programming
-    * [Lecture video](https://www.youtube.com/watch?v=RPHaH0c6k-I&feature=youtu.be)
+    * [Lecture video](https://www.youtube.com/watch?v=vjIiYdidFPY)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture03.pdf) 
 04. Monte Carlo Methods
     * [Lecture video](https://www.youtube.com/watch?v=YsAm3w2ev0g&feature=youtu.be)
