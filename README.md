@@ -70,7 +70,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Tutorial template](../master/exercises/templates/ex01)
     * [Tutorial solution](../master/exercises/solutions/ex01) 
 02. Manually Solving Basic Markov Chain, Reward and Decision Problems
-    * [Tutorial video](https://www.youtube.com/watch?v=3PPIHd3lO4k)
+    * [Tutorial video](https://www.youtube.com/watch?v=d38-TmkEZxQ)
     * [Tutorial template](../master/exercises/templates/ex02)
     * [Tutorial solution](../master/exercises/solutions/ex02) 
 03. The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem)
@@ -78,7 +78,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=GlL1d4Ivo_g&t=880s)
+    * [Tutorial video](https://www.youtube.com/watch?v=GlL1d4Ivo_g)
     * [Tutorial template](../master/exercises/templates/ex04)
     * [Tutorial solution](../master/exercises/solutions/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
@@ -98,7 +98,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Tutorial template](../master/exercises/templates/ex08)
     * [Tutorial solution](../master/exercises/solutions/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
-    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk&t=2162s)
+    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk)
     * [Tutorial template](../master/exercises/templates/ex09)
     * [Tutorial solution](../master/exercises/solutions/ex09) 
 10. Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration
