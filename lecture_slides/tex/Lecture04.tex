@@ -12,7 +12,7 @@
 %% Monte Carlo Methods vs. Dynamic Programming %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Monte Carlo methods vs. dynamic programming}
-Dynamic Programming:
+Dynamic programming:
 \begin{itemize}
 	\item \hl{Model-based} prediction and control 
 	\item Planning inside \hl{known MDPs}
@@ -22,8 +22,8 @@ Dynamic Programming:
 Monte Carlo methods:
 \begin{itemize}
 	\item \hl{Model-free} prediction and control
-	\item Estimating value functions and optimize policies in \hl{unknown MDPs}
-	\item But: still assuming finite MDP problems (or problems close to that)
+	\item Estimating value functions and optimize policies in \hl{unknown MDPs} \pause
+	\item But: still assuming finite MDP problems (or problems close to that) \pause
 	\item In general: broad class of computational algorithms relying on \hl{repeated random sampling} to obtain numerical results
 \end{itemize}
 }
@@ -102,7 +102,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 					$\hat{v}(x_k)\leftarrow \mbox{average}(\,l(x_k)\,)$\;}
 		}
 	}
-\caption{First-visit MC state-value prediction}
+\caption{MC state-value prediction (first visit)}
 \label{algo:MC_state_prediction_first_visit}
 \end{algorithm}
 }
@@ -118,8 +118,8 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 \end{itemize}
 \begin{equation}
 	\begin{split}
-		\mu_j &= \frac{1}{j}\sum_{i=1}^j g_i= \frac{1}{j}\left[g_j + \sum_{i=1}^{j-1} g_i\right]\\
-					&= \frac{1}{j}\left[g_j + (j-1) \mu_{j-1}\right] =\mu_{j-1} + \frac{1}{j}\left[g_j-\mu_{j-1}\right].
+		\mu_J &= \frac{1}{J}\sum_{i=1}^J g_i= \frac{1}{J}\left[g_J + \sum_{i=1}^{J-1} g_i\right]\\
+					&= \frac{1}{J}\left[g_J + (J-1) \mu_{J-1}\right] =\mu_{J-1} + \frac{1}{J}\left[g_J-\mu_{J-1}\right].
 	\end{split}
 	\label{eq:inc_impl_MC_pred}
 \end{equation} \pause
@@ -127,7 +127,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 	\item \hl{If a given decision problem is non-stationary}, using a forgetting factor $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$ allows for dynamic adaption: 
 \end{itemize}
 \begin{equation}
-	\mu_j = \mu_{j-1} + \alpha\left[g_j-\mu_{j-1}\right] .
+	\mu_J = \mu_{J-1} + \alpha\left[g_J-\mu_{J-1}\right] .
 	\label{eq:inc_impl_MC_pred_non_stat}
 \end{equation}
 }
@@ -138,13 +138,13 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 \frame{\frametitle{Statistical properties of MC-based prediction (1)}
 \onslide<1->{First-time visit MC:
 \begin{itemize}
-	\item Each return sample $g_j$ is independent from the others since they were drawn from separate episodes.   
+	\item Each return sample $g_J$ is independent from the others since they were drawn from separate episodes.  
 	\item One receives \hl{i.i.d. data} to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is bias-free}.
 	\item The estimate's variance $\Var{\hat{v}_{\pi}}$ drops with $1/n$ ($n$: available samples). 
 \end{itemize}}
 \onslide<2->{Every-time visit MC:
 \begin{itemize}
-	\item Each return sample $g_j$ is not independent from the others since they might be obtained from same episodes.   
+	\item Each return sample $g_J$ is not independent from the others since they might be obtained from same episodes.   
 	\item One receives \hl{non-i.i.d.} data to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is biased} for any $n<\infty$.
 	\item Only in the limit $n\rightarrow \infty$ one receives $\left(v_{\pi}(x)-\E{\hat{v}_{\pi}(x)}\right) \rightarrow 0$.
 \end{itemize}}
@@ -186,8 +186,7 @@ Let's reuse the forest tree MDP example with \textit{fifty-fifty policy} and dis
 plus disaster probability $\alpha=0.2$:
 \vspace{0.5cm}
 \begin{figure}		
-	%\hspace*{-1.5cm}
-	\includegraphics[width=9cm]{fig/lec04/Forest_Markov_Decision_Process_State_Value.pdf}
+	\includegraphics[height=0.5\textheight]{fig/lec04/Forest_Markov_Decision_Process_State_Value.pdf}
 	\caption{Forest MDP with fifty-fifty-policy including state values}
 \end{figure}
 }
@@ -315,7 +314,7 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 				}
 	}
 }
-\caption{MC-based control using exploring starts (first-visit)}
+\caption{MC-based control using exploring starts (first visit)}
 \label{algo:MC_ES}
 \end{algorithm}
 }
@@ -524,7 +523,7 @@ follows.
 Remarks:
 \begin{itemize}
 	\item Limited feasibility: infinite number of episodes required.
-	\item $\varepsilon$-greedy is an undirected exploration strategy. Can that be the most efficient way of learning?
+	\item $\varepsilon$-greedy is an undirected and unmonitored random exploration strategy. Can that be the most efficient way of learning?
 \end{itemize}
 }
 
@@ -549,13 +548,13 @@ Idea off-policy learning:
 \begin{itemize}
 	\item Use two separated policies:
 	\begin{itemize}
-		\item \hl{Behavior policy} $b(u|x)$: Explores in order to generate experience.
-		\item \hl{Target policy} $\pi(u|x)$: Learns from that experience to become the optimal policy.
+		\item \hl{Behavior policy} $b(u|x)$: explores in order to generate experience.
+		\item \hl{Target policy} $\pi(u|x)$: learns from that experience to become the optimal policy.
 	\end{itemize}\pause
 	\item Use cases:
 	\begin{itemize}
-		\item Learn from observing humans or other agents/controllers.
-		\item Re-use experience generated from old policies ($\pi_0,\pi_1,\ldots$).
+		\item Learn from observing humans or other agents/controllers. \pause
+		\item Re-use experience generated from old policies ($\pi_0,\pi_1,\ldots$). \pause
 		\item Learn about multiple policies while following one policy.
 	\end{itemize}
 \end{itemize}
@@ -590,7 +589,7 @@ Requirement:
 %% Importance Sampling %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Importance sampling}
-What is the probability of observing a certain trajectory on random variables $U_k, X_{k+1}, U_{k+1}, \ldots, X_{T}$ starting in $X_{k}$ while following $\pi$?
+Probability of observing a certain trajectory on random variables $U_k, X_{k+1}, U_{k+1}, \ldots, X_{T}$ starting in $X_{k}$ while following $\pi$:
 \begin{equation}
 \begin{split}
 	&\Pb{U_k, X_{k+1}, U_{k+1}, \ldots , X_{T}| X_{k}, \pi}=\pi(U_k|X_{k})p(X_{k+1}|X_{k}, U_{k})\pi(U_{k+1}|X_{k+1})\cdots\,,\\
@@ -640,7 +639,7 @@ Just put everything together:
 	\item MC-based control utilizing GPI (cf. \figref{fig:GPI_MC}),
 	\item Off-policy learning based on importance sampling (or variants like weighted importance sampling, cf. Barto/Sutton book chapter 5.5).
 \end{itemize}
-\vspace{1cm}
+\vspace{1cm} \pause
 Requirement for off-policy MC-based control:
 \begin{itemize}
 	\item \hl{Coverage}: behavior policy $b$  has nonzero probability of selecting actions that might be taken by the target policy $\pi$.
