@@ -64,10 +64,11 @@ class RaceTrackEnv:
                 2-tuple (a_y, a_x) in {[-1, 0, 1], [-1, 0, 1]}.
         
         Returns:
-            4-tuple: (new_state, reward, done, info)
+            4-tuple: (new_state, reward, terminated, truncated, info)
                 new_state: the new state resulting from taken action
                 reward: The reward obtained from taken action
-                done: Bool. Whether we are in a terminal state.
+                terminated: Bool. Whether we are in a terminal state.
+                truncated: Bool. Whether we have to reset, but not finished the race track.
                 Info: Dict. Arbitrary information.
                 
         """
@@ -76,10 +77,11 @@ class RaceTrackEnv:
             action = self.action_to_tuple(action)
         
         reward = -1.0
-        done = False
+        terminated = False
+        truncated = False
         if self.is_terminal_state():
             reward = 0
-            done = True
+            terminated = True
         else:
             # update velocity
             self.velocity += np.array(action, dtype=np.int8)
@@ -105,17 +107,18 @@ class RaceTrackEnv:
                 if self.lbl2int['W'] in projected_steps:
                     if projected_steps.index(self.lbl2int['+']) < projected_steps.index(self.lbl2int['W']):
                         # finished and hit grass afterwards
-                        done = True
+                        terminated = True
                 else:
                     # clean finish
-                    done = True
+                    terminated = True
             # hits grass?
             elif self.lbl2int['W'] in projected_steps:
-                s = self.reset()
+                truncated = True
+                s = self.get_state()
             else:
                 self.position += self.velocity
                 s = self.get_state()
-        return s, reward, done, {}
+        return s, reward, terminated, truncated, {}
         ### END SOLUTION
 
     def get_state(self):
