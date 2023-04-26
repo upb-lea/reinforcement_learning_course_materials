@@ -74,7 +74,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Tutorial template](../master/exercises/templates/ex02)
     * [Tutorial solution](../master/exercises/solutions/ex02) 
 03. The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem)
-    * [Tutorial video](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be) (only 2022 edition available due to technical outage)
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
