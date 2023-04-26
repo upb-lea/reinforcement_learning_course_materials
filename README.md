@@ -131,7 +131,7 @@ The lecture notes are inspired by
 * [David Silver, UCL Course on Reinforcement Learning, 2015](https://www.davidsilver.uk/teaching/)
 
 The tutorials are partly using pre-packed environments from
-* [OpenAI Gym](https://gym.openai.com/)
+* [Gymnasium](https://gymnasium.farama.org/) (maintained branch of OpenAI's Gym)
 
 # Citation
 See "Cite this repository" on top
