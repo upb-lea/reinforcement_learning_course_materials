@@ -65,6 +65,11 @@ The previous versions are all archived as separate releases and thus still avail
 
 
 # Exercise Content
+All exercises are based on Python 3.9 and site-packages according to the requirements.txt:
+```
+>>> pip install -r requirements.txt
+```
+
 01. Basics of Python for Scientific Computing 
     * [Tutorial video](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be) (only 2022 edition available due to technical outage)
     * [Tutorial template](../master/exercises/templates/ex01)
