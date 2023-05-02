@@ -8,7 +8,7 @@
 %% Temporal-Difference Learning and the Previous Methods %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Temporal-difference learning and the previous methods}
-Temporal-difference (TD) learning combines the previous ideas introduced in DP and MC:
+\hl{Temporal-difference (TD) learning} combines the previous ideas introduced in DP and MC:
 \begin{itemize}
 	\item From Monte Carlo (MC) methods: Learns directly from experience.
 	\item From dynamic programming (DP): Updates estimates based on other learned estimates (bootstrap).
@@ -17,8 +17,8 @@ Temporal-difference (TD) learning combines the previous ideas introduced in DP a
 \vspace{1cm}
 Hence, TD characteristics are:
 \begin{itemize}
-	\item Allows model-free prediction and control in unknown MDPs.
-	\item Updates policy evaluation and improvement in an online fashion (i.e., not per episode) by bootstrapping. 
+	\item Allows model-free prediction and control in unknown MDPs. \pause
+	\item Updates policy evaluation and improvement in an online fashion (i.e., not per episode) by bootstrapping. \pause
 	\item Still assumes  finite MDP problems (or problems close to that).
 \end{itemize}
 }
@@ -141,7 +141,7 @@ The \hl{TD error} is:
 \onslide<5->{
 \begin{itemize}
 	\item MC error is the discounted sum of TD errors in this simplified case.
-	\item If $\hat{v}(x)$ is updated during one episode (as expected in TD(0)), the above identity only holds approximately. 
+	\item If $\hat{v}(x)$ is updated during an episode (as expected in TD(0)), the above identity only holds approximately. 
 \end{itemize}}
 }
 
@@ -555,7 +555,6 @@ Requirement for $Q$-learning control:
 \end{algorithm}
 \vspace{0.5cm}
 \begin{itemize}
-	\item Even simpler compared to SARSA implementation in \algoref{algo:Sarsa}.
 	\item As discussed with MC-based off-policy control: avoidance of the exploration-optimality trade-off for on-policy methods.  
 	\item No importance sampling required as for off-policy MC-based control.
 \end{itemize}
@@ -620,8 +619,8 @@ This can lead to a significant \hl{positive bias}:
 Small example:
 \begin{itemize}
 	\item Consider a single state $x$ with multiple possible actions $u$.
-	\item The true action values are all $q(x,u)=0$ .
-	\item The sampled estimates $\hat{q}(x,u)$ are uncertain, i.e., randomly distributed. Some samples are above and below zero.
+	\item The true action values are all $q(x,u)=0$ . \pause
+	\item The sampled estimates $\hat{q}(x,u)$ are uncertain, i.e., randomly distributed. Some samples are above and below zero. \pause
 	\item Consequence: The maximum of the estimate is positive.
 \end{itemize}
 }
