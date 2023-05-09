@@ -90,7 +90,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial video](https://www.youtube.com/watch?v=eTFugChiOaE&feature=youtu.be)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
-06. Stabilizing the Inverted Pendulum by Tabular n-Step Methods
+06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
     * [Tutorial video](https://www.youtube.com/watch?v=4ACrTBFRw50)
     * [Tutorial template](../master/exercises/templates/ex06)
     * [Tutorial solution](../master/exercises/solutions/ex06) 
