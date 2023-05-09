@@ -52,7 +52,6 @@
 \begin{figure}
 	\includegraphics[width=2.5cm]{fig/lec11/Average_Bootstrap_Example.pdf}
 	\caption{Exemplary averaging of $n$-step retuns}
-	\label{fig:Average_Bootstrap_Example}
 \end{figure}
 \end{minipage}
 \end{column}
@@ -84,7 +83,6 @@
 \begin{figure}
 	\includegraphics[width=4.2cm]{fig/lec11/Lambda_Return_Backup.pdf}
 	\caption{Backup diagram for $\lambda$-returns}
-	\label{fig:Lambda_Return_Backup}
 \end{figure}
 \end{minipage}
 \end{column}
@@ -95,7 +93,6 @@
 	\item \hl{$\lambda$-return}: is a compound update with exponentially decaying weights:
 	\begin{equation}
 		g_k^\lambda = (1-\lambda)\sum_{n=1}^{\infty}\lambda^{(n-1)}g_{k:k+n}\,.
-		\label{eq:lambda_return}
 	\end{equation}
 	\item Parameter is $\lambda\in\left\{\mathbb{R}|0\leq \lambda \leq 1\right\}$.
 	\item Geometric series of weights is one:
@@ -116,7 +113,6 @@
 	\item Rewrite $\lambda$-return for episodic tasks with termination at $k=T$:
 		\begin{equation}
 		g_k^\lambda = (1-\lambda)\sum_{n=1}^{T-k-1}\lambda^{(n-1)}g_{k:k+n} + \lambda^{T-k-1}g_k\,.
-		\label{eq:lambda_return_episodic}
 	\end{equation}
 	\item Return $g_k$ after termination is weighted with residual weight $\lambda^{T-k-1}$.}
 	\onslide<2->{\item Above, \eqref{eq:lambda_return_episodic} includes two special cases:
@@ -128,7 +124,6 @@
 \onslide<1->{\begin{figure}
 \includegraphics[height=3cm]{fig/lec11/Lambda_Weighting_Series.pdf}
 \caption{Weighting overview in $\lambda$-return series (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-\label{fig:Lambda_Weighting_Series}
 \end{figure}}
 }
 
@@ -162,7 +157,6 @@
 	\item Intuitive approximation: truncate $\lambda$-return after $h$ steps 
 	\begin{equation}
 		g_{k:h}^\lambda = (1-\lambda)\sum_{n=1}^{h-k-1}\lambda^{(n-1)}g_{k:k+n} + \lambda^{h-k-1}g_{k:h}\,.
-		\label{eq:lambda_return_trunc}
 	\end{equation}
 	\item Horizon $h$ divides continuing tasks in rolling episodes.\pause
 	\item The truncated $\lambda$-return \eqref{eq:lambda_return_trunc} can be used analogously to $n$-step returns in semi-gradient TD updates (cf. \algoref{algo:Semi_gradient_TD_nstep}).
@@ -181,7 +175,6 @@
 \onslide<1->{\begin{figure}
 \includegraphics[height=2.5cm]{fig/lec11/Forward_View.pdf}
 \caption{The forward view: an update of the current state value is evaluated by future transitions (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-\label{fig:Forward_View}
 \end{figure}}
 }
 
@@ -206,7 +199,6 @@
 \onslide<1->{\begin{figure}
 \includegraphics[height=3.5cm]{fig/lec11/Backward_View.pdf}
 \caption{The backward view: an update of the current state value is evaluated based on a trace of past transitions (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-\label{fig:Backward_View}
 \end{figure}}
 }
 
@@ -222,7 +214,6 @@ Why is the exponential weighting particular suitable for TD($\lambda$)?\pause
 Let $x_k$ be an arbitrary signal sampled at equally distributed time steps $k$. Then, the filtered signal $y_k$ with an exponential window function of past observations is
 \begin{equation}
 	y_k = \beta x_k + (1-\beta)y_{k-1}, \quad k> 0 \quad \mbox{and} \quad y_0=x_0
-	\label{eq:exp_smoothing_filter}
 \end{equation}
 with $\beta$ being the smoothing factor.  
 \end{block}\pause
@@ -243,7 +234,6 @@ With TD and function approximation
 	\bm{z}_{0}&=0,\\
 	\bm{z}_k &=\gamma\lambda\bm{z}_{k-1}+\nabla_{\bm{w}}\hat{v}(\bm{x}_k,\bm{w}_k).
 \end{split}	
-\label{eq:Elig_trace}
 \end{equation}
 	\item It tracks which components of $\bm{w}$ have contributed to recent state valuations. Here, \hl{$\lambda$} is also called the \hl{trace-decay parameter}.\pause
 \end{itemize}
@@ -583,7 +573,6 @@ The backward view approximation known as \hl{Sarsa($\lambda$)} is then:
 \begin{figure}
 \includegraphics[width=12cm]{fig/lec11/Traces_Sarsa_Gridworld.pdf}
 \caption{Sarsa variants after an arbitrary episode within a gridworld environment -- arrows indicate action-value change starting from initially zero estimates (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-\label{fig:Traces_Sarsa_Gridworld}
 \end{figure}
 }
 

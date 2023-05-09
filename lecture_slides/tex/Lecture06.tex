@@ -1,14 +1,14 @@
-\part{Lecture 06: \texorpdfstring{$n$-Step}{n-Step} Bootstrapping}
-\title[RL Lecture 06]{Lecture 06: \texorpdfstring{$n$-Step}{n-Step} Bootstrapping}  
+\part{Lecture 06: Multi-Step Bootstrapping}
+\title[RL Lecture 06]{Lecture 06: Multi-Step Bootstrapping}  
 \date{}  
 \frame{\titlepage} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lets Unify MC and One-Step TD Learning %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Lets unify mc and one-step td learning}
+\frame{\frametitle{Lets unify MC and TD learning}
 \begin{figure}		
-	\includegraphics[width=7cm]{fig/lec06/Compare_RL_Methods_Update.pdf}
+	\includegraphics[height=0.65\textheight]{fig/lec06/Compare_RL_Methods_Update.pdf}
 	\caption{MC and TD are the 'extreme options' in terms of the update's depth: what about intermediate solutions? (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:Compare_RL_Methods_Update_lec06}
 \end{figure}
@@ -30,7 +30,7 @@
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
 	\begin{figure}		
-	\includegraphics[height=6.25cm]{fig/lec06/Back_Up_n_Step_Methods.pdf}
+	\includegraphics[height=0.65\textheight]{fig/lec06/Back_Up_n_Step_Methods.pdf}
 	\caption{Different backup diagrams of $n$-step state-value prediction methods}
 	\label{fig:Back_Up_n_Step_Methods}
 \end{figure}
@@ -52,10 +52,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Formal Notation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{formal notation (1)}
+\frame{\frametitle{Formal notation (1)}
 Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:inc_impl_MC_pred_non_stat}:
 \begin{itemize}
-	\item Monte Carlo: Builds on the complete sampled return series
+	\item Monte Carlo: builds on the complete sampled return series
 	\begin{equation}
 		g_{k:T} = r_{k+1}+\gamma r_{k+2}+\gamma^2 r_{k+3}+\cdots+\gamma^{T-k-1}r_T .
 	\end{equation}
@@ -63,13 +63,13 @@ Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:i
 		\item $g_{k:T}$ denotes that all steps until termination at $T$ are considered to derive an estimate target adressing step $k$.
 	\end{itemize}\pause
 	\vspace{0.5cm}
-	\item TD(0): Utilizes a one-step bootstrapped return
+	\item TD(0): utilizes a one-step bootstrapped return
 	\begin{equation}
 		g_{k:k+1} = r_{k+1}+\gamma \hat{v}_{k}(x_{k+1}) .
 	\end{equation}
 	\begin{itemize}
 		\item For TD(0), $g_{k:k+1}$ highlights that only one future sampled reward step is considered before bootstrapping.
-		\item $\hat{v}_{k}$ is an estimate of $v_\pi$ at time step k.
+		\item $\hat{v}_{k}$ is an estimate of $v_\pi$ at time step $k$.
 	\end{itemize}
 \end{itemize}
 }
@@ -77,7 +77,7 @@ Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Formal Notation (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{formal notation (2)}
+\frame{\frametitle{Formal notation (2)}
 \begin{block}{$n$-step state-value prediction target}
 Now, the target is generalized to an arbitrary $n$-step target:
 \begin{equation}
@@ -125,7 +125,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step TD-Based Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: $n$-step td prediction}
+\frame{\frametitle{Algorithmic implementation: $n$-step TD prediction}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -133,8 +133,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 \SetKwInput{Output}{output}
 \SetKwInput{Init}{init}
 \SetKwInput{Param}{parameter}
-\Input{a policy $\pi$ to be evaluated}
-\Param{step size $\alpha\in(0,1]$, prediction steps $n\in\mathbb{Z}^+$}
+\Input{a policy $\pi$ to be evaluated, \quad \textbf{parameter:} step size $\alpha\in(0,1]$, prediction steps $n\in\mathbb{Z}^+$}
 \Init{$\hat{v}(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal}
  \For{$j=1,\ldots,J$ episodes}{
 		initialize and store $x_{0}$\;
@@ -160,9 +159,9 @@ The worst error of the expected $n$-step return is always less than or equal to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Convergence %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{example: 19 state random walk}
+\frame{\frametitle{Example: 19 state random walk}
 \begin{figure}		
-	\includegraphics[width=9cm]{fig/lec06/Random_Walk_19_States.pdf}
+	\includegraphics[height=0.1\textheight]{fig/lec06/Random_Walk_19_States.pdf}
 	\caption{Exemplary random walk Markov reward process (MRP)}
 	\label{fig:Random_Walk_19_States}
 \end{figure}
@@ -170,7 +169,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
 	\begin{figure}		
-	\includegraphics[height=4cm]{fig/lec06/n_Step_TD_Random_Walk.pdf}
+	\includegraphics[height=0.45\textheight]{fig/lec06/n_Step_TD_Random_Walk.pdf}
 	\caption{$n$-step TD performance (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:n_Step_TD_Random_Walk}
 \end{figure}
@@ -191,7 +190,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} Sarsa} 
+\section{\texorpdfstring{$n$-step}{n-Step} Control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -201,10 +200,10 @@ The worst error of the expected $n$-step return is always less than or equal to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer the $n$-step Approach to State-Action Values (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{transfer the $n$-step approach to state-action values (1)}
+\frame{\frametitle{Transfer the $n$-step approach to state-action values (1)}
 \begin{itemize}
-	\item For on-policy control by Sarsa action-value estimates are required. 
-	\item Recap the one-step action-value update as required for 'Sarsa(0)':
+	\item For on-policy control by SARSA action-value estimates are required. 
+	\item Recap the one-step action-value update as required for 'SARSA(0)':
 	\begin{equation}
 		\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[\underbrace{r_{k+1}+\gamma\hat{q}(x_{k+1}, u_{k+1})}_{\mbox{\footnotesize target }\normalsize g} - \hat{q}(x_k, u_k)\right] .
 	\end{equation}
@@ -227,16 +226,15 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer $n$-step Update to Action Values (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{transfer the $n$-step approach to state-action values (2)}
+\frame{\frametitle{Transfer the $n$-step approach to state-action values (2)}
 \begin{itemize}
-	\item For $n$-step \hl{expected Sarsa}, the update is similar but the state-action value estimate at step $k+n$ becomes the \hl{expected approximate value of $x$} under the target policy valid at time step $k$:
+	\item For $n$-step \hl{expected SARSA}, the update is similar but the state-action value estimate at step $k+n$ becomes the \hl{expected approximate value of $x$} under the target policy valid at time step $k$:
 		\begin{equation}
 		g_{k:k+n} = r_{k+1}+\gamma r_{k+2}+\cdots+\gamma^{n-1} r_{k+n}+\gamma^{n} \hl{\sum_u \pi(u|x)\hat{q}_k(x,u) }.
 		\end{equation}\pause
 \item Finally, the modified $n$-step targets can be directly integrated to the state-action value estimate update rule of Sarsa:
 \end{itemize}		
-\begin{block}{$n$-step Sarsa}
-\vspace{-0.4cm}
+\begin{block}{$n$-step SARSA}
 \begin{equation}
 	\hat{q}_{k+n}(x_k,u_k) = \hat{q}_{k+n-1}(x_k,u_k) + \alpha \left[g_{k:k+n} - \hat{q}_{k+n-1}(x_k, u_k)\right], \quad 0\leq k < T.
 \end{equation}
@@ -248,7 +246,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{$n$-step bootstrapping for state-action values}
 \begin{figure}		
-	\includegraphics[width=8cm]{fig/lec06/Back_Up_n_Step_Sarsa.pdf}
+	\includegraphics[height=0.75\textheight]{fig/lec06/Back_Up_n_Step_Sarsa.pdf}
 	\caption{Different backup diagrams of $n$-step state-action value update targets}
 	\label{fig:Back_Up_n_Step_Sarsa}
 \end{figure}
@@ -257,7 +255,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: $n$-step Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: $n$-step sarsa}
+\frame{\frametitle{Algorithmic implementation: $n$-step SARSA}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -286,7 +284,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 			}
 		}
 	}
-\caption{$n$-step Sarsa (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
+\caption{$n$-step SARSA (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
 \label{algo:n_step_Sarsa}
 \end{algorithm}
 }
@@ -296,20 +294,20 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Illustration with grid-world example}
 \begin{figure}		
-	\includegraphics[width=11cm]{fig/lec06/n_step_Sarsa_Grid_World_Example.pdf}
-	\caption{Executed updates (highlighted by arrows) for different $n$-step Sarsa implementations during an episode (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+	\includegraphics[height=0.35\textheight]{fig/lec06/n_step_Sarsa_Grid_World_Example.pdf}
+	\caption{Executed updates (highlighted by arrows) for different $n$-step SARSA implementations during an episode (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:n_step_Sarsa_Grid_World_Example}
 \end{figure}
 \begin{itemize}
-	\item For one-step Sarsa, one state-action value is updated.\pause
-	\item For ten-step Sarsa, ten state-action values are updated.
+	\item For one-step SARSA, one state-action value is updated.\pause
+	\item For ten-step SARSA, ten state-action values are updated.
 	\item In the latter case, much more is learned during one episode.\pause
 	\item Nevertheless, a trade-off between the resulting learning delay and the number of updated state-action values remains.
 \end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning with Importance Sampling} 
+\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -340,7 +338,7 @@ The relative probability of a trajectory under the target and behavior policy, t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer Importance Sampling to $n$-Step Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{transfer importance sampling to $n$-step updates}
+\frame{\frametitle{Transfer importance sampling to $n$-step updates}
 For a straightforward \hl{$n$-step off-policy TD-style update}, just weight the update by the importance sampling ratio:
 \begin{align}
 	\hat{v}_{k+n}(x_k) &= \hat{v}_{k+n-1}(x_k) + \alpha \hl{\rho_{k:k+n-1}}\left[g_{k:k+n} - \hat{v}_{k+n-1}(x_k)\right], \quad 0\leq k < T, \notag \\
@@ -349,7 +347,7 @@ For a straightforward \hl{$n$-step off-policy TD-style update}, just weight the 
 \begin{itemize}
 	\item $\rho_{k:k+n-1}$ is the relative probability under the two polices taking $n$ actions from $u_k$ to $u_{k+n}$.
 \end{itemize}\pause
-Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
+Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 \begin{equation}
 \begin{split}
 	\hat{q}_{k+n}(x_k,u_k) &= \hat{q}_{k+n-1}(x_k,u_k) \\&+ \alpha \hl{\rho_{k+1:k+n}}\left[g_{k:k+n} - \hat{q}_{k+n-1}(x_k, u_k)\right], \quad 0\leq k < T.
@@ -363,8 +361,8 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Off-Policy $n$-step TD Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{implementation: off-policy $n$-step td-based prediction}
-\vspace{-0.15cm}
+\frame{\frametitle{Implementation: off-policy $n$-step TD-based prediction}
+\vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -376,8 +374,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 \Param{step size $\alpha\in(0,1]$, prediction steps $n\in\mathbb{Z}^+$}
 \Init{$\hat{v}(x)\, \forall \, x\in\mathcal{X}$ arbitrary except $v_0(x)=0$ if $x$ is terminal}
  \For{$j=1,\ldots,J$ episodes}{
-		initialize and store $x_{0}$\;
-		$T\leftarrow\infty$\;
+		initialize and store $x_{0}$ and set $T\leftarrow\infty$\;
 		\Repeat( $k=0, 1, 2, \ldots$){$\tau=T-1$}{
 			\If{$k<T$}{
 				take action from $b(x_k)$, observe and store $x_{k+1}$ and $r_{k+1}$\;
@@ -400,7 +397,7 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Off-Policy $n$-step Sarsa %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: off-policy $n$-step sarsa}
+\frame{\frametitle{Algorithmic implementation: off-policy $n$-step SARSA}
 \setlength{\algomargin}{0.5em}
 \vspace{-0.15cm}
 \begin{algorithm}[H]
@@ -411,11 +408,9 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 \SetKwInput{Param}{parameter}
 \Input{an arbitrary behavior policy $b$ with $b(u|x)>0 \, \forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
 \Param{$\alpha\in(0,1]$, $n\in\mathbb{Z}^+$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
-\Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
-\Init{$\pi$ to be greedy with respect to $\hat{q}$ or to a given, fixed policy}
+\Init{$\hat{q}(x,u)$ $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$ and a policy $\pi$ to be greedy with respect to $\hat{q}$ or to a given, fixed policy}
  \For{$j=1,\ldots,J$ episodes}{
-		initialize $x_{0}$ and action $u_0 \sim b(\cdot | x_0)$ and store them\;
-		$T\leftarrow\infty$\;
+		initialize $x_{0}$ and action $u_0 \sim b(\cdot | x_0)$ and store them, set also $T\leftarrow\infty$\;
 		\Repeat( $k=0, 1, 2, \ldots$){$\tau=T-1$}{
 			\If{$k<T$}{
 				take action $u_k\sim b(\cdot | x_k)$, observe and store $x_{k+1}$ and $r_{k+1}$\;
@@ -431,344 +426,245 @@ Analog, an \hl{$n$-step off-policy Sarsa-style update} exists:
 			}
 		}
 	}
-\caption{Off-policy $n$-step Sarsa (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
+\caption{Off-policy $n$-step SARSA (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
 \label{algo:n_step_Sarsa_off_policy}
 \end{algorithm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning with Tree Backup Approach} 
+\section{TD(\texorpdfstring{$\lambda$}{Lambda})} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
-\tableofcontents[currentsection]
+\tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Off-Policy Learning Without Importance Sampling %%
+%%  Averaging of $n$-Step Returns %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{off-policy learning without importance sampling (1)}
+\frame{\frametitle{Averaging of $n$-step returns}
 \begin{columns}[t,onlytextwidth]
-\begin{column}{0.27\textwidth}
+\begin{column}{0.35\textwidth}
 \begin{minipage}[c]{\linewidth}
-	\begin{figure}		
-	\includegraphics[width=3cm]{fig/lec06/3_step_tree_backup.pdf}
-	\caption{3-step tree-backup diagram}
-	\label{fig:3_step_tree_backup}
+\begin{figure}
+	\includegraphics[height=0.65\textheight]{fig/lec06/Average_Bootstrap_Example.pdf}
+	\caption{Exemplary averaging of $n$-step returns}
+	\label{fig:Average_Bootstrap_Example}
 \end{figure}
 \end{minipage}
 \end{column}
 \hfill
-\begin{column}{0.72\textwidth}
+\begin{column}{0.65\textwidth}
 \begin{minipage}[c]{\linewidth}
-	\begin{itemize}
-		\item Importance sampling might be tedious and with high variance. Are there alternatives?
-		\item For one-step updates, $Q$-learning and expected Sarsa are available as off-policy learning alternatives (see prev. lecture).
-		\item Now, tree backups will do the same for $n$-step updates.
-	\end{itemize}\pause
-	\vspace{1cm}
-	General idea:
-	\begin{itemize}
-		\item Mix $n$-step sampling (middle path on the left) plus bootstrap updates along all not selected actions (dangling nodes hanging off the sides). 
-	\end{itemize}
+\begin{itemize}
+	\item Averaging different $n$-step returns is possible without introducing a bias (if sum of weights is one).
+	\item Example on the left:
+	\begin{equation*}
+		g = \frac{1}{3}g_{k:k+1} + \frac{2}{3}g_{k:k+3}
+	\end{equation*}
+	\item Horizontal line in backup diagram indicates the averaging.\pause 
+	\item Enables additional degree of freedom to reduce prediction error. \pause
+	\item Such updates are called \hl{compound updates}.
+\end{itemize}
 \end{minipage}
 \end{column}
 \end{columns}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Off-Policy Learning Without Importance Sampling (2) %%
+%% $\lambda$-Return (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{off-policy learning without importance sampling (2)}
+\frame{\frametitle{$\lambda$-return (1)}
 \begin{columns}[t,onlytextwidth]
-\begin{column}{0.27\textwidth}
+\begin{column}{0.45\textwidth}
 \begin{minipage}[c]{\linewidth}
-\addtocounter{figure}{-1}
-	\begin{figure}		
-	\includegraphics[width=3cm]{fig/lec06/3_step_tree_backup.pdf}
-	\caption{3-step tree-backup diagram}
+\begin{figure}
+	\includegraphics[height=0.7\textheight]{fig/lec06/Lambda_Return_Backup.pdf}
+	\caption{Backup diagram for $\lambda$-returns}
+	\label{fig:Lambda_Return_Backup}
 \end{figure}
 \end{minipage}
 \end{column}
 \hfill
-\begin{column}{0.72\textwidth}
-\begin{minipage}[c]{\linewidth}
-	\begin{itemize}
-		\item Updates come from the estimated action values of the leaf nodes.
-		\item Actions actually taken deliver weights for subsequent nodes proportional to the probability of occurring under $\pi$.
-	\end{itemize}\pause
-	\vspace{1cm}
-	\begin{itemize}
-		\item First-level actions contribute to value estimate with weight $\pi(u|x_{k+1})$ .\pause
-		\item Second-level actions contribute to value estimate with weight $\pi(u_{k+1}|x_{k+1})\pi(u'|x_{k+2})$ . \pause
-		\item Third-level actions contribute to value estimate with weight $\pi(u_{k+2}|x_{k+2})\pi(u_{k+1}|x_{k+1})\pi(u''|x_{k+3})$ . 
-	\end{itemize}
-\end{minipage}
-\end{column}
-\end{columns}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Derive Formal Tree-Backup Equations (1)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{derive formal tree-backup equations (1)}
-The 1-step tree-backup target is equal to that of expected Sarsa:
-		\begin{equation}
-		g_{k:k+1} = r_{k+1}+\gamma \sum_{u} \pi(u|x_{k+1}) \hat{q}_k(x_{k+1}, u), \quad k<T-1 .
-		\end{equation}\pause
-In the 2-step case, the probability of being in $x_{k+1}$ and applying the sampled action $u_{k+1}$ weights the second node (if $k<T-2$):
-\begin{equation}
-\begin{split}
-		g_{k:k+1} &= r_{k+1}+\gamma \sum_{u \neq u_{k+1}} \pi(u|x_{k+1}) \hat{q}_{k+1}(x_{k+1}, u)\\
-							&+\gamma \pi(u_{k+1}|x_{k+1})\left(r_{k+2}+\gamma \sum_{u} \pi(u|x_{k+2}) \hat{q}_{k+1}(x_{k+2}, u)\right)\\
-							&= r_{k+1}+\gamma \sum_{u \neq u_{k+1}} \pi(u|x_{k+1}) \hat{q}_{k+1}(x_{k+1}, u)+\gamma \pi(u_{k+1}|x_{k+1})g_{k+1:k+2} .
-\end{split}
-\end{equation}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Derive Formal Tree-Backup Equations (2)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{derive formal tree-backup equations (2)}
-Extending the previous scheme delivers a general definition of the tree-backup target in a recursive form:
-\begin{block}{$n$-step tree-backup return}
-For $k < T-n$ and $n \geq 2$ the $n$-step tree-backup return is:
-\begin{equation}
-	g_{k:k+n} = r_{k+1}+\gamma \sum_{u \neq u_{k+1}} \pi(u|x_{k+1}) \hat{q}_{k+1}(x_{k+1}, u)+\gamma \pi(u_{k+1}|x_{k+1})g_{k+1:k+n} .
-	\label{eq:target_tree_backup}
-\end{equation}
-\end{block}\pause
-\begin{itemize}
-	\item Due to recursive formulation, calculation starts at the bottom node.\pause
-	\item State-action value update is realized again via the $n$-step Sarsa rule (for $0\leq k < T$):
-\begin{equation*}
-	\hat{q}_{k+n}(x_k,u_k) = \hat{q}_{k+n-1}(x_k,u_k) + \alpha \left[g_{k:k+n} - \hat{q}_{k+n-1}(x_k, u_k)\right].
-\end{equation*}
-\end{itemize}
-}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Algorithmic Implementation: $n$-step Tree Backup %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{%\frametitle{algorithmic implementation: $n$-step tree backup}
-\setlength{\algomargin}{0.5em}
-\vspace{0.15cm}
-\begin{algorithm}[H]
-\footnotesize
-\SetKwInput{Input}{input} 
-\SetKwInput{Output}{output}
-\SetKwInput{Init}{init}
-\SetKwInput{Param}{parameter}
-\Param{$\alpha\in(0,1]$, $n\in\mathbb{Z}^+$}
-\Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
-\Init{$\pi$ to be greedy with respect to $\hat{q}$ or to a given, fixed policy}
- \For{$j=1,\ldots,J$ episodes}{
-		initialize $x_{0}$ and action $u_0 \sim \pi(\cdot | x_0)$ and store them\;
-		$T\leftarrow\infty$\;
-		\Repeat( $k=0, 1, 2, \ldots$){$\tau=T-1$}{
-			\If{$k<T$}{
-				take action $u_k$, observe and store $x_{k+1}$ and $r_{k+1}$\;
-				\leIf{$x_{k+1}$ is terminal}{$T\leftarrow k+1$}{store arbitrary $u_{k+1} \sim f(x_{k+1})$ (arbitrary mapping from a behavior policy)}
-			}
-			$\tau\leftarrow k-n+1$ ($\tau$ time index for estimate update)\;
-			\If{$\tau \geq 0$}{
-				\leIf{$k+1 \geq T$}{$g \leftarrow r_T$}{ $g\leftarrow r_{k+1} + \gamma \sum_{u} \pi(u|x_{k+1}) \hat{q}(x_{k+1}, u)$}
-				\For{$i=\min(k, T-1) : -1 : \tau + 1$}{ $g\leftarrow r_{i} +\gamma \sum_{u \neq u_{i}} \pi(u|x_{i})\hat{q}(x_{i}, u) + \gamma \pi(u_i|x_i) g $}
-				$\hat{q}(x_{\tau},u_{\tau}) \leftarrow \hat{q}(x_{\tau},u_{\tau}) + \alpha\left[g - \hat{q}(x_{\tau}, u_{\tau})\right]$\;
-				if $\pi\approx\pi^*$ is being learned, ensure $\pi(\cdot|x_\tau)$ is greedy w.r.t to $\hat{q}$\;
-			}
-		}
-	}
-\caption{$n$-step tree-backup (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
-\label{algo:n_step_Tree_Backup}
-\end{algorithm}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bringing everything together: \texorpdfstring{$n$-step $q(\sigma)$}{n-Step Q-Sigma}} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% $n$-Step Bootstrapping for State-Action Values %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Illustration of the idea compared to the previous methods}
-\begin{figure}		
-	\includegraphics[width=6cm]{fig/lec06/Back_Up_Q_sigma.pdf}
-	\caption{The backup diagrams of the previous of $n$-step state-action value updates plus the so-called \hl{$n$-step $Q(\sigma)$} method that unifies
-them all (exemplary 4-step case is depicted). \hl{The latter allows for choosing to sample a transition (i.e., $\sigma=1$) or not (i.e., $\sigma=0$) on a state-to-state basis}. A $\rho$ indicates  transitions on which importance sampling is required in the off-policy case.}
-	\label{fig:Back_Up_Q_sigma}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Remarks on $\sigma$ %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{remarks on $\sigma$}
-\begin{itemize}
-	\item In each time step $k$, consider a \hl{continuous mixing of sampling and expectation} by $\sigma_k\in [0,1]$. \pause
-	\item Special cases are included:
-	\begin{itemize}
-		\item $\sigma_k=0$: pure expectation,
-		\item $\sigma_k=1$: full sampling. \pause
-	\end{itemize}
-	\item $\sigma_k$ can be set individually for each state either manually or dynamically by superimposed optimization algorithms. \pause
-	\item In general, $\sigma_k$ is an important (hyper-)parameter which increases flexibility but also complexity. 
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% $n$-Step $Q(\sigma)$ Target%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-step $q(\sigma)$ target (1)}
-Firstly, we rewrite the $n$-step tree backup \eqref{eq:target_tree_backup}
-\begin{equation*}
-	g_{k:k+n} = r_{k+1}+\gamma \sum_{u \neq u_{k+1}} \pi(u|x_{k+1}) \hat{q}_{k+1}(x_{k+1}, u)+\gamma \pi(u_{k+1}|x_{k+1})g_{k+1:k+n}
-\end{equation*}
-using $\overline{v}_k(x_{k})=\sum_u \pi(u|x)\hat{q}_{k}(x_{k}, u)$ for the time horizon $h=k+n$:
-\begin{block}{Rewritten $n$-step tree backup target}
-\vspace{-0.4cm}
-\begin{equation}
-\begin{split}
-	g_{k:h} &= r_{k+1}+\gamma \overline{v}_{h-1}(x_{k+1})-\gamma \pi(u_{k+1}|x_{k+1})\hat{q}_{h-1}(x_{k+1}, u_{k+1}) \\&+ \gamma \pi(u_{k+1}|x_{k+1})g_{k+1:h}\\
-					&= r_{k+1}+\gamma\pi(u_{k+1}|x_{k+1})\left(g_{k+1:h}-\hat{q}_{h-1}(x_{k+1}, u_{k+1})\right)+\gamma \overline{v}_{h-1}(x_{k+1})
-\end{split}
-\label{eq:n_step_tree_backup_rewritten}
-\end{equation}
-\end{block}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% $n$-Step $Q(\sigma)$ Target%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{$n$-step $q(\sigma)$ target (2)}
-Similarly, a recursive formulation for the off-policy importance sampling  target \eqref{eq:rho_off_policy_TD} can be found:
-\begin{block}{Rewritten $n$-step importance sampling target}
-\vspace{-0.4cm}
-\begin{equation}
-	g_{k:h} = r_{k+1}+\gamma\rho_{k+1}\left(g_{k+1:h}-\hat{q}_{h-1}(x_{k+1}, u_{k+1})\right)+\gamma \overline{v}_{h-1}(x_{k+1}) .
-	\label{eq:n_step_sampling_Q_sigma}
-\end{equation}
-\end{block}\pause
-Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based target and \eqref{eq:n_step_sampling_Q_sigma} for the sample-based target, \hl{$Q(\sigma)$ is a linear weighting in terms of the probability $\pi(u_{k+1}|x_{k+1})$ and the importance sampling ratio $\rho_{k+1}$}:
-\begin{block}{$n$-step $Q(\sigma)$ target}
-\vspace{-0.4cm}
-\small
-\begin{equation}
-\begin{split}
-	g_{k:h} &= r_{k+1}\\&+\gamma\hl{\left(\sigma_{k+1}\rho_{k+1}+(1-\sigma_{k+1})\pi(u_{k+1}|x_{k+1})\right)}\left(g_{k+1:h}-\hat{q}_{h-1}(x_{k+1}, u_{k+1})\right)\\&+\gamma \overline{v}_{h-1}(x_{k+1}) .
-\end{split}
-	\label{eq:n_step_Q_sigma_target}
-\end{equation}
-\normalsize
-\end{block}  
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Algorithmic Implementation: $n$-step Tree Backup %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: $n$-step $q(\sigma)$}
-\setlength{\algomargin}{0.5em}
-\begin{algorithm}[H]
-\footnotesize
-\SetKwInput{Input}{input} 
-\SetKwInput{Output}{output}
-\SetKwInput{Init}{init}
-\SetKwInput{Param}{parameter}
-\Input{a behavior policy $b$ with $b(u|x)>0 \, \forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
-\Param{$\alpha\in(0,1]$, $n\in\mathbb{Z}^+$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$, $\sigma_k\in\left\{\mathbb{R}|0\leq\sigma_k \leq 1\right\}$}
-\Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
-\Init{$\pi$ to be $\varepsilon$-greedy with respect to $\hat{q}$ or to a given, fixed policy}
-\caption{$n$-step $Q(\sigma)$ (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
-\label{algo:n_step_Q_sigma}
-\end{algorithm}
-\vspace{1cm}
-\begin{itemize}
-	\item Due to the algorithm's length, the core code is on the next slide.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Algorithmic Implementation: $n$-step Tree Backup %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{%\frametitle{algorithmic implementation: $n$-step $q(\sigma)$ (2)}
-\setlength{\algomargin}{0.5em}
-\begin{algorithm}[H]
-\footnotesize
-\SetKwInput{Input}{input} 
-\SetKwInput{Output}{output}
-\SetKwInput{Init}{init}
-\SetKwInput{Param}{parameter}
- \For{$j=1,\ldots,J$ episodes}{
-		initialize $x_{0}$ and action $u_0 \sim b(\cdot | x_0)$ and store them\;
-		$T\leftarrow\infty$\;
-		\Repeat( $k=0, 1, 2, \ldots$){$\tau=T-1$}{
-			\If{$k<T$}{
-				take action $u_k$, observe and store $x_{k+1}$ and $r_{k+1}$\;
-				\lIf{$x_{k+1}$ is terminal}{$T\leftarrow k+1$}
-				\Else{
-					Choose and store $u_{k+1} \sim b(\cdot|x_{k+1})$\;
-					Select $\sigma_{k+1}$ and store $\rho_{k+1}=\pi(u_{k+1}|x_{k+1})/b(u_{k+1}|x_{k+1})$\;
-				}
-			}
-			$\tau\leftarrow k-n+1$ ($\tau$ time index for estimate update)\;
-			\If{$\tau \geq 0$}{
-					$g \leftarrow 0$\;
-					\For{$i=\min(k+1, T) : -1 : \tau + 1$}{
-						\lIf{i=T}{$g\leftarrow r_T$}
-						\Else{
-							$\overline{v}\leftarrow \sum_u \pi(u|x_i)\hat{q}(x_i,u)$\;
-							$g\leftarrow r_i + \gamma(\sigma_i\rho_i+(1-\sigma_i)\pi(u_i|x_i))(g-\hat{q}(x_i,u_i))+\gamma \overline{v}$\;
-						}
-				}
-				$\hat{q}(x_{\tau},u_{\tau}) \leftarrow \hat{q}(x_{\tau},u_{\tau}) + \alpha\left[g - \hat{q}(x_{\tau}, u_{\tau})\right]$\;
-				if $\pi\approx\pi^*$ is being learned, ensure $\pi(\cdot|x_\tau)$ is greedy w.r.t to $\hat{q}$\;
-			}
-		}
-}
-\end{algorithm}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Comparison on 19 State Random Walk Example %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Comparison on 19 state random walk example }
-\begin{columns}[t,onlytextwidth]
 \begin{column}{0.55\textwidth}
 \begin{minipage}[c]{\linewidth}
-\addtocounter{figure}{-1}
-	\begin{figure}		
-	\includegraphics[width=6.25cm]{fig/lec06/Random_Walk_Example_Q_Sigma.pdf}
-	\caption{19 state random walk results for different $n$-step algorithms (source:  {De Asis} et al., Multi-step Reinforcement Learning: A Unifying Algorithm, \href{https://arxiv.org/abs/1703.01327}{arXiv:1703.01327}, 2018)}
-	\label{fig:Random_Walk_Example_Q_Sigma}
-\end{figure}
-\end{minipage}
-\end{column}
-\hfill
-\begin{column}{0.44\textwidth}
-\begin{minipage}[c]{\linewidth}
-	\begin{itemize}
-		\item Based on random walk example from \figref{fig:n_Step_TD_Random_Walk}.
-		\item $n=3, \alpha=0.4$
-		\item Left plot shows RMS error in the value function.
-		\item The results are an average of 100 runs. \pause
-		\item Dynamic $Q(\sigma)$ starts like Sarsa (i.e., $\sigma = 1$) and shifts towards tree-backup (i.e., $\sigma\approx 0$) by $\sigma_{k+1}=0.95\sigma_k$. \pause
-		\item Again: only exemplary application-dependent result.
-	\end{itemize}
+\begin{itemize}
+	\item \hl{$\lambda$-return}: is a compound update with exponentially decaying weights:
+	\begin{equation}
+		g_k^\lambda = (1-\lambda)\sum_{n=1}^{\infty}\lambda^{(n-1)}g_{k:k+n}\,.
+		\label{eq:lambda_return}
+	\end{equation}
+	\item Parameter is $\lambda\in\left\{\mathbb{R}|0\leq \lambda \leq 1\right\}$.
+	\item Geometric series of weights is one:
+	\begin{equation*}
+		(1-\lambda)\sum_{n=1}^{\infty}\lambda^{(n-1)} = 1
+	\end{equation*}
+\end{itemize}
 \end{minipage}
 \end{column}
 \end{columns}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% $\lambda$-Return (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{$\lambda$-return (2)}
+\onslide<1->{\begin{itemize}
+	\item Rewrite $\lambda$-return for episodic tasks with termination at $k=T$:
+		\begin{equation}
+		g_k^\lambda = (1-\lambda)\sum_{n=1}^{T-k-1}\lambda^{(n-1)}g_{k:k+n} + \lambda^{T-k-1}g_k\,.
+		\label{eq:lambda_return_episodic}
+	\end{equation}
+	\item Return $g_k$ after termination is weighted with residual weight $\lambda^{T-k-1}$.}
+	\onslide<2->{\item Above, \eqref{eq:lambda_return_episodic} includes two special cases:
+	\begin{itemize}
+		\item If $\lambda=0$: becomes TD(0) update.
+		\item If $\lambda=1$: becomes MC update.
+	\end{itemize}}
+\end{itemize}
+\onslide<1->{\begin{figure}
+\includegraphics[height=0.275\textheight]{fig/lec06/Lambda_Weighting_Series.pdf}
+\caption{Weighting overview in $\lambda$-return series (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\label{fig:Lambda_Weighting_Series}
+\end{figure}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Truncated $\lambda$-Returns %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Truncated $\lambda$-returns for continuing tasks}
+\begin{itemize}
+	\item Using $\lambda$-returns as in \eqref{eq:lambda_return} is not feasible for \hl{continuing tasks}.
+	\item One would have to wait infinitely long to receive the trajectory.\pause
+	\item Intuitive approximation: \hl{truncate $\lambda$-return after $h$ steps} 
+	\begin{equation}
+		g_{k:h}^\lambda = (1-\lambda)\sum_{n=1}^{h-k-1}\lambda^{(n-1)}g_{k:k+n} + \lambda^{h-k-1}g_{k:h}\,.
+		\label{eq:lambda_return_trunc}
+	\end{equation}
+	\item Horizon $h$ divides continuing tasks in rolling episodes.
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Forward View %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Forward view}
+\onslide<1->{\begin{itemize}
+	\item Both, $n$-step and $\lambda$-return updates, are based on a forward view.  
+	\item We have to wait for future states and rewards to arrive before we are able to perform an update.}
+	\onslide<2->{\item Currently, $\lambda$-returns are only an alternative to $n$-step updates with different weighting options.}
+\end{itemize}
+\onslide<1->{\begin{figure}
+\includegraphics[height=0.25\textheight]{fig/lec06/Forward_View.pdf}
+\caption{The forward view: an update of the current state value is evaluated by future transitions (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\label{fig:Forward_View}
+\end{figure}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Backward View %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Backward view of TD($\lambda$)}
+\onslide<1->{General idea:
+\begin{itemize}
+	\item Use $\lambda$-weighted returns looking into the past. 
+	\item Implement this in a recursive fashion to save memory.}
+	\onslide<2->{\item Therefore, an \hl{eligibility trace $z_k$} denoting the importance of past events to the current state update is introduced. }
+\end{itemize}
+\onslide<1->{\begin{figure}
+\includegraphics[height=0.4\textheight]{fig/lec06/Backward_View.pdf}
+\caption{The backward view: an update of the current state value is evaluated based on a trace of past transitions (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\label{fig:Backward_View}
+\end{figure}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Eligibility Trace (1) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Eligibility trace (1)}
+Why is the exponential weighting particular suitable for TD($\lambda$)?\pause
+\begin{itemize}
+	\item Because we can easily implement this in a recursive fashion.\pause
+\end{itemize}
+\begin{block}{Exponential smoothing filter}
+Let $x_k$ be an arbitrary signal sampled at equally distributed time steps $k$. Then, the filtered signal $y_k$ with an exponential window function of past observations is
+\begin{equation}
+	y_k = \beta x_k + (1-\beta)y_{k-1}, \quad k> 0 \quad \mbox{and} \quad y_0=x_0
+	\label{eq:exp_smoothing_filter}
+\end{equation}
+with $\beta\in\{\mathbb{R}|0<\beta<1\}$ being the smoothing factor.  
+\end{block}\pause
+\begin{itemize}
+	\item Above is a simple recursive exponential smoothing filter which converges for $k>>1$.
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Eligibility Trace (2) %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Eligibility trace (2)}
+The \hl{eligibility trace $z_k(x)\in\mathbb{R}$} is defined and tracked for each state $x$ separately:
+	\begin{equation}
+\begin{split}
+	z_{0}(x)&=0,\\
+	z_k(x) &=\gamma\lambda z_{k-1}(x)+\begin{cases}0, \quad\mbox{if } x_k \neq x, \\ 1, \quad \mbox{if } x_k = x.\end{cases}
+\end{split}	
+\label{eq:Elig_trace}
+\end{equation}
+\begin{figure}
+\includegraphics[height=0.36\textheight]{fig/lec06/State_Visits_Eligibility_Trace.pdf}
+\caption{Simplified representation of updating an eligibility trace of an arbitrary state in a finite MDP}
+\label{fig:State_Visits_Eligibility_Trace}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TD($\lambda$) updates using eligibility traces %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{TD($\lambda$) updates using eligibility traces}
+Based on the eligibility trace definition from \eqref{eq:Elig_trace} we can modify our value estimates:
+\begin{block}{TD($\lambda$) state-value update}
+The TD($\lambda$) state-value update is:
+\begin{equation}
+		\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha \left[r_{k+1} + \gamma \hat{v}(x_{k+1})- \hat{v}(x_k)\right]z_k(x_k).
+\end{equation}
+\end{block}
+
+\begin{block}{TD($\lambda$) action-value update}
+	The TD($\lambda$) action-value update is:
+		\begin{equation}
+		\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[r_{k+1}+\gamma\hat{q}(x_{k+1}, u_{k+1}) - \hat{q}(x_k, u_k)\right]z_k(x_k) .
+		\end{equation}
+\end{block}
+Already known prediction and control methods can be modified accordingly. In contrast to $n$-step forward updates, one can conclude:
+\begin{itemize}
+	\item Advantage: recursive updates based on past updates (no additional waiting time),
+	\item Disadvantage: effort for storing an eligibility trace for each state (scaling problem).
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sarsa Learning Comparison in Gridworld Example %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{SARSA learning comparison in gridworld example}
+\begin{itemize}
+	\item $\lambda$ can be interpreted as the discounting factor acting on the eligibility trace (see right-most panel below).
+	\item Intuitive interpretation: more recent transitions are more certain/relevant for the current update step. 
+\end{itemize}
+\vspace{0.3cm}
+\begin{figure}
+\includegraphics[height=0.4\textheight]{fig/lec06/Traces_Sarsa_Gridworld.pdf}
+\caption{SARSA variants after an arbitrary episode within a gridworld environment -- arrows indicate action-value change starting from initially zero estimates (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
+\label{fig:Traces_Sarsa_Gridworld}
+\end{figure}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{summary: what you've learned today}
+\frametitle{Summary: what you've learned today}
 \begin{itemize}
 	\item $n$-step updates allow for an intermediate solution in between temporal difference and Monte Carlo:
 	\begin{itemize}
@@ -779,14 +675,14 @@ Inspecting \eqref{eq:n_step_tree_backup_rewritten} for the expectation-based tar
 	\begin{itemize}
 		\item It contains a trade-off between the learning delay and uncertainty reduction when considering more or less steps.
 		\item Choosing it is non-trivial and sometimes more art than science.
-	\end{itemize}\pause
-	\item Tree backups are an alternative for off-policy learning without importance sampling.\pause
-	\item $Q(\sigma)$ updates unify sample-based and expectation-based approaches:
+	\end{itemize}
+	\item $\lambda$-returns lead to compound updates which introduce an exponential weighting to visited states.
 	\begin{itemize}
-		\item A continuous intermixing of sampling and expectation is possible.
-		\item Here, $\sigma_k \in [0,1]$ can be adjusted in every step.
-		\item Adds flexibility but obviously also complexity.
-		\item Again, optimal parameter choice is not straightforward.
+		\item Rationale: states which have been already visited long ago are less important for the current learning step.
+	\end{itemize}
+	\item TD($\lambda$) transfers this idea into a recursive, backward oriented approach.
+	\begin{itemize}
+		\item Eligibility traces store the long-term visiting history of each state in a recursive fashion.
 	\end{itemize}
 \end{itemize}
 \end{frame}
