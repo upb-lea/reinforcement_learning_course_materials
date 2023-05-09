@@ -64,7 +64,7 @@ class RaceTrackEnv:
                 2-tuple (a_y, a_x) in {[-1, 0, 1], [-1, 0, 1]}.
         
         Returns:
-            4-tuple: (new_state, reward, terminated, truncated, info)
+            5-tuple: (new_state, reward, terminated, truncated, info)
                 new_state: the new state resulting from taken action
                 reward: The reward obtained from taken action
                 terminated: Bool. Whether we are in a terminal state.
@@ -101,15 +101,19 @@ class RaceTrackEnv:
                 0, self.bounds[1]-1)
             projected_steps = list(self.course[projected_path_y, projected_path_x])
             # hits finish line?
-            if self.lbl2int['+'] in projected_steps:
-                s = self.reset()
+            if self.lbl2int['+'] in projected_steps:                
                 # has grass been hit before?
                 if self.lbl2int['W'] in projected_steps:
+                    s = self.reset()
                     if projected_steps.index(self.lbl2int['+']) < projected_steps.index(self.lbl2int['W']):
                         # finished and hit grass afterwards
                         terminated = True
+                    else:
+                        truncated = True
                 else:
                     # clean finish
+                    self.position += self.velocity
+                    s = self.get_state()
                     terminated = True
             # hits grass?
             elif self.lbl2int['W'] in projected_steps:

@@ -29,7 +29,7 @@ The previous versions are all archived as separate releases and thus still avail
 05. Temporal-Difference Learning
     * [Lecture video](https://www.youtube.com/watch?v=w10WMaYgCMQ)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture05.pdf) 
-06. n-Step Bootstrapping
+06. Multi-Step Bootstrapping
     * [Lecture video](https://www.youtube.com/watch?v=HEt9z3CASn0&feature=youtu.be)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture06.pdf) 
 07. Planning and Learning with Tabular Methods
@@ -90,7 +90,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial video](https://www.youtube.com/watch?v=eTFugChiOaE&feature=youtu.be)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
-06. Stabilizing the Inverted Pendulum by Tabular n-Step Methods
+06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
     * [Tutorial video](https://www.youtube.com/watch?v=4ACrTBFRw50)
     * [Tutorial template](../master/exercises/templates/ex06)
     * [Tutorial solution](../master/exercises/solutions/ex06) 
