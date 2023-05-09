@@ -6,19 +6,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recall: RL Agent Taxonomy%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{recap: rl agent taxonomy}
+\frame{\frametitle{Recap: RL agent taxonomy}
 \begin{figure}
-	\includegraphics[width=5.5cm]{fig/lec01/RL_Agent_Taxonomy.pdf}
+	\includegraphics[height=0.55\textheight]{fig/lec01/RL_Agent_Taxonomy.pdf}
 	\caption{Main categories of reinforcement learning algorithms\\  \SilverLectureSource}
 \end{figure}
 \begin{itemize}
-	\item Up to now: independent usage of model-free and model-based RL
+	\item Up to now: independent usage of model-free (MC, TD) and model-based RL (DP)
 	\item Today: integrating both strategies (on finite  state \& action spaces)
 \end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Repetition: model-based and model-free rl} 
+\section{Repetition: model-based and model-free RL} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -28,18 +28,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model-based RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Model-based rl}
+\frame{\frametitle{Model-based RL}
 \begin{itemize}
 	\item \hl{Plan/predict} value functions and/or policy from a model.
 	\item Requires an a priori model or to learn a model from experience.
 	\item Solves control problems by planning algorithms such as
 	\begin{itemize}
-		\item Policy iteration or
-		\item Value iteration.
+		\item Policy or value iteration.
 	\end{itemize}
 \end{itemize}
 \begin{figure}
-	\includegraphics[width=5.5cm]{fig/lec07/Markov_Decision_Process.pdf}
+	\includegraphics[height=0.5\textheight]{fig/lec07/Markov_Decision_Process.pdf}
 	\caption{A model for discrete state and action space problems is generally an MDP (source: \href{https://commons.wikimedia.org/wiki/File:Markov_Decision_Process.svg}{www.wikipedia.org},  by \href{https://commons.wikimedia.org/wiki/User:Waldoalvarez}{Waldoalvarez} \href{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{CC BY-SA 4.0})}
 	\label{fig:Markov_Decision_Process}
 \end{figure}
@@ -48,7 +47,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is a Model? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{what is a model?}
+\frame{\frametitle{What is a model?}
 \begin{itemize}
 	\item A model $\mathcal{M}$ is an MDP tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$. \pause
 	\item In particular, we require the  
@@ -62,7 +61,7 @@
 		\mathcal{R} = \Pb{R_{k+1}=r_{k+1}|\bm{X}_k=\bm{x}_k, \bm{U}_k=\bm{u}_k}\,.
 	\end{equation}
 	\end{itemize}\pause
-	\item State space $\mathcal{X}$ and action space $\mathcal{U}$ is assumed to be known.\pause
+	\item State space $\mathcal{X}$ and action space $\mathcal{U}$ are assumed to be known.\pause
 	\item Discount factor $\gamma$ might be given by environment or engineer's choice. \pause
 	\item What kind of model is available?
 	\begin{itemize}
@@ -76,13 +75,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model Learning / Identification %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{model learning / identification}
+\frame{\frametitle{Model learning / identification}
 \begin{itemize}
-	\item Ideally, the model $\mathcal{M}$ is exactly known a priori (e.g., gridworld case). \pause
-	\item On the contrary, a model might be too complex to derive or not exactly available (e.g., real physical systems). \pause
-	\begin{itemize}
-		\item \hl{Objective: estimate model $\hat{\mathcal{M}}$ from experience $\left\{X_0, U_0,R_1,\ldots,X_T\right\}$.} \pause
-	\end{itemize}
+	\item In many real-world applications, a model might be too complex to derive or not exactly available. Hence, \hl{estimate a model $\hat{\mathcal{M}}$ from experience $\left\{X_0, U_0,R_1,\ldots,X_T\right\}$.} \pause
 	\item This is a supervised learning / system identification task:
 	\begin{align*}
 		\left\{X_0, U_0\right\}&\rightarrow\left\{X_1, R_1\right\}\\
@@ -103,7 +98,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Distribution vs. Sample Models %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{distribution vs. sample models}
+\frame{\frametitle{Distribution vs. sample models}
 \begin{itemize}
 	\onslide<1->{\item A model based on $\bm{\mathcal{P}}$ and $\mathcal{R}$ is called a \hl{distribution model}.
 	\begin{itemize}
@@ -124,14 +119,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Model-free RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Model-free rl}
+\frame{\frametitle{Model-free RL}
 \begin{itemize}
 	\item \hl{Learn} value functions and/or policy directly from experience.
 	\item Requires no model at all (policy can be considered an implicit model). \pause
 	\item Solves control problems by learning algorithms such as
 	\begin{itemize}
 		\item Monte-Carlo,
-		\item Sarsa or
+		\item SARSA or
 		\item $Q$-learning.
 	\end{itemize}
 \end{itemize}\pause
@@ -145,7 +140,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Advantages and Drawbacks: Model-free vs. Model-based RL %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{advantages \& drawbacks: model-free vs. model-based rl }
+\frame{\frametitle{Advantages \& drawbacks: model-free vs. model-based RL}
 \onslide<1->{Pro model-based / indirect RL:
 \begin{itemize}
 	\item Efficiently uses limited amount of experience (e.g., by replay).  
@@ -159,7 +154,7 @@
 	\item Not affected by model bias / error during model learning.
 \end{itemize}}
 \onslide<1->{\begin{figure}
-	\includegraphics[width=7.0cm]{fig/lec07/crossroads.jpg}
+	\includegraphics[height=0.35\textheight]{fig/lec07/crossroads.jpg}
 	\caption{What way is better? (source: Mike Kononov on \href{https://unsplash.com/photos/FY0nQ-I3H_U}{Unsplash})}
 \end{figure}}
 }
@@ -175,7 +170,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The General Dyna Architecture (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{the general dyna architecture (1)}
+\frame{\frametitle{The general Dyna architecture (1)}
 \begin{itemize}
 	\item Proposed by R. Sutton in 1990's
 	\item General framework with many different implementation variants
@@ -190,9 +185,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The General Dyna Architecture (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{the general dyna architecture (2)}
+\frame{\frametitle{The general Dyna architecture (2)}
 \begin{itemize}
-	\onslide<1->{\item \hl{Direct RL update}: any model-free algorithm: $Q$-learning, Sarsa, ...}
+	\onslide<1->{\item \hl{Direct RL update}: any model-free algorithm: $Q$-learning, SARSA, ...}
 	\onslide<2->{\item \hl{Model learning}:
 	\begin{itemize}
 		\item In tabular case: simple distribution estimation as in \eqref{eq:dist_model}
@@ -209,7 +204,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Dyna-Q %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: dyna-$q$}
+\frame{\frametitle{Algorithmic implementation: Dyna-$Q$}
 
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -245,7 +240,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Remarks on Dyna-Q Implementation %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{remarks on dyna-$q$ implementation}
+\frame{\frametitle{Remarks on Dyna-$Q$ implementation}
 The specific Dyna-$Q$ characteristics are:
 \begin{itemize}
 	\item Direct RL update: $Q$-learning, 
@@ -272,7 +267,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maze Example (1) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{maze example (1)}
+\frame{\frametitle{Maze example (1)}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -303,7 +298,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maze Example (2) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{maze example (2)}
+\frame{\frametitle{Maze example (2)}
 \begin{itemize}
 	\item Blocks without an arrow depict a neutral policy (equal action values).
 	\item Black squares indicate agent's position during second episode.
@@ -318,55 +313,6 @@ Moreover:
 \end{figure}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% What if the Model is Wrong? %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{what if the model is wrong?}
-Possible model error sources:
-\begin{itemize}
-	\item A provided a priori model may be inaccurate (expert knowledge). \pause
-	\item Environment behavior changes over time (non-stationary).\pause
-	\item Early-stage model is biased due to learning process.\pause
-	\item If function approximators are used: generalization error (cf. lecture 08 and following). \pause
-\end{itemize}
-\vspace{0.5cm}
-Consequences:
-\begin{itemize}
-	\item Model errors are likely to lead to a suboptimal policy. \pause
-	\item If lucky: errors are quickly discovered and directly corrected by default, random exploration.\pause
-	\item Nevertheless, more intelligent exploration / correction strategies might be useful (compared to random actions as in $\varepsilon$-greedy strategies).
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% The Blocking Maze Example %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{The blocking maze example}
-\begin{columns}[t,onlytextwidth]
-\begin{column}{0.6\textwidth}
-\begin{minipage}[c]{\linewidth}
-\begin{figure}
-	\includegraphics[width=6.75cm]{fig/lec07/Dyna_Q_Blocking.pdf}
-	\caption{Maze with a changing layout after 1000 steps illustrates a model error (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-	\label{fig:Dyna_Q_Blocking}
-\end{figure}
-\end{minipage}
-\end{column}
-\hfill
-\begin{column}{0.39\textwidth}
-\begin{minipage}[c]{\linewidth}
-	\begin{itemize}
-		\item Maze with a changing obstacle line
-		\item Start at $S$ and reach $G$
-		\item $r_T=+1$ at $G$
-		\item Dyna-$Q+$ encourages intelligent exploration (upcoming slides)
-		\item Dyna-$Q$ requires more steps in order to overcome the blockade
-		\item Averaged learning curves
-	\end{itemize}
-\end{minipage}
-\end{column}
-\end{columns}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% The Shortcut Maze Example %%
@@ -401,7 +347,7 @@ Consequences:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Dyna-Q+ Extensions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{dyna-$q$+ extensions}
+\frame{\frametitle{Dyna-$Q$+ extensions}
 Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the following extensions: 
 \begin{itemize}
 	\item Search heuristic: add $\kappa \sqrt{\tau}$ to regular reward.
@@ -456,8 +402,8 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Prioritized sweeping %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{algorithmic implementation: prioritized sweeping}
-\vspace{-0.15cm}
+\frame{\frametitle{Algorithmic implementation: prioritized sweeping}
+\vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \footnotesize
@@ -470,8 +416,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 \For{$j=1,2,\ldots$ episodes}{
 	Initialize $x_0$ and $k \leftarrow 0$\;
 	\Repeat{$x_k$ is terminal}{
-				Choose $u_k$ from $x_k$ using a soft policy derived from $\hat{q}(x,u)$\;
-				Take action $u_k$, observe $r_{k+1}$ and $x_{k+1}$\;
+				Take $u_k$ from $x_k$ using a soft policy derived from $\hat{q}(x,u)$, observe $r_{k+1}$ and $x_{k+1}$\;
 				%$\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[r_{k+1}+\gamma \max_{u} \hat{q}(x_{k+1}, u) - \hat{q}(x_k, u_k)\right]$\;
 				$\hat{\mathcal{M}}(x_k,u_k)\leftarrow \left\{r_{k+1}, x_{k+1}\right\}$ (assuming deterministic env.)\;
 				$P \leftarrow \left|r_{k+1}+\gamma \max_{u} \hat{q}(x_{k+1}, u) - \hat{q}(x_k, u_k)\right|$\;
@@ -519,7 +464,7 @@ Moreover:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Comparing Against Dyna-$Q$ on Simple Maze Example %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{comparing against dyna-$q$ on simple maze example}
+\frame{\frametitle{Comparing against Dyna-$Q$ on simple maze example}
 \begin{columns}[t,onlytextwidth]
 \begin{column}{0.6\textwidth}
 \begin{minipage}[c]{\linewidth}
@@ -545,121 +490,6 @@ Moreover:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Update variants} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Update Rule Alternatives %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Update rule alternatives}
-\begin{itemize}
-	\item Dyna updates (search strategy) are not bound to $Q$-learning during planning and can be exchanged in many ways (see \figref{fig:Backup_one_step}).
-	\item Even evaluating a fixed policy $\pi$ in terms of $v_\pi(x)$ and $q_\pi(x,u)$ is possible.
-\end{itemize}
-\begin{figure}
-	\includegraphics[width=11cm]{fig/lec07/Backup_one_step.pdf}
-	\caption{Possible one-step updates: alternatives for Dyna}
-	\label{fig:Backup_one_step}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Advantages and Drawbacks: Expected vs. Sampled Updates %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{advantages \& drawbacks: expected vs. sampled updates}
-Pro expected updates:
-\begin{itemize}
-	\item Delivers more accurate value estimates (no sampling error).  \pause
-\end{itemize}
-\vspace{0.25cm}
-Pro sample updates:
-\begin{itemize}
-	\item Is computational cheaper (e.g., distributional model not required). \pause
-\end{itemize}
-\vspace{0.25cm}
-Leads to trade-off:
-\begin{itemize}
-	\item Estimation accuracy vs. computational burden.\pause
-	\item Evaluate decision on given problem, i.e., how many state-action pairs have to be evaluated for a new expected update?\pause
-	\item Utilize \hl{branching factor $b$} metric: corresponds to number of possible next states $x'$ with $p(x'|x,u)>0$. 
-	\begin{itemize}
-		\item If expected update is available, this will be roughly as accurate as $b$ samplings.
-		\item If only incomplete expected update is available, prefer sampling solution (often applies to large state-action spaces).
-	\end{itemize}
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Example for Sampled vs. Expected Updates %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{example for sampled vs. expected updates}
-\begin{itemize}
-	\item Artificial prediction task where all $b$ successor states are equally likely
-	\item Method initialization such that RMS error is always one 
-	\item Sample updates perform particularly well for large branching factors $b$ (takeaway message: \hl{if facing large stochastic problems, use sampling})
-\end{itemize}
-\begin{figure}
-	\includegraphics[width=8.5cm]{fig/lec07/Expected_vs_sample_updates_example.pdf}
-	\caption{Comparison of expected vs. sampled updates (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-	\label{fig:Expected_vs_sample_updates_example}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Alternative on Distributing the Updates %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Alternatives on distributing the updates}
-Recap:
-\begin{itemize}
-	\item Dynamic programming: sweep through the entire state(-action) space
-	\item Dyna-$Q$: random uniform sampling
-	\item Mutual problem: irrelevant updates decrease computational efficiency
-\end{itemize}\pause
-\vspace{0.5cm}
-Alternative: update according to on-policy distribution
-\begin{itemize}
-	\item Based on sampling along the encountered state(-action) pairs (\hl{trajectory sweeping})\pause
-	\item Based on explicit on-policy distribution\pause
-	\item In both cases: ignore vast, uninteresting parts of the problem space at the risk of updating same old parts all over again 
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Exemplary Update Distribution Comparison %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Exemplary update distribution comparison}
-\begin{columns}[t,onlytextwidth]
-\begin{column}{0.62\textwidth}
-\begin{minipage}[c]{\linewidth}
-\begin{figure}
-	\includegraphics[width=4.5cm]{fig/lec07/Trajectory_sampling.pdf}
-	\caption{Update distribution comparison (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
-	\label{fig:Trajectory_sampling}
-\end{figure}
-\end{minipage}
-\end{column}
-\hfill
-\begin{column}{0.39\textwidth}
-\begin{minipage}[c]{\linewidth}
-Example:
-	\begin{itemize}
-		\item Two actions per state
-		\item Both actions led to $b$ next states
-		\item $10\,\%$ probability of transition to terminal state
-		\item reward per transition: $\mathcal{N}(\mu=0, \sigma^2=1)$
-		\item Task: estimate start state value
-		\item 200 randomly generated undiscounted episodic runs
-	\end{itemize}
-\end{minipage}
-\end{column}
-\end{columns}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Planning at decision time} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -670,7 +500,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background Planning vs. Planning at Decision Time %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{background planning vs. planning at decision time}
+\frame{\frametitle{Background planning vs. planning at decision time}
 \hl{Background Planning} (discussed so far):
 \begin{itemize}
 	\item Gradually improves policy or value function if time is available.
@@ -699,7 +529,7 @@ Example:
 	\item Predictions are normally discarded (new search tree in each state). 
 \end{itemize}
 \begin{figure}
-	\includegraphics[width=7.0cm]{fig/lec07/Heuristic_search_tree.pdf}
+	\includegraphics[height=0.4\textheight]{fig/lec07/Heuristic_search_tree.pdf}
 	\caption{Heuristic search tree with exemplary order of back-up operations (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:Heuristic_search_tree}
 \end{figure}
@@ -716,7 +546,7 @@ Example:
 	\item Predictions are normally discarded (new rollout in each state). 
 \end{itemize}
 \begin{figure}
-	\includegraphics[width=6.5cm]{fig/lec07/Rollout.pdf}
+	\includegraphics[height=0.4\textheight]{fig/lec07/Rollout.pdf}
 	\caption{Simplified processing diagram of rollout algorithms}
 	\label{fig:Rollout}
 \end{figure}
@@ -725,7 +555,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Monte Carlo Tree Search (MCTS) %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{monte carlo tree search (mcts)}
+\frame{\frametitle{Monte Carlo tree search (MCTS)}
 \begin{itemize}
 	\item Rollout algorithm, but: 
 	\begin{itemize}
@@ -734,7 +564,7 @@ Example:
 	\end{itemize}
 \end{itemize}
 \begin{figure}
-	\includegraphics[width=8cm]{fig/lec07/MCTS.pdf}
+	\includegraphics[height=0.55\textheight]{fig/lec07/MCTS.pdf}
 	\caption{Basic building blocks of MCTS algorithms (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:MCTS}
 \end{figure}
@@ -743,7 +573,7 @@ Example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Basic MCTS Procedure %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Basic mcts procedure}
+\frame{\frametitle{Basic MCTS procedure}
 Repeat the following steps while prediction time is available:
 \begin{enumerate}
 	\item \hl{Selection}: Starting at root node, use a tree policy (e.g., $\varepsilon$-greedy) to travel through the tree until arriving at a leaf node.\pause
@@ -763,7 +593,7 @@ Repeat the following steps while prediction time is available:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Further MCTS Remarks %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Further mcts remarks}
+\frame{\frametitle{Further MCTS remarks}
 What is happening after reaching the feasible simulation runs?
 \begin{itemize}
 	\item After time is up, MCTS picks an appropriate action regarding the root node, e.g.:
@@ -797,7 +627,7 @@ Further reading on MCTS:
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{summary: what you've learned today}
+\frametitle{Summary: what you've learned today}
 \begin{itemize}
 	\item Model-free RL is easy to implement and cannot suffer any model learning error while model-based approaches use a limited amount of experience much more efficient. \pause
 	\item Integrating these two RL branches can be achieved using the Dyna framework (background planning) incorporating the steps:
