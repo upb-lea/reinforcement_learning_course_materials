@@ -232,7 +232,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 		\begin{equation}
 		g_{k:k+n} = r_{k+1}+\gamma r_{k+2}+\cdots+\gamma^{n-1} r_{k+n}+\gamma^{n} \hl{\sum_u \pi(u|x)\hat{q}_k(x,u) }.
 		\end{equation}\pause
-\item Finally, the modified $n$-step targets can be directly integrated to the state-action value estimate update rule of Sarsa:
+\item Finally, the modified $n$-step targets can be directly integrated to the state-action value estimate update rule of SARSA:
 \end{itemize}		
 \begin{block}{$n$-step SARSA}
 \begin{equation}
@@ -280,7 +280,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 				$g\leftarrow \sum_{i=\tau+1}^{\min(\tau + n, T)}\gamma^{i-\tau-1} r_i$\;
 				if $\tau+n < T$: $g\leftarrow g + \gamma^n \hat{q}(x_{\tau+n}, u_{\tau+n})$\;
 				$\hat{q}(x_{\tau},u_{\tau}) \leftarrow \hat{q}(x_{\tau},u_{\tau}) + \alpha\left[g - \hat{q}(x_{\tau}, u_{\tau})\right]$\;
-				if $\pi\approx\pi^*$ is being learned, ensure $\pi(\cdot|x_\tau)$ is $\varepsilon$-greedy w.r.t to $\hat{q}$\;
+				if $\pi\approx\pi^*$ is being learned, ensure $\pi(\cdot|x_\tau)$ is $\varepsilon$-greedy w.r.t $\hat{q}$\;
 			}
 		}
 	}
@@ -300,9 +300,8 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 \end{figure}
 \begin{itemize}
 	\item For one-step SARSA, one state-action value is updated.\pause
-	\item For ten-step SARSA, ten state-action values are updated.
-	\item In the latter case, much more is learned during one episode.\pause
-	\item Nevertheless, a trade-off between the resulting learning delay and the number of updated state-action values remains.
+	\item For ten-step SARSA, ten state-action values are updated. \pause
+	\item Consequence: a trade-off between the resulting learning delay and the number of updated state-action values results.
 \end{itemize}
 }
 
@@ -361,7 +360,7 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Algorithmic Implementation: Off-Policy $n$-step TD Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Implementation: off-policy $n$-step TD-based prediction}
+\frame{\frametitle{Algorithmic implementation: off-policy $n$-step TD-based prediction}
 \vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
@@ -463,7 +462,7 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 		g = \frac{1}{3}g_{k:k+1} + \frac{2}{3}g_{k:k+3}
 	\end{equation*}
 	\item Horizontal line in backup diagram indicates the averaging.\pause 
-	\item Enables additional degree of freedom to reduce prediction error. \pause
+	\item Enables additional degree of freedom to reduce prediction error.
 	\item Such updates are called \hl{compound updates}.
 \end{itemize}
 \end{minipage}
@@ -523,7 +522,7 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 	\end{itemize}}
 \end{itemize}
 \onslide<1->{\begin{figure}
-\includegraphics[height=0.275\textheight]{fig/lec06/Lambda_Weighting_Series.pdf}
+\includegraphics[height=0.29\textheight]{fig/lec06/Lambda_Weighting_Series.pdf}
 \caption{Weighting overview in $\lambda$-return series (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 \label{fig:Lambda_Weighting_Series}
 \end{figure}}
@@ -579,30 +578,9 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Eligibility Trace (1) %%
+%% Eligibility Trace %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Eligibility trace (1)}
-Why is the exponential weighting particular suitable for TD($\lambda$)?\pause
-\begin{itemize}
-	\item Because we can easily implement this in a recursive fashion.\pause
-\end{itemize}
-\begin{block}{Exponential smoothing filter}
-Let $x_k$ be an arbitrary signal sampled at equally distributed time steps $k$. Then, the filtered signal $y_k$ with an exponential window function of past observations is
-\begin{equation}
-	y_k = \beta x_k + (1-\beta)y_{k-1}, \quad k> 0 \quad \mbox{and} \quad y_0=x_0
-	\label{eq:exp_smoothing_filter}
-\end{equation}
-with $\beta\in\{\mathbb{R}|0<\beta<1\}$ being the smoothing factor.  
-\end{block}\pause
-\begin{itemize}
-	\item Above is a simple recursive exponential smoothing filter which converges for $k>>1$.
-\end{itemize}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Eligibility Trace (2) %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Eligibility trace (2)}
+\frame{\frametitle{Eligibility trace}
 The \hl{eligibility trace $z_k(x)\in\mathbb{R}$} is defined and tracked for each state $x$ separately:
 	\begin{equation}
 \begin{split}
@@ -629,13 +607,14 @@ The TD($\lambda$) state-value update is:
 		\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha \left[r_{k+1} + \gamma \hat{v}(x_{k+1})- \hat{v}(x_k)\right]z_k(x_k).
 \end{equation}
 \end{block}
-
+\pause
 \begin{block}{TD($\lambda$) action-value update}
 	The TD($\lambda$) action-value update is:
 		\begin{equation}
 		\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[r_{k+1}+\gamma\hat{q}(x_{k+1}, u_{k+1}) - \hat{q}(x_k, u_k)\right]z_k(x_k) .
 		\end{equation}
 \end{block}
+\pause
 Already known prediction and control methods can be modified accordingly. In contrast to $n$-step forward updates, one can conclude:
 \begin{itemize}
 	\item Advantage: recursive updates based on past updates (no additional waiting time),
