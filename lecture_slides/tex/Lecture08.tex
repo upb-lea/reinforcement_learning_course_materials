@@ -23,8 +23,8 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \begin{itemize}
 	\item Courses at UPB
 	\begin{itemize}
-		\item \href{https://ei.uni-paderborn.de/en/nt/teaching/veranstaltungen/statistical-and-machine-learning/}{\textit{Statistical and Machine Learning} by the Comm. Eng. Dept. (NT)}
-		\item \href{https://cs.uni-paderborn.de/is/teaching/}{\textit{Machine Learning I \& II} by CS Dept. Intelligent Systems and ML}
+		\item \href{https://ei.uni-paderborn.de/en/statistical-and-machine-learning}{\textit{Statistical and Machine Learning} by the Communications Engineering Dept. (NT)}
+		\item \href{https://en.cs.uni-paderborn.de/dse/teaching/courses}{\textit{Machine Learning I \& II} by the Data Science 4 Engineering Dept. (DS4Eng)}
 	\end{itemize}\pause
 	\item Renowned online courses
 	\begin{itemize}
@@ -34,9 +34,10 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{itemize}\pause
 	\item Books classics
 	\begin{itemize}
-		\item \href{http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop\%20-\%20Pattern\%20Recognition\%20And\%20Machine\%20Learning\%20-\%20Springer\%20\%202006.pdf}{\textit{Pattern Recognition and Machine Learning} by M. Bishop}
+		\item \href{http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop\%20-\%20Pattern\%20Recognition\%20And\%20Machine\%20Learning\%20-\%20Springer\%20\%202006.pdf}{\textit{Pattern Recognition and Machine Learning} by C. M. Bishop}
 		\item \href{http://www-stat.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf}{\textit{The Elements of Statistical Learning} by Hastie et al.}
-		\item \href{https://www.deeplearningbook.org/}{\textit{Deep Learning} by I. Goodfellow et al.}				\end{itemize}
+		\item \href{https://www.deeplearningbook.org/}{\textit{Deep Learning} by I. Goodfellow, Y. Bengio, and A. Courville}
+	\end{itemize}
 \end{itemize}
 }
 
@@ -57,7 +58,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	The demand for highly skilled ML engineers is growing correspondingly.
 }
 
-\frame{\frametitle{Instances of ml applications}
+\frame{\frametitle{Instances of ML applications}
 	\begin{itemize}
 		\item Recommendation systems
 		\begin{itemize}
@@ -72,15 +73,15 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 		\item Classification/Regression
 		\begin{itemize}
 			\item Speech assistants (Alexa/Siri), pedestrial detection (autonomous driving), \href{https://www.kaggle.com/c/severstal-steel-defect-detection}{fault detection in engineering processes}
-			\item Chatbots, translators, credit scoring (fintech) 
+			\item \href{https://openai.com/blog/chatgpt}{large language models (LLM)}, credit scoring (fintech) 
 		\end{itemize}\pause
-		\item \href{https://developers.google.com/machine-learning/gan}{Generative models}
+		\item \href{https://stablediffusionweb.com/}{Generative models}
 
 	\end{itemize}
 }
 
 %  Kaggle comps
-\frame{\frametitle{Ml competitions with price pool}
+\frame{\frametitle{ML competitions with price pool}
 	\begin{figure}
 		\includegraphics[width=9cm]{fig/lec08/comp_logos.pdf}
 		\caption{Kaggle and DrivenData}
@@ -91,14 +92,14 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	
 	\begin{itemize}
 		\item Most competitions come with a decent price pool of 15 tsd. dollars up to 1 mil. dollars hosted by stakeholders from the industry and government.
-		\item These competitions are almost exclusively of the supervised type.
+		\item These competitions are almost exclusively of the supervised type, but RL challenges are increasing.
 	\end{itemize}
 }
 
 %  Typical ML pipeline
 \frame{\frametitle{Typical supervised learning pipeline}
 	\begin{figure}
-		\includegraphics[width=9cm]{fig/lec08/ML_pipeline.png}
+		\includegraphics[width=8cm]{fig/lec08/ML_pipeline.png}
 		\caption{A typical supervised learning pipeline -- sometimes more art than science}
 		\label{fig:ml_pipeline}
 	\end{figure}
@@ -108,7 +109,8 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 %  How does this contribute to RL? See AlphaGo, which is built on SL
 %	Future RL will benefit from methods borrowed from SL, 
 \frame{\frametitle{Supervised learning in reinforcement learning}
-	\hl{SL approximates functions, RL approximates policies.}
+	\hl{SL approximates functions, RL approximates policies.} \newline
+	
 	\pause
 	
 	However, there are two situations where SL is auxiliary in RL:
@@ -130,7 +132,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 \frame{\frametitle{Supervised learning problem statement}
 	\begin{block}{Supervised learning}
-		Given a \hl{labeled} data set $\left\langle\bm x_k, \bm y_k\right\rangle \in \bm{\mathcal{D}}$ with $k \in [0, K]$ and $K$ being the data set size, approximate the mapping function $f^\ast: \bm x_k \mapsto \bm y_k$ with a parameterizable ML \hl{model} $f_{\bm w}: \bm x_k \mapsto \hat{\bm y}_k \approx \bm y_k \quad\forall k$.
+		Given a \hl{labeled} data set $\left\langle\bm x_k, \bm y_k\right\rangle \in \bm{\mathcal{D}}$ with $k \in [0, K-1]$ and $K$ being the data set size, approximate the mapping function $f^\ast: \bm x_k \mapsto \bm y_k$ with a parameterizable ML \hl{model} $f_{\bm w}: \bm x_k \mapsto \hat{\bm y}_k \approx \bm y_k \quad\forall k$.
 				
 	\end{block}\pause
 	\begin{itemize}
@@ -193,7 +195,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 
-\frame{\frametitle{Means to improve an sl model}
+\frame{\frametitle{Means to improve an SL model}
 	SL performance can be improved by:
 	\begin{itemize}
 		\item Collecting more data, i.e., increasing $K$ (more data is always better).\pause
@@ -223,7 +225,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{alertblock}
 }
 
-\frame{\frametitle{feature engineering example (classification)}
+\frame{\frametitle{Feature engineering example (classification)}
 
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example.pdf}
@@ -234,7 +236,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 }
 
 
-\frame{\frametitle{feature engineering example (regression)}
+\frame{\frametitle{Feature engineering example (regression)}
 	\begin{figure}
 		\includegraphics[width=11cm]{fig/lec08/fe_example2.pdf}
 		\caption{Log-transform of the target signal exhibits linear relationship to the regressor}
@@ -250,6 +252,7 @@ Typical normalizaton schemes:
 \begin{itemize}
 	\item Standard scaling: $\tilde{ \bm x} = (\bm x- \text{Avg}(\bm x)) / \text{Std}(\bm x)$
 	\item Min-Max scaling: $\tilde{\bm x} = (\bm x - \text{min}(\bm x))/ (\text{max}(\bm x) - \text{min}(\bm x))$
+	\item Plain scaling: $\tilde{\bm x} = \bm x / \text{max}(| \bm x |)$
 \end{itemize}
 
 In an unnormalized data set, features with high variance will eclipse patterns in other features.
@@ -347,8 +350,8 @@ How to normalize categorical data?\pause
 
 \frame{\frametitle{Model choice}
 	\begin{figure}
-		\includegraphics[width=9cm]{fig/lec08/bigdrill.png}
-		\caption{Choose models appropriate for the problem!\\(Source: Adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
+		\includegraphics[width=8.8cm]{fig/lec08/bigdrill.png}
+		\caption{Choose models appropriate for the problem! (Source: Adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
 		\label{fig:bigdrill}
 	\end{figure}
 }
@@ -357,7 +360,7 @@ How to normalize categorical data?\pause
 
 
 \subsection{Linear Regression}
-\frame{\frametitle{linear regression (1)}
+\frame{\frametitle{Linear regression (1)}
 %\textit{In the following, ML models for regression are presented. 
 %Each model is equivalently suitable for classification though after minor adaptions.}
 
@@ -369,13 +372,13 @@ Linear models assume a linear relationship between $\bm x_k = (1, x_{k,1}, x_{k,
 where $\bm{\Xi} = (\bm x_1, \dots, \bm x_K)$. \pause
 Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the residual sum of squares (RSS), which is coined the \hl{least squares} method:
 \begin{equation}
-	RSS(\bm w) = \sum_{k=1}^K (y_k - f(\bm x_k))^2 = (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}).
+	\text{RSS}(\bm w) = \sum_{k=1}^K (y_k - f(\bm x_k))^2 = (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}).
 	\label{eq:rss}
 \end{equation}
 }
 
-\frame{\frametitle{linear regression (2)}
-	Deriving (\ref{eq:rss}) with respect to $\bm w$ and setting it to zero while assuming $\bm{\Xi}\T\bm{\Xi}$ is positive definite, yields an analytically closed solution form:
+\frame{\frametitle{Linear regression (2)}
+	Deriving (\ref{eq:rss}) with respect to $\bm w$ and setting it to zero while assuming $\bm{\Xi}\T\bm{\Xi}$ is positive-definite, yields an analytically closed solution form:
 	\begin{equation}
 		\hat{\bm{y}} = \bm{\Xi\hat{w}} = \bm{\Xi} (\bm{\Xi}\T\bm{\Xi})^{-1}\bm{\Xi}\T\bm{y}.
 		\label{eq:OLS_estimate}
@@ -387,8 +390,8 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 		Regularization of $\hat{\bm w}$ alleviates this effect - it induces bias for less variance.
 		Most prevalent linear regularized techniques are LASSO and Ridge:
 		\begin{align}
-			RSS_{LASSO}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_1, \\
-			RSS_{Ridge}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_2,
+			\text{RSS}_\text{LASSO}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_1, \\
+			\text{RSS}_\text{Ridge}(\bm w) &= (\bm y-\bm{\Xi w})\T(\bm y - \bm{\Xi w}) + \lambda||\bm w||_2,
 			\label{eq:ridge}
 		\end{align}
 		where $\lambda$ controls the growth penalty.
@@ -397,14 +400,14 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 
 \subsection{Artificial Neural Networks}
 \frame{\frametitle{Artificial neural networks}
-	Artificial neural networks (ANNs) describe non-linear approximators $\hat{\bm y} = f(\bm{\Xi; \bm w})$ that are end-to-end differentiable.\pause
+	Artificial neural networks (ANNs) describe nonlinear approximators $\hat{\bm y} = f(\bm{\Xi; \bm w})$ that are end-to-end differentiable.\pause
 	\newline
 	\begin{columns}[t,onlytextwidth]
 	\begin{column}{0.45\textwidth}
 	\begin{minipage}[c]{\linewidth}
 	
 		\begin{figure}
-			\includegraphics[width=\textwidth]{fig/lec08/neuron.pdf}
+			\includegraphics[width=0.9\textwidth]{fig/lec08/neuron.pdf}
 			\caption{A typical neuron as the key building block of ANNs.}
 			\label{fig:neuron}
 		\end{figure}
@@ -414,9 +417,9 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\begin{column}{0.55\textwidth}
 	\begin{minipage}[c]{\linewidth}
 		\begin{itemize}
-		\item An ANN consists of \hl{nodes} in one or more \hl{layers}.\pause
+		\item An ANN consists of \hl{nodes} or \hl{neurons} in one or more \hl{layers}.\pause
 		\item Each node transforms the weighted sum of all previous nodes through an activation function.\pause
-		\item The weighted connections are called \hl{edges}, and the weights are the parameters of the ANN.
+		\item The weighted connections are called \hl{edges}, which represent the ANN's parameters.
 		\end{itemize}
 	\end{minipage}
 	\end{column}
@@ -432,7 +435,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\begin{minipage}[c]{\linewidth}
 	
 		\begin{figure}
-			\includegraphics[width=\textwidth]{fig/lec08/MLP.pdf}
+			\includegraphics[width=0.8\textwidth]{fig/lec08/MLP.pdf}
 			\caption{Multi-layer perceptron.}
 			\label{fig:mlp}
 		\end{figure}
@@ -453,7 +456,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\end{minipage}
 	\end{column}
 	\end{columns}\pause
-	Weight matrix $\bm{\mathcal{W}}^{(l)} \in \mathbb{R}^{H^{(l-1)}\times H^{(l)}}$ and (broadcasted) bias matrix $\bm{b}^{(l)} \in \mathbb{R}^{K\times H^{(l)}}$ are iteratively optimized, and constitute $\bm w$.
+	Weight matrix $\bm{\mathcal{W}}^{(l)} \in \mathbb{R}^{H^{(l-1)}\times H^{(l)}}$ and (broadcasted) bias matrix $\bm{b}^{(l)} \in \mathbb{R}^{K\times H^{(l)}}$ are iteratively optimized and denote the full set of parameters $\bm w$.
 }
 
 \frame{\frametitle{Activation functions}
@@ -475,7 +478,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\begin{column}{0.52\textwidth}
 	\begin{minipage}[r]{\linewidth}
 		\begin{figure}
-			\includegraphics[width=\textwidth]{fig/lec08/act_funcs.pdf}
+			\includegraphics[width=0.8\textwidth]{fig/lec08/act_funcs.pdf}
 			\caption{Common activation functions}
 			\label{fig:act_funcs}
 		\end{figure}
@@ -494,7 +497,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 		\end{itemize}
 }
 
-\frame{\frametitle{training neural networks (1)}
+\frame{\frametitle{Training neural networks (1)}
 	ANN parameters are usually iteratively optimized via a variant of \hl{gradient descent}, e.g., stochastic gradient descent (SGD).
 	\begin{align}
 	\label{eq:weight_update}
@@ -514,7 +517,7 @@ Typical loss functions:
 Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 }
 
-\frame{\frametitle{training neural networks (2)}
+\frame{\frametitle{Training neural networks (2)}
 
 % typ. gradientenabstiegsbild und da dann nochmal eine gesondere erklärung worin sich SGD und GD unterscheidet.
 
@@ -523,7 +526,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\begin{column}{0.45\textwidth}
 	\begin{minipage}[c]{\linewidth}
 		\begin{figure}
-		\includegraphics[width=\textwidth]{fig/lec08/sgd.pdf}
+		\includegraphics[width=0.8\textwidth]{fig/lec08/sgd.pdf}
 		\caption{BGD vs. SGD}
 		\label{fig:sgd}
 	\end{figure}
@@ -543,12 +546,12 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{columns}
 	SGD is more computationally  efficient, but steps are more random.
 	
-	Nowadays mini-batch gradient descent is used (mix of SGD and BGD), and further improvements, e.g., momentum and second derivatives, to ensure faster convergence to better optima.
+	Nowadays, mini-batch gradient descent (mix of SGD and BGD) and further improvements are used, e.g., momentum and second derivatives, to ensure faster convergence to better optima.
 }
 
 
 
-\frame{\frametitle{training neural networks (3)}
+\frame{\frametitle{Training neural networks (3)}
 	\textbf{How to retrieve the gradients:}
 	
 	Recall chain rule for vector derivatives, e.g., with $\bm y = g(\bm x)$ and $z = f(\bm y)$ where $g: \mathbb{R}^m \rightarrow \mathbb{R}^n$ and $f: \mathbb{R}^n \rightarrow \mathbb{R}$:
@@ -558,11 +561,11 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	This can be used equivalently for matrices/tensors of any shape $\nabla_{\bm{\Xi}}y = \frac{\partial y}{\partial \bm{\Xi}}$ when we assume to enumerate each element of the tensor consecutively and loop through them.\pause
 	
 	\begin{block}{Error Backpropagation}
-		After a \hl{forward step} through the network, make a \hl{backward step} in which the gradient $\theta$ of the loss $\mathcal{L}(\bm y, \hat{\bm y})$ is computed w.r.t the ANN's parameters from the output layer back to the input layer.
+		After a \hl{forward step} through the network, make a \hl{backward step} in which the gradient $\bm\gamma$ of the loss $\mathcal{L}(\bm y, \hat{\bm y})$ is computed w.r.t the ANN's parameters from the output layer back to the input layer.
 	\end{block}
 }
 
-\frame{\frametitle{training neural networks (4)}
+\frame{\frametitle{Training neural networks (4)}
 	\setlength{\algomargin}{0.5em}
 	\begin{algorithm}[H]
 	\SetKwInput{Input}{input} 
@@ -578,12 +581,12 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 		$\bm{\mathcal H}^{(l)} \leftarrow \varphi^{(l)}(\bm{\mathcal Z}^{(l)})$\\
 	}
 	// backward propagation\\
-	$\theta \leftarrow \nabla_{\bm{h}^{(L)}}\mathcal{L}(\bm y, \hat{\bm y})$ // note that $\bm{h}^{(L)} = \hat{\bm y}$\\
+	$\bm\gamma \leftarrow \nabla_{\bm{h}^{(L)}}\mathcal{L}(\bm y, \hat{\bm y})$ // note that $\bm{h}^{(L)} = \hat{\bm y}$\\
 	\For{$l= L, \ldots, 1$ layers}{
-		$\theta \leftarrow \theta \odot \partial (\varphi^{(l)})(\bm{\mathcal Z}^{(l)}) = \nabla_{\bm{\mathcal Z}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ // $\odot$: elementwise mult.\\
-		Append $\theta = \nabla_{\bm{b}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of bias gradients\\
-		Append $(\bm{\mathcal H}^{(l-1)})\T\cdot\theta  = \nabla_{\bm{\mathcal W}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of weight gradients\\
-		$\theta \leftarrow \theta\cdot(\bm{\mathcal W}^{(l)})\T = \nabla_{\bm{\mathcal H}^{(l-1)}}\mathcal{L}(\bm y, \hat{\bm y})$\\
+		$\bm\gamma \leftarrow \bm\gamma \odot \partial (\varphi^{(l)})(\bm{\mathcal Z}^{(l)}) = \nabla_{\bm{\mathcal Z}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ // $\odot$: elementwise mult.\\
+		Append $\bm\gamma = \nabla_{\bm{b}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of bias gradients\\
+		Append $(\bm{\mathcal H}^{(l-1)})\T\cdot\bm\gamma  = \nabla_{\bm{\mathcal W}^{(l)}} \mathcal{L}(\bm y, \hat{\bm y})$ to list of weight gradients\\
+		$\bm\gamma \leftarrow \bm\gamma\cdot(\bm{\mathcal W}^{(l)})\T = \nabla_{\bm{\mathcal H}^{(l-1)}}\mathcal{L}(\bm y, \hat{\bm y})$\\
 	}
 		
 	\caption{Error backpropagation}
@@ -591,7 +594,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{algorithm}
 }
 
-\frame{\frametitle{error backpropagation example (1)}
+\frame{\frametitle{Error backpropagation example (1)}
 % minimalproblem wo man mal den Loss ausrechnet und einen gradienten abstiegsschritt darstellt
 Assume $\bm x_0 = [2, 5, 7], y_0 = 2.5$, and a two-layered ANN with the MSE cost, and sigmoid activation functions $\sigma(z) = \frac{1}{1+e^{-z}}$.
 The hidden layer contains two neurons with output $\bm h^{(1)} \in \mathbb{R}^2$, while the weight vectors are initialized with $\bm{\mathcal W}^{(1)} = \big[\begin{smallmatrix} 0.1& -0.3 & 0.2\\
@@ -606,17 +609,17 @@ Applying SGD, we start with forward propagation:
 				
 }
 
-\frame{\frametitle{error backpropagation example (2)}
+\frame{\frametitle{Error backpropagation example (2)}
 	Backpropagation (with $\sigma^\prime(z) = \partial_z \sigma(z) = \sigma(z)(1-\sigma(z))$):
 	
 	\begin{align*}
-		\theta^{(2)} = \nabla_{\hat{y}_0}\mathcal{L}(y_0, \hat{y_0}) &= \nabla_{\hat{\bm{y}}} (y_0 - \hat y_0)^2 = -2 (y_0 - \hat y_0) = -4.604\\
-		\nabla_{\bm{b}^{(2)}} \mathcal{L}(y_0, \hat{y_0}) &= \theta^{(2)} \odot \partial (\varphi^{(2)})(\bm z^{(2)}) = \theta^{(2)} \\
-		\nabla_{\bm{\mathcal W}^{(2)}} \mathcal{L}(y_0, \hat{y}_0) &= (\bm{h}^{(1)})\T\cdot\theta^{(2)} = [-2.44, -0.046]\T\\
-		\theta^{(1)} = \nabla_{\bm{h}^{(1)}}\mathcal{L}(y_0, \hat{y}_0)&= \theta^{(2)}\cdot(\bm{\mathcal W}^{(2)})\T = [-0.921, 3.683]\\
-		\nabla_{\bm{b}^{(1)}} \mathcal{L}(y_0, \hat{y_0}) &= \theta^{(1)} \odot \partial (\varphi^{(1)})(\bm z^{(1)}) = \theta^{(1)}\odot \sigma^\prime(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
-		\quad &= \theta^{(1)}\odot (\bm h^{(1)}(1-\bm h^{(1)})) = [-0.229, 0.036]\\
-		\nabla_{\bm{\mathcal W}^{(1)}} \mathcal{L}(y_0, \hat{y}_0) &= \bm{x}_0\T\cdot\theta^{(1)} = \big[\begin{smallmatrix} -1.84 & -4.605 & -6.447\\ 7.366& 18.415 & 25.781 \\\end{smallmatrix} \big]\T
+		\bm\gamma^{(2)} = \nabla_{\hat{y}_0}\mathcal{L}(y_0, \hat{y_0}) &= \nabla_{\hat{\bm{y}}} (y_0 - \hat y_0)^2 = -2 (y_0 - \hat y_0) = -4.604\\
+		\nabla_{\bm{b}^{(2)}} \mathcal{L}(y_0, \hat{y_0}) &= \bm\gamma^{(2)} \odot \partial (\varphi^{(2)})(\bm z^{(2)}) = \bm\gamma^{(2)} \\
+		\nabla_{\bm{\mathcal W}^{(2)}} \mathcal{L}(y_0, \hat{y}_0) &= (\bm{h}^{(1)})\T\cdot\bm\gamma^{(2)} = [-2.44, -0.046]\T\\
+		\bm\gamma^{(1)} = \nabla_{\bm{h}^{(1)}}\mathcal{L}(y_0, \hat{y}_0)&= \bm\gamma^{(2)}\cdot(\bm{\mathcal W}^{(2)})\T = [-0.921, 3.683]\\
+		\nabla_{\bm{b}^{(1)}} \mathcal{L}(y_0, \hat{y_0}) &= \bm\gamma^{(1)} \odot \partial (\varphi^{(1)})(\bm z^{(1)}) = \bm\gamma^{(1)}\odot \sigma^\prime(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
+		\quad &= \bm\gamma^{(1)}\odot (\bm h^{(1)}(1-\bm h^{(1)})) = [-0.229, 0.036]\\
+		\nabla_{\bm{\mathcal W}^{(1)}} \mathcal{L}(y_0, \hat{y}_0) &= \bm{x}_0\T\cdot\bm\gamma^{(1)} = \big[\begin{smallmatrix} -1.84 & -4.605 & -6.447\\ 7.366& 18.415 & 25.781 \\\end{smallmatrix} \big]\T
 	\end{align*}
 	
 	Now update weights and biases according to (\ref{eq:weight_update}) and (\ref{eq:bias_update}).
@@ -672,125 +675,126 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 	%2-D Convolutional NNs are the state of the art in image processing
 }
 
-\subsection{Gradient Boosting Machines}
-\frame{\frametitle{Gradient boosting machines}
-Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learners} $\psi(\bm{\Xi})$, where each learner tries to minimize the whole ensemble's overall loss $\mathcal{L}(\bm y, \hat{\bm y}_m)$ given the preceding ensemble $\hat{\bm y}_{m-1}$ (assume scalar regression):
-\begin{equation}
-	\hat{\bm y}_m = \hat{\bm y}_{m-1} + \psi_m(\bm{\Xi}) = \sum_{m=1}^M \psi_m(\bm{\Xi}).
-\end{equation}\pause
+% Drop GBMs for brevity
+%\subsection{Gradient Boosting Machines}
+%\frame{\frametitle{Gradient boosting machines}
+%Gradient boosting machines (GBMs) consist of $M$ additive \hl{chained weak learners} $\psi(\bm{\Xi})$, where each learner tries to minimize the whole ensemble's overall loss $\mathcal{L}(\bm y, \hat{\bm y}_m)$ given the preceding ensemble $\hat{\bm y}_{m-1}$ (assume scalar regression):
+%\begin{equation}
+%	\hat{\bm y}_m = \hat{\bm y}_{m-1} + \psi_m(\bm{\Xi}) = \sum_{m=1}^M \psi_m(\bm{\Xi}).
+%\end{equation}\pause
+%
+%\begin{columns}[t,onlytextwidth]
+%	\begin{column}{0.45\textwidth}
+%	\begin{minipage}[c]{\linewidth}
+%		Weak learners are often small decision trees with a depth of less than 10.
+%		\newline\newline
+%		Instead of optimizing real-valued parameters, here we are searching for functions $\psi(\cdot)$.
+%		Hence, optimization has to be additive.
+%	\end{minipage}
+%	\end{column}
+%	\hfill
+%	\begin{column}{0.52\textwidth}
+%	\begin{minipage}[r]{\linewidth}
+%		\begin{figure}
+%			\includegraphics[width=\textwidth]{fig/lec08/decision_tree.pdf}
+%			\caption{Exemplary decision tree for binary classification and two regressors}
+%			\label{fig:decision_tree}
+%		\end{figure}
+%		
+%	\end{minipage}
+%	\end{column}
+%	\end{columns}
+%
+%%	Boosting Algorithm
+%}
+%
+%\frame{\frametitle{Boosting tree ensembles (1)}
+%	The minimization objective $J_m$ for growing trees at the $m$-th boosting round can be taylor-expanded to the second-order approximation:
+%	\begin{align}
+%	\begin{split}
+%		J_m &= \mathcal{L}(\bm{y}, \hat{\bm{y}}_{m-1} + \psi(\bm{\Xi}))\\
+%			&\approx \mathcal{L}(\bm y, \hat{\bm y}_{m-1}) + (\bm{\tau}')\T \psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T \psi_m^2(\bm{\Xi}),
+%	\end{split}
+%	\end{align}
+%	with $\bm{\tau}' = \partial_{\hat{\bm y}_{m-1}}\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$ and $\bm{\tau}'' = \partial_{\hat{\bm y}_{m-1}}^2\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$.\pause
+%	
+%	Removing the constant part leaves us with a simplified objective:
+%	\begin{align}
+%	\begin{split}
+%		\tilde{J}_m &= (\bm{\tau}')\T\psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T{\psi_m}^2(\bm{\Xi}) \\
+%		&= \sum_{k=1}^K [\tau'_k \psi_m(\bm x_k) + \frac{1}{2}\tau''_k\psi_m^2(\bm x_k)].
+%	\end{split}
+%	\end{align}
+%}
+%
+%\frame{\frametitle{Boosting tree ensembles (2)}
+%Now consider a single tree with $N$ leaves to be defined as a vector of leaf-scores $\psi_m(\bm{x}) = \bm{w}_{s(\bm x)}, \bm w \in \mathbb{R}^N, s: \mathbb{R}^P \rightarrow [1, N]$ where $s$ maps data observations to the index of the tree's corresponding outcome (leaf).
+%
+%Consider the set of observations in leaf $n$ to be $I_n = \{ k | s(\bm x_k) = n \}$.\pause
+%
+%Then, we can regroup the objective by each leaf:
+%\begin{align}
+%\begin{split}
+%	\tilde{J}_m &= \sum_{k=1}^K \bigg[\tau'_k w_{s(\bm x_k)} + \frac{1}{2}\tau''w_{s(\bm x_k)}^2\bigg]\\
+%	&= \sum_{n=1}^N \bigg[\underbrace{\bigg(\sum_{k\in I_n}\tau'_k\bigg)}_{T'}w_n + \frac{1}{2}\underbrace{\bigg(\sum_{k\in I_n} \tau''_k\bigg)}_{T''}w_n^2\bigg].
+%\end{split}
+%\end{align}
+%This is a sum of single-variabled quadratic functions.
+%}
+%	
+%\frame{\frametitle{Boosting tree ensembles (3)}
+%	Assuming a fixed tree structure $s(\bm x)$, the optimal weights and corresponding loss directly follow:
+%	\begin{align}
+%		w_n^\ast = \frac{-T'_k}{T''_k}\qquad \tilde{J} = -\frac{1}{2}\sum_{n=1}^N\frac{(T')_k^2}{T''_k}.
+%	\end{align}
+%	
+%	Infinitely many possible tree structures $s$ makes a greedy search inevitable.\pause
+%	
+%	\begin{block}{Greedy best split search}
+%	Start a tree with depth $0$. Then, for each tree node, try to add a split. The corresponding change in the objective is the \hl{gain}:
+%	\begin{equation}
+%		\frac{1}{2}\big(\underbrace{\frac{(T')_\text{left}^2}{T''_\text{left}}}_{\text{cost of left child}} + \underbrace{\frac{(T')_\text{right}^2}{T''_\text{right}}}_{\text{cost of right child}} - \underbrace{\frac{(T')_\text{left}^2 + (T')_\text{right}^2}{T''_\text{left} + T''_\text{right}}}_\text{cost of no split}\big).
+%	\end{equation}
+%	Find the best split over each features' range by a linear scan of the gain.
+%	\end{block}	
+%}
+%
+%\frame{\frametitle{Implementation considerations}
+%	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g., XGBoost, LightGBM, CatBoost).
+%	As always, regularization is also part of the optimization but was not outlined here for conciseness.
+%	The spectrum of regularization factors comprises:
+%	\begin{itemize}
+%		\item Tree constraints (depth, number of leaves, etc.),
+%		\item Weight decay,
+%		\item Random sampling (column- and row-wise),
+%		\item Learning rates for each additional tree.
+%	\end{itemize}
+%}
 
-\begin{columns}[t,onlytextwidth]
-	\begin{column}{0.45\textwidth}
-	\begin{minipage}[c]{\linewidth}
-		Weak learners are often small decision trees with a depth of less than 10.
-		\newline\newline
-		Instead of optimizing real-valued parameters, here we are searching for functions $\psi(\cdot)$.
-		Hence, optimization has to be additive.
-	\end{minipage}
-	\end{column}
-	\hfill
-	\begin{column}{0.52\textwidth}
-	\begin{minipage}[r]{\linewidth}
-		\begin{figure}
-			\includegraphics[width=\textwidth]{fig/lec08/decision_tree.pdf}
-			\caption{Exemplary decision tree for binary classification and two regressors}
-			\label{fig:decision_tree}
-		\end{figure}
-		
-	\end{minipage}
-	\end{column}
-	\end{columns}
-
-%	Boosting Algorithm
-}
-
-\frame{\frametitle{boosting tree ensembles (1)}
-	The minimization objective $J_m$ for growing trees at the $m$-th boosting round can be taylor-expanded to the second-order approximation:
-	\begin{align}
-	\begin{split}
-		J_m &= \mathcal{L}(\bm{y}, \hat{\bm{y}}_{m-1} + \psi(\bm{\Xi}))\\
-			&\approx \mathcal{L}(\bm y, \hat{\bm y}_{m-1}) + (\bm{\tau}')\T \psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T \psi_m^2(\bm{\Xi}),
-	\end{split}
-	\end{align}
-	with $\bm{\tau}' = \partial_{\hat{\bm y}_{m-1}}\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$ and $\bm{\tau}'' = \partial_{\hat{\bm y}_{m-1}}^2\mathcal{L}(\bm y, \hat{\bm y}_{m-1})$.\pause
-	
-	Removing the constant part leaves us with a simplified objective:
-	\begin{align}
-	\begin{split}
-		\tilde{J}_m &= (\bm{\tau}')\T\psi_m(\bm{\Xi}) +\frac{1}{2}(\bm{\tau}'')\T{\psi_m}^2(\bm{\Xi}) \\
-		&= \sum_{k=1}^K [\tau'_k \psi_m(\bm x_k) + \frac{1}{2}\tau''_k\psi_m^2(\bm x_k)].
-	\end{split}
-	\end{align}
-}
-
-\frame{\frametitle{boosting tree ensembles (2)}
-Now consider a single tree with $N$ leaves to be defined as a vector of leaf-scores $\psi_m(\bm{x}) = \bm{w}_{s(\bm x)}, \bm w \in \mathbb{R}^N, s: \mathbb{R}^P \rightarrow [1, N]$ where $s$ maps data observations to the index of the tree's corresponding outcome (leaf).
-
-Consider the set of observations in leaf $n$ to be $I_n = \{ k | s(\bm x_k) = n \}$.\pause
-
-Then, we can regroup the objective by each leaf:
-\begin{align}
-\begin{split}
-	\tilde{J}_m &= \sum_{k=1}^K \bigg[\tau'_k w_{s(\bm x_k)} + \frac{1}{2}\tau''w_{s(\bm x_k)}^2\bigg]\\
-	&= \sum_{n=1}^N \bigg[\underbrace{\bigg(\sum_{k\in I_n}\tau'_k\bigg)}_{T'}w_n + \frac{1}{2}\underbrace{\bigg(\sum_{k\in I_n} \tau''_k\bigg)}_{T''}w_n^2\bigg].
-\end{split}
-\end{align}
-This is a sum of single-variabled quadratic functions.
-}
-	
-\frame{\frametitle{boosting tree ensembles (3)}
-	Assuming a fixed tree structure $s(\bm x)$, the optimal weights and corresponding loss directly follow:
-	\begin{align}
-		w_n^\ast = \frac{-T'_k}{T''_k}\qquad \tilde{J} = -\frac{1}{2}\sum_{n=1}^N\frac{(T')_k^2}{T''_k}.
-	\end{align}
-	
-	Infinitely many possible tree structures $s$ makes a greedy search inevitable.\pause
-	
-	\begin{block}{Greedy best split search}
-	Start a tree with depth $0$. Then, for each tree node, try to add a split. The corresponding change in the objective is the \hl{gain}:
-	\begin{equation}
-		\frac{1}{2}\big(\underbrace{\frac{(T')_\text{left}^2}{T''_\text{left}}}_{\text{cost of left child}} + \underbrace{\frac{(T')_\text{right}^2}{T''_\text{right}}}_{\text{cost of right child}} - \underbrace{\frac{(T')_\text{left}^2 + (T')_\text{right}^2}{T''_\text{left} + T''_\text{right}}}_\text{cost of no split}\big).
-	\end{equation}
-	Find the best split over each features' range by a linear scan of the gain.
-	\end{block}	
-}
-
-\frame{\frametitle{Implementation considerations}
-	The GBM became renowned by fast, scalable, cache-aware, and sparsity-aware implementations (e.g., XGBoost, LightGBM, CatBoost).
-	As always, regularization is also part of the optimization but was not outlined here for conciseness.
-	The spectrum of regularization factors comprises:
-	\begin{itemize}
-		\item Tree constraints (depth, number of leaves, etc.),
-		\item Weight decay,
-		\item Random sampling (column- and row-wise),
-		\item Learning rates for each additional tree.
-	\end{itemize}
-}
-
-\frame{\frametitle{hyperparameter optimization (1)}
+\frame{\frametitle{Hyperparameter optimization (1)}
 	\begin{figure}
-		\includegraphics[width=10cm]{fig/lec08/levels_of_opt.pdf}
+		\includegraphics[width=9cm]{fig/lec08/levels_of_opt.pdf}
 		\caption{The three levels of optimization}
 		\label{fig:levels_of_opt}
 	\end{figure}
 	
 }
 
-\frame{\frametitle{hyperparameter optimization (2)}
+\frame{\frametitle{Hyperparameter optimization (2)}
 	\begin{itemize}
 		\item Hyperparameter optimization is, again, a non-linear optimization problem.
 		\item Evaluation of any point in this space can be very costly, though.
 		\item Information gathered during a search must be fully utilized.
 		\item Toolboxes (incomprehensive)
 		\begin{itemize}
-			\item \href{https://github.com/hyperopt/hyperopt}{Hyperopt}
+			\item \href{https://github.com/optuna/optuna}{Optuna}
 			\item \href{https://scikit-optimize.github.io/stable/}{Scikit-optimize}
 			\item \href{https://pyswarms.readthedocs.io/en/latest/}{Pyswarm}
 		\end{itemize}
 	\end{itemize}
 }
 
-\frame{\frametitle{Sl toolboxes}
+\frame{\frametitle{SL toolboxes}
 	\begin{itemize}
 		\item Deep learning
 		\begin{itemize}
@@ -818,12 +822,12 @@ This is a sum of single-variabled quadratic functions.
 %% Summary %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{summary: what you've learned today}
+\frametitle{Summary: what you've learned today}
 \begin{itemize}
 	\item Industry has high demand for ML applications.\pause
 	\item Higher bias trades off variance for a better overall score.\pause
 	\item How to cross-validate and improve SL models.\pause
 	\item How features are engineered and normalized.\pause
-	\item Fundamentals of linear regression, neural networks and gradient boosted trees.
+	\item Fundamentals of linear regression and neural networks.
 \end{itemize}
 \end{frame}
