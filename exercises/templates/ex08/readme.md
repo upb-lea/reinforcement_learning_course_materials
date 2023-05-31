@@ -11,6 +11,6 @@ Basics of applied ML are picked up on, from data wrangling, loading and manipula
 * Regression
   * Linear models and neural networks
 * Classification
-  * Linear models and gradient boosting machines
+  * Lienar models and neural networks
 
 Extensive use of the [Pandas](https://pandas.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/) toolbox is made.
