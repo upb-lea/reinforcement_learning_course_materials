@@ -83,19 +83,19 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=GlL1d4Ivo_g)
+    * [Tutorial video](https://www.youtube.com/watch?v=TSwWlfZXDWw)
     * [Tutorial template](../master/exercises/templates/ex04)
     * [Tutorial solution](../master/exercises/solutions/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=eTFugChiOaE&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=zXdyABW8Hb8)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
 06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
-    * [Tutorial video](https://www.youtube.com/watch?v=4ACrTBFRw50)
+    * [Tutorial video](https://www.youtube.com/watch?v=GwbfODvSpX8)
     * [Tutorial template](../master/exercises/templates/ex06)
     * [Tutorial solution](../master/exercises/solutions/ex06) 
 07. Boosting the Inverted Pendulum by Integrating Learning & Planning (Dyna Framework)
-    * [Tutorial video](https://www.youtube.com/watch?v=KXNu7xDZ9Bg&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=FvpIQN4mj2M)
     * [Tutorial template](../master/exercises/templates/ex07)
     * [Tutorial solution](../master/exercises/solutions/ex07) 
 08. Predicting the Operating Behavior of a Real Electric Drive Systems with Supervised Learning
