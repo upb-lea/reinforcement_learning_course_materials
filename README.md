@@ -33,10 +33,10 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video](https://www.youtube.com/watch?v=YYTSZTyjbQ4)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture06.pdf) 
 07. Planning and Learning with Tabular Methods
-    * [Lecture video](https://www.youtube.com/watch?v=tXAxTiuvges)
+    * [Lecture video](https://www.youtube.com/watch?v=gvJ3__GmHqo)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture07.pdf) 
 08. Function Approximation with Supervised Learning
-    * [Lecture video](https://www.youtube.com/watch?v=xitBw9azPKE&feature=youtu.be)
+    * [Lecture video](https://www.youtube.com/watch?v=tXAxTiuvges)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture08.pdf) 
 09. On-Policy Prediction with Function Approximation
     * [Lecture video](https://www.youtube.com/watch?v=aA3MFRHrrtg)
