@@ -99,7 +99,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex07)
     * [Tutorial solution](../master/exercises/solutions/ex07) 
 08. Predicting the Operating Behavior of a Real Electric Drive Systems with Supervised Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=zxC87jRnT08)
+    * [Tutorial video](https://www.youtube.com/watch?v=Aivh5ykeJ2Q)
     * [Tutorial template](../master/exercises/templates/ex08)
     * [Tutorial solution](../master/exercises/solutions/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
