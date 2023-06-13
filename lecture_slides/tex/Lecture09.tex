@@ -18,7 +18,7 @@ Until further notice we assume that:
 	\begin{itemize}
 		\item The action can be represented as a scalar: $\bm{u}=u$ (cf. 2nd lecture). \pause
 	\end{itemize}
-	\item The applied approximation tools are \hl{differentiable functions} $J(\bm{w})$ with the parameter vector $\bm{w}$.
+	\item The applied approximation functions $J(\bm{w})$ are \hl{differentiable}  with the parameter vector $\bm{w}$.
 	\begin{itemize}
 		\item Therefore, the gradient $\nabla J(\bm{w})=\begin{bmatrix} \frac{\partial J(\bm{w})}{\partial w_1} & \frac{\partial J(\bm{w})}{\partial w_2} & \cdots \end{bmatrix}\T$ exists. \pause
 	\end{itemize}
@@ -55,11 +55,11 @@ Focus of this and the next lecture:
 \end{itemize}
 \begin{figure}
 	\subfloat{
-		\includegraphics[height=3.8cm]{fig/lec03/GPI_01.pdf}
+		\includegraphics[height=3.6cm]{fig/lec03/GPI_01.pdf}
 	}
 	\hspace{1cm}
 	\subfloat{
-		\includegraphics[height=3.8cm]{fig/lec03/GPI_02.pdf}
+		\includegraphics[height=3.6cm]{fig/lec03/GPI_02.pdf}
 	}
 \caption{GPI changes the underlying stochastic processes generating data inputs to be learned by function approximators (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 \end{figure}
@@ -266,7 +266,7 @@ To optimize \eqref{eq:min_prediction_objective} by an appropriate function appro
 Nevertheless, the true update target $v_\pi(\bm{x}_k)$ is often unknown due to
 \begin{itemize}
 	\item noise or
-	\item the learning process itself (e.g. bootstrapping estimates). 
+	\item the learning process itself (e.g., bootstrapping estimates). 
 \end{itemize}
 }
 
@@ -346,7 +346,7 @@ Nevertheless, the true update target $v_\pi(\bm{x}_k)$ is often unknown due to
 When bootstrapping is applied, the gradient does not take into account any gradient component of the bootstrapped target estimate.    
 \end{block}\pause
 \begin{itemize}
-	\item Motivation: speed up gradient calculation while assuming that the simplification error is small (e.g. due to discounting).
+	\item Motivation: speed up gradient calculation while assuming that the simplification error is small (e.g., due to discounting).
 \end{itemize}
 }
 
@@ -440,14 +440,13 @@ The semi-gradient of $J(\bm{w})$ for TD(0) from prev. slide is then
 	\vspace{0.5cm}
 	\item Alternative: batch learning methods
 	\begin{itemize}
-		\item Find $\bm{w}^*$ given a fixed, consistent data set $\bm{\mathcal{D}}$
-		\item $\bm{\mathcal{D}}=\left\{\left\langle \bm{x}_0, v_\pi(\bm{x}_0)\right\rangle, \left\langle \bm{x}_1, v_\pi(\bm{x}_1)\right\rangle,\ldots\right\}$
+		\item Find $\bm{w}^*$ given a fixed, consistent data set $\bm{\mathcal{D}}=\left\{\left\langle \bm{x}_0, v_\pi(\bm{x}_0)\right\rangle, \left\langle \bm{x}_1, v_\pi(\bm{x}_1)\right\rangle,\ldots\right\}$.
 	\end{itemize}\pause
 \vspace{0.5cm}
 \item What batch learning options do we have?
 	\begin{itemize}
-		\item Experience replay (cf. planning and learning lecture e.g. \figref{fig:Dyna})
-		\item If $\hat{v}(\tilde{\bm{x}}, \bm{w})$ is linear: closed-form least-squares solution
+		\item Experience replay (cf. planning and learning lecture, e.g., \figref{fig:Dyna})
+		\item If $\hat{v}(\tilde{\bm{x}}, \bm{w})$ is linear: closed-form \hl{least-squares} solution
 	\end{itemize}
 	\end{itemize}
 }
@@ -462,7 +461,7 @@ Based on the data set
 \end{equation*}
 repeat:
 \begin{enumerate}
-	\item Sample uniformly $i=1,\ldots,b$ state-value pairs from experience (so-called mini batch)
+	\item Sample uniformly $i=1,\ldots,b$ state-value pairs from experience (so-called \hl{mini batch})
 		\begin{equation*}
 			\left\langle \bm{x}_i, v_\pi(\bm{x}_i)\right\rangle\sim\bm{\mathcal{D}}.
 		\end{equation*}\pause
@@ -558,7 +557,7 @@ Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Recursive least squares}
 \begin{itemize}
-	\item OLS computational complexity is $\mathcal{O}(\kappa^3)$. 
+	\item OLS computational complexity is in the range of $\mathcal{O}(\kappa^{2.3})\ldots\mathcal{O}(\kappa^3)$. 
 	\begin{itemize}
 		\item $\kappa$ being the number of features.
 	\end{itemize}\pause
@@ -643,7 +642,7 @@ with
 	\end{itemize}
 	\item For $\lambda=1$ the RLS converges to a static solution.
 	\begin{itemize}
-		\item Never forgets something (i.e., problematic if nonstationary problem).
+		\item Never forgets something (i.e., problematic for non-stationary problem).
 		\item Given the same data set $\bm{\mathcal{D}}$ the RLS converges to OLS solution.
 	\end{itemize}\pause
 	\item However, if RLS-TD should be used online $\lambda\in[0.95, 0.99]$ is typical.
@@ -660,80 +659,6 @@ Squares Identification}, Proceedings of 35th IEEE Conference on Decision and Con
 \end{itemize}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Possible extensions and modifications} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Possible Problems With Gradients %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Possible problems with gradients}
-The gradient-based update in \eqref{eq:gradient_learning} is an RL standard but not irreplaceable. What are its possible issues?\pause
-\begin{itemize}
-	\item Even if (semi) SGD update converges, we only locate a parameter vector $\bm{w}^*$ close to the local optimum of $J$ highly depending on $\bm{w}_0$.
-\end{itemize}
-\begin{figure}
-	\includegraphics[height=0.4\textheight]{fig/lec09/Rastrigin.jpg}
-	\label{fig:Rastriging}
-	\caption{Rastrigin function $J(\bm{x})=A n + \sum_{i=1}^n \left(x_i^2 - A\cos(2\pi x_i)\right)$ with $A\in\left\{\mathbb{R}|A > 0 \right\}$ as exemplary global optimization problem}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Possible solutions for the continued use of SGD %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Possible solutions for the continued use of SGD}
-Reinitialize SGD-based learning (multistart approach), e.g.,
-\begin{itemize}
-	\item grid search or
-	\item random search (according to some random distribution).
-\end{itemize}
-\begin{figure}
-	\includegraphics[height=0.5\textheight]{fig/lec09/random_search.pdf}
-	\label{fig:random_search}
-	\caption{Random initialization as one possible tool to find the global optimum in highly non-linear problem spaces}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Possible Problems With Gradients (2)%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Other possible problems with gradients}
-What other possible issue may arise when dealing with gradient-based updates?
-\begin{itemize}
-	\item Depending on the application, one may be forced to use a non differentiable function approximator. 
-	\item Close to function singularities, gradients become unfeasibly small or large and cause numeric problems.
-\end{itemize}
-\begin{figure}
-	\includegraphics[height=0.5\textheight]{fig/lec09/Non_differentiable_functions.pdf}
-	\label{fig:Non_differentiable_functions}
-	\caption{Examples of non differentiable functions}
-\end{figure}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Gradient-free optimization possibilities %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Gradient-free optimization possibilities}
-\onslide<1->{If batch learning is feasible and a consistent data set $\bm{\mathcal{D}}$ is available, gradient-free optimization techniques may become an option like
-\begin{itemize}
-	\item meta-heuristics such as evolutionary algorithms (EA)  or}
-	\onslide<2->{\item surrogate-model-based techniques such as Bayesian optimization.
-\end{itemize}}
-\onslide<3->{A survey on the taxonomy of cont. global optimization can be found here:
-\begin{itemize}
-	\item \href{https://arxiv.org/abs/1808.08818}{https://arxiv.org/abs/1808.08818}.
-\end{itemize}}
-\onslide<1->{\begin{figure}
-	\includegraphics[height=0.4\textheight]{fig/lec09/EA.png}
-	\label{fig:EA}
-	\caption{EA iteration examples (source \href{https://en.wikipedia.org/wiki/File:Concept_of_directional_optimization_in_CMA-ES_algorithm.png}{www.wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
-\end{figure}}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summary %%
@@ -750,6 +675,11 @@ What other possible issue may arise when dealing with gradient-based updates?
 		\item Just transfer the incremental learning from tabular case to gradient descent on parameter vector $\bm{w}$.\pause
 		\item Stochastic gradient descent allows step-by-step based updates.\pause
 	\end{itemize}
+		\item Gradient-based prediction is not risk free (especially non-linear case):
+	\begin{itemize}
+		\item no convergence guarantees,
+		\item local optima vs. global optimum.
+	\end{itemize}
 	\item If bootstrapping is applied, the update target depends on $\bm{w}$.
 	\begin{itemize}
 		\item True gradient becomes computationally more complex.\pause
@@ -758,11 +688,6 @@ What other possible issue may arise when dealing with gradient-based updates?
 	\item Batch learning squeezes out all available prediction information from a given data set.\pause
 	\begin{itemize}
 		\item If linear function approximation is applied, closed-form solutions exist.\pause
-	\end{itemize}
-	\item Gradient-based prediction is not risk free (especially non-linear case):
-	\begin{itemize}
-		\item no convergence guarantees,
-		\item local optima vs. global optimum.
 	\end{itemize}
 \end{itemize}
 \end{frame}
