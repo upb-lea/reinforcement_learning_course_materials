@@ -44,13 +44,13 @@ The previous versions are all archived as separate releases and thus still avail
 10. Value-Based Control with Function Approximation
     * [Lecture video](https://www.youtube.com/watch?v=YNf-ezTKB78)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture10.pdf) 
-11. Eligibility Traces
+11. Stochastic Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=xLUXeASnqwE)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture11.pdf) 
-12. Policy Gradient Methods
+12. Deterministic Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
-13. Further Contemporary RL Algorithms (DDPG, TD3, TRPO, PPO)
+13. Further Contemporary RL Algorithms (TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
 
