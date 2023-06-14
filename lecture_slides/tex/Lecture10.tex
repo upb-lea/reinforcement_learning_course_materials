@@ -34,7 +34,7 @@ Today's focus:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Types of action-value function approximation}
 \begin{figure}
-\includegraphics[width=9.5cm]{fig/lec10/Model_types_action_value.pdf}
+\includegraphics[height=0.45\textheight]{fig/lec10/Model_types_action_value.pdf}
 \label{fig:Model_types_action_value}
 \caption{Possible function approximation settings for discrete actions}
 \end{figure}
@@ -353,7 +353,7 @@ If we apply off-policy LS-SARSA then
 %% On and Off-Policy LSTDQ %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{LS-SARSA}
-\begin{block}{LS-Sarsa solution}
+\begin{block}{LS-SARSA solution}
 Having arranged $i=1,\ldots,b$ samples $\left\langle \bm{x}_i, u_i, r_{i+1}, \bm{x}_{i+1}, u_{i+1}\right\rangle\sim\bm{\mathcal{D}}$ using one-step bootstrapping \eqref{eq:bootstrapping_LSTDQ} and linear function approximation as in \eqref{eq:LSTDQ_data}, the LS-SARSA solution is
 \begin{equation}
 		\bm{w}^* = (\bm{\Xi}\T\bm{\Xi})^{-1}\bm{\Xi}\T\bm{y} .
