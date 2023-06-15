@@ -42,7 +42,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video](https://www.youtube.com/watch?v=aA3MFRHrrtg)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture09.pdf) 
 10. Value-Based Control with Function Approximation
-    * [Lecture video]((https://www.youtube.com/watch?v=LE9dVVj5700))
+    * [Lecture video](https://www.youtube.com/watch?v=LE9dVVj5700)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture10.pdf) 
 11. Stochastic Policy Gradient Methods
     * [Lecture video](https://www.youtube.com/watch?v=xLUXeASnqwE)
