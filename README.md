@@ -110,18 +110,14 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
     * [Tutorial template](../master/exercises/templates/ex10)
     * [Tutorial solution](../master/exercises/solutions/ex10) 
-11. Improve the Value-Based Mountain Car Solution using Sarsa(Lambda)
-    * [Tutorial video](https://www.youtube.com/watch?v=bhZGpuh5-6M)
+11. Landing on the Moon with REINFORCE and Actor-Critic Methods
+    * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
     * [Tutorial template](../master/exercises/templates/ex11)
     * [Tutorial solution](../master/exercises/solutions/ex11) 
-12. Landing on the Moon with REINFORCE and Actor-Critic Methods
-    * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
+12. Shoot to the moon with DDPG & PPO
+    * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
     * [Tutorial template](../master/exercises/templates/ex12)
     * [Tutorial solution](../master/exercises/solutions/ex12) 
-13. Shoot to the moon with DDPG & PPO
-    * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
-    * [Tutorial template](../master/exercises/templates/ex13)
-    * [Tutorial solution](../master/exercises/solutions/ex13) 
 
 # Contributions
 We highly appreciate any feedback and input to the course material e.g.
