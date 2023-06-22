@@ -82,7 +82,6 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
 \subfloat[][Safety critic: add a critic which indicates to which extent the current data sample fits to a safe situation]{\includegraphics[width=0.375\textwidth]{fig/lec14/RL_Safety_Critic.pdf}}%
 \qquad
 \subfloat[][Safety shield: use a priori or learned model knowledge of the environment to make predictions identifying actions leading to unsafe situations]{\includegraphics[width=0.375\textwidth]{fig/lec14/Safe_RL_Shield.pdf}}%
-\caption{Safety methods}%
 \label{fig:safety_birds_eye}%
 \end{figure}
 }
@@ -106,6 +105,32 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
 \frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Real-time implementation aspects %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Real-time implementation aspects (1)}
+\begin{figure}
+\centering
+\includegraphics[height=0.68\textheight]{fig/lec14/DDPG_Real_Time.pdf}
+\caption{DDPG implementation example (derivative work of \figref{fig:RL_Wiki} and \href{https://commons.wikimedia.org/wiki/File:Multi-Layer_Neural_Network-Vector.svg?uselang=de}{wikipedia.org}, \href{https://creativecommons.org/publicdomain/zero/1.0/deed.en}{CC0 1.0})}
+\label{fig:DDPG_Real_Time}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bird's eye view on RL concepts integrating safety %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Real-time implementation aspects (2)}
+\vspace{-0.1cm}
+\begin{figure}%
+\centering
+\subfloat[][Real-time control requirement vs. learning time]{\includegraphics[width=0.45\textwidth]{fig/lec14/Timing.pdf}}%
+\qquad
+\subfloat[][Typical evolution of RL parameter weights during learning]{\includegraphics[width=0.45\textwidth]{fig/lec14/NN-Weights.pdf}}%
+\label{fig:timing}%
+\end{figure}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Meta Reinforcement Learning} 
