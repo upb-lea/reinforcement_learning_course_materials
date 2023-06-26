@@ -32,11 +32,11 @@
     * [Tutorial template](./templates/ex08)
     * [Tutorial solution](./solutions/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
-    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk)
+    * [Tutorial video](https://www.youtube.com/watch?v=AY7fvqnjmGU)
     * [Tutorial template](./templates/ex09)
     * [Tutorial solution](./solutions/ex09) 
 10. Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration
-    * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=IPxare_FmlE)
     * [Tutorial template](./templates/ex10)
     * [Tutorial solution](./solutions/ex10) 
 11. Landing on the Moon with REINFORCE and Actor-Critic Methods
