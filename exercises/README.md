@@ -45,5 +45,5 @@
     * [Tutorial solution](../master/exercises/solutions/ex11) 
 12. Shoot for the moon with DDPG & PPO
     * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
-    * [Tutorial template](../master/exercises/templates/ex12)
-    * [Tutorial solution](../master/exercises/solutions/ex12)
+    * [Tutorial template](./templates/ex12)
+    * [Tutorial solution](./solutions/ex12)
