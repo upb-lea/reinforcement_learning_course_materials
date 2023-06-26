@@ -103,11 +103,11 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex08)
     * [Tutorial solution](../master/exercises/solutions/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
-    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk)
+    * [Tutorial video](https://www.youtube.com/watch?v=AY7fvqnjmGU)
     * [Tutorial template](../master/exercises/templates/ex09)
     * [Tutorial solution](../master/exercises/solutions/ex09) 
 10. Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration
-    * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=IPxare_FmlE)
     * [Tutorial template](../master/exercises/templates/ex10)
     * [Tutorial solution](../master/exercises/solutions/ex10) 
 11. Landing on the Moon with REINFORCE and Actor-Critic Methods
