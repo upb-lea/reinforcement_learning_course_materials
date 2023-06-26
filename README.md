@@ -83,11 +83,11 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=TSwWlfZXDWw)
+    * [Tutorial video](https://youtu.be/TSwWlfZXDWw)
     * [Tutorial template](../master/exercises/templates/ex04)
     * [Tutorial solution](../master/exercises/solutions/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=zXdyABW8Hb8)
+    * [Tutorial video](https://youtu.be/zXdyABW8Hb8)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
 06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
