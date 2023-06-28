@@ -2,7 +2,7 @@
 # https://github.com/osannolik/gym-goddard/blob/master/gym_goddard/envs/goddard_env.py
 # Distributed under MIT Licence
 
-import gym
+import gymnasium as gym
 import numpy as np
 
 class Rocket(object):
@@ -105,7 +105,7 @@ class GoddardEnv(gym.Env):
     
     TIMEOUT = 300
     
-    def __init__(self, rocket=Default()):
+    def __init__(self, rocket=Default(), render_mode = "human"):
         super(GoddardEnv, self).__init__()
 
         self._r = rocket
@@ -113,7 +113,7 @@ class GoddardEnv(gym.Env):
         self.number_of_steps = 0
 
         self.U_INDEX = 0
-        self.action_space = gym.spaces.Box(
+        self.action_space = gym.spaces.box.Box(
             low   = np.array([0.0]),
             high  = np.array([1.0]),
             shape = (1,),
@@ -121,11 +121,13 @@ class GoddardEnv(gym.Env):
         )
 
         self.V_INDEX, self.H_INDEX, self.M_INDEX = 0, 1, 2
-        self.observation_space = gym.spaces.Box(
-            low   = np.array([np.finfo(np.float).min, 0.0, self._r.M1]),
-            high  = np.array([np.finfo(np.float).max, np.finfo(np.float).max, self._r.M0]),
+        self.observation_space = gym.spaces.box.Box(
+            low   = np.array([np.finfo(np.float32).min, 0.0, self._r.M1]),
+            high  = np.array([np.finfo(np.float32).max, np.finfo(np.float32).max, self._r.M0]),
             dtype = np.float32
         )
+
+        self.render_mode = render_mode
 
         self.reset()
 
@@ -145,32 +147,34 @@ class GoddardEnv(gym.Env):
 
         self._thrust_last = thrust
 
-        drag = self._r.drag(v,h)
+        drag = self._r.drag(v, h)
         g = self._r.g(h)
 
         # Forward Euler
         self._state = (
-            0.0 if h==self._r.H0 and v!=0.0 else (v + self._r.DT * ((thrust-drag)/m - g)),
+            0.0 if h==self._r.H0 and v != 0.0 else (v + self._r.DT * ((thrust-drag)/m - g)),
             max(h + self._r.DT * v, self._r.H0),
             max(m - self._r.DT * self._r.GAMMA * thrust, self._r.M1)
         )
 
         self._h_max = max(self._h_max, self._state[self.H_INDEX])
 
-        is_done = bool(
-            is_tank_empty and self._state[self.V_INDEX] < 0 and self._h_max > self._r.H0
-        ) or self.number_of_steps >= self.TIMEOUT
+        terminated = bool(is_tank_empty and self._state[self.V_INDEX] < 0 and self._h_max > self._r.H0)
+        truncated = bool(self.number_of_steps >= self.TIMEOUT)
 
-        if is_done:
+        if terminated:
             reward = self._h_max - self._r.H0
-            if self.number_of_steps >= self.TIMEOUT:
-                reward = -1
+        elif truncated:
+            reward = -1
         else:
             reward = 0.0
 
-        extras = dict(zip(self.extras_labels(), [action[self.U_INDEX], thrust, drag, g]))
+        info = dict(zip(self.extras_labels(), [action[self.U_INDEX], thrust, drag, g]))
 
-        return self._observation(), reward, is_done, extras
+        if self.render_mode == "human":
+            self.render(mode=self.render_mode)
+
+        return self._observation(), reward, terminated, truncated, info
 
     def maximum_altitude(self):
         return self._h_max
@@ -183,12 +187,18 @@ class GoddardEnv(gym.Env):
         else:
             return state
 
-    def reset(self):
+    def reset(self, seed=None):
         self._state = (self._r.V0, self._r.H0, self._r.M0)
         self._h_max = self._r.H0
         self._thrust_last = None
         self.number_of_steps = 0
-        return self._observation()
+
+        drag = self._r.drag(self._r.V0, self._r.H0)
+        g = self._r.g(self._r.H0)
+
+        info = dict(zip(self.extras_labels(), [0.0, 0.0, drag, g]))
+
+        return self._observation(), info
 
     def render(self, mode='human'):
         _, h, m = self._observation(normalize=False)
@@ -220,7 +230,7 @@ class GoddardEnv(gym.Env):
                 (-W/2, 0),
                 (-W/2, H*((mass-self._r.M1)/(self._r.M0-self._r.M1))),
                 (W/2,  H*((mass-self._r.M1)/(self._r.M0-self._r.M1))),
-                (W/2,0)
+                (W/2, 0)
             ]
             self.fuel = rendering.make_polygon(self.make_fuel_poly(m), filled=True)
             self.fuel.set_color(.8, .1, .14)

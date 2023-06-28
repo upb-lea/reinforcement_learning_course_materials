@@ -83,11 +83,11 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=TSwWlfZXDWw)
+    * [Tutorial video](https://youtu.be/TSwWlfZXDWw)
     * [Tutorial template](../master/exercises/templates/ex04)
     * [Tutorial solution](../master/exercises/solutions/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
-    * [Tutorial video](https://www.youtube.com/watch?v=zXdyABW8Hb8)
+    * [Tutorial video](https://youtu.be/zXdyABW8Hb8)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
 06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
@@ -103,18 +103,18 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex08)
     * [Tutorial solution](../master/exercises/solutions/ex08) 
 09. Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation 
-    * [Tutorial video](https://www.youtube.com/watch?v=zCv29hVyxNk)
+    * [Tutorial video](https://www.youtube.com/watch?v=AY7fvqnjmGU)
     * [Tutorial template](../master/exercises/templates/ex09)
     * [Tutorial solution](../master/exercises/solutions/ex09) 
 10. Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration
-    * [Tutorial video](https://www.youtube.com/watch?v=FrMSB7Dgp7c&feature=youtu.be)
+    * [Tutorial video](https://www.youtube.com/watch?v=IPxare_FmlE)
     * [Tutorial template](../master/exercises/templates/ex10)
     * [Tutorial solution](../master/exercises/solutions/ex10) 
 11. Landing on the Moon with REINFORCE and Actor-Critic Methods
     * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
     * [Tutorial template](../master/exercises/templates/ex11)
     * [Tutorial solution](../master/exercises/solutions/ex11) 
-12. Shoot to the moon with DDPG & PPO
+12. Shoot for the moon with DDPG & PPO
     * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
     * [Tutorial template](../master/exercises/templates/ex12)
     * [Tutorial solution](../master/exercises/solutions/ex12) 
