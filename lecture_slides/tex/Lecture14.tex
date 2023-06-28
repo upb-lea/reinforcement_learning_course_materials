@@ -155,15 +155,7 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
 \begin{figure}
 	%\includegraphics[width=1.11\textwidth, height=0.8\textheight]{fig/lec14/Reward_v_mre.pdf}
 	\includegraphics[trim=50 40 10 60, clip, width=1.1\linewidth]{fig/lec14/Reward_v_mre.pdf}
-	\caption{Reward function \ref{eq:reward} for different reference and measured voltages and currents below nominal current \begin{tikzpicture}[auto,node distance=1cm,thin]
-			%\tikzstyle{every node}=[shape=circle,fill=blue!10,draw=none, text=white,shading=ball]
-			\tikzstyle{every node}=[shape=star,star point height=.2cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (1) {1};
-		\end{tikzpicture} \& \begin{tikzpicture}[auto,node distance=1cm,thin]
-			%\tikzstyle{every node}=[shape=circle,fill=blue!10,draw=none, text=white,shading=ball]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (3) {3};
-		\end{tikzpicture}}
+	\caption{Reward function \ref{eq:reward} for different reference and measured voltages and currents below nominal current}
 	\label{fig:RL_OMG}
 \end{figure}
 \end{minipage}
@@ -178,39 +170,20 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
     r_{} =
     \begin{cases}
          \text{MRE}(v_\mathrm{C}, v^*) , &
-         \begin{tikzpicture}[auto,node distance=1cm,thin]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (1) {1};
-		\end{tikzpicture} \\
+         \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf A}} \\
          %
-         \text{MRE}(v_\mathrm{C}, v^*) + f(i_\mathrm{f}), & \begin{tikzpicture}[auto,node distance=1cm,thin]
-			%\tikzstyle{every node}=[shape=circle,fill=blue!10,draw=none, text=white,shading=ball]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (2) {2};
-		\end{tikzpicture} \\
+         \text{MRE}(v_\mathrm{C}, v^*) + f(i_\mathrm{f}), & \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf B}} \\
          %
-         -1, & \begin{tikzpicture}[auto,node distance=1cm,thin]
-			%\tikzstyle{every node}=[shape=circle,fill=blue!10,draw=none, text=white,shading=ball]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (3) {3};
-		\end{tikzpicture}
+         -1, & \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf C}}
     \end{cases}
     \label{eq:reward}
 \end{align}
 \begin{itemize}
-	\item \begin{tikzpicture}[auto,node distance=1cm,thin]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (1) {1};
-		\end{tikzpicture} $v_{\text{C}} \leq v_\mathrm{lim} \, \wedge\,  i_{\text{f}} \leq i_\mathrm{nom}$
-	\item \begin{tikzpicture}[auto,node distance=1cm,thin]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (2) {2};
-		\end{tikzpicture} $v_{\text{C}} \leq v_\mathrm{lim} \, \wedge\, i_\mathrm{nom} \leq i_{\text{f}} \leq i_\mathrm{lim}$
-	\item \begin{tikzpicture}[auto,node distance=1cm,thin]
-			\tikzstyle{every node}=[shape=star,star point height=.4cm,fill=blue!50,draw=none, text=white,shading=ball]
-			\node (3) {3};
-		\end{tikzpicture} otherwise
+	\item \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf A}} $v_{\text{C}} \leq v_\mathrm{lim} \, \wedge\,  i_{\text{f}} \leq i_\mathrm{nom}$
+	\item \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf B}} $v_{\text{C}} \leq v_\mathrm{lim} \, \wedge\, i_\mathrm{nom} \leq i_{\text{f}} \leq i_\mathrm{lim}$
+	\item \Large\textcircled{\raisebox{.4pt}{\normalsize\textbf C}} otherwise
 	\item Linear punishment term $f(i_\mathrm{f})$
+	%\item
 \end{itemize}
 \end{minipage}
 \end{column}
