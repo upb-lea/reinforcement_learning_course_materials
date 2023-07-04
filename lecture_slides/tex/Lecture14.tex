@@ -298,7 +298,7 @@ Power Electronic Systems}, 2023
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bird's eye view on RL concepts integrating safety %%
+%% Real-time implementation aspects 2 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Real-time implementation aspects (2)}
 \vspace{-0.1cm}
@@ -311,6 +311,96 @@ Power Electronic Systems}, 2023
 \end{figure}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Control Scheme of the DQ-DTC %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Application example: deep Q direct torque control}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[scale=0.35]{fig/lec14/Safeguarded_DQDTC_Scheme.pdf}
+	\caption{Deep Q direct torque control schematic}
+	\label{fig:DQDTC_Scheme}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.45\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item The DQ-DTC is basically a DQN
+	\item Sampling time of the plant system is $T_\text{s}=50\, \upmu \text{s}$
+	\item DQN inference, safeguarding and system identification must fit into $T_\text{s}$
+	\item Source: M. Schenke et al., \href{https://www.techrxiv.org/articles/preprint/Finite-Set_Direct_Torque_Control_via_Edge_Computing-Assisted_Safe_Reinforcement_Learning_for_a_Permanent_Magnet_Synchronous_Motor/22032578}{\textit{Finite-Set Direct Torque Control via Edge Computing-Assisted
+Safe Reinforcement Learning for a Permanent Magnet Synchronous Motor}}, 2023
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fast neural network inference %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Fast neural network inference}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[scale=0.4]{fig/lec14/CPU_vs_FPGA.pdf}
+	\caption{Conceptual comparison of CPU and FPGA evaluation of a neural network}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.45\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item Each neuron has the same job $y_{n,l+1}=f(\bm{y}_{l}^\top\bm{w}_{n,l}+b_{n,l})$
+	\item CPU must evaluate each neuron sequentially
+	\item FPGA can evaluate each neuron at the same time
+	\item Maximum number of parallel computations is limited
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Edge RL Pipeline %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Edge reinforcement learning}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[scale=0.5]{fig/lec14/Edge_RL_Pipeline.pdf}
+	\caption{Our edge reinforcement learning pipeline}
+\end{figure}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.45\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item Backward pass / learning steps are outsource to workstation
+	\item Communication between test bench and workstation is based on TCP/IP
+	\item Backward pass is generic and has no time constraints $\rightarrow$ low application effort
+\end{itemize}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Demonstration video %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Demonstration video}
+\center
+Youtube link:
+	\href{https://www.youtube.com/watch?v=hQ49Mc6LV78}{Coffee machine vs. deep Q direct torque control}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Meta Reinforcement Learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,3 +408,115 @@ Power Electronic Systems}, 2023
 \frametitle{Table of contents}
 \tableofcontents[currentsection]
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Problem setting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Meta reinforcement learning - the setting (1)}
+\vspace{-0.1cm}
+\begin{figure}%
+\centering
+\subfloat[][General problem class is similar, environments only differ in some characteristics, the agent could transfer learned behavior]{\includegraphics[scale=0.6]{fig/lec14/Meta_RL_Set_MDPS.pdf}}%
+\qquad
+\subfloat[][Solution approach: treat the environment as partially observable, distinguishing details are not directly available]{\includegraphics[scale=0.6]{fig/lec14/Meta_RL_POMDP.pdf}}%
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Problem setting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Meta reinforcement learning - the setting (2)}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.45\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item The agent must have some mechanism that allows adaptation to the specific environment
+	\item This means, the distinguishing details must be extracted in some way
+	\item Usually, they can be retrieved from a larger set of observations
+\end{itemize}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.54\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[scale=1.0]{fig/lec14/MetaLearningConcepts.pdf}
+	\caption{Different concepts of meta learning}
+\end{figure}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Classical RL for drives %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Usage in drive control: classical agent}
+\begin{figure}
+	\includegraphics{fig/lec14/MetaProblemMotoren.pdf}
+	\caption{Each agent must be trained individually $\rightarrow$ huge effort}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta RL for drives %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Usage in drive control: meta agent}
+\begin{figure}
+	\includegraphics[scale=1.2]{fig/lec14/MetaLoesungMotoren.pdf}
+	\caption{One agent to control them all $\rightarrow$ effort is limited and independent of the number of controlled environments}
+\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Proof of concept %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Our setup}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.4\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{itemize}
+	\item Make use of context network
+	\item Generate context $\bm{z}$ with a fix set of observations $\rightarrow$ $\bm{z}=\text{const.}$
+	\item Source: D. Jakobeit et al., \href{https://ieeexplore.ieee.org/abstract/document/10068250}{\textit{Meta-Reinforcement Learning-Based Current
+Control of Permanent Magnet Synchronous Motor
+Drives for a Wide Range of Power Classes}}, IEEE TPEL, 2023
+\end{itemize}
+\end{minipage}
+\end{column}
+\hfill
+\begin{column}{0.65\textwidth}
+\begin{minipage}[c]{\linewidth}
+\begin{figure}
+	\includegraphics[scale=0.375]{fig/lec14/Meta_Scheme.pdf}
+	\caption{A meta learning concept that we implemented successfully}
+\end{figure}
+\end{minipage}
+\end{column}
+\end{columns}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Evaluation %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Evaluation on (very) different motors}
+\vspace{-0.1cm}
+\begin{figure}%
+\centering
+\subfloat[][Current control on a PMSM with low rated power]{\includegraphics[scale=0.37]{fig/lec14/MetaLowPowerExample.pdf}}%
+\qquad
+\subfloat[][Current control on a PMSM with high rated power]{\includegraphics[scale=0.37]{fig/lec14/MetaHighPowerExample.pdf}}%
+\end{figure}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Marketing %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Summary}
+\begin{itemize}
+	\item Cool things can be done!
+	\item Many questions are still open $\rightarrow$ help is appreciated!
+	\item Please contact us if you are interested in any of the mentioned problems
+	\item They can be worked on in theses, project groups or assistant positions
+\end{itemize}
+}
