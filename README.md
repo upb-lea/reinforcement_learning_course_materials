@@ -59,7 +59,7 @@ The previous versions are all archived as separate releases and thus still avail
 * Summary of Part One: Reinforcement Learning in Finite State and Action Spaces
     * [Lecture video](https://www.youtube.com/watch?v=bRpWfOSvMTg)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_One.pdf) 
-* Summary of Part Two: Course Completion and Outlook
+* Summary of Part Two: Reinforcement Learning Using Function Approximation
     * [Lecture video](https://www.youtube.com/watch?v=F_dkTOlVACM)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_Two.pdf) 
 * Full course slides
