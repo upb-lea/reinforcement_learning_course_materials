@@ -8,7 +8,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
-\tableofcontents[currentsection]
+\tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,7 +18,7 @@
 \frame{\frametitle{Reinterpreting the stochastic policy gradient (1)}
 \vspace{-0.2cm}
 \begin{itemize}
-	\item In contrast to the previous two algorithms, we will \hl{focus on stochastic policies} $\pi(\bm{u}|\bm{x})$ in the following.\pause
+	\item In the following we will \hl{focus on stochastic policies} $\pi(\bm{u}|\bm{x})$ .\pause
 	\item First, we rewrite the performance metric \eqref{eq:performance_metric_episodic} to obtain
 		\begin{equation}
 		J_{\pi} =\El{\sum_{k=0}^\infty \gamma^k R_k}{\pi}.
@@ -105,11 +105,22 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Smooth Policy Updates via TRPO %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Smooth policy updates via TRPO}
+\begin{figure}
+\includegraphics[height=5.75cm]{fig/lec13/TRPO_Style_Updates.pdf}
+\caption{Simplified representation of the policy evolution for a scalar action given some fixed state. Left: TRPO-style updates finding the optimal action with increasing probability. Right: Unmonitored policy distributions not converging towards an optimal policy ('policy chattering').}
+\label{fig:TRPO_Style_Updates}
+\end{figure}
+}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-Based Estimation of the Objective and Constraint%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Sample-based objective and constraint estimation (1)}
 \begin{itemize}
-	\item To actually solve \eqref{eq:TRPO_opt_prob} we will make use of samplings from \hl{Monte-Carlo rollouts}.\pause
+	\item To actually solve \eqref{eq:TRPO_opt_prob} we will make use of samplings from \hl{Monte Carlo rollouts}.\pause
 	\item Expanding the objective yields
 	\begin{equation}
 		\max_{\bm{\theta}}  \, \mathcal{L}_{\bm{\theta}_k}(\bm{\theta})= \max_{\bm{\theta}} \, J_{\pi_k} + \int_\mathcal{X}p^{\pi_k}(\bm{x})\int_{\mathcal{U}} \pi_{\bm{\theta}}(\bm{u}|\bm{x})a_{\pi_k}(\bm{x},\bm{u}).
@@ -123,17 +134,6 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 	\end{equation}
 \end{itemize}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Smooth Policy Updates via TRPO %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Smooth policy updates via TRPO}
-\begin{figure}
-\includegraphics[height=5.75cm]{fig/lec13/TRPO_Style_Updates.pdf}
-\caption{Simplified representation of the policy evolution for a scalar action given some fixed state. Left: TRPO-style updates finding the optimal action with increasing probability. Right: Unmonitored policy distributions not converging towards an optimal policy ('policy chattering').}
-\label{fig:TRPO_Style_Updates}
-\end{figure}
-}	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sample-Based Estimation of the Objective and Constraint%%
@@ -155,7 +155,7 @@ D_{\mathrm{KL}}\left(\mathcal{N}_0 \parallel \mathcal{N}_1\right) =  \frac{1}{2}
 	\item Hence, we have a \hl{three-step procedure} for each TRPO update:\pause
 \end{itemize}
 \begin{enumerate}
-	\item Use Monte-Carlo simulations based on the old policy to obtain data.\pause
+	\item Use Monte Carlo simulations based on the old policy to obtain data.\pause
 	\item Use the data to construct \eqref{eq:TRPO_opt_prob_sample}.\pause
 	\item Solve the constrained optimization problem to update the policy parameter vector. 
 \end{enumerate}\pause
@@ -178,7 +178,7 @@ Solving  \eqref{eq:TRPO_opt_prob_sample} is generally a nonlinear optimization p
 	\end{equation}\pause
 	\item Here, $\delta_{k}=r_k+\gamma v(\bm{x}_{k+1})-v(\bm{x}_{k})$ is a single advantage sample.\pause
 	\item Hence, the GAE is the exponentially-weighted average of the discounted advantage samples with an additional weighting $\lambda$.\pause
-	\item Similar formulation compared to TD$(\lambda)$ but instead of the state value the estimator's target is the advantage. \pause
+	\item Similar formulation compared to TD$(\lambda)$ but the estimator's target is the advantage. \pause
 	\item The choice of $(\gamma\lambda)$ trade-offs the bias and variance of the estimator. 
 \end{itemize}	
 }
@@ -197,8 +197,7 @@ The TRPO's key facts are:
 The TRPO's main hurdles are:
 \begin{itemize}
 	\item Constructing the objective function and constraint requires Monte Carlo rollouts (time consuming, data inefficient).\pause
-	\item When the sampled optimization problem is set up, a nonlinear and constrained optimization step is required (no simple policy gradient).\pause
-	\item For speedy implementations, only approximate solutions of the TRPO problem are possible.
+	\item When the sampled optimization problem is set up, a nonlinear and constrained optimization step is required (no simple policy gradient, computational costly).\pause
 \end{itemize}\pause	
 \begin{block}{}
 We will not provide any specific TRPO implementation suggestion at this point, since this is rather cumbersome. Instead we will move forward to a similar algorithm which is pursuing the same goal (prevent erratic policy changes) with a much simpler implementation.  
@@ -243,7 +242,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Clipped surrogate objective}
 \begin{itemize}
-	\item The first approach is based on the following objective:
+	\item The first approach is based on the following \hl{clipped objective}:
 \end{itemize}
 \vspace{0.25cm}
 \small
@@ -312,13 +311,13 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Adaptive KL penalty}
 \begin{itemize}
-	\item The second PPO variant makes use of the following KL-penalized objective
+	\item The second PPO variant makes use of the following \hl{KL-penalized objective}
 \end{itemize}
 \vspace{0.15cm}
 \small
 	\begin{equation}
 	\label{eq:PPO_AKP}
-      \El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})-\beta D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{\pi_{\bm{\theta}_k}}.		
+      \El{\frac{\pi_{\bm{\theta}}(\bm{U}|\bm{X})}{\pi_{\bm{\theta}_k}(\bm{U}|\bm{X})}a_{\pi_k}(\bm{X},\bm{U})\hl{-\beta D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}}{\pi_{\bm{\theta}_k}}.		
 	\end{equation}
 	\normalsize\pause
 	\vspace{-0.25cm}
@@ -393,7 +392,7 @@ Although PPO is derived from a TRPO background pursuing monotonically increasing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outlook: Other Contempororay Algorithms (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: other contemporary algorithms (1)}
+\frame{\frametitle{Algorithmic outlook: other contemporary model-free algorithms (1)}
 The selection of algorithms appears endless:
 \begin{itemize}
 	\item DQN variants such as
@@ -413,14 +412,14 @@ Remarks:
 \begin{itemize}
 	\item \hl{You have already learned the basic building blocks in order to make yourself familiar with any value-/policy-based or hybrid RL approach. \pause
 	\item Use this knowledge! \pause
-	\item Focus on primary scientific literature for self-studying and not on arbitrary blogs or other possible non-reliable sources!} 
+	\item Focus on primary scientific literature for self-studying and not on unreliable sources!} 
 \end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Outlook: Other Contempororay Algorithms (2)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Outlook: other contemporary algorithms (2)}
+\frame{\frametitle{Algorithmic outlook: other contemporary model-free algorithms (2)}
 Algorithm collections with tutorial-style documentation:
 \begin{itemize}
 	\item \href{https://nervanasystems.github.io/coach/}{Intel Reinforcement Learning Coach}
