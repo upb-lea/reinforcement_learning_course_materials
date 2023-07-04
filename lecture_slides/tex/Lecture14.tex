@@ -4,7 +4,7 @@
 \frame{\titlepage} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Safe Reinforcement Learning} 
+\section{Safe reinforcement learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -278,7 +278,7 @@ Power Electronic Systems}, 2023
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Real-World Implementation with Fast Policy Inference} 
+\section{Real-world implementation with fast policy inference} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -402,7 +402,7 @@ Youtube link:
 	\href{https://www.youtube.com/watch?v=hQ49Mc6LV78}{Coffee machine vs. deep Q direct torque control}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Meta Reinforcement Learning} 
+\section{Meta reinforcement learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Table of contents}
@@ -450,7 +450,7 @@ Youtube link:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Classical RL for drives %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Usage in drive control: classical agent}
+\frame{\frametitle{Usage in electric drive control: classical agent}
 \begin{figure}
 	\includegraphics{fig/lec14/MetaProblemMotoren.pdf}
 	\caption{Each agent must be trained individually $\rightarrow$ huge effort}
@@ -460,7 +460,7 @@ Youtube link:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Meta RL for drives %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Usage in drive control: meta agent}
+\frame{\frametitle{Usage in electric drive control: meta agent}
 \begin{figure}
 	\includegraphics[scale=1.2]{fig/lec14/MetaLoesungMotoren.pdf}
 	\caption{One agent to control them all $\rightarrow$ effort is limited and independent of the number of controlled environments}
@@ -514,9 +514,17 @@ Drives for a Wide Range of Power Classes}}, IEEE TPEL, 2023
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Summary}
 \begin{itemize}
-	\item Cool things can be done!
-	\item Many questions are still open $\rightarrow$ help is appreciated!
-	\item Please contact us if you are interested in any of the mentioned problems
-	\item They can be worked on in theses, project groups or assistant positions
+	\item Application of RL on technical systems comes with many challenges, e.g.,
+	\begin{itemize}
+		\item Safety limits,
+		\item Real-time / computational constraints,
+		\item Varying and/or partially unknown environments.
+	\end{itemize}
+	\item Real-world implementations often require more than bare RL algorithms, e.g.,
+		\begin{itemize}
+			\item Integration of available a priori expert knowledge,
+			\item Combination with model-based control engineering tools.
+		\end{itemize}
+		\item Ideal integration of data-driven RL solutions together with expert-based control engineering parts is subject to many open research question. 
 \end{itemize}
 }
