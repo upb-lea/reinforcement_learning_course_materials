@@ -53,6 +53,8 @@ The previous versions are all archived as separate releases and thus still avail
 13. Further Contemporary RL Algorithms (TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
+14. Outlook and Research Insights
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture14.pdf)
 
 * Summary of Part One: Reinforcement Learning in Finite State and Action Spaces
     * [Lecture video](https://www.youtube.com/watch?v=bRpWfOSvMTg)
