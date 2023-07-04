@@ -45,10 +45,10 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video](https://www.youtube.com/watch?v=LE9dVVj5700)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture10.pdf) 
 11. Stochastic Policy Gradient Methods
-    * [Lecture video](https://www.youtube.com/watch?v=xLUXeASnqwE)
+    * [Lecture video](https://www.youtube.com/watch?v=LzuZUyVr2mY)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture11.pdf) 
 12. Deterministic Policy Gradient Methods
-    * [Lecture video](https://www.youtube.com/watch?v=IrQQyWkFJwk)
+    * [Lecture video](https://www.youtube.com/watch?v=i6hOcGIgdoQ)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
 13. Further Contemporary RL Algorithms (TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
