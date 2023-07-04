@@ -111,7 +111,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex10)
     * [Tutorial solution](../master/exercises/solutions/ex10) 
 11. Landing on the Moon with REINFORCE and Actor-Critic Methods
-    * [Tutorial video](https://www.youtube.com/watch?v=LeVDStyEjAo)
+    * [Tutorial video](https://www.youtube.com/watch?v=dL6gK7ITVYU)
     * [Tutorial template](../master/exercises/templates/ex11)
     * [Tutorial solution](../master/exercises/solutions/ex11) 
 12. Shoot for the moon with DDPG & PPO
