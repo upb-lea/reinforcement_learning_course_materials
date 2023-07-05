@@ -69,6 +69,7 @@ The previous versions are all archived as separate releases and thus still avail
 # Exercise Content
 All exercises are based on Python 3.9 and site-packages according to the requirements.txt:
 ```
+>>> pip install setuptools==65.5.0
 >>> pip install -r requirements.txt
 ```
 
