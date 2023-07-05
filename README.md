@@ -51,7 +51,7 @@ The previous versions are all archived as separate releases and thus still avail
     * [Lecture video](https://www.youtube.com/watch?v=i6hOcGIgdoQ)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture12.pdf) 
 13. Further Contemporary RL Algorithms (TRPO, PPO)
-    * [Lecture video](https://www.youtube.com/watch?v=aYeDmT-y-4g)
+    * [Lecture video](https://www.youtube.com/watch?v=H8rElrvs9Lo)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture13.pdf)
 14. Outlook and Research Insights
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture14.pdf)
