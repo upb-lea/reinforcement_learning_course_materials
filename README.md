@@ -118,7 +118,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex11)
     * [Tutorial solution](../master/exercises/solutions/ex11) 
 12. Shoot for the moon with DDPG & PPO
-    * [Tutorial video](https://www.youtube.com/watch?v=4RyX7L-MbsU)
+    * [Tutorial video](https://www.youtube.com/watch?v=YpSC9lTQY4k)
     * [Tutorial template](../master/exercises/templates/ex12)
     * [Tutorial solution](../master/exercises/solutions/ex12) 
 
