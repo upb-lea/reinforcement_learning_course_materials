@@ -217,7 +217,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Background and motivation}
 \begin{itemize}
-	\item The upcoming \hl{proximal policy optimization (PPO)} algorithm tries to mimic the constrained TRPO problem based on related unconstrained problems. 
+	\item The upcoming \hl{proximal policy optimization (PPO)} algorithm tries to mimic the constrained TRPO problem
 \end{itemize}	
 \vspace{0.15cm}
 		\begin{equation*}
@@ -226,10 +226,11 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 		 \mbox{s.t.} \quad\quad  & \El{D_{\mathrm{KL}}(\pi_{\bm{\theta}_k}(\cdot|\bm{X}) \parallel \pi_{\bm{\theta}}(\cdot|\bm{X}))}{{\pi_{\bm{\theta}_k}}}\leq\kappa.
 	\end{split}
 	\end{equation*}
-\vspace{-0.25cm}\pause
+based on related unconstrained problems. 
+\pause
 \begin{itemize}
 	\item Hence, the objective will be reformulated to incorporate mechanisms preventing excessively large variations of the policy distribution during a parameter update (leading to an updated policy with sufficient proximity to the old one).  \pause
-	\item Moreover, PPO incorporates two variants which we will discuss:
+	\item Moreover, \hl{PPO incorporates two variants} which we will discuss:
 	\begin{enumerate}
 	\item Clipping the surrogate objective,\pause
 	\item Adaptive tuning of a KL-associated penalty coefficient.
@@ -279,7 +280,7 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 		\max_{\bm{\theta}}\,\min\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})},  1+\epsilon\right\}a_{\pi_k}(\bm{x},\bm{u}).
 \end{equation*}\pause
 	\item Due to the $\min\{\cdot\}$ operator, the entire objective is therefore limited to $(1+\epsilon)a_{\pi_k}(\bm{x},\bm{u})$.\pause
-	\item Interpretation: the new policy does not benefit from going further away from the old policy.
+	\item Interpretation: the new policy does not benefit from going very away from the old policy distribution.
 \end{itemize}
 }
 
@@ -302,7 +303,6 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 		\max_{\bm{\theta}}\,\max\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})},  1-\epsilon\right\}a_{\pi_k}(\bm{x},\bm{u}).
 \end{equation*}\pause
 	\item Due to the $\max\{\cdot\}$ operator, the entire objective is limited to $(1-\epsilon)a_{\pi_k}(\bm{x},\bm{u})$.\pause
-	\item Interpretation: the new policy does not benefit from going further away from the old policy.
 \end{itemize}
 }
 
@@ -351,12 +351,12 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 \Init{weights $\bm{w}\in\mathbb{R}^{\zeta}$ and $\bm{\theta}\in\mathbb{R}^d$ arbitrarily, memory $\bm{\mathcal{D}}$}\pause
  \For{$j=1,2,\ldots,$ (sub-)episodes}{
 		initialize $\bm{x}_0$ (if new episode)\; 
-		collect a set of tuples $\left\langle \bm{x}_k, \bm{u}_k, r_{k+1}, \bm{x}_{k+1}\right\rangle$ by running $\pi(\bm{u}|\bm{x},\bm{\theta}_j)$\;\pause
+		collect a set of tuples $\left\langle \bm{x}_k, \bm{u}_k, r_{k+1}, \bm{x}_{k+1}\right\rangle$ by a rollout using $\pi(\bm{u}|\bm{x},\bm{\theta}_j)$\;\pause
 		store them in $\bm{\mathcal{D}}$\;\pause
 		estimate the advantage $\hat{a}_{\pi_j}(\bm{x},\bm{u})$ based on $\hat{v}(\bm{x},\bm{w}_j)$ and $\bm{\mathcal{D}}$ (e.g., GAE)\;\pause
-		$\bm{\theta}_{j+1}\leftarrow$ policy gradient update on \eqref{eq:PPO_CSO} or \eqref{eq:PPO_AKP}\;\pause
-		$\bm{w}_{j+1}\leftarrow$ minimizing the mean-squared TD errors using $\bm{\mathcal{D}}$\;\pause
-		delete entries in $\bm{\mathcal{D}}$\;
+		$\bm{\theta}_{j+1}\leftarrow$ policy gradient update based on the PPO variant \eqref{eq:PPO_CSO} or \eqref{eq:PPO_AKP}\;\pause
+		$\bm{w}_{j+1}\leftarrow$ minimizing the mean-squared TD errors using $\bm{\mathcal{D}}$ (critic)\;\pause
+		delete entries in $\bm{\mathcal{D}}$ (due to on-policy learning)\;
 	}
 \caption{Proximal policy optimization (output: parameter vectors $\bm{\theta}^*$ for $\pi^*(\bm{u}|\bm{x},\bm{\theta}^*)$) and $\bm{w}^*$ for $\hat{v}^*(\bm{x}, \bm{w}^*))$}
 \label{algo:PPO}
@@ -410,7 +410,7 @@ The selection of algorithms appears endless:
 \vspace{0.5cm}\pause
 Remarks: 
 \begin{itemize}
-	\item \hl{You have already learned the basic building blocks in order to make yourself familiar with any value-/policy-based or hybrid RL approach. \pause
+	\item \hl{You have already learned the basic building blocks in order to make yourself familiar with any value-/policy-based model-free RL approach. \pause
 	\item Use this knowledge! \pause
 	\item Focus on primary scientific literature for self-studying and not on unreliable sources!} 
 \end{itemize}
@@ -428,11 +428,11 @@ Algorithm collections with tutorial-style documentation:
 \vspace{0.75cm}
 Algorithm collections with decent application-oriented documentation:
 \begin{itemize}
+	\item \href{https://github.com/ray-project/ray}{RLlib (Ray)}
+	\item \href{https://github.com/DLR-RM/stable-baselines3}{Stable Baselines3}
 	\item \href{https://github.com/deepmind/acme}{Acme}
 	\item \href{https://github.com/rlworkgroup/garage}{Garage}
 	\item \href{https://github.com/google/dopamine}{Google Dopamine}
-	\item \href{https://github.com/ray-project/ray}{RLlib (Ray)}
-	\item \href{https://github.com/DLR-RM/stable-baselines3}{Stable Baselines3}
 	\item \href{https://github.com/tensorforce/tensorforce}{Tensorforce}
 	\item \href{https://github.com/tensorflow/agents}{TF-Agents}
 	\item ...
