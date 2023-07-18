@@ -8,9 +8,6 @@ Reinforcement Learning Course Materials
 Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University. Source code for the entire course material is open and everyone is cordially invited to use it for self-learning (students) or to set up your own course (lecturers).
 ![Example](./img/wordcloud.svg)
 
-**Note: This course repository is being gradually revised and streamlined. Until summer 2023, there may therefore be inconsistencies between the individual sections.
-The previous versions are all archived as separate releases and thus still available.**
-
 # Lecture Content
 
 01. Introduction to Reinforcement Learning
