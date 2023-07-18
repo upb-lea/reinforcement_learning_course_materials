@@ -24,6 +24,18 @@ authors:
     family-names: Weber
     affiliation: Paderborn University
     orcid: 'https://orcid.org/0000-0003-3367-5998'
+  - given-names: Barnabas
+    family-names: Haucke-Korber
+    affiliation: Paderborn University
+    orcid: 'https://orcid.org/0000-0003-0862-2069'
+  - given-names: Darius
+    family-names: Jakobeit
+    affiliation: Paderborn University
+    orcid: 'https://orcid.org/0009-0002-1576-2465'
+  - given-names: Marvin 
+    family-names: Meyer
+    affiliation: Paderborn University
+    orcid: 'https://orcid.org/0009-0008-2879-7118'
 repository-code: >-
   https://github.com/upb-lea/reinforcement_learning_course_materials
 abstract: >-
