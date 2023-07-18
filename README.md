@@ -1,6 +1,7 @@
 Reinforcement Learning Course Materials
 =======================================
 [![Build Status](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/blank.yml/badge.svg)](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/blank.yml)
+[![DOI](https://zenodo.org/badge/281059645.svg)](https://zenodo.org/badge/latestdoi/281059645)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/LICENSE)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
