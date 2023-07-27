@@ -84,22 +84,22 @@ A summary of the lectures can be found in Table 1, a summary of the excersises i
 
 Table: Summary of course lectures.
 
-| Lecture | Content | Lecture Slides | Lecture Video |
+| Lecture | Content | Slides | Video |
 |---------|---------|------------------------|-------------------------|
-| 01    | Introduction to Reinforcement Learning |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture01.tex)|[Recording](https://www.youtube.com/watch?v=YqlNOCD0rfA)|
-| 02    | Markov Decision Processes |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture02.tex) |[Recording](https://www.youtube.com/watch?v=ywn81iGQISE)|
-| 03    | Dynamic Programming |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture03.tex) |[Recording](https://www.youtube.com/watch?v=vjIiYdidFPY)|
-| 04    | Monte Carlo Methods |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture04.tex) |[Recording](https://www.youtube.com/watch?v=GBL0ArlONrM)|
-| 05    | Temporal-Difference Learning |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture05.tex)|[Recording](https://www.youtube.com/watch?v=Rnf9Wanxnj8)|
-| 06    | Multi-Step Bootstrapping |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture06.tex) |[Recording](https://www.youtube.com/watch?v=YYTSZTyjbQ4)|
-| 07    | Planning and Learning with Tabular Methods |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture07.tex) |[Recording](https://www.youtube.com/watch?v=gvJ3__GmHqo)|
-| 08    | Function Approximation with Supervised Learning |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture08.tex) |[Recording](https://www.youtube.com/watch?v=tXAxTiuvges)|
-| 09    | On-Policy Prediction with Function Approximation |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture09.tex)|[Recording](https://www.youtube.com/watch?v=aA3MFRHrrtg)|
-| 10   | Value-Based Control with Function Approximation |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture10.tex)|[Recording](https://www.youtube.com/watch?v=LE9dVVj5700)|
-| 11   | Stochastic Policy Gradient Methods |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture11.tex)|[Recording](https://www.youtube.com/watch?v=LzuZUyVr2mY)|
-| 12   | Deterministic Policy Gradient Methods  |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture12.tex)|[Recording](https://www.youtube.com/watch?v=i6hOcGIgdoQ)|
-| 13   | Further Contemporary RL Algorithms (TRPO, PPO) |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture13.tex)|[Recording](https://www.youtube.com/watch?v=H8rElrvs9Lo)|
-| 14   | Outlook and Research Insights |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture14.tex)|[Recording](https://www.youtube.com/watch?v=-TEzYSzXhW4)|
+| 01    | Introduction to Reinforcement Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture01.tex)|[YouTube](https://www.youtube.com/watch?v=YqlNOCD0rfA)|
+| 02    | Markov Decision Processes |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture02.tex) |[YouTube](https://www.youtube.com/watch?v=ywn81iGQISE)|
+| 03    | Dynamic Programming |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture03.tex) |[YouTube](https://www.youtube.com/watch?v=vjIiYdidFPY)|
+| 04    | Monte Carlo Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture04.tex) |[YouTube](https://www.youtube.com/watch?v=GBL0ArlONrM)|
+| 05    | Temporal-Difference Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture05.tex)|[YouTube](https://www.youtube.com/watch?v=Rnf9Wanxnj8)|
+| 06    | Multi-Step Bootstrapping |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture06.tex) |[YouTube](https://www.youtube.com/watch?v=YYTSZTyjbQ4)|
+| 07    | Planning and Learning with Tabular Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture07.tex) |[YouTube](https://www.youtube.com/watch?v=gvJ3__GmHqo)|
+| 08    | Function Approximation with Supervised Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture08.tex) |[YouTube](https://www.youtube.com/watch?v=tXAxTiuvges)|
+| 09    | On-Policy Prediction with Function Approximation |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture09.tex)|[YouTube](https://www.youtube.com/watch?v=aA3MFRHrrtg)|
+| 10   | Value-Based Control with Function Approximation |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture10.tex)|[YouTube](https://www.youtube.com/watch?v=LE9dVVj5700)|
+| 11   | Stochastic Policy Gradient Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture11.tex)|[YouTube](https://www.youtube.com/watch?v=LzuZUyVr2mY)|
+| 12   | Deterministic Policy Gradient Methods  |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture12.tex)|[YouTube](https://www.youtube.com/watch?v=i6hOcGIgdoQ)|
+| 13   | Further Contemporary RL Algorithms (TRPO, PPO) |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture13.tex)|[YouTube](https://www.youtube.com/watch?v=H8rElrvs9Lo)|
+| 14   | Outlook and Research Insights |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture14.tex)|[YouTube](https://www.youtube.com/watch?v=-TEzYSzXhW4)|
 
 
 Table: Summary of course exercises.
