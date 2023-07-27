@@ -85,7 +85,7 @@ A summary of the lectures can be found in Table 1, a summary of the excersises i
 Table: Summary of course lectures.
 
 | Lecture | Content | Lecture Slides (LaTex) | Lecture Video (YouTube) |
-|------|-----------|--------|-------|
+|------|------------|------|------|
 | 01    | Introduction to Reinforcement Learning |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture01.tex)|[Recording](https://www.youtube.com/watch?v=YqlNOCD0rfA)|
 | 02    | Markov Decision Processes |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture02.tex) |[Recording](https://www.youtube.com/watch?v=ywn81iGQISE)|
 | 03    | Dynamic Programming |[Slides](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture03.tex) |[Recording](https://www.youtube.com/watch?v=vjIiYdidFPY)|
