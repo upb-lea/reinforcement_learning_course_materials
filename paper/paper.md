@@ -85,7 +85,7 @@ A summary of the lectures can be found in Table 1, a summary of the excersises i
 Table: Summary of course lectures.
 
 | Lecture | Content | Slides | Video |
-|---------|---------|------------------------|-------------------------|
+|---------|---------|--------|-------|
 | 01    | Introduction to Reinforcement Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture01.tex)|[YouTube](https://www.youtube.com/watch?v=YqlNOCD0rfA)|
 | 02    | Markov Decision Processes |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture02.tex) |[YouTube](https://www.youtube.com/watch?v=ywn81iGQISE)|
 | 03    | Dynamic Programming |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture03.tex) |[YouTube](https://www.youtube.com/watch?v=vjIiYdidFPY)|
@@ -104,8 +104,8 @@ Table: Summary of course lectures.
 
 Table: Summary of course exercises.
 
-| Exercise | Content | Exercise | Solution | Video |
-|------|---------------------------------|-----------|----------|----------|
+| Lecture | Content | Template | Solution | Video |
+|---------|---------|----------|----------|-------|
 | 01    | Basics of Python for Scientific Computing |[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/templates/ex01)|[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex01)|[YouTube](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)|
 | 02    | Manually Solving Basic Markov Chain, Reward and Decision Problems |[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/templates/ex02)|[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex02)|[YouTube](https://www.youtube.com/watch?v=d38-TmkEZxQ)|
 | 03    | The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem) |[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/templates/ex03)|[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex03)|[YouTube](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be)|
