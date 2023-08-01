@@ -83,6 +83,12 @@ The course is structured as a one semester university-level course with two sess
 
 A summary of the lectures can be found in Table 1, a summary of the excersises in Table 2 below:
 
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+
 Table: Summary of course lectures.
 
 | Lecture | Content | Slides | Video |
