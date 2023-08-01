@@ -105,7 +105,7 @@ Table: Summary of course lectures.
 
 Table: Summary of course exercises.
 
-| <div style="width:10px">Lecture</div> | Content | Template | Solution | Video |
+| <div style="width:100px">Lecture</div> | <div style="width:300px">Content</div> | <div style="width:100px">Template</div> | <div style="width:100px">Solution</div> | <div style="width:100px">Video</div> |
 |---------|---------|----------|----------|-------|
 | 01 | Basics of Python for Scientific Computing |[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/templates/ex01)|[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex01)|[YouTube](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)|
 | 02 | Manually Solving Basic Markov Chain, Reward and Decision Problems |[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/templates/ex02)|[Notebook](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex02)|[YouTube](https://www.youtube.com/watch?v=d38-TmkEZxQ)|
