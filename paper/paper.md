@@ -82,7 +82,6 @@ The target learner audience of this course are master students from the subjects
 The course is structured as a one semester university-level course with two sessions each week: one lecture and one exercise. The contents of the latest iteration of the course (summer term 2023) are presented in the following.
 
 &nbsp;
-&nbsp;
 
 A summary of the lectures can be found in Table 1, a summary of the excersises in Table 2 below:
 
