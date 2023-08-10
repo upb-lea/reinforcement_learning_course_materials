@@ -120,7 +120,7 @@ Table: Summary of course exercises.
 Table: Ohne Links.
 
 | # | Lecture | Exercise |
-|---------:|---------|--------|
+|--:|---------|--------|
 | 01 | Introduction to Reinforcement Learning | Basics of Python for Scientific Computing |
 | 02 | Markov Decision Processes | Basic Markov Chain, Reward and Decision Problems |
 | 03 | Dynamic Programming | Dynamic Programming |
