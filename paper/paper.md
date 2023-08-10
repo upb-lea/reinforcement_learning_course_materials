@@ -117,6 +117,25 @@ Table: Summary of course exercises.
 | 11 | Moon Landing with Actor-Critic Methods |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex11)|[YouTube](https://www.youtube.com/watch?v=dL6gK7ITVYU)|
 | 12 | Shoot for the moon with DDPG & PPO |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex12)|[YouTube](https://www.youtube.com/watch?v=YpSC9lTQY4k)|
 
+Table: Ohne Links.
+
+| # | Lecture | Exercise |
+|---------:|---------|--------|
+| 01 | Introduction to Reinforcement Learning | Basics of Python for Scientific Computing |
+| 02 | Markov Decision Processes | Basic Markov Chain, Reward and Decision Problems |
+| 03 | Dynamic Programming | Dynamic Programming |
+| 04 | Monte Carlo Methods | Race Track with Monte Carlo Learning |
+| 05 | Temporal-Difference Learning | Race Track with Temporal-Difference Learning |
+| 06 | Multi-Step Bootstrapping | Inverted Pendulum with Tabular Multi-Step Methods |
+| 07 | Planning and Learning with Tabular Methods | Inverted Pendulum within Dyna Framework |
+| 08 | Function Approximation with Supervised Learning | Predicting Electric Drive with Supervised Learning |
+| 09 | On-Policy Prediction with Function Approximation | Evaluate Given Agents in Mountain Car Problem |
+| 10 | Value-Based Control with Function Approximation | Mountain Car Valley Using Semi-Gradient Sarsa |
+| 11 | Stochastic Policy Gradient Methods | Moon Landing with Actor-Critic Methods |
+| 12 | Deterministic Policy Gradient Methods | Shoot for the moon with DDPG & PPO
+| 13 | Further Contemporary RL Algorithms (TRPO, PPO) | |
+| 14 | Outlook and Research Insights | |
+
 Lectures and exercises which share the same number also deal with the same topics. Thus, theoretical basics are provided in the lecture, which are to be implemented and evaluated in the exercises on the basis of specific application examples which are lend from third party open-source libraries [@gym][@towers_gymnasium_2023]. This allows the learners to internalize learned contents practically. However, the lecture can be studied independently of the exercises and the exercises independently of the lecture in case of self-learning.
 
 The lecture slides were created in LaTex and published accordingly to allow for consistent display and easy adaptation of the material by other instructors. The practical exercises were implemented in Jupyter notebooks [@Kluyver2016jupyter]. These also allow a quick implementation of further, or modification of existing, content.
