@@ -51,7 +51,7 @@ bibliography: paper.bib
 
 # Summary
 
-We present an open-source repository of an extensive course on reinforcement learning. It is specifically designed for master students in engineering and computer science. The course aims to introduce beginners to the fundamentals of reinforcement learning and progress towards advanced algorithms. This is done using examples spanning from games to control engineering tasks. It is structured to be accessible to students with limited prior programming experience by introducing the basics of Python.
+We present an open-source repository of an extensive course on reinforcement learning. It is specifically designed for master students in engineering and computer science. The course aims to introduce beginners to the fundamentals of reinforcement learning and progress towards advanced algorithms. This is done using examples spanning many different classic control engineering tasks. It is structured to be accessible to students with limited prior programming experience by introducing the basics of Python.
 
 The course spans 14 weeks, comprising 14 lectures and 12 exercises. Accompanying video materials from real lectures and exercises are provided to aid in understanding the course content. They are available on the departments' [YouTube channel](https://www.youtube.com/@uni_pb_lea/playlists) under an Creative Commons license. The open-source nature of the course allows other teachers to freely adapt the materials for their own teaching purposes. The primary goal is to equip learners with a solid theory of reinforcement learning principles, as well as the practical tools to solve real-world engineering problems from different domains, such as electrical engineering.
 
@@ -61,7 +61,9 @@ The authors of this course have experience working with reinforcement learning i
 
 # Statement of Need
 
-Recent developments in (deep) reinforcement learning caused considerable excitement in both, academia as well as [popular science media](https://www.youtube.com/watch?v=WXuK6gekU1Y). Starting with beating champions in complex board games such as chess [@chess] and Go [@SilverHuangEtAl16nature], breaking human records in a wide variety of video games [@atari-first] [@starcraft2], up to recent solutions in real-world (control) applications [@robotics] [@rlhf] [@motors] [@zejnullahu2022applications] [@CORONATO2020101964] [@traffic], reinforcement learning agents have been proven to be a control or decision-making solution for a wide variety of application domains. Reinforcement learning poses an elegant and data-driven path to a control solution with minimal expert knowledge involved, which makes it highly attractive for many different research domains. A similar development has already been observed in recent years with regard to deep supervised learning. This course is therefore aimed at two different target groups: on the one hand, interested learners with interest in the topic or the application of reinforcement learning and, on the other hand, lecturers who are looking for a starting point for their teaching materials. The utilized application scenarios are from a wide variety of domains and can easily be adapted by instructors from different fields of expertise. This course can therefore help accelerate establishing reinforcement learning solutions within real-world applications.
+Recent developments in (deep) reinforcement learning caused considerable excitement in both, academia as well as [popular science media](https://www.youtube.com/watch?v=WXuK6gekU1Y). Starting with beating champions in complex board games such as chess [@chess] and Go [@SilverHuangEtAl16nature], breaking human records in a wide variety of video games [@atari-first] [@starcraft2], up to recent solutions in real-world (control) applications [@robotics] [@rlhf] [@motors] [@zejnullahu2022applications] [@CORONATO2020101964] [@traffic], reinforcement learning agents have been proven to be a control or decision-making solution for a wide variety of application domains. Reinforcement learning poses an elegant and data-driven path to a control solution with minimal expert knowledge involved, which makes it highly attractive for many different research domains. A similar development has already been observed in recent years with regard to deep supervised learning. 
+
+Due to the traction reinforcement learning gained in recent years, many resources were developed to guide learners through the topics of reinforcement learning. However, most courses lack either the continuity of topics ranging from the foundations up to the advanced topics of deep reinforcement learning, practical programming exercises accompanying each theoretical lecture, the testing at university level or free availability. Therefore, it is difficult to directly adapt these for your own teaching or learning. The utilized application scenarios are from a wide variety of domains with a special focus on engineering tasks and can easily be adapted by instructors from different fields of expertise. This course can therefore help accelerate establishing reinforcement learning solutions within real-world applications.
 
 
 # Target Audience and Learning Goals
@@ -116,23 +118,6 @@ Table: Summary of course exercises.
 | 10 | Mountain Car Valley Using Semi-Gradient Sarsa |
 | 11 | Moon Landing with Actor-Critic Methods |
 | 12 | Shoot for the moon with DDPG & PPO |
-Table: Summary of course exercises.
-
-|Exercise|Content |
-|---:|-----------------------|
-| 01 | Basics of Python for Scientific Computing |
-| 02 | Manually Solving Basic Markov Chain, Reward and Decision Problems |
-| 03 | The Beer-Bachelor and Dynamic Programming  |
-| 04 | Drive Through the Race Track with Monte Carlo Learning |
-| 05 | Drive even Faster Using Temporal-Difference Learning |
-| 06 | Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods |
-| 07 | Boosting the Inverted Pendulum by Integrating Learning & Planning |
-| 08 | Predicting a Real Electric Drive Systems with Supervised Learning |
-| 09 | Evaluate the Performance of Given Agents in the Mountain Car Problem |
-| 10 | Escape from the Mountain Car Valley Using Semi-Gradient Sarsa|
-| 11 | Landing on the Moon with REINFORCE and Actor-Critic Methods |
-| 12 | Shoot for the moon with DDPG & PPO |
-
 
 Lectures and exercises which share the same number also deal with the same topics. Thus, theoretical basics are provided in the lecture, which are to be implemented and evaluated in the exercises on the basis of specific application examples which are lend from third party open-source libraries [@gym][@towers_gymnasium_2023]. This allows the learners to internalize learned contents practically. However, the lecture can be studied independently of the exercises and the exercises independently of the lecture in case of self-learning.
 
