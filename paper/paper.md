@@ -84,57 +84,55 @@ Table: Summary of course lectures.
 
 | Lecture | Content | Slides | Video |
 |---------:|---------|--------|-------|
-| 01 | Introduction to Reinforcement Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture01.tex)|[YouTube](https://www.youtube.com/watch?v=YqlNOCD0rfA)|
-| 02 | Markov Decision Processes |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture02.tex) |[YouTube](https://www.youtube.com/watch?v=ywn81iGQISE)|
-| 03 | Dynamic Programming |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture03.tex) |[YouTube](https://www.youtube.com/watch?v=vjIiYdidFPY)|
-| 04 | Monte Carlo Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture04.tex) |[YouTube](https://www.youtube.com/watch?v=GBL0ArlONrM)|
-| 05 | Temporal-Difference Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture05.tex)|[YouTube](https://www.youtube.com/watch?v=Rnf9Wanxnj8)|
-| 06 | Multi-Step Bootstrapping |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture06.tex) |[YouTube](https://www.youtube.com/watch?v=YYTSZTyjbQ4)|
-| 07 | Planning and Learning with Tabular Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture07.tex) |[YouTube](https://www.youtube.com/watch?v=gvJ3__GmHqo)|
-| 08 | Function Approximation with Supervised Learning |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture08.tex) |[YouTube](https://www.youtube.com/watch?v=tXAxTiuvges)|
-| 09 | On-Policy Prediction with Function Approximation |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture09.tex)|[YouTube](https://www.youtube.com/watch?v=aA3MFRHrrtg)|
-| 10 | Value-Based Control with Function Approximation |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture10.tex)|[YouTube](https://www.youtube.com/watch?v=LE9dVVj5700)|
-| 11 | Stochastic Policy Gradient Methods |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture11.tex)|[YouTube](https://www.youtube.com/watch?v=LzuZUyVr2mY)|
-| 12 | Deterministic Policy Gradient Methods  |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture12.tex)|[YouTube](https://www.youtube.com/watch?v=i6hOcGIgdoQ)|
-| 13 | Further Contemporary RL Algorithms (TRPO, PPO) |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture13.tex)|[YouTube](https://www.youtube.com/watch?v=H8rElrvs9Lo)|
-| 14 | Outlook and Research Insights |[LaTex](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/lecture_slides/tex/Lecture14.tex)|[YouTube](https://www.youtube.com/watch?v=-TEzYSzXhW4)|
+| 01 | Introduction to Reinforcement Learning |
+| 02 | Markov Decision Processes |
+| 03 | Dynamic Programming |
+| 04 | Monte Carlo Methods |
+| 05 | Temporal-Difference Learning |
+| 06 | Multi-Step Bootstrapping |
+| 07 | Planning and Learning with Tabular Methods |
+| 08 | Function Approximation with Supervised Learning |
+| 09 | On-Policy Prediction with Function Approximation |
+| 10 | Value-Based Control with Function Approximation |
+| 11 | Stochastic Policy Gradient Methods |
+| 12 | Deterministic Policy Gradient Methods  |
+| 13 | Further Contemporary RL Algorithms (TRPO, PPO) |
+| 14 | Outlook and Research Insights |
 
 
 Table: Summary of course exercises.
 
-|Exercise|Content |Solution|Video|
-|---:|-----------------------|----|----|
-| 01 | Basics of Python for Scientific Computing |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex01)|[YouTube](https://www.youtube.com/watch?v=MJXVQXkOEAA&feature=youtu.be)|
-| 02 | Basic Markov Chain, Reward and Decision Problems |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex02)|[YouTube](https://www.youtube.com/watch?v=d38-TmkEZxQ)|
-| 03 | Dynamic Programming |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex03)|[YouTube](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be)|
-| 04 | Race Track with Monte Carlo Learning |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex04)|[YouTube](https://youtu.be/TSwWlfZXDWw)|
-| 05 | Race Track with Temporal-Difference Learning |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex05)|[YouTube](https://youtu.be/zXdyABW8Hb8)|
-| 06 | Inverted Pendulum with Tabular Multi-Step Methods |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex06)|[YouTube](https://www.youtube.com/watch?v=GwbfODvSpX8)|
-| 07 | Inverted Pendulum within Dyna Framework |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex07)|[YouTube](https://www.youtube.com/watch?v=FvpIQN4mj2M)|
-| 08 | Predicting Electric Drive with Supervised Learning |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex08)|[YouTube](https://www.youtube.com/watch?v=Aivh5ykeJ2Q)|
-| 09 | Evaluate Given Agents in Mountain Car Problem |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex09)|[YouTube](https://www.youtube.com/watch?v=AY7fvqnjmGU)|
-| 10 | Mountain Car Valley Using Semi-Gradient Sarsa |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex10)|[YouTube](https://www.youtube.com/watch?v=IPxare_FmlE)|
-| 11 | Moon Landing with Actor-Critic Methods |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex11)|[YouTube](https://www.youtube.com/watch?v=dL6gK7ITVYU)|
-| 12 | Shoot for the moon with DDPG & PPO |[Repository](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/exercises/solutions/ex12)|[YouTube](https://www.youtube.com/watch?v=YpSC9lTQY4k)|
+|Exercise|Content |
+|---:|-----------------------|
+| 01 | Basics of Python for Scientific Computing |
+| 02 | Basic Markov Chain, Reward and Decision Problems |
+| 03 | Dynamic Programming |
+| 04 | Race Track with Monte Carlo Learning |
+| 05 | Race Track with Temporal-Difference Learning |
+| 06 | Inverted Pendulum with Tabular Multi-Step Methods |
+| 07 | Inverted Pendulum within Dyna Framework |
+| 08 | Predicting Electric Drive with Supervised Learning |
+| 09 | Evaluate Given Agents in Mountain Car Problem |
+| 10 | Mountain Car Valley Using Semi-Gradient Sarsa |
+| 11 | Moon Landing with Actor-Critic Methods |
+| 12 | Shoot for the moon with DDPG & PPO |
+Table: Summary of course exercises.
 
-Table: Ohne Links.
+|Exercise|Content |
+|---:|-----------------------|
+| 01 | Basics of Python for Scientific Computing |
+| 02 | Manually Solving Basic Markov Chain, Reward and Decision Problems |
+| 03 | The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem)  |
+| 04 | Drive Through the Race Track with Monte Carlo Learning |
+| 05 | Drive even Faster Using Temporal-Difference Learning |
+| 06 | Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods |
+| 07 | Boosting the Inverted Pendulum by Integrating Learning & Planning (Dyna Framework)  |
+| 08 | Predicting the Operating Behavior of a Real Electric Drive Systems with Supervised Learning |
+| 09 | Evaluate the Performance of Given Agents in the Mountain Car Problem Using Function Approximation |
+| 10 | Escape from the Mountain Car Valley Using Semi-Gradient Sarsa & Least Square Policy Iteration |
+| 11 | Landing on the Moon with REINFORCE and Actor-Critic Methods |
+| 12 | Shoot for the moon with DDPG & PPO |
 
-| # | Lecture | Exercise |
-|-:|------------------|-----------------|
-| 01 | Introduction to Reinforcement Learning | Basics of Python for Scientific Computing |
-| 02 | Markov Decision Processes | Basic Markov Chain, Reward and Decision Problems |
-| 03 | Dynamic Programming | Dynamic Programming |
-| 04 | Monte Carlo Methods | Race Track with Monte Carlo Learning |
-| 05 | Temporal-Difference Learning | Race Track with Temporal-Difference Learning |
-| 06 | Multi-Step Bootstrapping | Inverted Pendulum with Tabular Multi-Step Methods |
-| 07 | Planning and Learning with Tabular Methods | Inverted Pendulum within Dyna Framework |
-| 08 | Function Approximation with Supervised Learning | Predicting Electric Drive with Supervised Learning |
-| 09 | On-Policy Prediction with Function Approximation | Evaluate Given Agents in Mountain Car Problem |
-| 10 | Value-Based Control with Function Approximation | Mountain Car Valley Using Semi-Gradient Sarsa |
-| 11 | Stochastic Policy Gradient Methods | Moon Landing with Actor-Critic Methods |
-| 12 | Deterministic Policy Gradient Methods | Shoot for the moon with DDPG & PPO
-| 13 | Further Contemporary RL Algorithms (TRPO, PPO) | |
-| 14 | Outlook and Research Insights | |
 
 Lectures and exercises which share the same number also deal with the same topics. Thus, theoretical basics are provided in the lecture, which are to be implemented and evaluated in the exercises on the basis of specific application examples which are lend from third party open-source libraries [@gym][@towers_gymnasium_2023]. This allows the learners to internalize learned contents practically. However, the lecture can be studied independently of the exercises and the exercises independently of the lecture in case of self-learning.
 
