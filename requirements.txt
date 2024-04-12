@@ -11,5 +11,5 @@ pygame==2.4.0
 scikit-learn==1.1.2
 torch
 stable-baselines3
-gym==0.21.0
+gym
 pyglet==1.5.27
