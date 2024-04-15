@@ -126,8 +126,8 @@ class RaceTrackEnv:
         ### END SOLUTION
 
     def get_state(self):
-        """Return 2-element-tuple: (position, velocity). Each is a 2D numpy array."""
-        return self.position.copy(), self.velocity.copy()
+        """Returns state as a 4-element tuple."""
+        return tuple([*self.position.copy(), *self.velocity.copy()])
             
             
     def reset(self):
@@ -172,7 +172,6 @@ class RaceTrackEnv:
         """Return True at episode terminal state"""
         return self._is_finish(self.position)
     
-    
     def action_to_tuple(self, a):
         """Convert integer action to 2-tuple: (ay, ax)"""
         ### BEGIN SOLUTION
@@ -194,9 +193,14 @@ class RaceTrackEnv:
         """Build a state-action tuple for indexing Q NumPy array."""
         if not isinstance(a, tuple):
             a = self.action_to_tuple(a)
-        p, v = s
-        s_y, s_x = p[0], p[1]
-        s_vy, s_vx = v[0], v[1]
+
+        if len(s) == 4:
+            s_y, s_x, s_vy, s_vx = s
+        else:
+            p, v = s       
+            s_y, s_x = p[0], p[1]
+            s_vy, s_vx = v[0], v[1]
+
         a_y, a_x = a[0]+1, a[1]+1
         return s_y, s_x, s_vy, s_vx, a_y, a_x
     

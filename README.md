@@ -67,7 +67,6 @@ Lecture notes, tutorial tasks including solutions as well as online videos for t
 # Exercise Content
 All exercises are based on Python 3.9 and site-packages according to the requirements.txt:
 ```
->>> pip install setuptools==65.5.0
 >>> pip install -r requirements.txt
 ```
 
