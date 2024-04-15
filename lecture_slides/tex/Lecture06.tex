@@ -603,16 +603,16 @@ The \hl{eligibility trace $z_k(x)\in\mathbb{R}$} is defined and tracked for each
 Based on the eligibility trace definition from \eqref{eq:Elig_trace} we can modify our value estimates:
 \begin{block}{TD($\lambda$) state-value update}
 The TD($\lambda$) state-value update is:
-\begin{equation}
+	\begin{equation}
 		\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha \left[r_{k+1} + \gamma \hat{v}(x_{k+1})- \hat{v}(x_k)\right]z_k(x_k).
-\end{equation}
+	\end{equation}
 \end{block}
 \pause
-\begin{block}{TD($\lambda$) action-value update}
-	The TD($\lambda$) action-value update is:
-		\begin{equation}
-		\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[r_{k+1}+\gamma\hat{q}(x_{k+1}, u_{k+1}) - \hat{q}(x_k, u_k)\right]z_k(x_k) .
-		\end{equation}
+\begin{block}{SARSA($\lambda$) action-value update}
+	The SARSA($\lambda$) action-value update is:
+	\begin{equation}
+		\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha \left[r_{k+1}+ \gamma \hat{q}(x_{k+1}, u_{k+1}) - \hat{q}(x_k, u_k)\right]z_k(x_k, u_k) .
+	\end{equation}
 \end{block}
 \pause
 Already known prediction and control methods can be modified accordingly. In contrast to $n$-step forward updates, one can conclude:
@@ -620,6 +620,45 @@ Already known prediction and control methods can be modified accordingly. In con
 	\item Advantage: recursive updates based on past updates (no additional waiting time),
 	\item Disadvantage: effort for storing an eligibility trace for each state (scaling problem).
 \end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Algorithmic Implementation: Tabular SARSA($\lambda$)  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{\frametitle{Algorithmic implementation: SARSA($\lambda$)}
+\setlength{\algomargin}{0.5em}
+\begin{algorithm}[H]
+\footnotesize
+\SetKwInput{Input}{input}
+\SetKwInput{Output}{output}
+\SetKwInput{Init}{init}
+\SetKwInput{Param}{parameter}
+%\Output{estimate $\hat{q}_\pi$ or $\hat{q}^*$}
+\Param{$\alpha\in(0,1]$, $\lambda\in(0,1]$, $\varepsilon\in\left\{\mathbb{R}|0<\varepsilon<<1\right\}$}
+\Init{$\hat{q}(x,u)$ arbitrarily (except terminal states) $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$}
+\Init{$\pi$ to be $\varepsilon$-greedy with respect to $\hat{q}$ or to a given, fixed policy}
+ \For{$j=1,\ldots,J$ episodes}{
+		initialize $x_{0}$ and action $u_0 \sim \pi(\cdot | x_0)$\;
+		initialize $z_0(x, u) = 0$ $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$
+
+		\Repeat{$x_k$ is terminal}{
+
+			take action $u_k$, observe $x_{k+1}$ and $r_{k+1}$\;
+			choose $u_{k+1} \sim \pi(\cdot | x_{k+1})$
+
+			$z_k(x, u) \leftarrow \gamma\lambda z_{k-1}(x, u)+\begin{cases}0, \quad\mbox{if } x_k \neq x \mbox{ or } u_k \neq u, \\ 1, \quad \mbox{if } x_k = x \mbox{ and } u_k = u.\end{cases}$ 
+			$\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$
+			
+			$\delta \leftarrow r_{k+1}+\gamma\hat{q}(x_{k+1}, u_{k+1}) - \hat{q}(x_k, u_k) $
+
+			$\hat{q}(x, u) \leftarrow \hat{q}(x, u) + \alpha \delta z_k(x, u)$ $\forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}$
+
+			$k \leftarrow k+1$\;
+		}
+	}
+\caption{SARSA($\lambda$) (output is an estimate $\hat{q}_\pi$ or $\hat{q}^*$)}
+\label{algo:Sarsa_lambda}
+\end{algorithm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
