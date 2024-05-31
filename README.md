@@ -75,23 +75,23 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex01)
     * [Tutorial solution](../master/exercises/solutions/ex01) 
 02. Manually Solving Basic Markov Chain, Reward and Decision Problems
-    * [Tutorial video](https://www.youtube.com/watch?v=d38-TmkEZxQ)
+    * [Tutorial video](https://www.youtube.com/watch?v=JBliRPC_C5E&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=4)
     * [Tutorial template](../master/exercises/templates/ex02)
     * [Tutorial solution](../master/exercises/solutions/ex02) 
 03. The Beer-Bachelor and Dynamic Programming (the Shortest Beer Problem)
-    * [Tutorial video](https://www.youtube.com/watch?v=Z9QTRtJfZaM&feature=youtu.be) (only 2022 edition available due to technical outage)
+    * [Tutorial video](https://www.youtube.com/watch?v=5ylYfeWnb_Y&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=3)
     * [Tutorial template](../master/exercises/templates/ex03)
     * [Tutorial solution](../master/exercises/solutions/ex03) 
 04. Drive Through the Race Track with Monte Carlo Learning
-    * [Tutorial video](https://youtu.be/TSwWlfZXDWw)
+    * [Tutorial video](https://www.youtube.com/watch?v=RNV7px4AS_E&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=4)
     * [Tutorial template](../master/exercises/templates/ex04)
     * [Tutorial solution](../master/exercises/solutions/ex04) 
 05. Drive even Faster Using Temporal-Difference Learning
-    * [Tutorial video](https://youtu.be/zXdyABW8Hb8)
+    * [Tutorial video](https://www.youtube.com/watch?v=5L3lhod1-CI&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=5)
     * [Tutorial template](../master/exercises/templates/ex05)
     * [Tutorial solution](../master/exercises/solutions/ex05) 
 06. Stabilizing the Inverted Pendulum by Tabular Multi-Step Methods
-    * [Tutorial video](https://www.youtube.com/watch?v=GwbfODvSpX8)
+    * [Tutorial video](https://www.youtube.com/watch?v=5k45M8ey_iw&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=6)
     * [Tutorial template](../master/exercises/templates/ex06)
     * [Tutorial solution](../master/exercises/solutions/ex06) 
 07. Boosting the Inverted Pendulum by Integrating Learning & Planning (Dyna Framework)
