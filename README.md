@@ -95,7 +95,7 @@ All exercises are based on Python 3.9 and site-packages according to the require
     * [Tutorial template](../master/exercises/templates/ex06)
     * [Tutorial solution](../master/exercises/solutions/ex06) 
 07. Boosting the Inverted Pendulum by Integrating Learning & Planning (Dyna Framework)
-    * [Tutorial video](https://www.youtube.com/watch?v=FvpIQN4mj2M)
+    * [Tutorial video](https://www.youtube.com/watch?v=r9gLTDBzq5k&list=PL4GzQQuIDBGt82j99oDSWnjfrtwZ-79Yg&index=8)
     * [Tutorial template](../master/exercises/templates/ex07)
     * [Tutorial solution](../master/exercises/solutions/ex07) 
 08. Predicting the Operating Behavior of a Real Electric Drive Systems with Supervised Learning
