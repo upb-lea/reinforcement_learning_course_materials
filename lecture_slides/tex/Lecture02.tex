@@ -1,7 +1,5 @@
-\part{Lecture 02: Markov Decision Processes}
-\title[RL Lecture 02]{Lecture 02: Markov Decision Processes}  
-\date{}  
-\frame{\titlepage} 
+\section{Markov decision processes}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preface / Motivation %%
@@ -54,10 +52,9 @@
 \end{figure}
 }
 
-\frame{\frametitle{Table of contents}\tableofcontents} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite Markov chains} 
+\subsection{Finite Markov chains} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,12 +142,8 @@ Possible \hl{samples} for the given Markov chain example starting from $x=1$ (sm
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite Markov reward processes} 
+\subsection{Finite Markov reward processes} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Markov Reward Process %%
@@ -339,12 +332,9 @@ In RL identifying and solving \eqref{eq:MRP_normal_equation} is a key task, whic
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Finite markov decision processes} 
+\subsection{Finite Markov decision processes} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Markov Decision Process %%
@@ -599,12 +589,9 @@ Using the Bellman expectation eq. \eqref{eq:q_MDP_finite} the action values can 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Optimal policies and value functions} 
+\subsection{Optimal policies and value functions} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optimal Value Functions in MDP %%
@@ -657,7 +644,7 @@ For any finite MDP
 \frame{\frametitle{Bellman optimality equation (1)}
 \onslide<1->{
 \begin{theo}{Bellman's principle of optimality}{bellman_principle_optimality}
-``\textit{An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.}''(R.E. Bellman, Dynamic Programming, 1957) 
+\enquote{\textit{An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.}}(R.E. Bellman, Dynamic Programming, 1957) 
 \end{theo}
 }
 \begin{itemize}
@@ -667,9 +654,9 @@ For any finite MDP
 \onslide<4->{
 \begin{equation}
 \begin{split}
-		v^*(x_k) &= \max_{u} q_{\pi^*}(x_k, u)\, ,}\\
-									&\onslide<5->{= \max_{u} \El{G_k|X_k=x_k, U=u}{\pi^*}\, ,}\\
-									&\onslide<6->{= \max_{u} \El{R_{k+1} + \gamma G_{k+1}|X_k=x_k, U=u}{\pi^*}\, ,}\\
+		v^*(x_k) &= \max_{u} q_{\pi^*}(x_k, u)\, }\\
+									&\onslide<5->{= \max_{u} \El{G_k|X_k=x_k, U=u}{\pi^*}\, }\\
+									&\onslide<6->{= \max_{u} \El{R_{k+1} + \gamma G_{k+1}|X_k=x_k, U=u}{\pi^*}\, }\\
 									&\onslide<7->{= \max_{u} \E{R_{k+1} + \gamma v^*(X_{k+1})|X_k=x_k, U=u}\, .}
 \end{split}
 \end{equation}

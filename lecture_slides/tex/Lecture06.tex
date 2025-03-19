@@ -1,7 +1,4 @@
-\part{Lecture 06: Multi-Step Bootstrapping}
-\title[RL Lecture 06]{Lecture 06: Multi-Step Bootstrapping}  
-\date{}  
-\frame{\titlepage} 
+\section{Multi-step bootstrapping}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lets Unify MC and One-Step TD Learning %%
@@ -15,12 +12,9 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} TD Prediction} 
+\subsection{\texorpdfstring{$n$-step}{n-Step} TD Prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% n-Step Bootstrapping Idea %%
@@ -190,12 +184,9 @@ The worst error of the expected $n$-step return is always less than or equal to 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} Control} 
+\subsection{\texorpdfstring{$n$-step}{n-Step} Control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Transfer the $n$-step Approach to State-Action Values (1)%%
@@ -306,12 +297,9 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning} 
+\subsection{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap on Off-Policy Learning with Importance Sampling%%
@@ -361,7 +349,6 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 %% Algorithmic Implementation: Off-Policy $n$-step TD Prediction %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Algorithmic implementation: off-policy $n$-step TD-based prediction}
-\vspace{-0.2cm}
 \setlength{\algomargin}{0.5em}
 \begin{algorithm}[H]
 \small
@@ -431,12 +418,10 @@ Analog, an \hl{$n$-step off-policy SARSA-style update} exists:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{TD(\texorpdfstring{$\lambda$}{Lambda})} 
+\subsection{TD(\texorpdfstring{$\lambda$}{Lambda})} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Averaging of $n$-Step Returns %%

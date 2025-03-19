@@ -1,32 +1,63 @@
-\part{Lecture 01: Introduction to Reinforcement Learning}
-\title[RL Lecture 01]{Lecture 01: Introduction to Reinforcement Learning}  
-\date{}  
-\frame{\titlepage} 
-\frame{\frametitle{Table of contents}\tableofcontents} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction to reinforcement learning} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Course framework} 
+\subsection{Course framework} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Teaching team %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{The teaching team}
+	\frametitle{The teaching team}
+	\vspace{-0.5cm}
+	\begin{columns}[t]
+	
+		\column[T]{0.14\textwidth}
+		\begin{figure}
+			\centering
+				\includegraphics[height=2.75cm]{fig/lec01/Wallscheid.jpg}
+				\caption*{Ali \\Abdelwanis}
+		\end{figure}
+			
+		\column[T]{0.14\textwidth}
+		\begin{figure}
+			\centering
+				\includegraphics[height=2.75cm]{fig/lec01/Wallscheid.jpg}
+				\caption*{Oliver\\ Wallscheid}
+		\end{figure}
+		
+	\end{columns}
+	\vspace{-0.25cm}
+	\begin{varblock}{Contact}
+		\begin{itemize}
+			\item Email: see \href{https://www.eti.uni-siegen.de/ias/}{chair's homepage}
+			\item Offices: H-A building, 4th floor
+			\item Individual appointments on request (remote or personally)
+		\end{itemize}
+	\end{varblock}
+	\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Teaching team %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{The legacy team}
 \vspace{-0.5cm}
 \begin{columns}[t]
 
 	\column[T]{0.14\textwidth}
 	\begin{figure}
 		\centering
-			\includegraphics[height=2.75cm]{fig/lec01/BHK.png}
+			\includegraphics[height=2.75cm]{fig/lec01/Hauke.jpg}
 			\caption*{Barnabas \\Haucke-Korber}
 	\end{figure}
 
 	\column[T]{0.14\textwidth}
 	\begin{figure}
 		\centering
-			\includegraphics[height=2.75cm]{fig/lec01/Jakobeit.png}
+			\includegraphics[height=2.75cm]{fig/lec01/Jakobeit.jpg}
 			\caption*{Darius \\Jakobeit}
 	\end{figure}
 			
@@ -34,13 +65,13 @@
 	\begin{figure}
 		\centering
 			\includegraphics[height=2.75cm]{fig/lec01/Kirchgaessner.png}
-			\caption*{Wilhelm Kirchgässner}
+			\caption*{Wilhelm KirchgÃ¤ssner}
 	\end{figure}
 	
 	\column[T]{0.14\textwidth}
 	\begin{figure}
 		\centering
-			\includegraphics[height=2.75cm]{fig/lec01/Meyer.png}
+			\includegraphics[height=2.75cm]{fig/lec01/Meyer.jpg}
 			\caption*{Marvin \\Meyer}
 	\end{figure}
 	
@@ -54,32 +85,29 @@
 	\column[T]{0.14\textwidth}
 	\begin{figure}
 		\centering
-			\includegraphics[height=2.75cm]{fig/lec01/Wallscheid.jpg}
-			\caption*{Oliver\\ Wallscheid}
+			\includegraphics[height=2.75cm]{fig/lec01/Vater.jpg}
+			\caption*{Hendrik\\ Vater}
 	\end{figure}
-	
+
 	\column[T]{0.14\textwidth}
 	\begin{figure}
 		\centering
-			\includegraphics[height=2.75cm]{fig/lec01/Weber.png}
+			\includegraphics[height=2.75cm]{fig/lec01/Weber.jpg}
 			\caption*{Daniel\\ Weber}
 	\end{figure}
 \end{columns}
 \vspace{-0.25cm}
-\begin{block}{Contact}
-	\begin{itemize}
-		\item Email: see \href{https://ei.uni-paderborn.de/en/lea/team/arbeitsgruppe/team}{departments homepage}
-		\item Offices: E-building, 4th floor
-		\item Individual appointments on request (remote or personally)
-	\end{itemize}
-\end{block}
+	\begin{block}{Credits}
+			This course and its content was originally created by a team at Paderborn University. Many thanks to the above staff members for their contributions to the creation and maintenance of the materials since the first course run in 2020.
+	\end{block}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Examination Regulations %%
+%% Examination regulations %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Examination Regulations}
+\frametitle{Examination regulations}
 \begin{block}{Final exam}
 \begin{itemize}
 	\item Oral examination 
@@ -90,38 +118,17 @@
 \pause
 \begin{block}{Pre-exam homework assignment}
 \begin{itemize}
-	\item Will be made available via Panda at end of the lecture series.
+	\item Will be made available via moodle at end of the lecture series.
 	\item Practical RL programming task, i.e., solve a typical RL problem.
 	\item Further regulations:
 	\begin{itemize}
-		\item Submit your final programming solution via Panda at least two days before the exam.
-		\item Prepare a concise, high-quality presentation to be given at the exam start (roughly 10 minutes). Analyze and evaluate your own results critically. 
+		\item Submit your final programming solution via moodle at least two days before the exam.
+		\item Prepare a concise, high-quality presentation to be given at the exam start (roughly 10-15 minutes). Analyze and evaluate your own results critically. 
 	\end{itemize}
 \end{itemize}
 \end{block}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Course Outline %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Course outline}
-The course will cover the following content:
-\vspace{0.25cm}
-\begin{itemize}
-		\item Conceptual basics and historical overview \pause
-		\item Markov decision processes \pause
-		\item Dynamic programming \pause
-		\item Monte Carlo learning \pause
-		\item Temporal difference learning \pause
-		\item Multi-step bootstrapping \pause
-		\item Planning and model-based RL\pause  
-		\item Function approximation and (deep) learning \pause
-		\item Policy gradient methods \pause
-		\item Contemporary (deep) RL algorithms \pause
-		\item Further practical RL challenges (meta learning, safety, ...)
-	\end{itemize}
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Textbooks %%
@@ -149,21 +156,15 @@ The course will cover the following content:
 		\begin{itemize}
 			\item D. Bertsekas
 			\item Athena Scientific, 2019
-			\item Available in library
 		\end{itemize}
-		
 	\end{itemize}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Reinforcement learning: what is it?} 
+\subsection{Reinforcement learning: what is it?} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RL Wiki Optimization Cricle %%
@@ -194,7 +195,9 @@ Key characteristics:
 \end{minipage}
 \end{column}
 \end{columns}
-\blfootnote{The nomenclature of this slide set is based on the default variable usage in control theory. In other RL books, one often finds $s$ as state, $a$ as action and $o$ as observation.}
+\begin{footnotebox}
+	Note: the \hl{nomenclature} of this slide set is based on the default variable usage in \hl{control theory}. In RL books, one often finds $s$ as state, $a$ as action and $o$ as observation.
+\end{footnotebox}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -234,16 +237,15 @@ A one step time delay is assumed between executing the action and receiving the 
 %% What is Learning? %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Some basic definitions from the literature}
-What is reinforcement?
-\begin{itemize}
-	\item ``\textit{Reinforcement is a consequence applied that will strengthen an organism's future behavior whenever that behavior is preceded by a specific antecedent stimulus.[...]There are four types of reinforcement: positive reinforcement, negative reinforcement, extinction, and punishment.}'', \href{https://en.wikipedia.org/wiki/Reinforcement}{wikipedia.org} (obtained 2023-03-31) 
-\end{itemize}
+
+\begin{varblock}{What is reinforcement?}
+	\enquote{\textit{Reinforcement refers to consequences that increase the likelihood of an organism's future behavior, typically in the presence of a particular antecedent stimulus.[...] Reinforcers serve to increase behaviors whereas punishers serve to decrease behaviors; thus, positive reinforcers are stimuli that the subject will work to attain, and negative reinforcers are stimuli that the subject will work to be rid of or to end.}}, source: \href{https://en.wikipedia.org/wiki/Reinforcement}{wikipedia.org} (obtained 2025-03-19) 	
+\end{varblock}
 \pause
-\vspace{0.5cm}
-What is learning?
-\begin{itemize}
-	\item ``\textit{Acquiring knowledge and skills and having them readily available from memory so you can make sense of future problems and opportunities.}'', From Make It Stick: The Science of Successful Learning, Brown et al., Harvard Press, 2014
-\end{itemize}
+\vspace{0.25cm}
+\begin{varblock}{What is learning?}
+	\enquote{\textit{Acquiring knowledge and skills and having them readily available from memory so you can make sense of future problems and opportunities.}}, source: Make It Stick: The Science of Successful Learning, Brown et al., Harvard Press, 2014
+\end{varblock}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -282,12 +284,8 @@ What is learning?
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Application examples and historic review} 
+\subsection{Application examples and historic review} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Methodical origins %%
@@ -297,30 +295,28 @@ What is learning?
 	\begin{figure}
 		\includegraphics[width=3.0cm]{fig/lec01/Pavlov.jpg}
 		\caption{Ivan Pavlov\\(1849-1936)}
-	\end{figure}\vspace{-0.5cm}
-	\begin{itemize}
-		\item Classical conditioning
-	\end{itemize}
+	\end{figure}
+	\centering
+		Classical conditioning
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.27\linewidth}
 	\begin{figure}
 		\includegraphics[width=3.0cm]{fig/lec01/Markov.jpg}
 		\caption{Andrei Markov\\(1856-1922)}
-	\end{figure}\vspace{-0.5cm}
-	\begin{itemize}
-		\item Stochastic process formalism 
-	\end{itemize}
+	\end{figure}
+	\centering
+		 Stochastic process formalism 
+	
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.27\linewidth}
 	\begin{figure}
 		\includegraphics[width=3.0cm]{fig/lec01/Bell_man.pdf}
 		\caption{Richard Bellman\\(1920-1984)\footnotemark}
-	\end{figure}\vspace{-0.5cm}
-	\begin{itemize}
-		\item Optimal sequential decision making
-	\end{itemize}
+	\end{figure}
+	\centering
+		Optimal sequential decision making
 \end{minipage}
 \footnotetext{Illustrative picture since an actual photo of Bellman is not freely available.}
 }
@@ -364,12 +360,9 @@ Limited selection from a broad field:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Basic terminology} 
+\subsection{Basic terminology} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Reward basics %%
@@ -450,7 +443,7 @@ Rewards can have many different flavors and are highly depending on the given pr
 \end{itemize}
 \pause
 \begin{block}{Remark on reward}
-The RL agent's learning process is heavily linked with the reward distribution over time. Designing expedient rewards functions is therefore crucially important for successfully applying RL. And often there is no predefined way on how to design the ``best reward function''.
+The RL agent's learning process is heavily linked with the reward distribution over time. Designing expedient rewards functions is therefore crucially important for successfully applying RL. And often there is no predefined way on how to design the \enquote{best reward function}.
 \end{block}
 }
 
@@ -459,8 +452,8 @@ The RL agent's learning process is heavily linked with the reward distribution o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{The reward function hassle}
 \begin{itemize}
-	\item ``Be careful what you wish for - you might get it'' (pro-verb)
-	\item ``...it grants what you ask for, not what you should have asked for or what you intend.'' (Norbert Wiener, American mathematician)
+	\item \enquote{Be careful what you wish for - you might get it} (pro-verb)
+	\item \enquote{...it grants what you ask for, not what you should have asked for or what you intend.} (Norbert Wiener, American mathematician)
 \end{itemize}
 \begin{figure}
 		\includegraphics[width=6cm]{fig/lec01/Midas.jpg}
@@ -534,9 +527,9 @@ The RL agent's learning process is heavily linked with the reward distribution o
 %% The env. state %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{State (1)}
-\hlh{Environment state}  \blfootnote{\hl{Bold symbols} are non-scalar multidimensional quantities, e.g., vectors and matrices.}
+\hlh{Environment state}
 \begin{itemize}
-	\item Random variable $\bm{X}_k^\mathrm{e}$ with realizations $\bm{x}_k^\mathrm{e}$ \blfootnote{\hl{Capital symbols} denote random variables and small symbols their realizations.}
+	\item Random variable $\bm{X}_k^\mathrm{e}$ with realizations $\bm{x}_k^\mathrm{e}$ 
 	\item Internal status representation of the environment, e.g.,
 	\begin{itemize}
 		\item Physical states, e.g., car velocity or motor current
@@ -552,6 +545,10 @@ The RL agent's learning process is heavily linked with the reward distribution o
 	\pause
 	\item Continuous or discrete quantity
 \end{itemize}
+\begin{footnotebox}
+	\hl{Bold symbols} are non-scalar multidimensional quantities, e.g., vectors and matrices.\newline	
+	\hl{Capital symbols} denote random variables and small symbols their realizations.
+\end{footnotebox}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -630,7 +627,7 @@ Nonlinear time-invariant state-space model:
 \pause
 \hlh{Partial observability}
 	\begin{itemize}
-		\item Agent does not have full access to environment state (e.g., $\bm{y}_k = \begin{bmatrix}\bm{I} & 0 \\ 0 & 0\end{bmatrix}\bm{x}_k$).
+		\item Agent does not have full access to environment state (e.g., $\bm{y}_k = \begin{bmatrix}\bm{I} & \bm{0} \end{bmatrix}\bm{x}_k$).
 		\item If $\bm{x}_k$ is Markov: partial observable MDP (POMDP).
 		\item Agent may reconstructs state information $\hat{\bm{x}}_k\approx \bm{x}_k$ (belief, estimate).
 	\end{itemize}
@@ -731,7 +728,7 @@ Evaluating the state and action spaces (e.g., finite vs. continuous) of a new RL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Value functions}
 \begin{itemize}
-	\item The \hl{state-value function} is the expected return being in state $\bm{x}_k$ following a policy $\bm{\pi}$: $v_\pi(\bm{x}_k)$.
+	\item The \hl{state-value function} is the expected return being in state $\bm{x}_k$ following $\bm{\pi}$: $v_\pi(\bm{x}_k)$.
 	\pause
 	\item Assuming an MDP problem structure the state-value function is
 	\begin{equation}
@@ -791,12 +788,9 @@ Evaluating the state and action spaces (e.g., finite vs. continuous) of a new RL
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Main categories of reinforcement learning algorithms} 
+\subsection{Main categories of reinforcement learning algorithms} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maze Example%%
@@ -900,12 +894,9 @@ Key characteristics:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Small comparison to model predictive control} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+\subsection{Small comparison to model predictive control} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RL Agent Taxonomy%%
@@ -995,7 +986,7 @@ While in RL the desired system behavior must be solely represented by $r_k$, MPC
 			\onslide<7->Stability theory						& mature \cmark 									&	immature \xmark \\
 			\bottomrule
 		\end{tabular}
-	\onslide<1->\caption{Key differences on MPC vs. RL\\(inspired from D. Görges, \textit{Relations between Model Predictive Control and Reinforcement Learning}, IFAC PapersOnine 50-1, pp. 4920-4928, 2017)}
+	\onslide<1->\caption{Key differences on MPC vs. RL\\(inspired from D. GÃ¶rges, \textit{Relations between Model Predictive Control and Reinforcement Learning}, IFAC PapersOnine 50-1, pp. 4920-4928, 2017)}
 	\label{tab:KeyDifferences}
 \end{table}
 }

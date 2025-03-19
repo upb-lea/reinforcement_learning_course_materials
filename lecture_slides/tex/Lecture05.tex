@@ -1,7 +1,5 @@
-\part{Lecture 05: Temporal-Difference Learning}
-\title[RL Lecture 05]{Lecture 05: Temporal-Difference Learning}  
-\date{}  
-\frame{\titlepage} 
+\section{Temporal-difference learning}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,12 +22,9 @@ Hence, TD characteristics are:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-difference prediction} 
+\subsection{Temporal-difference prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General TD Prediction Updates %%
@@ -43,11 +38,11 @@ Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for no
 \begin{itemize}
 	\item $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$ is the forgetting factor / step size.
 	\item $g_k$ is the \hl{target} of the incremental update rule.
-	\item To execute the update \eqref{eq:MC_non_stat_up_lec05} one has to wait until the episode's termination since only then $g_k$ is available (MC requirement).
+	\item To execute  \eqref{eq:MC_non_stat_up_lec05} one has to wait until the episode's termination to get $g_k$.
 \end{itemize}\pause
 \begin{block}{One-step TD / TD(0) update}
 \begin{equation}
-	\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha\left[r_{k+1}+\gamma\hat{v}(x_{k+1}) - \hat{v}(x_k)\right] .
+	\hat{v}(x_k) \leftarrow \hat{v}(x_k) + \alpha\left[r_{k+1}+\gamma\hat{v}(x_{k+1}) - \hat{v}(x_k)\right] 
 	\label{eq:TD_zero_update}
 \end{equation}
 \vspace{-0.5cm}
@@ -131,10 +126,10 @@ The \hl{TD error} is:
 \onslide<1->{Let's assume that the TD(0) estimate $\hat{v}(x)$ is not changing over one episode as it would be for MC prediction: 
 \begin{equation}
 \begin{split}
-\underbrace{g_k - \hat{v}(x_k)}_{\mbox{MC-error}} &= r_{k+1} + \gamma g_{k+1} - \hat{v}(x_k)	+\gamma  \hat{v}(x_{k+1})	-\gamma  \hat{v}(x_{k+1}),\\}
-																									\onslide<2->{&=\delta_k + \gamma(g_{k+1} - \hat{v}(x_{k+1})),\\}
-																									\onslide<3->{&=\delta_k + \gamma \delta_{k+1} + \gamma^2(g_{k+2} - \hat{v}(x_{k+2})),\\}
-																									\onslide<4->{&=\delta_k + \gamma \delta_{k+1} + \gamma^2 \delta_{k+2} +\gamma^3(g_{k+3} - \hat{v}(x_{k+3}))=\cdots ,\\}
+\underbrace{g_k - \hat{v}(x_k)}_{\mbox{MC-error}} &= r_{k+1} + \gamma g_{k+1} - \hat{v}(x_k)	+\gamma  \hat{v}(x_{k+1})	-\gamma  \hat{v}(x_{k+1})\\}
+																									\onslide<2->{&=\delta_k + \gamma(g_{k+1} - \hat{v}(x_{k+1}))\\}
+																									\onslide<3->{&=\delta_k + \gamma \delta_{k+1} + \gamma^2(g_{k+2} - \hat{v}(x_{k+2}))\\}
+																									\onslide<4->{&=\delta_k + \gamma \delta_{k+1} + \gamma^2 \delta_{k+2} +\gamma^3(g_{k+3} - \hat{v}(x_{k+3}))=\cdots \\}
 																									\onslide<5->{&=\sum_{i=k}^{T-1} \gamma^{i-k}\delta_i.}
 \end{split}
 \end{equation}
@@ -161,10 +156,11 @@ The \hl{TD error} is:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Driving home example}
 \begin{figure}		
-	\includegraphics[width=10cm]{fig/lec05/Driving_home_example.pdf}
+	\includegraphics[width=9cm]{fig/lec05/Driving_home_example.pdf}
 	\caption{Updates by MC (left) and TD (right) for $\alpha = 1$ (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:Driving_home_example}
 \end{figure}
+\vspace{-0.25cm}
 \begin{itemize}
 	\item TD can learn before knowing the final outcome.
 	\begin{itemize}
@@ -231,7 +227,7 @@ plus disaster probability $\alpha=0.2$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Convergence of TD(0)}
 \begin{theo}{Convergence of TD(0)}{converge_TD_zero}
-Given a finite MDP and a fixed policy $\pi$ the state-value estimate of TD(0) converges to the true $v_\pi$
+Given a finite MDP and a fixed $\pi$ the state-value estimate of TD(0) converges to the true $v_\pi$
 \begin{itemize}
 	\item in the mean for a constant but sufficiently small step-size $\alpha$ and
 	\item with probability 1 if the step-size holds the condition
@@ -281,7 +277,7 @@ Above $k$ is the sample index (i.e., how often the TD update was applied).
 \begin{column}{0.58\textwidth}
 \begin{minipage}[c]{\linewidth}
 	\begin{figure}
-		\includegraphics[width=4.5cm]{fig/lec05/Batch_AB_Example.pdf}
+		\includegraphics[width=4.0cm]{fig/lec05/Batch_AB_Example.pdf}
 		\caption{Example environment (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 		\label{fig:Batch_AB_Example}
 	\end{figure}
@@ -299,7 +295,6 @@ Above $k$ is the sample index (i.e., how often the TD update was applied).
 \end{minipage}
 \end{column}
 \end{columns}
-\vspace{0.25cm}
 \begin{table}
 	\centering
 		\begin{tabular}{M{2cm}|M{2cm}}
@@ -362,7 +357,7 @@ Now consider state A assuming the steady state of batch learning process:
 	\item The TD bootstrap estimate of B is $\hat{v}(x_{k+1,j})=\hat{v}(B)=\frac{3}{4}$.
 \end{itemize}\pause
 \begin{align*}
-	\mbox{MC}: \quad &0=\sum_{j=1}^J g_{k,j} - \hat{v}(x_{k,j})=\sum_{j=1}^J g_{k,j} - \hat{v}(A),\\
+	\mbox{MC}: \quad &0=\sum_{j=1}^J g_{k,j} - \hat{v}(x_{k,j})=\sum_{j=1}^J g_{k,j} - \hat{v}(A)\\
 	\mbox{TD}:	\quad&0=\sum_{j=1}^J r_{k+1,j}+\gamma\hat{v}(x_{k+1,j}) - \hat{v}(x_{k,j})=\sum_{j=1}^J \gamma\hat{v}(B) - \hat{v}(A).
 \end{align*}\pause
 Looking at \tabref{tab:state_reward_AB_example} there is only one episode visiting state A, where the sample return is $g_{k,j}=0$. Hence, it follows: 
@@ -393,12 +388,9 @@ Where does this mismatch between the MC and TD estimates come from?
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-difference on-policy control: SARSA} 
+\subsection{Temporal-difference on-policy control: SARSA} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Applying Generalized Policy Iteration (GPI) to MC Control %%
@@ -498,12 +490,9 @@ Convergence properties are comparable to MC-based on-policy control:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Temporal-difference off-policy control: \texorpdfstring{$Q$}{Q}-learning} 
+\subsection{Temporal-difference off-policy control: \texorpdfstring{$Q$}{Q}-learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Q-Learning Approach %%
@@ -595,12 +584,9 @@ Requirement for $Q$-learning control:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Maximization bias and double learning} 
+\subsection{Maximization bias and double learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Maximization Bias %%

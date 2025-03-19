@@ -1,12 +1,5 @@
-\part{Lecture 03: Dynamic Programming}
-\title[RL Lecture 03]{Lecture 03: Dynamic Programming}  
-\date{}  
-\frame{\titlepage} 
-\frame{\frametitle{Table of contents}\tableofcontents} 
+\section{Dynamic programming}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What is Dynamic Programming? %%
@@ -111,12 +104,9 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Policy evaluation} 
+\subsection{Policy evaluation} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Evaluation Background (1) %%
@@ -126,8 +116,8 @@ In both applications \hl{DP requires full knowledge of the MDP} structure.
 	\item Problem: evaluate a given policy $\pi$ to predict $v_\pi$. \pause
 	\item Recap: Bellman expectation equation for $x_k\in\mathcal{X}$ is given as
 	\begin{align*}
-	v_\pi(x_k) &= \El{G_k|X_k=x_k}{\pi},\\
-									&= \El{R_{k+1}+ \gamma G_{k+1}|X_k=x_k}{\pi},\\
+	v_\pi(x_k) &= \El{G_k|X_k=x_k}{\pi}\\
+									&= \El{R_{k+1}+ \gamma G_{k+1}|X_k=x_k}{\pi}\\
 									&= \El{R_{k+1}+ \gamma v_\pi(X_{k+1})|X_k=x_k}{\pi}.
 	\end{align*}\vspace{-0.5cm}\pause
 	\item Or in matrix form:
@@ -338,12 +328,8 @@ Instead of applying \eqref{eq:iterative_policy_eval_matrix} to the entire vector
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Policy improvement} 
+\subsection{Policy improvement} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Idea on Policy Improvement%%
@@ -386,15 +372,15 @@ applies, then the policy $\pi'$ must be as good as or better than $\pi$. Hence, 
 \begin{equation}
 \hspace{-0.35cm}
 	\begin{split}
-		\onslide<1->{v_{\pi}(x_k) &\leq q_{\pi}(x_k,\pi'(x_k)),\\}
-											\onslide<2->{&= \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=\pi'(x_{k})},\\}
-											\onslide<3->{&= \El{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k}}{\pi'},\\}
-											\onslide<4->{&\leq \El{R_{k+1} + \gamma 	q_{\pi}(x_{k+1},\pi'(x_{k+1}))|X_{k}=x_{k}}{\pi'},\\}
-											\onslide<5->{&= \El{R_{k+1} + \gamma 	\El{R_{k+2} + \gamma 	v_{\pi}(X_{k+2})|X_{k+1},\pi'(x_{k+1})}{\pi'}|X_{k}=x_{k}}{\pi'},\\}
-											\onslide<6->{&= \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 v_{\pi}(X_{k+2})|X_{k}=x_{k}}{\pi'},\\}
-											\onslide<7->{&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 v_{\pi}(X_{k+3})|X_{k}=x_{k}}{\pi'},\\}
+		\onslide<1->{v_{\pi}(x_k) &\leq q_{\pi}(x_k,\pi'(x_k))\\}
+											\onslide<2->{&= \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=\pi'(x_{k})}\\}
+											\onslide<3->{&= \El{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k}}{\pi'}\\}
+											\onslide<4->{&\leq \El{R_{k+1} + \gamma 	q_{\pi}(x_{k+1},\pi'(x_{k+1}))|X_{k}=x_{k}}{\pi'}\\}
+											\onslide<5->{&= \El{R_{k+1} + \gamma 	\El{R_{k+2} + \gamma 	v_{\pi}(X_{k+2})|X_{k+1},\pi'(x_{k+1})}{\pi'}|X_{k}=x_{k}}{\pi'}\\}
+											\onslide<6->{&= \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 v_{\pi}(X_{k+2})|X_{k}=x_{k}}{\pi'}\\}
+											\onslide<7->{&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 v_{\pi}(X_{k+3})|X_{k}=x_{k}}{\pi'}\\}
 											\onslide<8->{&\hspace{0.2cm}\vdots\\
-											&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 R_{k+4}+\cdots|X_{k}=x_{k}}{\pi'},\\
+											&\leq \El{R_{k+1} + \gamma 	R_{k+2} + \gamma^2 R_{k+3}+ \gamma^3 R_{k+4}+\cdots|X_{k}=x_{k}}{\pi'}\\
 											&=v_{\pi'}(x_k).}
 	\end{split}
 \end{equation}
@@ -411,8 +397,8 @@ applies, then the policy $\pi'$ must be as good as or better than $\pi$. Hence, 
 \vspace{0.25cm}
 \begin{equation}
 	\begin{split}
-		\pi'(x_{k})&	=\argmax_{u_k\in\mathcal{U}} q_\pi(x_{k}, u_{k}),\\
-										& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		\pi'(x_{k})&	=\argmax_{u_k\in\mathcal{U}} q_\pi(x_{k}, u_{k})\\
+										& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										& = \argmax_{u_k\in\mathcal{U}} \mathcal{R}^u_x + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_\pi(x_{k+1}) \, .
 	\end{split}
 \end{equation}
@@ -429,7 +415,7 @@ applies, then the policy $\pi'$ must be as good as or better than $\pi$. Hence, 
 \vspace{0.25cm}
 \begin{equation}
 	\begin{split}
-		v_{\pi'}(x_k) &=	\max_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi'}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		v_{\pi'}(x_k) &=	\max_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi'}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										& = \max_{u_k\in\mathcal{U}} \mathcal{R}^u_x + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{\pi'}(x_{k+1}) \, .
 	\end{split}
 \end{equation}\pause
@@ -441,12 +427,8 @@ applies, then the policy $\pi'$ must be as good as or better than $\pi$. Hence, 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Policy and value iteration} 
+\subsection{Policy and value iteration} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Concept of Policy Iteration %%
@@ -493,7 +475,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree hater' initial pol
 	\item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
-		\pi_1(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_0}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		\pi_1(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_0}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\}
 	\end{split}
 \end{equation*}\pause
@@ -501,7 +483,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree hater' initial pol
 \item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
-		\pi_2(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_1}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		\pi_2(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_1}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\},\\
 										& = \pi_1(x_{k})\\
 										& = \pi^*
@@ -521,7 +503,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 	\item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
-		\pi_1(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_0}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		\pi_1(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_0}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\}
 	\end{split}
 \end{equation*}\pause
@@ -529,8 +511,8 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 \item Greedy policy improvement: 
 	\begin{equation*}
 	\begin{split}
-		\pi_2(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_1}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
-										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\},\\
+		\pi_2(x_{k})& = \argmax_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{\pi_1}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
+										& = \left\{\pi(u_k =\mbox{w}|x_k=1), \pi(u_k =\mbox{c}|x_k=2), \pi(u_k =\mbox{c}|x_k=3)\right\}\\
 										& = \pi_1(x_{k})\\
 										& = \pi^*
 	\end{split}
@@ -552,7 +534,7 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 	\item Allows simple update rule which \hl{combines policy improvement with truncated policy evaluation in a single step}:
 	\begin{equation}
 	\begin{split}
-		v_{i+1}(x_k) &=	\max_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{i}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}},\\
+		v_{i+1}(x_k) &=	\max_{u_k\in\mathcal{U}} \E{R_{k+1} + \gamma 	v_{i}(X_{k+1})|X_{k}=x_{k},U_{k}=u_{k}}\\
 										&= \max_{u_k\in\mathcal{U}} \mathcal{R}^u_x + \gamma \sum_{x_{k+1}\in\mathcal{X}}p_{xx'}^u v_{i}(x_{k+1}) \, .
 	\end{split}
 \end{equation}
@@ -611,12 +593,8 @@ Assume $\alpha=0.2$ and $\gamma=0.8$ and start with \hl{'tree lover' initial pol
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Further aspects} 
+\subsection{Further aspects} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Summarizing DP Algorithms %%

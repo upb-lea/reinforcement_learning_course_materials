@@ -25,6 +25,17 @@ lecture_slides/*.pdf
 !lecture_slides/built/*.pdf
 **/fig/**/*-eps-converted-to.pdf
 *.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.ist
+*.nom
+*.nomc
+*.synctex(busy)
+*.xmpi
+
 
 # misc.
 *.db
