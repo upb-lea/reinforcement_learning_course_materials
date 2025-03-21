@@ -1,15 +1,5 @@
-\part{Lecture 12: Deterministic Policy Gradient Methods}
-\title[RL Lecture 12]{Lecture 12: Deterministic Policy Gradient Methods}  
-\date{}  
-\frame{\titlepage} 
+\section{Deterministic policy gradient methods}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deterministic gradient policy} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Motivation %%
@@ -128,12 +118,9 @@ actor-critic (COPDAC) on continuous-action reinforcement learning (source: D. Si
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Deep deterministic policy gradient (DDPG)} 
+\subsection{Deep deterministic policy gradient (DDPG)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Motivation / General Idea %%
@@ -288,18 +275,15 @@ given a behavior policy $b(\bm{u}|\bm{x})$.
 			Update target net. $\bm{w}^{-} \leftarrow (1-\tau)\bm{w}^{-}+\tau\bm{w}, \,\, \bm{\theta}^{-} \leftarrow (1-\tau)\bm{\theta}^{-}+\tau\bm{\theta}$\;
 		}
 	}
-\caption{Deep deterministic policy gradient (output: parameter vectors $\bm{\theta}^*$ for $\bm{\mu}^*(\bm{x},\bm{\theta}^*)$) and $\bm{w}^*$ for $\hat{q}^*(\bm{x}, \bm{u}, \bm{w}^*))$}
+\caption{Deep deterministic policy gradient (output: $\bm{\theta}^*$ for $\bm{\mu}^*(\bm{x},\bm{\theta}^*)$ and $\bm{w}^*$ for $\hat{q}^*(\bm{x}, \bm{u}, \bm{w}^*))$}
 \label{algo:DDPG}
 \end{algorithm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Twin delayed deep deterministic policy gradient (TD3)} 
+\subsection{Twin delayed deep deterministic policy gradient (TD3)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Overestimation Bias %%

@@ -1,15 +1,9 @@
-\part{Lecture 14: Outlook and Research Insights}
-\title[RL Lecture 14]{Lecture 14: Outlook and Research Insights}
-\date{}  
-\frame{\titlepage} 
+\section{Outlook and practical research insights}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Safe reinforcement learning} 
+\subsection{Safe reinforcement learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Recap: optimal control and constraints %%
@@ -210,7 +204,7 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
 \begin{itemize}
 	\item Safety shield: Ensure that action does not cause state limit violation in future system trajectories
 	\item Such a state action pair is called feasible
-	\item Calculation of \textcolor{mygreen}{feasible set} requires a model
+	\item Calculation of \textcolor{signalgreen}{feasible set} requires a model
 	\item Training data can be utilized to \href{https://ei.uni-paderborn.de/en/lea/teaching/veranstaltungen/teaching/translate-to-english-systemidentifikation}{identify} model
 	\item Here, recursive least squares (RLS) is applied
 \end{itemize}
@@ -238,9 +232,9 @@ Real-world systems are always subject to certain state constraints $\mathcal{X}$
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
 	\item Three different approaches
-	\item \textcolor{blue}{$\mathrm{DDPG}_\mathrm{}$}: Agent without safety shield
-	\item \textcolor{red}{$\mathrm{DDPG}_\mathrm{SG}$}: Agent with safety shield using perfect a priori knowledge
-	\item \textcolor{mygreen}{$\mathrm{DDPG}_\mathrm{SG,RLS}$}: Agent with safety shield without a priori knowledge, identifying model using RLS
+	\item \textcolor{signalblue}{$\mathrm{DDPG}_\mathrm{}$}: Agent without safety shield
+	\item \textcolor{signalred}{$\mathrm{DDPG}_\mathrm{SG}$}: Agent with safety shield using perfect a priori knowledge
+	\item \textcolor{signalgreen}{$\mathrm{DDPG}_\mathrm{SG,RLS}$}: Agent with safety shield without a priori knowledge, identifying model using RLS
 	\item Five agents trained per approach
 	\item Results in D. Weber et al., \textit{Safe Reinforcement Learning-Based Control in
 Power Electronic Systems}, 2023
@@ -259,7 +253,7 @@ Power Electronic Systems}, 2023
 \begin{minipage}[c]{\linewidth}
 \begin{figure}
 	\includegraphics[width=0.75\textwidth, height=0.55\textheight]{fig/lec14/370_vDC_SL_RLS_varLoadtimeseries_testcase.pdf}
-	\caption{Blackstart after training using \textcolor{mygreen}{$\mathrm{DDPG}_\mathrm{SG,RLS}$}}
+	\caption{Blackstart after training using \textcolor{signalgreen}{$\mathrm{DDPG}_\mathrm{SG,RLS}$}}
 	\label{fig:RL_OMG}
 \end{figure}
 \end{minipage}
@@ -278,12 +272,9 @@ Power Electronic Systems}, 2023
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Real-world implementation with fast policy inference} 
+\subsection{Real-world implementation with fast policy inference} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Real-time implementation aspects %%
@@ -330,7 +321,7 @@ Power Electronic Systems}, 2023
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
 	\item The DQ-DTC is basically a DQN
-	\item Sampling time of the plant system is $T_\text{s}=50\, \upmu \text{s}$
+	\item Sampling time of the plant system is $T_\text{s}=\SI{50}{\micro\second}$
 	\item DQN inference, safeguarding and system identification must fit into $T_\text{s}$
 	\item Source: M. Schenke et al., \href{https://www.techrxiv.org/articles/preprint/Finite-Set_Direct_Torque_Control_via_Edge_Computing-Assisted_Safe_Reinforcement_Learning_for_a_Permanent_Magnet_Synchronous_Motor/22032578}{\textit{Finite-Set Direct Torque Control via Edge Computing-Assisted
 Safe Reinforcement Learning for a Permanent Magnet Synchronous Motor}}, 2023
@@ -397,17 +388,19 @@ Safe Reinforcement Learning for a Permanent Magnet Synchronous Motor}}, 2023
 %% Demonstration video %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Demonstration video}
-\center
-Youtube link:
-	\href{https://www.youtube.com/watch?v=hQ49Mc6LV78}{Coffee machine vs. deep Q direct torque control}
+\begin{tikzpicture}[overlay, remember picture]
+	\node[anchor = center, inner sep=0pt, xshift=0.5cm] at (current page.center) {
+		\href{https://www.youtube.com/watch?v=hQ49Mc6LV78&t=13}{\includegraphics[width=0.7\paperwidth]{fig/lec14/Youtube_preview.jpg}}
+	};
+	\node[anchor = center, inner sep=0pt, xshift=0.5cm] at (current page.center) {
+		\href{https://www.youtube.com/watch?v=hQ49Mc6LV78&t=13}{\fontsize{40}{60} \color{uniblue} \faYoutubePlay}
+	};
+\end{tikzpicture}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Meta reinforcement learning} 
+\subsection{Meta reinforcement learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Problem setting %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

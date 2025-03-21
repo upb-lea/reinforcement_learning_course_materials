@@ -1,15 +1,9 @@
-\part{Lecture 13: Further Contemporary RL Algorithms}
-\title[RL Lecture 13]{Lecture 13: Further Contemporary RL Algorithms}
-\date{}  
-\frame{\titlepage} 
+\section{Further contemporary RL algorithms}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Trust region policy optimization (TRPO)} 
+\subsection{Trust region policy optimization (TRPO)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Reinterpreting the Policy Gradient for Stochastic Policies (1)%%
@@ -205,12 +199,9 @@ We will not provide any specific TRPO implementation suggestion at this point, s
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proximal policy optimization (PPO)} 
+\subsection{Proximal policy optimization (PPO)} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Background and Motivation %%
@@ -358,7 +349,7 @@ based on related unconstrained problems.
 		$\bm{w}_{j+1}\leftarrow$ minimizing the mean-squared TD errors using $\bm{\mathcal{D}}$ (critic)\;\pause
 		delete entries in $\bm{\mathcal{D}}$ (due to on-policy learning)\;
 	}
-\caption{Proximal policy optimization (output: parameter vectors $\bm{\theta}^*$ for $\pi^*(\bm{u}|\bm{x},\bm{\theta}^*)$) and $\bm{w}^*$ for $\hat{v}^*(\bm{x}, \bm{w}^*))$}
+\caption{Proximal policy optimization (output: parameter vectors $\bm{\theta}^*$ for $\pi^*(\bm{u}|\bm{x},\bm{\theta}^*)$ and $\bm{w}^*$ for $\hat{v}^*(\bm{x}, \bm{w}^*))$}
 \label{algo:PPO}
 \end{algorithm}
 }
@@ -431,9 +422,7 @@ Algorithm collections with decent application-oriented documentation:
 	\item \href{https://github.com/ray-project/ray}{RLlib (Ray)}
 	\item \href{https://github.com/DLR-RM/stable-baselines3}{Stable Baselines3}
 	\item \href{https://github.com/deepmind/acme}{Acme}
-	\item \href{https://github.com/rlworkgroup/garage}{Garage}
 	\item \href{https://github.com/google/dopamine}{Google Dopamine}
-	\item \href{https://github.com/tensorforce/tensorforce}{Tensorforce}
 	\item \href{https://github.com/tensorflow/agents}{TF-Agents}
 	\item ...
 \end{itemize}

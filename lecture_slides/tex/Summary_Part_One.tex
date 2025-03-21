@@ -1,15 +1,26 @@
-\setcounter{figure}{0} % Manually reset figure count (summary is not a beamer class part)
-\setcounter{framenumber}{0} % Manually reset page count (summary is not a beamer class part)
-\pdfbookmark[1]{Summary of Part I: Reinforcement Learning in Finite State and Action Spaces}{Sum_Part_One} 
-\title[Summary of Part I]{Summary of Part I: Reinforcement Learning in Finite State and Action Spaces}  
-\date{}  
-\frame{\titlepage}
+
+\section*{Summary of part I: reinforcement learning in finite state and action spaces}  
 \renewcommand{\thefigure}{S-I.\arabic{figure}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Outline / table of content %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Table of contents}
+	\begin{columns}
+		\column{0.5\textwidth}
+	  	\begin{varblock}{Summary of part I}
+			Reinforcement learning in finite state and action spaces
+	   	\end{varblock}
+	\column{0.5\textwidth}
+		\small
+		  \tableofcontents[hideallsubsections, sections={1-7}]
+	\end{columns}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Common Key Ideas to Explored RL Methods %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Common key ideas to all discussed rl methods so far}
+\frame{\frametitle{Common key ideas to all discussed RL methods so far}
 \begin{enumerate}
 	\item Estimating and comparing value functions
 	\item Backing up values along actual or possible state trajectories
@@ -31,7 +42,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Two Important RL Dimensions: Depth and Width of Updates %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{two important rl dimensions: update depth and width}
+\frame{\frametitle{Two important RL dimensions: update depth and width}
 \begin{figure}
 	\includegraphics[width=7cm]{fig/lec06/Compare_RL_Methods_Update.pdf}
 	\caption{A slice through the RL method space (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
@@ -72,4 +83,4 @@ The problem space is either continuous or contains an unfeasible large amount of
 \end{block}
 }
 
-\renewcommand{\thefigure}{\arabic{part}.\arabic{figure}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}

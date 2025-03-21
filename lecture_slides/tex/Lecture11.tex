@@ -1,7 +1,5 @@
-\part{Lecture 11: Stochastic Policy Gradient Methods}
-\title[RL Lecture 11]{Lecture 11: Stochastic Policy Gradient Methods}  
-\date{}  
-\frame{\titlepage} 
+\section{Stochastic policy gradient methods}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preface (1) %%
@@ -40,13 +38,8 @@ to (direct) policy-based solutions:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stochastic policy approximation and the policy gradient theorem} 
+\subsection{Stochastic policy approximation and the policy gradient theorem} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Motivating Example (2): Strategic Gaming %%
@@ -342,12 +335,9 @@ Mutual hassle:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Monte Carlo policy gradient} 
+\subsection{Monte Carlo policy gradient} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Gradient Theorem %%
@@ -531,12 +521,9 @@ Monte Carlo policy gradient:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Actor-critic methods} 
+\subsection{Actor-critic methods} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Table of contents}
-\tableofcontents[currentsection]
-\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% General Actor-Critic Idea %%
@@ -689,7 +676,7 @@ Alternative: use an additional function approximator, the so-called \hl{critic},
 			$\bm{\theta} \leftarrow \bm{\theta} + \alpha_{\theta} \delta \bm{z}_{\theta}$\; 
 		}
 	}
-\caption{Actor-critic for episodic tasks using TD($\lambda$) targets (output: parameter vector $\bm{\theta}^*$ for $\pi^*(\bm{u}|\bm{x},\bm{\theta}^*)$) and $\bm{w}^*$ for $\hat{v}^*(\bm{x}, \bm{w}^*))$}
+\caption{Actor-critic for episodic tasks using TD($\lambda$) targets (output: parameter vector $\bm{\theta}^*$ for $\pi^*(\bm{u}|\bm{x},\bm{\theta}^*)$ and $\bm{w}^*$ for $\hat{v}^*(\bm{x}, \bm{w}^*))$}
 \label{algo:actor_critic_TD_lambda}
 \end{algorithm}
 }

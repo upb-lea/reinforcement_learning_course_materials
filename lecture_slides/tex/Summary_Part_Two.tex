@@ -1,10 +1,25 @@
-\setcounter{figure}{0} % Manually reset figure count (summary is not a beamer class part)
-\setcounter{framenumber}{0} % Manually reset page count (summary is not a beamer class part)
-\pdfbookmark[1]{Summary of Part II: Reinforcement Learning Using Function Approximation}{Sum_Part_Two} 
-\title[Summary of Part II]{Summary of Part II: Reinforcement Learning Using Function Approximation}  
-\date{}  
-\frame{\titlepage}
+%\setcounter{figure}{0} % Manually reset figure count (summary is not a beamer class part)
+%\setcounter{framenumber}{0} % Manually reset page count (summary is not a beamer class part)
+%\pdfbookmark[1]{Summary of Part II: Reinforcement Learning Using Function Approximation}{Sum_Part_Two} 
+\section*{Summary of part II: reinforcement learning using function approximation}  
+%\date{}  
+%\frame{\titlepage}
 \renewcommand{\thefigure}{S-II.\arabic{figure}}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Outline / table of content %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Table of contents}
+	\begin{columns}
+		\column{0.5\textwidth}
+	  	\begin{varblock}{Summary of part II}
+			Reinforcement learning in continuous state and action spaces
+	   	\end{varblock}
+	\column{0.5\textwidth}
+		\small
+		  \tableofcontents[hideallsubsections, sections={8-15}]
+	\end{columns}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% What was Covered in the Course %%
@@ -76,3 +91,5 @@
 \end{itemize}
 \end{block}
 }
+
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
