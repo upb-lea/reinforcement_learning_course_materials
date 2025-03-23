@@ -4,6 +4,13 @@
 \author{Oliver Wallscheid}
 \date{}
 
+\makeatletter
+\newcommand\addsectiontotoc[1]{%
+\addtocontents{toc}{%
+  \protect\beamer@sectionintoc{\the\c@section}{#1}{\the\c@page}{\the\c@part}%
+    {}}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Ohter useful short commands  %%%%%

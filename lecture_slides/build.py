@@ -22,30 +22,21 @@ with fileinput.input('main.tex', inplace=True) as f:
         if 'includeonly{' in line:
             # comment out includeonly flag
             print(f'%{line}', end='')
+        #check if the line including '\documentclass' has the parameter 'handout' - if not add it
+        elif ']{beamer}' in line:
+            if 'handout' not in line:
+                print(line.replace(']{beamer}', ', handout]{beamer}'), end='')
+            else:
+                print(line, end='')    
         else:
             print(line, end='')
+        
 call(call_pdflatex_l)
 call(call_pdflatex_l)
-os.replace('main.pdf', os.path.join('built', 'main.pdf'))
 
-# build single chapters
-chap_list = [os.path.splitext(p)[0] for p in os.listdir('tex')
-             if p.endswith('.tex')]
 
-for tex_file in chap_list:
-    clear_tex_binaries()
-    with fileinput.input('main.tex', inplace=True) as f:
-        for line in f:
-            if 'includeonly{' in line:
-                # specify chapter to render
-                print(f'\\includeonly{{tex/{tex_file}}}')
-            else:
-                print(line, end='')
-    call(call_pdflatex_l)
-    call(call_pdflatex_l)
-    call(call_pdflatex_l)
-    os.replace('main.pdf', os.path.join('built', tex_file + '.pdf'))
-
-print('Done processing:')
-for p in chap_list:
-    print('  ', p)
+# go into the parent directory
+os.chdir('..')
+os.makedirs('built', exist_ok=True)
+#take main.pdf from the exercise folder and move it to the parent folder
+os.replace('lecture/main.pdf', os.path.join('built', 'lecture.pdf'))
