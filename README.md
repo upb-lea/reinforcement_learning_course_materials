@@ -1,6 +1,6 @@
 # Reinforcement learning course
 
-[![Build Status](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/BuildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/BuildPDFs.yml)
+[![Build Status](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/buildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/buildPDFs.yml)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
@@ -23,7 +23,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
 01. Introduction to Reinforcement Learning
     * [Lecture video, part 1](https://www.youtube.com/watch?v=YqlNOCD0rfA)
     * [Lecture video, part 2](https://youtu.be/Yd99sn-64Z8)
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture01.pdf)   
+    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture01.pdf#page=3)   
 02. Markov Decision Processes
     * [Lecture video](https://www.youtube.com/watch?v=ywn81iGQISE)
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Lecture02.pdf) 
@@ -69,8 +69,6 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_One.pdf) 
 * Summary of Part Two: Reinforcement Learning Using Function Approximation
     * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/Summary_Part_Two.pdf) 
-* Full course slides
-    * [Lecture slides](https://groups.uni-paderborn.de/lea/share/lehre/reinforcementlearning/lecture_slides/built/main.pdf)
 
 
 # Exercise Content
@@ -142,6 +140,9 @@ The lecture notes are inspired by
 
 The tutorials are partly using pre-packed environments from
 * [Gymnasium](https://gymnasium.farama.org/) (maintained branch of OpenAI's Gym)
+
+The original version of this educational repository was created at:
+* [Paderborn University, LEA Department](https://github.com/upb-lea/reinforcement_learning_course_materials)
 
 # Citation
 See "Cite this repository" on top
