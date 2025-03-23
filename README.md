@@ -20,47 +20,47 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
 ## Lecture slides (click on preview picture)
 <a href="https://ias-uni-siegen.github.io/RL_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.jpg" alt=""></a>
 
-01. Introduction to reinforcement learning
+* Introduction to reinforcement learning
     * [Lecture video, part 1](https://www.youtube.com/watch?v=YqlNOCD0rfA)
     * [Lecture video, part 2](https://youtu.be/Yd99sn-64Z8)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec1)   
-02. Markov decision processes
+* Markov decision processes
     * [Lecture video](https://www.youtube.com/watch?v=ywn81iGQISE)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec2) 
-03. Dynamic programming
+* Dynamic programming
     * [Lecture video](https://www.youtube.com/watch?v=vjIiYdidFPY)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec3) 
-04. Monte Carlo methods
+* Monte Carlo methods
     * [Lecture video](https://www.youtube.com/watch?v=GBL0ArlONrM)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec4) 
-05. Temporal-difference learning
+* Temporal-difference learning
     * [Lecture video](https://www.youtube.com/watch?v=Rnf9Wanxnj8)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec5) 
-06. Multi-step bootstrapping
+* Multi-step bootstrapping
     * [Lecture video](https://www.youtube.com/watch?v=YYTSZTyjbQ4)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec6) 
-07. Planning and learning with tabular methods
+* Planning and learning with tabular methods
     * [Lecture video](https://www.youtube.com/watch?v=gvJ3__GmHqo)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec7) 
-08. Function approximation with supervised learning
+* Function approximation with supervised learning
     * [Lecture video](https://www.youtube.com/watch?v=tXAxTiuvges)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec9) 
-09. On-policy prediction with function approximation
+* On-policy prediction with function approximation
     * [Lecture video](https://www.youtube.com/watch?v=aA3MFRHrrtg)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec10) 
-10. Value-based control with function approximation
+* Value-based control with function approximation
     * [Lecture video](https://www.youtube.com/watch?v=LE9dVVj5700)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec11) 
-11. Stochastic policy gradient methods
+* Stochastic policy gradient methods
     * [Lecture video](https://www.youtube.com/watch?v=LzuZUyVr2mY)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec12) 
-12. Deterministic policy gradient methods
+* Deterministic policy gradient methods
     * [Lecture video](https://www.youtube.com/watch?v=i6hOcGIgdoQ)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec13) 
-13. Further contemporary RL algorithms (TRPO, PPO)
+* Further contemporary RL algorithms (TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=H8rElrvs9Lo)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec14)
-14. Outlook and Research Insights
+* Outlook and Research Insights
     * [Lecture video](https://www.youtube.com/watch?v=-TEzYSzXhW4)
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec15)
    
@@ -71,7 +71,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
     * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec16) 
 
 
-# Exercise Content
+# Exercise content
 All exercises are based on Python 3.9 and site-packages according to the requirements.txt:
 ```
 >>> pip install -r requirements.txt
