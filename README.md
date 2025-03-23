@@ -1,15 +1,24 @@
-Reinforcement Learning Course Materials
-=======================================
-[![Build Status](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/blank.yml/badge.svg)](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/blank.yml)
-[![DOI](https://zenodo.org/badge/281059645.svg)](https://zenodo.org/badge/latestdoi/281059645)
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/upb-lea/reinforcement_learning_course_materials/blob/master/LICENSE)
+# Reinforcement learning course
+
+[![Build Status](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/BuildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/BuildPDFs.yml)
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 
-Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University. Source code for the entire course material is open and everyone is cordially invited to use it for self-learning (students) or to set up your own course (lecturers).
-![Example](./img/wordcloud.svg)
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
-# Lecture Content
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+
+Lecture notes, tutorial tasks including solutions as well as online videos for the reinforcement learning course hosted by Paderborn University. Source code for the entire course material is open and everyone is cordially invited to use it for self-learning (students) or to set up your own course (lecturers).
+
+
+## Lecture slides (click on preview picture)
+<a href="https://ias-uni-siegen.github.io/RL_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.jpg" alt=""></a>
 
 01. Introduction to Reinforcement Learning
     * [Lecture video, part 1](https://www.youtube.com/watch?v=YqlNOCD0rfA)
