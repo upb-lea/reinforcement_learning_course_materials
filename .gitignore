@@ -21,8 +21,8 @@
 *.tcp
 *.toc
 *.tps
-lecture_slides/*.pdf
-!lecture_slides/built/*.pdf
+lecture/*.pdf
+!lecture/built/*.pdf
 **/fig/**/*-eps-converted-to.pdf
 *.dvi
 *.fdb_latexmk
