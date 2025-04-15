@@ -110,18 +110,19 @@ with $p_{ij}\in\left\{\mathbb{R}|0 \leq p_{ij} \leq 1 \right\}$ being the specif
 \end{minipage}
 \begin{minipage}[t]{0.45\linewidth}
 \vspace{-0.7cm}
+\onslide<5->{
 \begin{align*}
    x&\in\left\{1,2,3,4\right\}\\
 				 &=\left\{\mbox{small},\mbox{medium},\mbox{large},\mbox{gone}\right\}\\[1em]
 	\bm{\mathcal{P}} &= \begin{bmatrix}0 & 1-\alpha & 0 & \alpha  \\ 0 & 0 &1-\alpha & \alpha \\ 0 & 0 &1-\alpha & \alpha \\ 0 & 0 & 0 & 1\end{bmatrix}
-\end{align*}
+\end{align*}}
 \end{minipage}
 \begin{itemize}
 	\item At $x=1$ a small tree is planted ('starting point').
-	\item A tree grows with $(1-\alpha)$ probability.
-	\item If it reaches $x=3$ (large) its growth is limited.
-	\item With $\alpha$ probability a natural hazard destroys the tree.
-	\item The state $x=4$ is terminal ('infinite loop').
+	\item<2-> A tree grows with $(1-\alpha)$ probability.
+	\item<3-> With $\alpha$ probability a natural hazard destroys the tree.
+	\item<4-> If it reaches $x=3$ (large) its growth is limited.
+	\item<4-> The state $x=4$ is terminal ('infinite loop').
 \end{itemize}
 }
 
@@ -134,10 +135,10 @@ with $p_{ij}\in\left\{\mathbb{R}|0 \leq p_{ij} \leq 1 \right\}$ being the specif
 \end{figure}
 Possible \hl{samples} for the given Markov chain example starting from $x=1$ (small tree):
 \begin{itemize}
-	\item Small $\rightarrow$ gone
-	\item Small $\rightarrow$ medium $\rightarrow$ gone
-	\item Small $\rightarrow$ medium $\rightarrow$ large $\rightarrow$ gone
-	\item Small $\rightarrow$ medium $\rightarrow$ large $\rightarrow$ large $\rightarrow\ldots$ 
+	\item<1-> Small $\rightarrow$ gone
+	\item<2-> Small $\rightarrow$ medium $\rightarrow$ gone
+	\item<3-> Small $\rightarrow$ medium $\rightarrow$ large $\rightarrow$ gone
+	\item<4-> Small $\rightarrow$ medium $\rightarrow$ large $\rightarrow$ large $\rightarrow\ldots$ 
 \end{itemize}
 }
 
@@ -183,7 +184,7 @@ A \hl{finite Markov reward process (MRP)} is a tuple $\left\langle\mathcal{X}, \
 		\item appreciated by hikers and
 		\item useful for wood production.
 	\end{itemize}
-	\item Loosing a tree due to a hazard is unrewarded.
+	\item<2-> Loosing a tree due to a hazard is unrewarded.
 \end{itemize}
 }
 
@@ -219,14 +220,15 @@ The \hl{state-value function} $v(x_k)$ of an MRP is the expected return starting
 \end{equation}
 \end{defi}
 \begin{itemize}
-	\item Represents the long-term value of being in state $X_k$.
+	\item<2-> Represents the long-term value of being in state $X_k$.
 \end{itemize}
 \vspace{0.25cm}
+\onslide<3->{
 \begin{figure}
 	\includegraphics[height=0.325\textheight]{fig/lec02/Value_Golf.pdf}
 	\caption{Isolines indicate state value of different golf ball locations (source: R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018, \href{https://creativecommons.org/licenses/by-nc-nd/2.0/}{CC BY-NC-ND 2.0})}
 	\label{fig:Value_Golf}
-\end{figure}
+\end{figure}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,7 +287,7 @@ for a finite number of $n$ states \pause with unknown state values
 \begin{equation}
 	\bm{v}_{\mathcal{X}}= \begin{bmatrix} v(x_1) & \cdots & v(x_n)\end{bmatrix}\T = \begin{bmatrix} v_1 & \cdots & v_n\end{bmatrix}\T
 \end{equation}
-one can derive a linear equation system based on \figref{fig:Back_Up_MRP}:\pause
+one can derive a \hl{linear equation system} based on \figref{fig:Back_Up_MRP}:\pause
 \begin{equation}
 \label{eq:Bellman_MRP_linear}
 \begin{split}
@@ -373,7 +375,7 @@ A \hl{finite Markov decision process (MDP)} is a tuple $\left\langle\mathcal{X},
 		\item Wait $u=w$: let the tree grow.
 		\item Cut $u=c$: gather the wood.
 	\end{itemize}
-	\item With increasing tree size the wood reward increases as well.
+	\item<2-> With increasing tree size the wood reward increases.
 \end{itemize}
 }
 
@@ -578,7 +580,7 @@ one receives:
 %% Bellman Expectation Equation Applied to Forest Tree Example (3)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Bellman expectation equation \& forest tree example (3)}
-Using the Bellman expectation eq. \eqref{eq:q_MDP_finite} the action values can be directly calculated: 
+Using the Bellman expectation from \eqref{eq:q_MDP_finite} the action values can be directly calculated: 
 \vspace{0.5cm}
 \begin{figure}		
 	\hspace*{0.5cm}
@@ -648,7 +650,7 @@ For any finite MDP
 \end{theo}
 }
 \begin{itemize}
-	\onslide<2->{\item Any policy (i.e., also the optimal one) must satisfy the self-consistency condition given by the Bellman expectation equation.}
+	\onslide<2->{\item Any policy (i.e., also the optimal one) must satisfy the \hl{self-consistency condition} given by the Bellman expectation equation.}
 	\onslide<3->{\item An optimal policy must deliver the maximum expected return being in a given state:}
 \end{itemize}
 \onslide<4->{
@@ -719,7 +721,7 @@ And, in the finite MDP case:
 		\item If $v(x)$ is known, a one-step-ahead search is required to get $q(x, u)$.
 		\item If $q(x, u)$ is known, directly choose $q^*$. \pause
 	\end{itemize}
-	\item Even though above decisions are very short sighted (one-step-ahead search for $v$ or direct choice of $q$), by Bellman's principle of optimality one receives the long-term maximum of the expected reward.
+	\item Even though above decisions are very short-sighted (one-step-ahead search for $v$ or direct choice of $q$), by Bellman's principle of optimality one receives the long-term maximum of the expected reward.
 \end{itemize}
 }
 
@@ -739,7 +741,7 @@ Remember the forest tree MDP example:
 		\item Wait $u=w$: let the tree grow.
 		\item Cut $u=c$: gather the wood.
 	\end{itemize}
-	\item Lets first calculate $v^*(x)$ and then $q^*(x,u)$.
+	\item<2-> Lets first calculate $v^*(x)$ and then $q^*(x,u)$.
 \end{itemize}
 }
 
@@ -765,10 +767,10 @@ Remember the forest tree MDP example:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Optimal policy for forest tree MDP: state value (2)}
 \begin{itemize}
-	\item Possible solutions:
+	\item<2->Possible solutions:
 	\begin{itemize}
-		\item numerical optimization approach (e.g., simplex method, gradient descent,...)
-		\item manual case-by-case equation solving (dynamic programming, cf. next lecture)
+		\item<2-> numerical optimization approach (e.g., simplex method, gradient descent,...)
+		\item<3-> manual case-by-case equation solving (dynamic programming, cf. next lecture)
 	\end{itemize}
 \end{itemize}
 \begin{figure}		
