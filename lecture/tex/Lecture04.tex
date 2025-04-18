@@ -16,7 +16,7 @@ Monte Carlo methods:
 \begin{itemize}
 	\item \hl{Model-free} prediction and control
 	\item Estimating value functions and optimize policies in \hl{unknown MDPs} \pause
-	\item But: still assuming finite MDP problems (or problems close to that) \pause
+	\item But: still assuming finite MDP problem structure \pause
 	\item In general: broad class of computational algorithms relying on \hl{repeated random sampling} to obtain numerical results
 \end{itemize}
 }
@@ -27,9 +27,9 @@ Monte Carlo methods:
 \frame{\frametitle{General Monte Carlo (MC) methods' characteristics}
 \begin{itemize}
 	\onslide<1->\item \hl{Learning  from experience}, i.e., sequences of samples $\left\langle x_k, u_k, r_{k+1}\right\rangle$
-	\onslide<2->\item Main concept: Estimation by \hl{averaging sample returns}
+	\onslide<2->\item Main concept: estimation by \hl{averaging sample returns}
 	\onslide<3->\item To guarantee well-defined returns: \hl{limited to episodic tasks}
-	\onslide<4->\item Consequence: Estimation and policy updates only possible in an episode-by-episode way compared to step-by-step (online)
+	\onslide<4->\item Consequence: estimation and policy updates only possible in an episode-by-episode way compared to step-by-step (online)
 \end{itemize}
 \onslide<1->\begin{figure}
 \includegraphics[width=8cm]{fig/lec04/Monte_Carlo_City.jpg}
@@ -103,47 +103,47 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 \frame{\frametitle{Incremental implementation}
 \begin{itemize}
 	\item \algoref{algo:MC_state_prediction_first_visit} is inefficient due to large memory demand.
-	\item Better: use \hl{incremental / recursive implementation}.\pause
-	\item The sample mean $\mu_1,\mu_2,\ldots$ of an arbitrary sequence $g_1, g_2, \ldots$ is:
+	\item Better: use \hl{incremental / recursive implementation}.
+	\item<2-> The sample mean $\mu_1,\mu_2,\ldots$ of an arbitrary sequence $g_1, g_2, \ldots$ is:
 \end{itemize}
 \begin{equation}
 	\begin{split}
-		\mu_J &= \frac{1}{J}\sum_{i=1}^J g_i= \frac{1}{J}\left[g_J + \sum_{i=1}^{J-1} g_i\right]\\
-					&= \frac{1}{J}\left[g_J + (J-1) \mu_{J-1}\right] =\mu_{J-1} + \frac{1}{J}\left[g_J-\mu_{J-1}\right].
+		\onslide<3->{\mu_J &= \frac{1}{J}\sum_{i=1}^J g_i }\onslide<4->{= \frac{1}{J}\left[g_J + \sum_{i=1}^{J-1} g_i\right]}\\
+					&\onslide<5->{= \frac{1}{J}\left[g_J + (J-1) \mu_{J-1}\right]} \onslide<6->{=\mu_{J-1} + \frac{1}{J}\left[g_J-\mu_{J-1}\right].}
 	\end{split}
 	\label{eq:inc_impl_MC_pred}
-\end{equation} \pause
+\end{equation} 
+\onslide<7->{
 \begin{itemize}
-	\item \hl{If a given decision problem is non-stationary}, using a forgetting factor $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$ allows for dynamic adaption: 
+	\item \hl{If a given decision problem is non-stationary} or to reduce the memory demand storing the episode number $J$, using a forgetting factor $\alpha\in\left\{\mathbb{R}|0<\alpha<1\right\}$ allows for continuous learning: 
 \end{itemize}
 \begin{equation}
 	\mu_J = \mu_{J-1} + \alpha\left[g_J-\mu_{J-1}\right] .
 	\label{eq:inc_impl_MC_pred_non_stat}
-\end{equation}
+\end{equation}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Statistical Properties of MC-Based Prediction (1)%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Statistical properties of MC-based prediction (1)}
-\onslide<1->{First-time visit MC:
+\onslide<1->{First-time visit MC:}
 \begin{itemize}
-	\item Each return sample $g_J$ is independent from the others since they were drawn from separate episodes.  
-	\item One receives \hl{i.i.d. data} to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is bias-free}.
-	\item The estimate's variance $\Var{\hat{v}_{\pi}}$ drops with $1/n$ ($n$: available samples). 
-\end{itemize}}
-\onslide<2->{Every-time visit MC:
+	\item<2-> Each return sample $g_J$ is independent of the others since they were drawn from separate episodes.  
+	\item<3-> One receives \hl{i.i.d. data} to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is bias-free}.
+	\item<4-> The estimate's variance $\Var{\hat{v}_{\pi}}$ drops with $1/n$ ($n$: available samples). 
+\end{itemize}
+\onslide<5->{Every-time visit MC:}
 \begin{itemize}
-	\item Each return sample $g_J$ is not independent from the others since they might be obtained from same episodes.   
-	\item One receives \hl{non-i.i.d.} data to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is biased} for any $n<\infty$.
-	\item Only in the limit $n\rightarrow \infty$ one receives $\left(v_{\pi}(x)-\E{\hat{v}_{\pi}(x)}\right) \rightarrow 0$.
-\end{itemize}}
+	\item<5-> Each return sample $g_J$ is not independent of the others since they might be obtained from same episodes.   
+	\item<6-> One receives \hl{non-i.i.d.} data to estimate $\E{\hat{v}_{\pi}}$ and consequently this \hl{is biased} for any $n<\infty$.
+	\item<7-> Only in the limit $n\rightarrow \infty$ one receives $\left(v_{\pi}(x)-\E{\hat{v}_{\pi}(x)}\right) \rightarrow 0$.
+\end{itemize}
 \vspace{0.5cm}
-\onslide<1->
+\onslide<8->{
 \begin{footnotebox}
 	More information: S. Singh and  R. Sutton, \enquote{Reinforcement Learning with Replacing Eligibility Traces}, Machine Learning, Vol. 22, pp. 123-158, 1996  
-\end{footnotebox}
-
+\end{footnotebox}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,11 +152,11 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 \frame{\frametitle{Statistical properties of MC-based prediction (2)}
 
 \begin{itemize}
-	\item State-value estimates for each state are independent.
-	\item One estimate does not rely on the estimate of other states \newline(\hl{no bootstrapping} compared to DP).
-	\item Makes MC particularly attractive when one requires state-value knowledge of only one or few states.
+	\item<1-> State-value estimates for each state are independent.
+	\item<2-> One estimate does not rely on the estimate of other states \newline(\hl{no bootstrapping} compared to DP).
+	\item<3-> Makes MC particularly attractive when one requires state-value knowledge of only one or few states.
 	\begin{itemize}
-		\item Hence, generating episodes starting from the state of interest.
+		\item<3-> Hence, generating episodes starting from the state of interest.
 	\end{itemize}
 \end{itemize}
 \begin{figure}
@@ -167,7 +167,7 @@ $l(x)\leftarrow$ an empty list for every $x\in\mathcal{X}$}
 	\subfloat{
 		\includegraphics[height=2.5cm]{fig/lec04/Back_Up_MC.pdf}
 	}
-\caption{Back-up diagrams for DP (left) and MC (right) prediction: shallow one-step back-ups with bootstrapping vs. deep back-ups over full epsiodes}
+\caption{Back-up diagrams for DP (left) and MC (right) prediction: shallow one-step back-ups with bootstrapping vs. deep back-ups over full episodes}
 \end{figure}
 }
 
@@ -202,20 +202,19 @@ plus disaster probability $\alpha=0.2$:
 Is a \hl{model available} (i.e., tuple $\left\langle\mathcal{X}, \mathcal{U}, \bm{\mathcal{P}}, \mathcal{R}, \gamma \right\rangle$)? 
 \begin{itemize}
 	\item \hl{Yes}: state values plus one-step prediction deliver optimal policy.
-	\item \hl{No}: action values are very useful to directly obtain optimal choices.  
-	\item Recap policy improvement from last lecture.
-\end{itemize}\pause
-\hl{Estimating $q{_\pi}(x, u)$} using MC approach:
+	\item<2-> \hl{No}: action values are very useful to directly obtain optimal choices.  
+\end{itemize}
+\onslide<3->{\hl{Estimating $q{_\pi}(x, u)$} using MC approach:}
 \begin{itemize}
-	\item Analog to state values summarized in \algoref{algo:MC_state_prediction_first_visit}.
-	\item Only small extension: a visit refers to a state-action pair $(x, u)$.
-	\item First-visit and every-visit variants exist.
-\end{itemize}\pause
-Possible problem when following a deterministic policy $\pi$:
+	\item<3-> Analog to state values summarized in \algoref{algo:MC_state_prediction_first_visit}.
+	\item<4-> Only small extension: a visit refers to a state-action pair $(x, u)$.
+	\item<5-> First-visit and every-visit variants exist.
+\end{itemize}
+\onslide<6->{Possible problems when following a deterministic policy $\pi$:}
 \begin{itemize}
-	\item Certain state-action pairs $(x, u)$ are never visited.
-	\item Missing degree of exploration.\pause
-	\item Workaround: \hl{exploring starts}, i.e., starting episodes in random state-action pairs $(x, u)$ and thereafter following  $\pi$. 
+	\item<6-> Certain state-action pairs $(x, u)$ may never be visited.
+	\item<7-> Missing degree of exploration.
+	\item<8-> Workaround: \hl{exploring starts}, i.e., starting episodes in random state-action pairs $(x, u)$ and thereafter following  $\pi$. 
 \end{itemize}
 }
 
@@ -233,7 +232,7 @@ Possible problem when following a deterministic policy $\pi$:
 	\pi_0 \rightarrow \hat{q}_{\pi_0} \rightarrow \pi_1 \rightarrow \hat{q}_{\pi_1} \rightarrow \cdots \pi^* \rightarrow \hat{q}_{\pi^*} \, .
 \end{equation}}
 \begin{itemize}
-	\onslide<2->{\item Degree of freedom: Choose number of episodes to approximate $\hat{q}_{\pi_i}$.}
+	\onslide<2->{\item Degree of freedom: choose number of episodes to approximate $\hat{q}_{\pi_i}$.}
 	\onslide<3->{\item Policy improvement is done by greedy choices:
 	\begin{equation}
 		\pi(x)= \argmax_{u} q(x, u) \quad \forall x\in\mathcal{X}\, .
@@ -253,8 +252,8 @@ Possible problem when following a deterministic policy $\pi$:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Policy Improvement Theoreom %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{\frametitle{Policy improvement theorem}
-Assuming that one is operating in an \hl{unknown MDP}, the policy improvement theorem \theoref{theo:Policy_improvement} is still valid for MC-based control:
+\frame{\frametitle{Recap: policy improvement theorem}
+Assuming that one is operating in an \hl{unknown MDP}, the policy improvement theorem \theoref{theo:Policy_improvement} remains \hl{valid for MC-based control} due to the underlying MDP structure:
 \begin{block}{Policy improvement for MC-based control}
 \begin{equation}
 	\begin{split}
@@ -266,10 +265,9 @@ Assuming that one is operating in an \hl{unknown MDP}, the policy improvement th
 \end{equation} 
 \end{block}
 \begin{itemize}
-	\item Each $\pi_{i+1}$ is uniformly better or just as good (if optimal) as $\pi_{i}$.
-	\item Assumption: All state-action pairs are evaluated due to sufficient exploration.
+	\item<2-> Assumption: all state-action pairs are evaluated sufficiently often (exploration).
 	\begin{itemize}
-		\item For example using exploring starts. 
+		\item<3-> For example using exploring starts. 
 	\end{itemize}
 \end{itemize}
 }
@@ -322,15 +320,15 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 	\begin{itemize}
 		\item Evaluate or improve the policy used to make decisions.
 		\item Agent picks own actions.
-		\item Exploring starts (ES) is an on-policy method example.
-		\item However: ES is a restrictive assumption and not always applicable \newline (in some cases the starting state-action pair cannot be choosen freely).
-	\end{itemize}\pause
+		\item<2-> Exploring starts (ES) is an on-policy method example.
+		\item<3-> However: ES is a restrictive assumption and not always applicable \newline (in some cases the starting state-action pair cannot be chosen freely).
+	\end{itemize}
 	\vspace{1cm}
-	\item \hl{Off-policy learning}
+	\item<4-> \hl{Off-policy learning}
 		\begin{itemize}
-		\item Evaluate or improve a policy different from that used to generate data.
-		\item Agent cannot apply own actions.
-		\item Will be focused in the next sections.
+		\item<4-> Evaluate or improve a policy different from that used to generate data.
+		\item<5-> Agent cannot apply own actions.
+		\item<6-> Will be focused during the next sections.
 	\end{itemize}
 \end{itemize}
 }
@@ -346,16 +344,16 @@ $n(x,u)\leftarrow$ an empty list for state-action visits $\forall \, \left\{x\in
 		\begin{equation}
 			 \pi(u|x) > 0 \quad \forall\, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\}\, .
 		\end{equation}
-		\item Policies with this characteristic are called: \hl{soft}.
-		\item Level of exploration can be tuned during the learning process.
-	\end{itemize}\pause
+		\item<2-> Policies with this characteristic are called: \hl{soft}.
+		\item<3-> Level of exploration can be tuned during the learning process.
+	\end{itemize}
 	\vspace{0.5cm}
-	\item \hl{$\varepsilon$-greedy on-policy learning} 
+	\item<4-> \hl{$\varepsilon$-greedy on-policy learning} 
 		\begin{itemize}
-		\item With probability $\varepsilon$ the agent's choice (i.e., the policy output) is overwritten with a random action.
-		\item Probability of all non-greedy actions: \begin{equation}\varepsilon/|\mathcal{U}|\,.\end{equation}
-		\item Probability of the greedy action: \begin{equation}1-\varepsilon+\varepsilon/|\mathcal{U}|\,.\end{equation}
-		\item Above, $|\mathcal{U}|$ is the cardinality of the action space.
+		\item<4-> With probability $\varepsilon$ the agent's choice (i.e., the policy output) is overwritten with a random action.
+		\item<5-> Probability of all non-greedy actions: \begin{equation}\varepsilon/|\mathcal{U}|\,.\end{equation}
+		\item<6-> Probability of the greedy action: \begin{equation}1-\varepsilon+\varepsilon/|\mathcal{U}|\,.\end{equation}
+		\item<5-> Above, $|\mathcal{U}|$ is the cardinality of the action space.
 	\end{itemize}
 \end{itemize}
 }
@@ -400,18 +398,18 @@ $n(x,u)\leftarrow$ an empty list counting state-action visits $\forall \, \left\
 \frame{\frametitle{$\varepsilon$-greedy policy improvement (1)}
 \begin{theo}{Policy improvement for $\varepsilon$-greedy policy}{policy_improv_eps_greedy}
 Given an MDP, for any $\varepsilon$-greedy policy $\pi$ the $\varepsilon$-greedy policy $\pi'$ with respect to $q_\pi$ is an improvement, i.e., $v_{\pi'} > v_{\pi} \quad \forall x\in\mathcal{X}$.
-\end{theo}\pause
-Small proof:
+\end{theo}
+\onslide<2->{Small proof:}
 \small
 \begin{equation}
 	\begin{split}
-		q_{\pi}(x,\pi'(x)) &= \sum_{u}\pi'(u|x)q_{\pi}(x,u)\\
-											&= \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}q_{\pi}(x,u) + (1-\varepsilon)\max_{u}q_{\pi}(x,u)\\
-											&\geq \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}q_{\pi}(x,u) + (1-\varepsilon)\sum_{u}\frac{\pi(u|x)-\frac{\varepsilon}{|\mathcal{U}|}}{1-\varepsilon}q_{\pi}(x,u).
+		\onslide<2->{q_{\pi}(x,\pi'(x)) &= \sum_{u}\pi'(u|x)q_{\pi}(x,u)}\\
+											&\onslide<3->{= \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}q_{\pi}(x,u) + (1-\varepsilon)\max_{u}q_{\pi}(x,u)}\\
+											&\onslide<4->{\geq \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}q_{\pi}(x,u) + (1-\varepsilon)\sum_{u}\frac{\pi(u|x)-\frac{\varepsilon}{|\mathcal{U}|}}{1-\varepsilon}q_{\pi}(x,u).}
 \end{split}
 \end{equation} 
 \normalsize
-In the inequality line, the second term is the weighted sum over action values given an $\varepsilon$-greedy policy. This weighted sum will be always smaller or equal than  $\max_{u}q_{\pi}(x,u)$.
+\onslide<5->{In the inequality line, the second term is the weighted sum over action values given an $\varepsilon$-greedy policy. This weighted sum will be always smaller or equal than  $\max_{u}q_{\pi}(x,u)$.}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -423,15 +421,15 @@ Continuation:
 \begin{equation}
 	\begin{split}
 		q_{\pi}(x,\pi'(x)) &\geq \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}q_{\pi}(x,u) + (1-\varepsilon)\sum_{u}\frac{\pi(u|x)-\frac{\varepsilon}{|\mathcal{U}|}}{1-\varepsilon}q_{\pi}(x,u)\\
-											&= \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}\left(q_{\pi}(x,u) - q_{\pi}(x,u)\right) + \sum_{u}\pi(u|x)q_{\pi}(x,u)\\
-											&=\sum_{u}\pi(u|x)q_{\pi}(x,u)\\
-											&=v_{\pi}(x).
+											&\onslide<2->{= \frac{\varepsilon}{|\mathcal{U}|}\sum_{u}\left(q_{\pi}(x,u) - q_{\pi}(x,u)\right) + \sum_{u}\pi(u|x)q_{\pi}(x,u)}\\
+											&\onslide<3->{=\sum_{u}\pi(u|x)q_{\pi}(x,u)}\\
+											&\onslide<4->{=v_{\pi}(x).}
 	\end{split}
 \end{equation} 
-\normalsize\pause
+\normalsize
 \begin{itemize}
-	\item Policy improvement theorem is still valid when comparing $\varepsilon$-greedy policies against each other.
-	\item But: There might be a non-$\varepsilon$-greedy policy which is better. 
+	\item<5-> Policy improvement theorem is still valid when comparing $\varepsilon$-greedy policies against each other.
+	\item<6-> But: There might be a non-$\varepsilon$-greedy policy which is better. 
 \end{itemize}
 }
 
@@ -441,7 +439,7 @@ Continuation:
 \frame{\frametitle{MC-based control example: forest tree MDP (1)}
 \begin{figure}		
 	\includegraphics[height=0.65\textheight]{fig/lec04/Forest_Tree_MC_Control_eps_02.pdf}
-	\caption{Different estimates of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC control with \hl{$\varepsilon=0.2$} over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent uns.}
+	\caption{Different estimates of forest tree MDP ($\alpha=0.2, \gamma=0.8$) using MC control with \hl{$\varepsilon=0.2$} over the number of episodes. Mean is red and standard deviation is light blue, both calculated based on 2000 independent runs.}
 	\label{fig:Forest_Tree_MC_Control_eps_02}
 \end{figure}
 }
@@ -509,7 +507,7 @@ follows.
 Remarks:
 \begin{itemize}
 	\item Limited feasibility: infinite number of episodes required.
-	\item $\varepsilon$-greedy is an undirected and unmonitored random exploration strategy. Can that be the most efficient way of learning?
+	\item<3-> $\varepsilon$-greedy is an undirected and unmonitored random exploration strategy. Can that be the most efficient way of learning?
 \end{itemize}
 }
 
@@ -556,11 +554,11 @@ Idea off-policy learning:
 \vspace{0.75cm}\pause
 Requirement:
 \begin{itemize}
-	\item \hl{Coverage}: Every action taken under $\pi$ must be (at least occasionally) taken under $b$, too. Hence, it follows:
+	\item \hl{Coverage}: every action taken under $\pi$ must be (at least occasionally) taken under $b$, too. Hence, it follows:
 	\begin{equation}
 		\pi(u|x) > 0 \Rightarrow b(u|x) > 0 \quad \forall \, \left\{x\in\mathcal{X}, u\in\mathcal{U}\right\} .
 	\end{equation}\pause
-	\item Consequences from that:
+	\item Consequences of that:
 	\begin{itemize}
 		\item In any state $b$ is not identical to $\pi$, $b$ must be stochastic.
 		\item Nevertheless: $\pi$ might be deterministic (e.g., control applications) or stochastic.
@@ -603,11 +601,11 @@ Estimating the state value $v_\pi$ following a behavior policy $b$ using (ordina
 Notation remark:
 \begin{itemize}
 	\item $\mathcal{T}(x_k)$: set of all time steps in which the state $x_k$ is visited.
-	\item $T(k)$: Termination of a specific episode starting from $k$.
+	\item $T(k)$: termination of a specific episode starting from $k$.
 \end{itemize}\pause
 General remark:
 \begin{itemize}
-	\item From \eqref{eq:import_sampl_ratio} it can be seen that $\hat{v}$ is bias-free (first-visit assumption).
+	\item From \eqref{eq:import_sampl_ratio} it can be seen that $\hat{v}$ is bias-free (first-visit assumption).  \pause
 	\item However, if $\rho$ is large (distinctly different policies) the estimate's variance is large (i.e., uncertain for small numbers of samples).
 \end{itemize}
 }
@@ -636,18 +634,18 @@ Requirement for off-policy MC-based control:
 \begin{frame}
 \frametitle{Summary: what you've learned today}
 \begin{itemize}
-	\item MC methods allow model-free learning of value functions and optimal policies from experience in the form of sampled episodes.
+	\item MC methods allow model-free learning of value functions and optimal policies from experience in the form of sampled episodes. \pause
 	\item Using deep back-ups over full episodes, MC is largely based on averaging returns. \pause
 	\item MC-based control reuses generalized policy iteration (GPI), i.e., mixing policy evaluation and improvement. \pause
 	\item Maintaining sufficient exploration is important:
 	\begin{itemize}
-		\item Exploring starts: not feasible in all applications but simple.
-		\item On-policy $\varepsilon$-greedy learning: trade-off between optimality and exploration cannot be resolved easily.
+		\item Exploring starts: not feasible in all applications but simple. \pause
+		\item On-policy $\varepsilon$-greedy learning: trade-off between exploitation and exploration cannot be resolved easily. \pause
 		\item Off-policy learning: agent learns about a (possibly deterministic) target policy from an exploratory, soft behavior policy.
 	\end{itemize}\pause
 	\item Importance sampling transforms expectations from the behavior to the target policy.
 	\begin{itemize}
-		\item This estimation task comes with a bias-variance-dilemma.
+		\item This estimation task comes with a bias-variance-dilemma.  \pause
 		\item Slow learning can result from ineffective experience usage in MC methods.
 	\end{itemize}
 \end{itemize}
