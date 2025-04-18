@@ -8,8 +8,8 @@
 \frame{\frametitle{Temporal-difference learning and the previous methods}
 \hl{Temporal-difference (TD) learning} combines the previous ideas introduced in DP and MC:
 \begin{itemize}
-	\item From Monte Carlo (MC) methods: Learns directly from experience.
-	\item From dynamic programming (DP): Updates estimates based on other learned estimates (bootstrap).
+	\item From Monte Carlo (MC) methods: learns directly from experience.
+	\item From dynamic programming (DP): updates estimates based on other learned estimates (bootstrap).
 \end{itemize}
 \pause
 \vspace{1cm}
@@ -80,7 +80,7 @@ Recap the every-visit MC update rule \eqref{eq:inc_impl_MC_pred_non_stat} for no
 \label{algo:TD_zero_state_prediction_tabular}
 \end{algorithm}
 \begin{itemize}
-	\item Note that the algorithm can be directly adapted to action-value prediction as it will be used for the later TD-based control approaches.
+	\item<2-> Note that the algorithm can be directly adapted to action-value prediction as it will be used for the later TD-based control approaches.
 \end{itemize}
 }
 
@@ -133,11 +133,10 @@ The \hl{TD error} is:
 																									\onslide<5->{&=\sum_{i=k}^{T-1} \gamma^{i-k}\delta_i.}
 \end{split}
 \end{equation}
-\onslide<5->{
 \begin{itemize}
-	\item MC error is the discounted sum of TD errors in this simplified case.
-	\item If $\hat{v}(x)$ is updated during an episode (as expected in TD(0)), the above identity only holds approximately. 
-\end{itemize}}
+	\item<6-> MC error is the discounted sum of TD errors in this simplified case.
+	\item<7-> If $\hat{v}(x)$ is updated during an episode (as expected in TD(0)), the above identity only holds approximately. 
+\end{itemize}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -162,15 +161,15 @@ The \hl{TD error} is:
 \end{figure}
 \vspace{-0.25cm}
 \begin{itemize}
-	\item TD can learn before knowing the final outcome.
+	\item<2-> TD can learn before knowing the final outcome.
 	\begin{itemize}
-		\item TD learns after every step.
-		\item MC must wait until the episode's end.
+		\item<2-> TD learns after every step.
+		\item<3-> MC must wait until the episode's end.
 	\end{itemize}
-	\item TD could learn without a final outcome.
+	\item<4-> TD could learn without a final outcome.
 	\begin{itemize}
-		\item MC is only applicable to episodic tasks.
-		\item TD can learn from incomplete sequences, i.e., in continuing tasks.
+		\item<4-> TD can learn from incomplete sequences, i.e., in continuing tasks.
+		\item<5-> MC is only applicable to episodic tasks.
 	\end{itemize}
 \end{itemize}
 }
@@ -363,7 +362,7 @@ Now consider state A assuming the steady state of batch learning process:
 Looking at \tabref{tab:state_reward_AB_example} there is only one episode visiting state A, where the sample return is $g_{k,j}=0$. Hence, it follows: 
 \begin{equation*}
 	\hat{v}(\mbox{A})|_{\mbox{MC}} =0, \quad \hat{v}(\mbox{A})|_{\mbox{TD}} =\gamma\hat{v}(B)=\frac{3}{4}.
-\end{equation*}
+\end{equation*}\pause
 Where does this mismatch between the MC and TD estimates come from?
 }
 
@@ -382,8 +381,8 @@ Where does this mismatch between the MC and TD estimates come from?
 		\hat{p}_{xx'}^u&=\frac{1}{n(x,u)}\sum_{j=1}^{J}\sum_{k=1}^{T_j} 1(X_{k+1}=x'|X_{k}=x, U_k=u),\\
 		\hat{\mathcal{R}}_{x}^u&=\frac{1}{n(x,u)}\sum_{j=1}^{J}\sum_{k=1}^{T_j} 1(X_{k}=x|U_k=u) r_{k+1,j}.
 	\end{split}
-	\end{equation}
-	\item Here, TD assumes a MDP problem structure and is absolutely certain that its internal model concept describes the real world perfectly (so-called \hl{certainty equivalence}).
+	\end{equation}\pause
+	\item Here, TD assumes an MDP problem structure and is absolutely certain that its internal model concept describes the real world perfectly (so-called \hl{certainty equivalence}).
 \end{itemize}
 }
 
@@ -444,10 +443,10 @@ GPI concept is directly applied to the TD framework using action values:
 \caption{TD-based on-policy control (SARSA)}
 \label{algo:Sarsa}
 \end{algorithm}
-Convergence properties are comparable to MC-based on-policy control:
+\onslide<2->{Convergence properties are comparable to MC-based on-policy control:}
 \begin{itemize}
-	\item Policy improvement theorem \theoref{theo:policy_improv_eps_greedy} holds.
-	\item Greedy in the limit with infinite exploration (GLIE) from \defref{defi:GLIE} and step-size requirements in \theoref{theo:converge_TD_zero} apply. 
+	\item<2-> Policy improvement theorem \theoref{theo:policy_improv_eps_greedy} holds.
+	\item<3-> Greedy in the limit with infinite exploration (GLIE) from \defref{defi:GLIE} and step-size requirements in \theoref{theo:converge_TD_zero} apply. 
 \end{itemize}
 }
 
@@ -508,8 +507,8 @@ Similar to SARSA updates, but $Q$-learning directly estimates $q^*$:
 	\end{block}\pause
 Requirement for $Q$-learning control:
 \begin{itemize}
-	\item Coverage: behavior policy $b$  has nonzero probability of selecting actions that might be taken by the target policy $\pi$.
-	\item Consequence: behavior policy $b$ is soft (e.g., $\varepsilon$-soft).  
+	\item Coverage: behavior policy $b$  has nonzero probability of selecting actions that might be taken by the target policy $\pi$. \pause
+	\item Consequence: behavior policy $b$ is soft (e.g., $\varepsilon$-soft).  \pause
 	\item Step-size requirements \eqref{eq:stoch_approx_condition} regarding $\alpha$ apply. 
 \end{itemize}
 }
@@ -542,8 +541,9 @@ Requirement for $Q$-learning control:
 \label{algo:Q_learning}
 \end{algorithm}
 \vspace{0.5cm}
+\pause
 \begin{itemize}
-	\item As discussed with MC-based off-policy control: avoidance of the exploration-optimality trade-off for on-policy methods.  
+	\item As discussed with MC-based off-policy control: alternative to the exploration-exploitation trade-off for on-policy methods.  
 	\item No importance sampling required as for off-policy MC-based control.
 \end{itemize}
 }
@@ -604,7 +604,7 @@ This can lead to a significant \hl{positive bias}:
 Small example:
 \begin{itemize}
 	\item Consider a single state $x$ with multiple possible actions $u$.
-	\item The true action values are all $q(x,u)=0$ . \pause
+	\item The true action values are all $q(x,u)=0$. \pause
 	\item The sampled estimates $\hat{q}(x,u)$ are uncertain, i.e., randomly distributed. Some samples are above and below zero. \pause
 	\item Consequence: The maximum of the estimate is positive.
 \end{itemize}
@@ -665,8 +665,8 @@ Assign specific tasks to each estimate:
 \label{algo:double_Q_learning}
 \end{algorithm}
 \begin{itemize}
-	\item Doubles memory demand while computational demand per episode is remains unchanged
-	\item Less sample efficient than regular $Q$-learning (samples are split between two estimators)
+	\item<2-> Doubles memory demand while computational demand per episode is remains unchanged
+	\item<3-> Less sample efficient than regular $Q$-learning (samples are split between two estimators)
 \end{itemize}
 }
 
@@ -691,8 +691,8 @@ Assign specific tasks to each estimate:
 \begin{itemize}
 	\item TD unites two key characteristics from DP and MC:
 	\begin{itemize}
-		\item From MC: Sample-based updates (i.e., operating in unknown MDPs).
-		\item From DP: Update estimates based on other estimates (bootstrapping).
+		\item From MC: sample-based updates (i.e., operating in unknown MDPs).
+		\item From DP: update estimates based on other estimates (bootstrapping).
 	\end{itemize}\pause
 	\item TD allows certain simplifications and improvements compared to MC:
 	\begin{itemize}
@@ -706,7 +706,7 @@ Assign specific tasks to each estimate:
 	\item TD requires careful tuning of learning parameters:
 	\begin{itemize}
 		\item Step size $\alpha$: how to tune convergence rate vs. uncertainty / accuracy?
-		\item Exploration vs. exploitation: how to visit all state-action pairs?
+		\item Exploration vs. exploitation: how to visit all state-action pairs and the optimal policy?
 	\end{itemize}
 \end{itemize}
 \end{frame}
