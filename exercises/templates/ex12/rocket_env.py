@@ -277,13 +277,11 @@ class GoddardEnv(gym.Env):
         fin_height = H*0.1
         fin_width = W*0.5
         fb = rocket_bottom
-
         #left fin
         lf1 = world_to_screen(rocket_left, fb)
         lf2 = world_to_screen(rocket_left-fin_width, fb - fin_height)
         lf3 = world_to_screen(rocket_left, fb - fin_height)
         pygame.draw.polygon(self.surf, (60,60,60), [lf1, lf2, lf3])
-        
         #right fin
         rf1 = world_to_screen(rocket_right, fb)
         rf2 = world_to_screen(rocket_right+fin_width, fb - fin_height)
