@@ -72,7 +72,7 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
 
 
 # Exercise content
-All exercises are based on Python 3.9 and site-packages according to the requirements.txt:
+All exercises are based on Python 3.12 and site-packages according to the requirements.txt:
 ```
 >>> pip install -r requirements.txt
 ```
