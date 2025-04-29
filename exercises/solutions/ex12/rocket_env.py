@@ -128,6 +128,9 @@ class GoddardEnv(gym.Env):
         )
 
         self.render_mode = render_mode
+        self.screen = None
+        self.clock = None
+        self.surf = None
 
         self.reset()
 
@@ -202,70 +205,119 @@ class GoddardEnv(gym.Env):
 
     def render(self, mode='human'):
         _, h, m = self._observation(normalize=False)
+        import pygame
+        if self.screen is None:
+            pygame.init()
+            if self.render_mode == 'human':
+                pygame.display.init()
+                self.screen = pygame.display.set_mode((500,500))
+            else:
+                self.screen = self.Surface((500,500))
+        if self.clock is None:
+            self.clock = pygame.time.Clock()
 
-        if self.viewer is None:
-            from gym.envs.classic_control import rendering
-            y = self._r.H_MAX_RENDER
-            y0 = self._r.H0
-            GY = (y-y0)/20
-            Y = y-y0+GY
-            H = Y/10
-            W = H/10
-            self.flame_offset = W/2
-
-            self.viewer = rendering.Viewer(500, 500)
-            self.viewer.set_bounds(left=-Y/2, right=Y/2, bottom=y-Y, top=y)
-
-            ground = rendering.make_polygon([(-Y/2,y0-GY), (-Y/2,y0), (Y/2,y0), (Y/2,y0-GY)])
-            ground.set_color(.3, .6, .3)
-            pad = rendering.make_polygon([(-3*W,y0-GY/3), (-3*W,y0), (3*W,y0), (3*W,y0-GY/3)])
-            pad.set_color(.6, .6, .6)
-
-            rocket = rendering.make_polygon([(-W/2,0), (-W/2,H), (W/2,H), (W/2,0)], filled=True)
-            rocket.set_color(0, 0, 0)
-            self.r_trans = rendering.Transform()
-            rocket.add_attr(self.r_trans)
-
-            self.make_fuel_poly = lambda mass: [
-                (-W/2, 0),
-                (-W/2, H*((mass-self._r.M1)/(self._r.M0-self._r.M1))),
-                (W/2,  H*((mass-self._r.M1)/(self._r.M0-self._r.M1))),
-                (W/2, 0)
-            ]
-            self.fuel = rendering.make_polygon(self.make_fuel_poly(m), filled=True)
-            self.fuel.set_color(.8, .1, .14)
-            self.fuel.add_attr(self.r_trans)
-
-            flame = rendering.make_circle(radius=W, res=30)
-            flame.set_color(.96, 0.85, 0.35)
-            self.f_trans = rendering.Transform()
-            flame.add_attr(self.f_trans)
-
-            flame_outer = rendering.make_circle(radius=2*W, res=30)
-            flame_outer.set_color(.95, 0.5, 0.2)
-            self.fo_trans = rendering.Transform()
-            flame_outer.add_attr(self.fo_trans)
-
-            for g in [ground, pad, rocket, self.fuel, flame_outer, flame]:
-                self.viewer.add_geom(g)
-
-        self.r_trans.set_translation(newx=0, newy=h)
-        self.f_trans.set_translation(newx=0, newy=h)
-        self.fo_trans.set_translation(newx=0, newy=h-self.flame_offset)
-
-        self.fuel.v = self.make_fuel_poly(m)
-
-        s = 0 if self._thrust_last is None else self._thrust_last/self._r.THRUST_MAX
+        self.surf = pygame.Surface((500,500))
+        self.surf.fill((255,255,255))
+        #World coordinates
+        y = self._r.H_MAX_RENDER
+        y0 = self._r.H0
+        GY = (y-y0)/20
+        Y = y-y0+GY
+        H = Y/10
+        W = H/10
+        #Conversion of coordinates world -> screen
+        scale = 500 /Y
+        self.flame_offset = W/2
+        def world_to_screen(x, y_val):
+            return(
+                int(500/2 + x*scale),
+                int((y - y_val)*scale)
+            )
         
-        self.f_trans.set_scale(newx=s, newy=s)
-        self.fo_trans.set_scale(newx=s, newy=s)
+        #Draw ground
+        g1 = world_to_screen(-Y/2, y0)
+        g2 = world_to_screen(Y/2, y0-GY)
+        pygame.draw.rect(self.surf, (77,153,77), pygame.Rect(g1[0], g1[1], g2[0]-g1[0], g2[1]-g1[1]))
 
-        return self.viewer.render(return_rgb_array=mode == 'rgb_array')
+        #Draw pad
+        pad_w=3*W
+        pad1 = world_to_screen(-pad_w,y0)
+        pad2 = world_to_screen(pad_w, y0-GY/3)
+        pygame.draw.rect(self.surf, (153,153,153),  pygame.Rect(pad1[0], pad1[1], pad2[0]-pad1[0], pad2[1]-pad1[1]))
+        
+        #Draw rocket
+        rocket_top = h+H
+        rocket_bottom = h
+        rocket_left = -(W*3)/2
+        rocket_right = (W*3)/2
 
+        #Draw rocket nose
+        nose_tip = world_to_screen(0, rocket_top)
+        nose_left = world_to_screen(rocket_left, rocket_top - H*0.2)
+        nose_right = world_to_screen(rocket_right, rocket_top - H*0.2)
+        pygame.draw.polygon(self.surf, (50,50,50), [nose_tip, nose_left, nose_right])
+
+        #Draw rocket body
+        body_top = rocket_top - H*0.2
+        body_bottom = rocket_bottom
+        body_left = rocket_left
+        body_right = rocket_right
+        r1 = world_to_screen(body_left, body_bottom)
+        r2 = world_to_screen(body_right, body_top)
+        pygame.draw.rect(self.surf, (80,80,80),  pygame.Rect(r1[0], r2[1], r2[0]-r1[0], r1[1]-r2[1]))
+
+        #Draw fuel
+        fuel_height_ratio = (m - self._r.M1)/(self._r.M0 - self._r.M1)
+        fuel_top = body_bottom + (body_top - body_bottom) * fuel_height_ratio
+        f1 = world_to_screen(body_left, body_bottom)
+        f2 = world_to_screen(body_right, fuel_top)
+        pygame.draw.rect(self.surf, (204,26,36), pygame.Rect(f1[0], f2[1], f2[0]-f1[0], f1[1]-f2[1]))
+
+        #Draw rocket fins
+        fin_height = H*0.1
+        fin_width = W*0.5
+        fb = rocket_bottom
+        #left fin
+        lf1 = world_to_screen(rocket_left, fb)
+        lf2 = world_to_screen(rocket_left-fin_width, fb - fin_height)
+        lf3 = world_to_screen(rocket_left, fb - fin_height)
+        pygame.draw.polygon(self.surf, (60,60,60), [lf1, lf2, lf3])
+        #right fin
+        rf1 = world_to_screen(rocket_right, fb)
+        rf2 = world_to_screen(rocket_right+fin_width, fb - fin_height)
+        rf3 = world_to_screen(rocket_right, fb - fin_height)
+        pygame.draw.polygon(self.surf, (60,60,60), [rf1, rf2, rf3])
+        
+        #Draw flame
+        s = 0 if self._thrust_last is None else self._thrust_last/self._r.THRUST_MAX
+        flame_raduis = int(2*W*scale*s)
+        if s > 0:
+            flame_y = h-W /2
+            fx, fy = world_to_screen(0, flame_y)
+            pygame.draw.circle(self.surf, (245,128,51), (fx,fy), flame_raduis)
+            pygame.draw.circle(self.surf, (245,217,89), (fx,fy), flame_raduis // 2)
+
+        #blit
+        self.screen.blit(self.surf,(0,0))
+        if self.render_mode == 'human':
+            pygame.event.pump()
+            self.clock.tick(self.metadata.get("render_fps", 30))
+            pygame.display.flip()
+        else:
+            return np.transpose(
+                np.array(pygame.surfarray.pixels3d(self.screen)), axes=(1,0,2)
+            )
+        
     def close(self):
-        if self.viewer:
-            self.viewer.close()
-            self.viewer = None
+        if self.screen is not None:
+            import pygame
+
+            pygame.display.quit()
+            pygame.quit()
+            self.screen = None
+            self.surf = None
+            self.clock = None
+            self.isopen = False
 
 class GoddardDefaultEnv(GoddardEnv):
 
