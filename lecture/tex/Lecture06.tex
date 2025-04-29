@@ -12,7 +12,7 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\texorpdfstring{$n$-step}{n-Step} TD Prediction} 
+\subsection{\texorpdfstring{$n$-step}{n-Step} TD prediction} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -73,7 +73,7 @@ Recap the \hl{update targets} for the incremental prediction methods \eqref{eq:i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Formal notation (2)}
 \begin{block}{$n$-step state-value prediction target}
-Now, the target is generalized to an arbitrary $n$-step target:
+The generalized $n$-step target is defined as:
 \begin{equation}
 		g_{k:k+n} = r_{k+1}+\gamma r_{k+2}+\cdots+\gamma^{n-1} r_{k+n}+\gamma^{n} \hat{v}_{k+n-1}(x_{k+n}) .
 \end{equation}
@@ -184,7 +184,7 @@ The worst error of the expected $n$-step return is always less than or equal to 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\texorpdfstring{$n$-step}{n-Step} Control} 
+\subsection{\texorpdfstring{$n$-step}{n-step} control} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -297,7 +297,7 @@ Analog to $n$-step TD, the state-action value target is rewritten as:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\texorpdfstring{$n$-step}{n-Step} Off-Policy Learning} 
+\subsection{\texorpdfstring{$n$-step}{n-step} off-policy learning} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
