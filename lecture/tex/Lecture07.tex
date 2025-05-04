@@ -10,8 +10,8 @@
 	\caption{Main categories of reinforcement learning algorithms\\  \SilverLectureSource}
 \end{figure}
 \begin{itemize}
-	\item Up to now: independent usage of model-free (MC, TD) and model-based RL (DP)
-	\item Today: integrating both strategies (on finite  state \& action spaces)
+	\item \hl{Up to now}: independent usage of model-free (MC, TD) and model-based RL (DP)
+	\item \hl{Today}: integrating both strategies (on finite  state \& action spaces)
 \end{itemize}
 }
 
@@ -116,11 +116,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Model-free RL}
 \begin{itemize}
-	\item \hl{Learn} value functions and/or policy directly from experience.
+	\item \hl{Learn} value functions and/or policy directly from experience (i.e., data).
 	\item Requires no model at all (policy can be considered an implicit model). \pause
 	\item Solves control problems by learning algorithms such as
 	\begin{itemize}
-		\item Monte-Carlo,
+		\item Monte Carlo,
 		\item SARSA or
 		\item $Q$-learning.
 	\end{itemize}
@@ -215,8 +215,8 @@
 				$\hat{q}(x_k, u_k) \leftarrow \hat{q}(x_k, u_k) + \alpha\left[r_{k+1}+\gamma \max_{u} \hat{q}(x_{k+1}, u) - \hat{q}(x_k, u_k)\right]$\;
 				$\hat{\mathcal{M}}(x_k,u_k)\leftarrow \left\{r_{k+1}, x_{k+1}\right\}$ (assuming deterministic env.)\;
 				\For{$i=1,2,\ldots$ n}{
-						$\tilde{x}_i\leftarrow$ random previously visited state\;
-						$\tilde{u}_i\leftarrow$ random previously taken action in $\tilde{x}_i$\;
+						$\tilde{x}_i\leftarrow$ random previously visited or picked state\;
+						$\tilde{u}_i\leftarrow$ random previously taken or picked action in $\tilde{x}_i$\;
 						$\left\{\tilde{r}_{i+1}, \tilde{x}_{i+1}\right\}\leftarrow\hat{\mathcal{M}}(\tilde{x}_i, \tilde{u}_i)$\;
 						$\hat{q}(\tilde{x}_i, \tilde{u}_i) \leftarrow \hat{q}(\tilde{x}_i, \tilde{u}_i) + \alpha\left[\tilde{r}_{i+1}+\gamma \max_{u} \hat{q}(\tilde{x}_{i+1}, u) - \hat{q}(\tilde{x}_i, \tilde{u}_i)\right]$\;
 				}
@@ -236,7 +236,7 @@ The specific Dyna-$Q$ characteristics are:
 \begin{itemize}
 	\item Direct RL update: $Q$-learning, 
 	\item Model: simple memory buffer of previous real experience,
-	\item Search strategy: random choices from model buffer.
+	\item Search strategy: random choices or purposeful selections from model buffer.
 \end{itemize}\pause
 \vspace{0.5cm}
 Moreover:
@@ -292,10 +292,10 @@ Moreover:
 \frame{\frametitle{Maze example (2)}
 \begin{itemize}
 	\item Blocks without an arrow depict a neutral policy (equal action values).
-	\item Black squares indicate agent's position during second episode.
-	\item Without planning ($n=0$), each episodes only adds one new item to the policy.
-	\item With planning ($n=50$), the available experience is efficiently utilized.
-		\item After the third episode, the planning agent found the optimal policy.
+	\item<2-> Black squares indicate agent's position during second episode.
+	\item<3-> Without planning ($n=0$), each episodes only adds one new item to the policy.
+	\item<4-> With planning ($n=50$), the available experience is efficiently utilized.
+	\item<5-> After the third episode, the planning agent found the optimal policy.
 \end{itemize}
 \begin{figure}
 	\includegraphics[width=7.5cm]{fig/lec07/Dyna_Simple_Maze_Updates.pdf}
@@ -366,7 +366,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 \frame{\frametitle{Background and idea}
 
 \begin{itemize}
-	\item Dyna-$Q$ randomly samples from the memory buffer.
+	\item Dyna-$Q$ (randomly) samples from the memory buffer.
 	\begin{itemize}
 		\item Many planning updates maybe pointless, e.g., zero-valued state updates during early training.
 		\item In large state-action spaces: inefficient search since transitions are chosen far away from optimal policies. 
@@ -380,7 +380,7 @@ Compared to default Dyna-$Q$ in \algoref{algo:Dyna_Q}, Dyna-$Q$+ contains the fo
 	\vspace{0.5cm}
 	\item Solution method is called \hl{prioritized sweeping}.
 	\begin{itemize}
-		\item Build up a queue of every state-action pair whose value would change significantly. 
+		\item Build up a queue of every state-action pair whose value estimate would change significantly. 
 		\item Prioritize updates by the size of change.
 		\item Neglect state-action pairs with only minor impact.
 	\end{itemize}
@@ -485,7 +485,7 @@ Moreover:
 %% Background Planning vs. Planning at Decision Time %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Background planning vs. planning at decision time}
-\hl{Background Planning} (discussed so far):
+\hl{Background planning} (discussed so far):
 \begin{itemize}
 	\item Gradually improves policy or value function if time is available.
 	\item Backward view: re-apply gathered experience. \pause
@@ -498,7 +498,7 @@ Moreover:
 	\item Forward view: predict future trajectories starting from current state. \pause
 	\item Typically discards previous planning outcomes (start from scratch after state transition).\pause
 	\item If multiple trajectories are independent: easy parallel implementation.\pause
-	\item Most useful if fast responses are not required (e.g., turn-based games).
+	\item Most useful if fast responses are not required (e.g., turn-based games or slow systems).
 \end{itemize}
 }
 
@@ -508,9 +508,8 @@ Moreover:
 \frame{\frametitle{Heuristic search}
 \begin{itemize}
 	\item Develop \hl{tree-like continuations} from each state encountered. 
-	\item Approximate value function at leaf nodes (using a model) and back up towards the current state.
-	\item Choose action according to predicted trajectory with highest value. 
-	\item Predictions are normally discarded (new search tree in each state). 
+	\item<2-> Approximate action value at leaf nodes (using a model) and back up towards the current state.
+	\item<3-> Choose action according to predicted trajectory with highest action value. 
 \end{itemize}
 \begin{figure}
 	\includegraphics[height=0.4\textheight]{fig/lec07/Heuristic_search_tree.pdf}
@@ -525,9 +524,9 @@ Moreover:
 \frame{\frametitle{Rollout algorithms}
 \begin{itemize}
 	\item Similar to heuristic search, but: \hl{simulate trajectories following a rollout policy}.
-	\item Use Monte Carlo estimates of action value \hl{only for current state} to evaluate on best action.
-	\item Gradually improves rollout policy but optimal policy might not be found if rollout sequences are too short. 
-	\item Predictions are normally discarded (new rollout in each state). 
+	\item<2-> Use Monte Carlo estimates of action value \hl{only for current state} to evaluate on best action.
+	\item<3-> Gradually improves rollout policy but optimal policy might not be found if rollout sequences are too short. 
+	\item<4-> Predictions are normally discarded (new rollout in each state). 
 \end{itemize}
 \begin{figure}
 	\includegraphics[height=0.4\textheight]{fig/lec07/Rollout.pdf}
@@ -596,7 +595,7 @@ Further reading on MCTS:
 \begin{itemize}
 	\item MCTS-based algorithms are not limited to game applications but were able to achieve outstanding success in this field.
 	\begin{itemize}
-		\item Famous AlphaGo (cf. \href{https://www.youtube.com/watch?v=Wujy7OzvdJk}{Keynote lecture from D. Silver})\pause
+		\item Famous AlphaGo (cf. \href{https://www.youtube.com/watch?v=Wujy7OzvdJk}{keynote lecture from D. Silver})\pause
 	\end{itemize}
 	\item More in-depth lectures on MCTS can be found (among others) here:
 	\begin{itemize}
