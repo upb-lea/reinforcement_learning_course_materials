@@ -21,66 +21,11 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{itemize}\pause
 	\item Books classics
 	\begin{itemize}
-		\item \href{http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop\%20-\%20Pattern\%20Recognition\%20And\%20Machine\%20Learning\%20-\%20Springer\%20\%202006.pdf}{\textit{Pattern Recognition and Machine Learning} by C. M. Bishop}
-		\item \href{http://www-stat.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf}{\textit{The Elements of Statistical Learning} by Hastie et al.}
-		\item \href{https://www.deeplearningbook.org/}{\textit{Deep Learning} by I. Goodfellow, Y. Bengio, and A. Courville}
+		\item \textit{Pattern Recognition and Machine Learning} by C. M. Bishop
+		\item \textit{The Elements of Statistical Learning} by Hastie et al.
+		\item \textit{Deep Learning} by I. Goodfellow, Y. Bengio, and A. Courville
 	\end{itemize}
 \end{itemize}
-}
-
-
-%  ML hype in industry
-\frame{\frametitle{Machine learning in industry}
-	Machine learning applications are a \href{https://magazine.startus.cc/how-machine-learning-is-changing-the-major-industries/}{fast growing industry itself}, and enhance more and more automation in classical industry as well.
-	
-	Among others, popular industries are:
-	\begin{itemize}
-		\item Embedded systems,
-		\item Mobility, and
-		\item Digital assistants
-	\end{itemize}
-	
-	Most applications are of the supervised type.
-	
-	The demand for highly skilled ML engineers is growing correspondingly.
-}
-
-\frame{\frametitle{Instances of ML applications}
-	\begin{itemize}
-		\item Recommendation systems
-		\begin{itemize}
-			\item Which ads to display on a website?
-			\item Which items are \href{https://tech.instacart.com/deep-learning-with-emojis-not-math-660ba1ad6cdc}{most likely put into cart next} by the user?
-		\end{itemize}\pause
-		\item Forecasting
-		\begin{itemize}
-			\item Weather, sales, \href{https://eng.uber.com/forecasting-introduction/}{geospatial Uber calls}, \href{https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting}{restaurant}/\href{https://towardsdatascience.com/web-traffic-forecasting-f6152ca240cb}{website} traffic
-			\item Material attrition in engineering processes (predictive maintenance)
-		\end{itemize}\pause
-		\item Classification/Regression
-		\begin{itemize}
-			\item Speech assistants (Alexa/Siri), pedestrial detection (autonomous driving), \href{https://www.kaggle.com/c/severstal-steel-defect-detection}{fault detection in engineering processes}
-			\item \href{https://openai.com/blog/chatgpt}{large language models (LLM)}, credit scoring (fintech) 
-		\end{itemize}\pause
-		\item \href{https://stablediffusionweb.com/}{Generative models}
-
-	\end{itemize}
-}
-
-%  Kaggle comps
-\frame{\frametitle{ML competitions with price pool}
-	\begin{figure}
-		\includegraphics[width=9cm]{fig/lec08/comp_logos.pdf}
-		\caption{Kaggle and DrivenData}
-		\label{fig:comp_logos}
-	\end{figure}
-	
-	Open ML competition platforms like \href{https://www.kaggle.com/}{kaggle} or \href{https://www.drivendata.org/competitions/}{DrivenData} offer a multitude of diverse competitions to participate in at no cost.
-	
-	\begin{itemize}
-		\item Most competitions come with a decent price pool of 15 tsd. dollars up to 1 mil. dollars hosted by stakeholders from the industry and government.
-		\item These competitions are almost exclusively of the supervised type, but RL challenges are increasing.
-	\end{itemize}
 }
 
 %  Typical ML pipeline
@@ -94,7 +39,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 
 \frame{\frametitle{Supervised learning in reinforcement learning}
-	\hl{SL approximates functions, RL approximates policies.} \newline
+	\hl{SL approximates functions, RL finds policies.} \newline
 	
 	\pause
 	
@@ -105,7 +50,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 		\begin{itemize}
 			\item	$v_\pi(x) \approx \hat v(x, \bm w)$ with $\bm w$ being a trainable weight vector.
 		\end{itemize} \pause
-		\item Imitation learning. A simple-to-implement, deterministic baseline policy is often available, but an RL agent might fail to achieve that performance when learning from scratch. With SL, this baseline policy can be approximated to be the initial behavior of the agent.\pause
+		\item Imitation learning: a simple-to-implement, baseline policy is often available, but an RL agent might fail to achieve that performance when learning from scratch. With SL, this baseline policy can be approximated to be the initial behavior of the agent.\pause
 		\begin{itemize}
 			\item Expert moves in board games.
 			\item Basic linear controllers in engineering applications with feedback-loops.
@@ -124,7 +69,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 	\end{block}\pause
 	\begin{itemize}
 		\item Goodness of fit can be measured by a manifold of \hl{metrics} \\(e.g., mean squared error, classification accuracy, etc.).\pause
-		\item Reducing the look-up-table-like mapping $f^\ast$ to a parameterized function $f_{\bm w}$ degrades any metric on the data set but enables interpolation to unseen data.\pause
+		\item Reducing the look-up-table-like mapping $f^\ast$ to a parameterized function $f_{\bm w}$ degrades any metric on the data set but enables efficient interpolation to unseen data.\pause
 		\item The dimension $\xi$ of model parameters $\bm w \in \mathbb R^\xi$ is adjustable in many model families, which trades off \hl{bias} with \hl{variance} (among other factors, leading to so-called under- and overfitting).\pause
 		\item On top of $\bm w$, an ML model might also have hyperparameters that can be optimized (e.g., number of layers in a neural network).
 	\end{itemize}
@@ -133,7 +78,7 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Bias and variance}
 	\begin{figure}
 		\includegraphics[width=12cm]{fig/lec08/bias_variance.pdf}
-		\caption{Left: Decision boundaries in binary classification, $k$-nearest neighbors with one (bright) and nine (dark) neighbors. Right: Regression example, least squares (dark) and $2$-nearest neighbors (bright).}
+		\caption{Left: decision boundaries in binary classification, $k$-nearest neighbors with one (bright) and nine (dark) neighbors. Right: regression example, least squares (dark) and $2$-nearest neighbors (bright).}
 		\label{fig:bias_variance}
 	\end{figure}
 }
@@ -185,11 +130,13 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Means to improve an SL model}
 	SL performance can be improved by:
 	\begin{itemize}
-		\item Collecting more data, i.e., increasing $K$ (more data is always better).\pause
+		\item Collecting more data, i.e., increasing $K$.\pause
+		\item Reducing noise in the data.\pause
+		\item Improving the data set's distribution, i.e., ensuring that the data set is representative of the problem domain.\pause
 		\item Choosing a more appropriate model.\pause
 		\item Optimizing hyperparameters of the model.\pause
-		\item Averaging over several different models (ensembling).\pause
-		\item Most effectively: Revealing the most predictive patterns in the data to the model (feature engineering).
+		\item Averaging over several different models (ensemble).\pause
+		\item Most effectively: revealing the most predictive patterns in the data to the model (feature engineering).
 	\end{itemize}
 }
 
@@ -200,12 +147,12 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 \frame{\frametitle{Feature engineering}
 	Additional features might be:
 	\begin{itemize}
-		\item Coming from the real world via additional sensors or additional tracking mechanisms (think of a user's click behavior on a website)\pause
-		\item Hand-designed (\textit{engineered}) by experts in the corresponding domain from the original feature set\pause
-		\item Automatically built according to properties of each feature in the original set (Auto-ML)\pause
+		\item Coming from the real world via additional sensors or additional tracking mechanisms (think of a user's click behavior on a website),\pause
+		\item Hand-designed (\textit{engineered}) by experts in the corresponding domain from the original feature set,\pause
+		\item Automatically built according to properties of each feature in the original set (Auto-ML).\pause
 	\end{itemize}
 	\begin{block}{Caution}
-		Adding more features is not equivalent to having more data (which is always better).
+		Adding more features is not equivalent to having more data.
 		Having a fixed data set size, adding arbitrarily many features, regardless of their origin, increases chances to align statistical fluctuations with the target $\bm y_k$ - overfitting is the result.
 	\end{block}
 }
@@ -232,25 +179,25 @@ Machine learning (ML) and especially the field of supervised learning (SL) is ex
 
 \frame{\frametitle{Normalization}
 Most models require data to be \hl{normalized} before training (apart from tree-based models).
-
+\vspace{0.5cm}
 Typical normalizaton schemes:
 \begin{itemize}
-	\item Standard scaling: $\tilde{ \bm x} = (\bm x- \text{Avg}(\bm x)) / \text{Std}(\bm x)$
-	\item Min-Max scaling: $\tilde{\bm x} = (\bm x - \text{min}(\bm x))/ (\text{max}(\bm x) - \text{min}(\bm x))$
-	\item Plain scaling: $\tilde{\bm x} = \bm x / \text{max}(| \bm x |)$
+	\item Standard scaling: $\tilde{ \bm x} = (\bm x- \text{Avg}(\bm x)) / \text{Std}(\bm x),$
+	\item Min-Max scaling: $\tilde{\bm x} = (\bm x - \text{min}(\bm x))/ (\text{max}(\bm x) - \text{min}(\bm x)),$
+	\item Plain scaling: $\tilde{\bm x} = \bm x / \text{max}(| \bm x |)$.
 \end{itemize}
-
+\vspace{0.5cm}
 In an unnormalized data set, features with high variance will eclipse patterns in other features.
 }
 
 \frame{\frametitle{Data types}
 Several different data types can be utilized for ML:
 \begin{itemize}
-	\item Binary: 1 or 0 (True or False).\pause
+	\item Binary: 1 or 0 (true or false).\pause
 	\item Integer: $\mathbb{N}$ (e.g., number of rooms in a building).\pause
 	\item Real-valued: $\mathbb{R}$ (e.g., temperature).\pause
 	\item Categorical: like \{blue, green, red\}\pause
-	\item Ordinal: Categoricals that can be ordered, e.g., educational experience (From elementary school to Ph.D.)
+	\item Ordinal: categoricals that can be ordered, e.g., educational experience (from elementary school to Ph.D.)
 \end{itemize}
 
 }
@@ -291,11 +238,11 @@ How to normalize categorical data?\pause
 		\item In time domain:
 		\begin{itemize}
 			\item $\tilde{\bm{x}}_k = (x_{k,r_1}, x_{k-1,r_1}, x_{k-2,r_1}, x_{k,r_2}, x_{k,c})$ (lag features),
-			\item $\tilde x_k = (1-\alpha)\tilde x_{k-1} + \alpha x_{k,r}$ (moving averages).
+			\item $\tilde x_k = (1-\alpha)\tilde x_{k-1} + \alpha x_{k,r}$ (moving averages),
 		\end{itemize}\pause
 		\item In frequency domain:
 		\begin{itemize}
-			\item Amplitude and index of frequencies from a fast fourier transform (FFT)
+			\item Amplitude and relevant frequencies from a fast Fourier transform (FFT).
 		\end{itemize}
 		
 	\end{itemize}
@@ -322,7 +269,7 @@ How to normalize categorical data?\pause
 			\item Also coined as \textit{deep learning}, soared in popularity since 2012
 			\item Most prevalent in the domains of natural language processing (NLP) and image processing
 		\end{itemize}\pause
-		\item Gradient Boosting Machines (GBM)
+		\item Gradient boosting machines (GBM)
 		\begin{itemize}
 			\item Chaining of \textit{weak} models (most of the time decision trees)
 			\item The best performing stand-alone model in tabular ML competitions
@@ -333,10 +280,10 @@ How to normalize categorical data?\pause
 \frame{\frametitle{Model choice}
 	\begin{figure}
 		\includegraphics[width=8.8cm]{fig/lec08/bigdrill.png}
-		\caption{Choose models appropriate for the problem! (Source: Adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
+		\caption{Choose models appropriate for the problem! (Source: adapted from \href{https://www.reddit.com/r/toolporn/comments/1kw63x/hilti_30c_in_your_hands_feels_huge_1050_x_750/}{reddit})}
 		\label{fig:bigdrill}
 	\end{figure}
-}
+a}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Linear regression}
@@ -363,8 +310,8 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 		\label{eq:OLS_estimate}
 	\end{equation}\pause
 	
-	\begin{alertblock}{Multicollinearity}
-		If two regressors exhibit strong linear correlation, their coefficients can grow indeterministically.
+	\begin{block}{Multicollinearity}
+		If two regressors exhibit strong linear correlation, their coefficients can grow infeasibly large.
 		This corresponds to high variance in $\hat{\bm w}$.
 		Regularization of $\hat{\bm w}$ alleviates this effect - it induces bias for less variance.
 		Most prevalent linear regularized techniques are LASSO and Ridge:
@@ -374,7 +321,7 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 			\label{eq:ridge}
 		\end{align}
 		where $\lambda$ controls the growth penalty.
-	\end{alertblock}
+	\end{block}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,9 +396,9 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\begin{minipage}[c]{\linewidth}
 		Within hidden layers most \\prevalent activation functions $\varphi(\cdot)$ are
 		\begin{itemize}
-			\item $h = \text{tanh}(z)$
-			\item $h = \frac{1}{1+e^{-z}}$ (sigmoid)
-			\item $h = \text{max}(0,z)$ \\(rectified linear unit (ReLU))
+			\item $h = \text{tanh}(z)$,
+			\item $h = \frac{1}{1+e^{-z}}$ (sigmoid),
+			\item $h = \text{max}(0,z)$ \\(rectified linear unit (ReLU)).
 		\end{itemize}
 		
 	\end{minipage}
@@ -470,11 +417,11 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\end{columns}\pause
 	Whereas $\varphi^{(L)}(\cdot)$ is task-dependent:
 		\begin{itemize}
-			\item Regression: $\hat{{y}} = {h}^{(L)} = {z}^{(L)}$
-			\item Binary classification: sigmoid
+			\item Regression: $\hat{{y}} = {h}^{(L)} = {z}^{(L)}$,
+			\item Binary classification: sigmoid,
 			\item Multi-class classification: 
 			\begin{equation*}
-			h_c^{(L)} = \frac{e^{z_c}}{\sum_{i=1}^C e^{z_i}}\quad\text{(softmax)}
+			h_c^{(L)} = \frac{e^{z_c}}{\sum_{i=1}^C e^{z_i}}\quad\text{(softmax)}.
 			\end{equation*}
 		\end{itemize}
 }
@@ -489,12 +436,11 @@ Among other methods, $\bm w$ can be estimated from $K$ samples by minimizing the
 	\end{align}
 	with $\alpha$ being the step size and $\mathcal{L}(\cdot)$ denoting the \hl{loss} between the ground truth vector and the estimation vector.\pause
 	
-	
-Typical loss functions:
-
+\vspace{0.5cm}	
+Typical loss functions are:
 \begin{itemize}
-	\item Regression: (root) mean squared error (RMSE), mean absolute error
-	\item Classification: Cross-entropy (CE)
+	\item Regression: (root) mean squared error (RMSE), mean absolute error,
+	\item Classification: Cross-entropy (CE).
 \end{itemize}
 Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 }
@@ -522,9 +468,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{minipage}
 	\end{column}
 	\end{columns}
-	SGD is more computationally  efficient, but steps are more random.
-	
-	Nowadays, mini-batch gradient descent (mix of SGD and BGD) and further improvements are used, e.g., momentum and second derivatives, to ensure faster convergence to better optima.
+	SGD is more computationally  efficient, but steps are more random.	Nowadays, mini-batch gradient descent (mix of SGD and BGD) and further improvements are used, e.g., momentum and second derivatives, to ensure faster convergence to better (local) optima.
 }
 
 
@@ -538,7 +482,7 @@ Several iterations over the data set $\bm{\mathcal D}$ are called \hl{epochs}.
 	\end{equation}\pause
 	This can be used equivalently for matrices/tensors of any shape $\nabla_{\bm{\Xi}}y = \frac{\partial y}{\partial \bm{\Xi}}$ when we assume to enumerate each element of the tensor consecutively and loop through them.\pause
 	
-	\begin{block}{Error Backpropagation}
+	\begin{block}{Error backpropagation}
 		After a \hl{forward step} through the network, make a \hl{backward step} in which the gradient $\bm\gamma$ of the loss $\mathcal{L}(\bm y, \hat{\bm y})$ is computed w.r.t the ANN's parameters from the output layer back to the input layer.
 	\end{block}
 }
@@ -579,7 +523,7 @@ Applying SGD, we start with forward propagation:
 \begin{align*}
 	\bm h^{(1)} &= \varphi^{(1)}(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
 	\quad &= \sigma([0.1, -4.3] + [0.05, -0.03]) = [0.53, 0.01]\\
-	\hat{y}_0 &= \bm{h}^{(1)}\bm{\mathcal{W}}^{(2)} + \bm{b}^{(2)} = 0.198
+	\hat{y}_0 &= \bm{h}^{(1)}\bm{\mathcal{W}}^{(2)} + \bm{b}^{(2)} = 0.198.
 \end{align*}
 				
 }
@@ -590,7 +534,7 @@ Applying SGD, we start with forward propagation:
 	\begin{align*}
 		\bm\gamma^{(2)} = \nabla_{\hat{y}_0}\mathcal{L}(y_0, \hat{y_0}) &= \nabla_{\hat{\bm{y}}} (y_0 - \hat y_0)^2 = -2 (y_0 - \hat y_0) = -4.604\\
 		\nabla_{\bm{b}^{(2)}} \mathcal{L}(y_0, \hat{y_0}) &= \bm\gamma^{(2)} \odot \partial (\varphi^{(2)})(\bm z^{(2)}) = \bm\gamma^{(2)} \\
-		\nabla_{\bm{\mathcal W}^{(2)}} \mathcal{L}(y_0, \hat{y}_0) &= (\bm{h}^{(1)})\T\cdot\bm\gamma^{(2)} = [-2.44, -0.046]\T\\
+		\nabla_{\bm{\mathcal W}^{(2)}} \mathcal{L}(y_0, \hat{y}_0) &= (\bm{h}^{(1)})\T\cdot\bm\gamma^{(2)} = [-2.44, -0.046]\T\\\pause
 		\bm\gamma^{(1)} = \nabla_{\bm{h}^{(1)}}\mathcal{L}(y_0, \hat{y}_0)&= \bm\gamma^{(2)}\cdot(\bm{\mathcal W}^{(2)})\T = [-0.921, 3.683]\\
 		\nabla_{\bm{b}^{(1)}} \mathcal{L}(y_0, \hat{y_0}) &= \bm\gamma^{(1)} \odot \partial (\varphi^{(1)})(\bm z^{(1)}) = \bm\gamma^{(1)}\odot \sigma^\prime(\bm{x}_0\bm{\mathcal{W}}^{(1)} + \bm{b}^{(1)}) \\
 		\quad &= \bm\gamma^{(1)}\odot (\bm h^{(1)}(1-\bm h^{(1)})) = [-0.229, 0.036]\\
@@ -613,20 +557,18 @@ According to Glorot and Bengio\footnote[1]{X. Glorot and Y. Bengio, "Understandi
 	\item normal: $\bm{w} \sim \mathcal{N}\Big(0, \frac{\sqrt{2}}{\sqrt{H_\text{in}+H_\text{out}}}  \Big)$
 \end{itemize}\pause
 
-Please note that generally due to the random weight initialization the result of repeated error backpropagation training is always different regardless of having the same hyperparameters and the same data.
-
-This equals to \hl{local optimization in highly non-linear parameter spaces at random starting points}.
+Please note that generally due to the random weight initialization the result of repeated error backpropagation training is always different regardless of having the same hyperparameters and the same data. \pause This equals to \hl{local optimization in highly non-linear parameter spaces at random starting points}.
 }
 
 \frame{\frametitle{Regularizing neural networks}
 	In order to mitigate overfitting, ANNs must be regularized by
 	\begin{itemize}
-		\item weight decay, i.e., adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
-		\item layer normalization during training,
+		\item Weight decay, i.e., adding an $\ell_2$ penalty term to the weights, see (\ref{eq:ridge}), \pause
+		\item Layer normalization during training,
 		\begin{itemize}
-			\item i.e all layers' activations are normalized by standard scaling separately,
+			\item i.e., all layers' activations are normalized by standard scaling separately,
 		\end{itemize}\pause
-		\item dropout, i.e., randomly disable nodes' contribution.
+		\item Dropout, i.e., randomly disable nodes' contribution.
 		\begin{itemize}
 			\item This helps especially in deep networks,
 			\item and effectively builds an ensemble of ANNs with shared edges.
@@ -666,7 +608,7 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 		\begin{itemize}
 			\item \href{https://github.com/optuna/optuna}{Optuna}
 			\item \href{https://scikit-optimize.github.io/stable/}{Scikit-optimize}
-			\item \href{https://pyswarms.readthedocs.io/en/latest/}{Pyswarm}
+			\item \href{https://github.com/deap/deap}{deap}
 		\end{itemize}
 	\end{itemize}
 }
@@ -677,8 +619,8 @@ This equals to \hl{local optimization in highly non-linear parameter spaces at r
 		\begin{itemize}
 			\item \href{https://www.tensorflow.org/tutorials/quickstart/beginner}{Tensorflow 2 (Keras)}
 			\item \href{https://pytorch.org/}{PyTorch}
-			\item \href{https://chainer.org/}{Chainer}
-			\item \href{https://docs.microsoft.com/en-us/cognitive-toolkit/}{CNTK}
+			\item \href{https://fluxml.ai/}{flux (Julia)}
+			\item \href{https://github.com/google/flax}{Flax (JAX)}
 		\end{itemize}\pause
 		\item Gradient boosting machines
 		\begin{itemize}
