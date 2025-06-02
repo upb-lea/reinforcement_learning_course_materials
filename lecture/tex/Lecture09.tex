@@ -23,7 +23,7 @@ Until further notice we assume that:
 Focus of this and the next lecture:
 \begin{itemize}
 	\item Transferring previous RL methods from discrete to continuous state-space problems in the on-policy case.\pause
-	\item Applying off-policy approaches with function approximation is not straightforward and will be largely skipped.  
+	\item Applying off-policy prediction with function approximation is not straightforward and will be largely skipped.  
 	\begin{itemize}
 		\item For further insights we refer to chapter 11 in \textit{R. Sutton and G. Barto, Reinforcement learning: an introduction, 2018}. 
 	\end{itemize}
@@ -94,7 +94,7 @@ Due to the usage of function approximation one incremental learning step changes
 	\end{itemize}
 	\item Due to generalization impact we need to define an accuracy metric on the entire state space (the RL prediction goal):
 \end{itemize}
-\begin{defi}{Mean Squared Value Error}{VE}
+\begin{defi}{Mean squared value error}{VE}
 The RL prediction objective is defined as the mean squared value error
 \begin{equation}
 	\overline{\mbox{VE}}(\bm{w}) = \int_{\mathcal{X}}\mu(\bm{x})\left[v_{\pi}(\bm{x}) - \hat{v}(\tilde{\bm{x}}, \bm{w})\right]^2
@@ -103,7 +103,7 @@ The RL prediction objective is defined as the mean squared value error
 with $\mu(\bm{x})\in\left\{\mathbb{R}|\mu(\bm{x})\geq 0\right\}$ being a state distribution weight with $\int_{\mathcal{X}}\mu=1$. 
 \end{defi}\pause
 \begin{itemize}
-	\item Practical note: As the true value $v_{\pi}(\bm{x})$ is most likely unknown in most tasks, \eqref{eq:VE} cannot be computed exactly but only estimated.
+	\item Practical note: as the true value $v_{\pi}(\bm{x})$ is most likely unknown in most tasks, \eqref{eq:VE} cannot be computed exactly but only estimated.
 \end{itemize}
 }
 
@@ -170,11 +170,11 @@ Second challenge:
 %% Updating the Parameter Vector to Find (Local) Optimum %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Updating the parameter vector to find (local) optimum}
-Transferring the idea of incremental learning steps from the tabular case 
+Transferring the idea of \hl{incremental learning steps} from the tabular case 
 \begin{equation}
 	\hat{v}(x) \leftarrow \hat{v}(x) + \alpha \left[v_\pi(x) - \hat{v}(x)\right] 
 \end{equation}
-to function approximation using a gradient descent update:
+to function approximation using a \hl{gradient descent update}:
 \begin{equation}
 	\bm{w}\leftarrow\bm{w}-\alpha \nabla_{\bm{w}}J(\bm{w}).
 	\label{eq:gradient_learning}
@@ -203,7 +203,7 @@ to function approximation using a gradient descent update:
 \begin{column}{0.54\textwidth}
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
-	\item Full calculus of $\nabla_{\bm{w}}J(\bm{w})$:
+	\item Full batch calculus of $\nabla_{\bm{w}}J(\bm{w})$:
 	\begin{itemize}
 		\item Batch evaluation on sampled sequence $\bm{x}_0, \bm{x}_1, \bm{x}_2,\ldots$ might be computationally costly. 
 		\item In RL control: since $\pi$ changes over time, past data in batch is not fully representative. 
@@ -449,7 +449,7 @@ Based on the data set
 \end{equation*}
 repeat:
 \begin{enumerate}
-	\item Sample uniformly $i=1,\ldots,b$ state-value pairs from experience (so-called \hl{mini batch})
+	\item Sample uniformly $i=1,\ldots,b$ state-value pairs from experience (so-called \hl{mini batches})
 		\begin{equation*}
 			\left\langle \bm{x}_i, v_\pi(\bm{x}_i)\right\rangle\sim\bm{\mathcal{D}}.
 		\end{equation*}\pause
@@ -483,7 +483,7 @@ Then, minimizing the quadratic cost function \eqref{eq:VE_J} becomes
 \vspace{0.5cm}
 We focus on the \hl{combination of OLS and TD(0) (so-called LSTD)}, but the following can be equally extended to $n$-step learning or MC.
 \begin{itemize}
-	\item Rewriting $J(\bm{w})$ from \eqref{eq:VE_J} using linear approximation TD(0) target: 
+	\item Rewriting $J(\bm{w})$ from \eqref{eq:VE_J} using a linear approximation TD(0) target: 
 \end{itemize}
 	\begin{align}
 			v_{\pi}(\bm{x}_k)&\approx r_{k+1} + \gamma \hat{v}(\bm{x}_{k+1})=r_{k+1} + \gamma \tilde{\bm{x}}\T_{k+1}\bm{w}\\
@@ -530,7 +530,7 @@ Having arranged $i=1,\ldots,b$ samples $\left\langle \bm{x}_i, v_\pi(\bm{x}_i)\r
 Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlated.
 \begin{itemize}
 	\item Bad matrix condition of $\bm{\Xi}\T\bm{\Xi}$ can lead to unfeasible values in $\bm{w}^*$.\pause
-	\item Counter measure: Add Tikhonov regularization (Ridge regression with penalty term $\epsilon$, cf. \eqref{eq:ridge}):
+	\item Counter measure: add Tikhonov regularization (ridge regression with penalty term $\epsilon$, cf. \eqref{eq:ridge}):
 \end{itemize}
 \begin{equation}
 	\bm{w}_{\mbox{Ridge}}^* = (\bm{\Xi}\T\bm{\Xi}+\epsilon\bm{I})^{-1}\bm{\Xi}\T\bm{y} .
@@ -545,7 +545,7 @@ Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \frame{\frametitle{Recursive least squares}
 \begin{itemize}
-	\item OLS computational complexity is in the range of $\mathcal{O}(\kappa^{2.3})\ldots\mathcal{O}(\kappa^3)$. 
+	\item OLS computational complexity is in the range of $\mathcal{O}(\kappa^{2.3})\ldots\mathcal{O}(\kappa^3)$ (depending on the used numerical solution algorithm). 
 	\begin{itemize}
 		\item $\kappa$ being the number of features.
 	\end{itemize}\pause
@@ -556,7 +556,7 @@ Depending on the policy $\pi$ the rows in $\bm{\Xi}$ might be linearly correlate
 	\end{itemize}
 	\item In the following, we briefly represent the recipe-style RLS equations.
 	\begin{itemize}
-		\item Detailed derivation can be found e.g. R. Isermann and M. M\"unchhof, \textit{Identification of Dynamic Systems}, Springer-Verlag Berlin Heidelberg, 2011 (also as electronic copy on Panda).
+		\item Detailed derivation can be found e.g. R. Isermann and M. M\"unchhof, \textit{Identification of Dynamic Systems}, Springer-Verlag Berlin Heidelberg, 2011.
 	\end{itemize}
 \end{itemize}
 }
@@ -667,7 +667,7 @@ Squares Identification}, Proceedings of 35th IEEE Conference on Decision and Con
 	\begin{itemize}
 		\item no convergence guarantees,
 		\item local optima vs. global optimum.
-	\end{itemize}
+	\end{itemize}\pause
 	\item If bootstrapping is applied, the update target depends on $\bm{w}$.
 	\begin{itemize}
 		\item True gradient becomes computationally more complex.\pause
@@ -675,7 +675,7 @@ Squares Identification}, Proceedings of 35th IEEE Conference on Decision and Con
 	\end{itemize}
 	\item Batch learning squeezes out all available prediction information from a given data set.\pause
 	\begin{itemize}
-		\item If linear function approximation is applied, closed-form solutions exist.\pause
+		\item If linear function approximation is applied, closed-form solutions exist.
 	\end{itemize}
 \end{itemize}
 \end{frame}
