@@ -38,8 +38,8 @@ Today's focus:
 \end{figure}
 \begin{itemize}
 	\item Left: one function with both states and actions as input
-	\item Middle: one function with $i=1,2,\ldots$ outputs covering the action space (e.g., ANN with appropriate output layer)
-	\item Right: multiple (sub-)functions one for each possible action $u_i$ (e.g., multitude of linear approximators in small action spaces)
+	\item<2-> Middle: one function with $i=1,2,\ldots$ outputs covering the action space (e.g., ANN with appropriate output layer)
+	\item<3-> Right: multiple (sub-)functions one for each possible action $u_i$ (e.g., multitude of linear approximators in small action spaces)
 \end{itemize}
 }
 
@@ -197,7 +197,7 @@ Today's focus:
 \begin{minipage}[c]{\linewidth}
 \begin{figure}
 	\includegraphics[width=4.8cm]{fig/lec10/mountain_car.png}
-	\caption{Classic RL control example: mountain car (derivative work based on \href{https://github.com/openai/gym}{https://github.com/openai/gym}, MIT license)}
+	\caption{Classic RL control example: mountain car (derivative work based on \href{https://github.com/Farama-Foundation/Gymnasium}{https://github.com/Farama-Foundation/Gymnasium}, MIT license)}
 	\label{fig:Mountain_car_gym}
 \end{figure}
 \end{minipage}
@@ -207,12 +207,12 @@ Today's focus:
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
 	\item Two cont. states: position, velocity
-	\item One discrete action: acceleration given by $\left\{\mbox{left},\mbox{none},\mbox{right}\right\}$ 
-	\item $r_k=-1$, i.e., goal is to terminate episode as quick as possible
-	\item Episode terminates when car reaches the flag (or max steps)
-	\item Simplified longitudinal car physics with state constraints
-	\item Position initialized randomly within valley, zero initial velocity
-	\item Car is underpowered and requires swing-up
+	\item<2-> One discrete action: acceleration given by $\left\{\mbox{left},\mbox{none},\mbox{right}\right\}$ 
+	\item<3-> $r_k=-1$, i.e., goal is to terminate episode as quick as possible
+	\item<4-> Episode terminates when car reaches the flag (or max steps)
+	\item<5-> Simplified longitudinal car physics with state constraints
+	\item<6-> Position initialized randomly within valley, zero initial velocity
+	\item<7-> Car is underpowered and requires swing-up
 \end{itemize}
 \end{minipage}
 \end{column}
@@ -335,7 +335,7 @@ Regarding the data input to $\bm{\Xi}$ we can distinguish two cases: The actions
 \end{itemize}\pause
 If we apply off-policy LS-SARSA then
 \begin{itemize}
-	\item we retrieve the flexibility to collect training samples arbitrarily
+	\item we retrieve the flexibility to collect training samples arbitrarily \pause
 	\item at the cost of an estimation bias based on the sampling distribution.
 \end{itemize}
 }
@@ -438,13 +438,13 @@ $\pi\leftarrow \argmax_{u}\hat{q}(\cdot, u, \bm{w})$ (greedy choices based on $\
 \begin{minipage}[c]{\linewidth}
 \begin{itemize}
 	\item Two continuous states: angular position $\theta$ and velocity $\dot{\theta}$
-	\item One discrete action: acceleration force (i.e., torque at shaft)
-	\item Action noise as disturbance 
-	\item Non-linear system dynamics
-	\item State initialization randomly close to upper equilibrium
-	\item $r_k=0$ if pendulum is above horizontal line
-	\item $r_k=-1$ if below horizontal line and episode terminates
-	\item $\gamma=0.95$
+	\item<2-> One discrete action: acceleration force (i.e., torque at shaft)
+	\item<3-> Action noise as disturbance 
+	\item<4-> Non-linear system dynamics
+	\item<5-> State initialization randomly close to upper equilibrium
+	\item<6-> $r_k=0$ if pendulum is above horizontal line
+	\item<7-> $r_k=-1$ if below horizontal line and episode terminates
+	\item<8-> $\gamma=0.95$
 \end{itemize}
 \end{minipage}
 \end{column}
@@ -647,10 +647,10 @@ Motivation behind:
 \frame{\frametitle{DQN application example: Atari games (1)}
 \begin{itemize}
 	\item End-to-end learning of $\hat{q}(\bm{x},u)$ from monitor pixels $\bm{x}$
-	\item Feature engineering obtains stacking of raw pixes from last 4 frames
-	\item Actions $u$ are 18 possible joystick/button combinations
-	\item Reward is the change of highscore per step
-	\item Interesting lecture from V. Minh with more details: \href{https://www.youtube.com/watch?v=fevMOp5TDQs&t=1499s}{YouTube}
+	\item<2-> Feature engineering obtains stacking of raw pixes from last 4 frames
+	\item<3-> Actions $u$ are 18 possible joystick/button combinations
+	\item<4-> Reward is the change of highscore per step
+	\item<5-> Interesting lecture from V. Minh with more details: \href{https://www.youtube.com/watch?v=fevMOp5TDQs&t=1499s}{YouTube}
 \end{itemize}
 \begin{figure}
 \includegraphics[height=0.4\textheight]{fig/lec10/DQN_Network_Silver.pdf}
