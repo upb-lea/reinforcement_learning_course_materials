@@ -192,7 +192,7 @@ The TRPO's main hurdles are:
 \begin{itemize}
 	\item Constructing the objective function and constraint requires Monte Carlo rollouts (time consuming, data inefficient).\pause
 	\item When the sampled optimization problem is set up, a nonlinear and constrained optimization step is required (no simple policy gradient, computational costly).\pause
-\end{itemize}\pause	
+\end{itemize}	
 \begin{block}{}
 We will not provide any specific TRPO implementation suggestion at this point, since this is rather cumbersome. Instead we will move forward to a similar algorithm which is pursuing the same goal (prevent erratic policy changes) with a much simpler implementation.  
 \end{block}
@@ -293,7 +293,7 @@ based on related unconstrained problems.
 	\begin{equation*}
 		\max_{\bm{\theta}}\,\max\left\{\frac{\pi_{\bm{\theta}}(\bm{u}|\bm{x})}{\pi_{\bm{\theta}_k}(\bm{u}|\bm{x})},  1-\epsilon\right\}a_{\pi_k}(\bm{x},\bm{u}).
 \end{equation*}\pause
-	\item Due to the $\max\{\cdot\}$ operator, the entire objective is limited to $(1-\epsilon)a_{\pi_k}(\bm{x},\bm{u})$.\pause
+	\item Due to the $\max\{\cdot\}$ operator, the entire objective is limited to $(1-\epsilon)a_{\pi_k}(\bm{x},\bm{u})$.
 \end{itemize}
 }
 
@@ -419,8 +419,8 @@ Algorithm collections with tutorial-style documentation:
 \vspace{0.75cm}
 Algorithm collections with decent application-oriented documentation:
 \begin{itemize}
-	\item \href{https://github.com/ray-project/ray}{RLlib (Ray)}
 	\item \href{https://github.com/DLR-RM/stable-baselines3}{Stable Baselines3}
+	\item \href{https://github.com/ray-project/ray}{RLlib (Ray)}
 	\item \href{https://github.com/deepmind/acme}{Acme}
 	\item \href{https://github.com/google/dopamine}{Google Dopamine}
 	\item \href{https://github.com/tensorflow/agents}{TF-Agents}
