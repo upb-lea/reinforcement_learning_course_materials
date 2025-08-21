@@ -140,6 +140,3 @@ The lecture notes are inspired by
 
 The tutorials are partly using pre-packed environments from
 * [Gymnasium](https://gymnasium.farama.org/) (maintained branch of OpenAI's Gym)
-
-The original version of this educational repository was created at:
-* [Paderborn University, LEA Department](https://github.com/upb-lea/reinforcement_learning_course_materials)
