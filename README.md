@@ -1,6 +1,6 @@
 # Reinforcement learning course
 
-[![Build Status](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/buildPDFs.yml/badge.svg)](https://github.com/IAS-Uni-Siegen/RL_course/actions/workflows/buildPDFs.yml)
+[![Build Status](https://github.com/upb-lea/RL_course/actions/workflows/buildPDFs.yml/badge.svg)](https://github.com/upb-lea/RL_course/actions/workflows/buildPDFs.yml)
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
@@ -18,57 +18,57 @@ Lecture notes, tutorial tasks including solutions as well as online videos for a
 
 
 ## Lecture slides (click on preview picture)
-<a href="https://ias-uni-siegen.github.io/RL_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.jpg" alt=""></a>
+<a href="https://upb-lea.github.io/RL_course/lecture.pdf" target="_blank" class="image fit"><img src="misc/Lecture_preview.jpg" alt=""></a>
 
 * Introduction to reinforcement learning
     * [Lecture video, part 1](https://www.youtube.com/watch?v=YqlNOCD0rfA)
     * [Lecture video, part 2](https://youtu.be/Yd99sn-64Z8)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec1)   
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec1)   
 * Markov decision processes
     * [Lecture video](https://www.youtube.com/watch?v=ywn81iGQISE)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec2) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec2) 
 * Dynamic programming
     * [Lecture video](https://www.youtube.com/watch?v=vjIiYdidFPY)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec3) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec3) 
 * Monte Carlo methods
     * [Lecture video](https://www.youtube.com/watch?v=GBL0ArlONrM)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec4) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec4) 
 * Temporal-difference learning
     * [Lecture video](https://www.youtube.com/watch?v=Rnf9Wanxnj8)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec5) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec5) 
 * Multi-step bootstrapping
     * [Lecture video](https://www.youtube.com/watch?v=YYTSZTyjbQ4)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec6) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec6) 
 * Planning and learning with tabular methods
     * [Lecture video](https://www.youtube.com/watch?v=gvJ3__GmHqo)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec7) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec7) 
 * Function approximation with supervised learning
     * [Lecture video](https://www.youtube.com/watch?v=tXAxTiuvges)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec9) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec9) 
 * On-policy prediction with function approximation
     * [Lecture video](https://www.youtube.com/watch?v=aA3MFRHrrtg)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec10) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec10) 
 * Value-based control with function approximation
     * [Lecture video](https://www.youtube.com/watch?v=LE9dVVj5700)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec11) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec11) 
 * Stochastic policy gradient methods
     * [Lecture video](https://www.youtube.com/watch?v=LzuZUyVr2mY)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec12) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec12) 
 * Deterministic policy gradient methods
     * [Lecture video](https://www.youtube.com/watch?v=i6hOcGIgdoQ)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec13) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec13) 
 * Further contemporary RL algorithms (TRPO, PPO)
     * [Lecture video](https://www.youtube.com/watch?v=H8rElrvs9Lo)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec14)
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec14)
 * Outlook and Research Insights
     * [Lecture video](https://www.youtube.com/watch?v=-TEzYSzXhW4)
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec15)
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec15)
    
 
 * Summary of part one: reinforcement learning in finite state and action spaces
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec7) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec7) 
 * Summary of part two: reinforcement learning in continuous state and action spaces
-    * [Lecture slides](https://ias-uni-siegen.github.io/RL_course/lecture.pdf#sec16) 
+    * [Lecture slides](https://upb-lea.github.io/RL_course/lecture.pdf#sec16) 
 
 
 # Exercise content
