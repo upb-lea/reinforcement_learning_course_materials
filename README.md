@@ -126,12 +126,15 @@ All exercises are based on Python 3.12 and site-packages according to the requir
     * [Tutorial template](../master/exercises/templates/ex12)
     * [Tutorial solution](../master/exercises/solutions/ex12) 
 
-# Contributions
-We highly appreciate any feedback and input to the course material e.g.
-* typos or content-related discussions (please raise an issue)
-* adding new contents (please provide a pull request)
+## Contributions
 
-If you like to contribute to the repo to a larger extent, please do not hesitate to contact us directly. 
+We highly appreciate any feedback and input to the course material, for example:
+
+- Reporting typos or content-related issues (please [open an issue](../../issues))
+- Suggesting improvements or corrections (also via issues)
+- Adding or altering content (please submit a pull request)
+
+If you would like to contribute in a larger capacity (e.g., developing new lectures or exercises, maintaining content, or collaborating on course design), please open an issue first so we can coordinate.  
 
 # Credits
 The lecture notes are inspired by
