@@ -34,9 +34,7 @@ with fileinput.input('main.tex', inplace=True) as f:
 call(call_pdflatex_l)
 call(call_pdflatex_l)
 
+clear_tex_binaries()
 
-# go into the parent directory
-os.chdir('..')
-os.makedirs('built', exist_ok=True)
-#take main.pdf from the exercise folder and move it to the parent folder
-os.replace('lecture/main.pdf', os.path.join('built', 'lecture.pdf'))
+#take main.pdf from the lecture folder and move it to the parent folder
+os.replace('main.pdf', os.path.join('built', 'lecture.pdf'))
