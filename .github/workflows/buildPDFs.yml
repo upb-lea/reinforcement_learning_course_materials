@@ -23,8 +23,6 @@ jobs:
             cd lecture
             cp ../course_template/lectureClass.cls ./
             python3 build.py
-            cd ..
-            
 
             
       - name: Upload PDF file
