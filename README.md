@@ -1,7 +1,7 @@
 # Reinforcement learning course
 
 [![Build Status](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/buildPDFs.yml/badge.svg)](https://github.com/upb-lea/reinforcement_learning_course_materials/actions/workflows/buildPDFs.yml)
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+[![CC BY 4.0][cc-by-shield]][cc-sa]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)](https://www.latex-project.org/)
 
@@ -12,7 +12,7 @@ This work is licensed under a
 
 [cc-by]: https://creativecommons.org/licenses/by/4.0/legalcode
 [cc-by-image]: https://licensebuttons.net/l/by/4.0/88x31.png
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 Lecture notes, tutorial tasks including solutions as well as online videos for a reinforcement learning course originally hosted at Paderborn University and transferred to University of Siegen. Source code for the entire course material is open and everyone is cordially invited to use it for self-learning (students) or to set up your own course (lecturers).
 
